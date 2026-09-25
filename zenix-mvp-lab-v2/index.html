@@ -35,11 +35,14 @@
 <script>
 document.getElementById("contactForm").addEventListener("submit",function(e){
  e.preventDefault();
+ const form=e.currentTarget;
  const name=document.getElementById("name").value.trim();
  const msg=document.getElementById("message").value.trim();
  const text="Hola, soy "+name+". "+msg;
  document.getElementById("formStatus").textContent="Abriendo WhatsApp…";
  window.open("https://wa.me/542901535229?text="+encodeURIComponent(text),"_blank","noopener");
+ form.reset();
+ document.getElementById("formStatus").textContent="Consulta preparada. Formulario limpio.";
 });
 </script>
 </body></html>
