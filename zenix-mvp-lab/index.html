@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>MVP Lab | Zenix</title>
+  <meta name="description" content="Plantilla comercial reutilizable para pequeños negocios.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="lab-badge">Zenix · MVP Lab</div>
+  <header class="hero">
+    <nav class="nav wrap">
+      <div class="brand" id="brandName">La Esquina</div>
+      <div class="navlinks"><a href="#productos">Productos</a><a href="#promos">Promos</a><a href="#contacto">Contacto</a></div>
+    </nav>
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow" id="businessType">Rotisería & Pizzería</span>
+        <h1 id="heroTitle">Comida rica, rápida y hecha como en casa.</h1>
+        <p id="heroText">Pedí por WhatsApp, mirá el menú y encontrá las promos del día.</p>
+        <div class="actions"><a class="btn primary" id="waTop" target="_blank">Pedir por WhatsApp</a><a class="btn ghost" href="#productos">Ver menú</a></div>
+        <div class="micro"><span>✓ Atención rápida</span><span>✓ Precios claros</span><span>✓ Mobile-first</span></div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-kicker">PROMO DESTACADA</div><div class="hero-card-title" id="promoHero">2 pizzas + gaseosa</div>
+        <div class="hero-card-price" id="promoPrice">$19.900</div><div class="hero-card-note">Disponible hoy</div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="section wrap" id="productos">
+      <div class="section-head"><div><span class="eyebrow">Menú</span><h2>Lo más pedido</h2></div><p>Contenido de ejemplo. Todo puede cambiarse sin rehacer el diseño.</p></div>
+      <div class="cards" id="productsGrid"></div>
+    </section>
+    <section class="section alt" id="promos">
+      <div class="wrap promo-grid"><div><span class="eyebrow">Promociones</span><h2>Ofertas que cambian sin tocar la estructura</h2><p>La idea del MVP es que nombre, precios, colores, promos y datos del negocio sean configurables.</p></div>
+      <div class="offer"><span>Hoy</span><strong id="promoSecondary">Empanadas 12x</strong><b id="promoSecondaryPrice">$14.500</b></div></div>
+    </section>
+    <section class="section wrap features">
+      <article><h3>WhatsApp directo</h3><p>Un toque y el cliente ya puede consultar o pedir.</p></article>
+      <article><h3>Horarios claros</h3><p id="hours">Lun a dom · 11:30 a 23:30</p></article>
+      <article><h3>Ubicación</h3><p id="address">Av. Principal 123 · Tu ciudad</p></article>
+      <article><h3>Promos editables</h3><p>Cambios rápidos sin reconstruir la web.</p></article>
+    </section>
+    <section class="section alt"><div class="wrap testimonials"><div><span class="eyebrow">Confianza</span><h2>Una web simple de entender y fácil de mantener</h2></div><blockquote>“Encontré el menú rápido y pedí desde el celular sin vueltas.”<span>— Cliente de ejemplo</span></blockquote></div></section>
+    <section class="section wrap" id="contacto"><div class="contact-grid"><div><span class="eyebrow">Contacto</span><h2>Pedí presupuesto o hacé tu consulta</h2><p>Este formulario es demostrativo. En la versión de cliente puede conectarse a WhatsApp, email o un backend.</p></div>
+      <form id="contactForm"><input id="name" placeholder="Tu nombre" required><input id="phone" placeholder="WhatsApp"><textarea id="message" placeholder="¿Qué necesitás?" rows="5" required></textarea><button class="btn primary" type="submit">Enviar consulta</button><div class="form-status" id="formStatus"></div></form></div>
+    </section>
+    <section class="section alt faq"><div class="wrap"><span class="eyebrow">Preguntas frecuentes</span><h2>Todo lo importante, sin ruido</h2>
+      <details><summary>¿Puedo cambiar precios y productos?</summary><p>Sí. El MVP está pensado para separar contenido y diseño.</p></details>
+      <details><summary>¿Funciona en celular?</summary><p>Sí. Está diseñado mobile-first.</p></details>
+      <details><summary>¿Se puede conectar a WhatsApp?</summary><p>Sí. El botón ya toma el número desde la configuración.</p></details></div>
+    </section>
+  </main>
+  <footer class="footer"><div class="wrap footer-row"><div><strong id="footerName">La Esquina</strong><div>Plantilla comercial reutilizable</div></div><div class="muted">MVP Lab de Zenix · entorno independiente de prueba</div></div></footer>
+  <script src="config.js"></script><script src="app.js"></script>
+</body>
+</html>
