@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Zenix Agent Lab v1</title>
+<meta name="description" content="Panel interno de Zenix para generar y aprobar previews de clientes.">
+<style>
+:root{--bg:#081018;--panel:#101923;--panel2:#151f2b;--line:#263443;--text:#f3f7fb;--muted:#9eabb8;--accent:#6ee7b7;--accent2:#38bdf8;--warn:#fbbf24;--danger:#fb7185;--ok:#34d399;--radius:18px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.45}
+button,input,textarea,select{font:inherit}button{cursor:pointer}.wrap{width:min(980px,calc(100% - 28px));margin:auto;padding:24px 0 60px}
+.top{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;margin-bottom:22px}.kicker{color:var(--accent);font-size:12px;font-weight:900;letter-spacing:.1em;text-transform:uppercase}.title{font-size:clamp(32px,7vw,56px);line-height:1;margin:6px 0 10px;letter-spacing:-.04em}.sub{color:var(--muted);max-width:760px;margin:0}
+.badge{border:1px solid var(--line);background:#ffffff08;border-radius:999px;padding:8px 11px;font-size:12px;white-space:nowrap}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px;margin-top:16px}.panel h2{font-size:20px;margin:0 0 6px}.panel p{color:var(--muted);margin:0 0 16px}
+label{display:block;font-size:12px;color:#c7d2dc;font-weight:800;margin:14px 0 6px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+input,textarea,select{width:100%;background:#0a121a;border:1px solid var(--line);color:var(--text);padding:12px;border-radius:12px;outline:none}textarea{resize:vertical;min-height:120px}
+input:focus,textarea:focus,select:focus{border-color:#3d607a;box-shadow:0 0 0 3px #38bdf812}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.btn{border:0;border-radius:12px;padding:12px 15px;font-weight:900}.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#041019}.secondary{background:#ffffff0a;color:var(--text);border:1px solid var(--line)}.approve{background:var(--ok);color:#052117}.danger{background:#2a1117;color:#fecdd3;border:1px solid #5a2430}
+.step{display:flex;gap:10px;align-items:center;color:#c8d3dd;font-size:13px;margin:7px 0}.dot{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:#172532;border:1px solid #2f465a;font-size:11px;font-weight:900}.dot.ok{background:#0d2a21;border-color:#1e6049;color:#80f3c8}
+.preview-shell{margin-top:16px;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#05090d}.preview-bar{padding:10px 12px;background:#111923;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:8px;align-items:center}.preview-bar small{color:var(--muted)}
+.preview{padding:0}.site{font-family:Inter,system-ui;background:var(--site-bg,#0d1117);color:#fff;min-height:520px}.siteHero{padding:54px 22px 44px;background:radial-gradient(circle at 90% 0%,color-mix(in srgb,var(--site-brand,#ff7a18) 35%,transparent),transparent 38%),#0d1117}.siteWrap{max-width:880px;margin:auto}.siteBrand{font-weight:900;font-size:20px;margin-bottom:34px}.siteType{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--site-brand,#ff7a18);font-weight:900}.site h1{font-size:clamp(38px,9vw,62px);line-height:.96;letter-spacing:-.04em;margin:9px 0 15px}.siteLead{color:#aeb8c3;font-size:17px;max-width:650px}.wa{display:inline-block;margin-top:18px;background:var(--site-brand,#ff7a18);color:#130800;font-weight:900;padding:12px 15px;border-radius:12px;text-decoration:none}.section{padding:38px 22px}.sectionAlt{background:#111923}.products{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.product{border:1px solid #27323e;border-radius:14px;padding:14px;background:#101720}.product b{display:block}.product span{display:block;color:var(--site-brand,#ff7a18);font-weight:900;margin-top:8px}.site h2{font-size:28px;margin:0 0 16px}.meta{display:grid;grid-template-columns:1fr 1fr;gap:10px}.meta div{border:1px solid #27323e;padding:14px;border-radius:14px}.meta small{display:block;color:#9da8b5;margin-bottom:4px}
+.statusbox{padding:14px;border-radius:14px;border:1px solid var(--line);background:#0b131b;margin-top:12px}.statusbox strong{display:block;margin-bottom:4px}.statusbox span{color:var(--muted);font-size:13px}
+.hidden{display:none!important}.approved{border-color:#245c49;background:#0d201a}.warnbox{border-color:#5c4920;background:#211b0e}
+@media(max-width:680px){.top{display:block}.badge{display:inline-block;margin-top:12px}.grid{grid-template-columns:1fr}.products,.meta{grid-template-columns:1fr}.wrap{width:min(100% - 20px,980px)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="kicker">Zenix · Agent Lab v1</div>
+      <h1 class="title">Generar. Revisar. Aprobar.</h1>
+      <p class="sub">Panel interno de prueba para convertir datos de un negocio en una propuesta web reutilizable. Todo ocurre en este laboratorio; no publica nada automáticamente.</p>
+    </div>
+    <div class="badge">Entorno seguro · sin producción</div>
+  </header>
+
+  <section class="panel">
+    <h2>1. Datos del cliente</h2>
+    <p>Cargá la información básica. El generador arma una propuesta y la deja lista para revisar.</p>
+    <div class="grid">
+      <div><label>Nombre del negocio</label><input id="businessName" value="La Esquina"></div>
+      <div><label>Tipo de negocio</label><input id="businessType" value="Rotisería & Pizzería"></div>
+      <div><label>WhatsApp</label><input id="whatsapp" value="542901535229"></div>
+      <div><label>Color principal</label><input id="brandColor" type="color" value="#ff7a18"></div>
+      <div><label>Horarios</label><input id="hours" value="Lun a dom · 11:30 a 23:30"></div>
+      <div><label>Ubicación</label><input id="address" value="Av. Principal 123 · Tu ciudad"></div>
+    </div>
+
+    <label>Título principal</label>
+    <input id="heroTitle" value="Comida rica, rápida y hecha como en casa.">
+
+    <label>Descripción</label>
+    <textarea id="heroText">Pedí por WhatsApp, mirá el menú y encontrá las promos del día.</textarea>
+
+    <label>Productos / servicios</label>
+    <textarea id="products">Pizza muzzarella | $8.900
+Milanesa napolitana | $12.500
+Empanadas | $1.400 c/u
+Hamburguesa completa | $7.900</textarea>
+
+    <div class="actions">
+      <button class="btn primary" id="generate">Generar preview</button>
+      <button class="btn secondary" id="saveDraft">Guardar borrador</button>
+      <button class="btn secondary" id="loadDraft">Recuperar borrador</button>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>2. Estado del agente</h2>
+    <p>Esta v1 usa un motor local: transforma la ficha del cliente en una propuesta y ejecuta controles básicos.</p>
+    <div class="step"><span class="dot" id="s1">1</span><span>Datos del cliente recibidos</span></div>
+    <div class="step"><span class="dot" id="s2">2</span><span>Propuesta generada</span></div>
+    <div class="step"><span class="dot" id="s3">3</span><span>Checklist técnica ejecutada</span></div>
+    <div class="step"><span class="dot" id="s4">4</span><span>Aprobación humana pendiente</span></div>
+    <div id="checkResult" class="statusbox"><strong>Esperando generación</strong><span>Completá o editá los datos y tocá “Generar preview”.</span></div>
+  </section>
+
+  <section class="preview-shell" id="previewBlock">
+    <div class="preview-bar"><strong>Preview del cliente</strong><small id="previewStatus">Sin generar</small></div>
+    <div class="preview">
+      <div class="site" id="site">
+        <div class="siteHero">
+          <div class="siteWrap">
+            <div class="siteBrand" id="pBrand">La Esquina</div>
+            <div class="siteType" id="pType">Rotisería & Pizzería</div>
+            <h1 id="pTitle">Comida rica, rápida y hecha como en casa.</h1>
+            <div class="siteLead" id="pText">Pedí por WhatsApp, mirá el menú y encontrá las promos del día.</div>
+            <a class="wa" id="pWa" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+          </div>
+        </div>
+        <div class="section siteWrap">
+          <h2>Productos / servicios</h2>
+          <div class="products" id="pProducts"></div>
+        </div>
+        <div class="section sectionAlt">
+          <div class="siteWrap">
+            <div class="meta">
+              <div><small>Horarios</small><b id="pHours"></b></div>
+              <div><small>Ubicación</small><b id="pAddress"></b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>3. Revisión y aprobación</h2>
+    <p>La versión no se publica sola. Esta aprobación solamente marca la propuesta como validada dentro del laboratorio.</p>
+    <div class="actions">
+      <button class="btn approve" id="approve">Aprobar esta versión</button>
+      <button class="btn danger" id="reopen">Volver a edición</button>
+    </div>
+    <div id="approvalState" class="statusbox"><strong>Sin aprobación</strong><span>Primero generá y revisá la preview.</span></div>
+  </section>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const inputs=["businessName","businessType","whatsapp","brandColor","hours","address","heroTitle","heroText","products"];
+
+function state(){
+  const o={}; inputs.forEach(id=>o[id]=$(id).value.trim()); return o;
+}
+function productRows(raw){
+  return raw.split("\n").map(x=>x.trim()).filter(Boolean).map(line=>{
+    const p=line.split("|"); return {name:(p[0]||"Producto").trim(),price:(p[1]||"Consultar").trim()};
+  });
+}
+function setStep(id,ok){const el=$(id);el.classList.toggle("ok",ok);el.textContent=ok?"✓":id.slice(1);}
+function render(){
+  const d=state();
+  $("site").style.setProperty("--site-brand",d.brandColor||"#ff7a18");
+  $("pBrand").textContent=d.businessName||"Negocio";
+  $("pType").textContent=d.businessType||"Negocio";
+  $("pTitle").textContent=d.heroTitle||"Tu propuesta";
+  $("pText").textContent=d.heroText||"";
+  $("pHours").textContent=d.hours||"A confirmar";
+  $("pAddress").textContent=d.address||"A confirmar";
+  const wa=d.whatsapp.replace(/\D/g,"");
+  $("pWa").href="https://wa.me/"+wa+"?text="+encodeURIComponent("Hola, quiero hacer una consulta.");
+  const rows=productRows(d.products);
+  $("pProducts").innerHTML=rows.map(p=>'<div class="product"><b>'+escapeHtml(p.name)+'</b><span>'+escapeHtml(p.price)+'</span></div>').join("");
+  const checks=[];
+  checks.push({ok:d.businessName.length>=2,msg:"Nombre"});
+  checks.push({ok:wa.length>=10,msg:"WhatsApp"});
+  checks.push({ok:d.heroTitle.length>=8,msg:"Título"});
+  checks.push({ok:rows.length>=1,msg:"Productos"});
+  const failed=checks.filter(x=>!x.ok);
+  setStep("s1",true); setStep("s2",true); setStep("s3",failed.length===0); setStep("s4",false);
+  $("previewStatus").textContent="Generada · "+new Date().toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"});
+  const box=$("checkResult");
+  box.className="statusbox "+(failed.length?"warnbox":"approved");
+  box.innerHTML=failed.length
+    ? "<strong>Checklist con observaciones</strong><span>Revisar: "+failed.map(x=>x.msg).join(", ")+"</span>"
+    : "<strong>Checklist básica = OK</strong><span>Nombre, WhatsApp, título y contenido mínimo presentes.</span>";
+  localStorage.setItem("zenixAgentCurrent",JSON.stringify(d));
+}
+function escapeHtml(s){return s.replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m]));}
+
+$("generate").addEventListener("click",render);
+$("saveDraft").addEventListener("click",()=>{
+  localStorage.setItem("zenixAgentDraft",JSON.stringify(state()));
+  $("checkResult").className="statusbox approved";
+  $("checkResult").innerHTML="<strong>Borrador guardado</strong><span>Quedó almacenado localmente en este dispositivo.</span>";
+});
+$("loadDraft").addEventListener("click",()=>{
+  const raw=localStorage.getItem("zenixAgentDraft");
+  if(!raw){$("checkResult").innerHTML="<strong>No hay borrador</strong><span>Guardá uno primero.</span>";return;}
+  const d=JSON.parse(raw); inputs.forEach(id=>{if(d[id]!=null)$(id).value=d[id]}); render();
+});
+$("approve").addEventListener("click",()=>{
+  const current=localStorage.getItem("zenixAgentCurrent");
+  if(!current){$("approvalState").className="statusbox warnbox";$("approvalState").innerHTML="<strong>No se puede aprobar</strong><span>Primero generá una preview.</span>";return;}
+  localStorage.setItem("zenixAgentApproved",current);
+  setStep("s4",true);
+  $("approvalState").className="statusbox approved";
+  $("approvalState").innerHTML="<strong>Versión aprobada</strong><span>Quedó marcada como validada en este laboratorio. No se publicó nada en producción.</span>";
+});
+$("reopen").addEventListener("click",()=>{
+  localStorage.removeItem("zenixAgentApproved");
+  setStep("s4",false);
+  $("approvalState").className="statusbox";
+  $("approvalState").innerHTML="<strong>Volvió a edición</strong><span>Podés cambiar datos y generar una nueva propuesta.</span>";
+});
+render();
+</script>
+</body>
+</html>
