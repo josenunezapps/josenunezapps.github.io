@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-10-10T23:22:40+00:00",
+  "generated_at": "2026-10-10T23:23:06+00:00",
   "opportunities": [
     {
       "id": 5752205252,
@@ -147,6 +147,21 @@
       "updated_at": "2026-10-10T23:10:05Z"
     },
     {
+      "id": 5786099311,
+      "title": "Part 2: restore measured credit, price, issuer and dependency evidence for crack tests",
+      "url": "https://github.com/clydigital/alchemy-live-market-desk/issues/697",
+      "description": "## Partition 2 — measured evidence before market-crack alerting\nFollow **PR #696** (Part 1 quantified research tripwires). **Do not duplicate #667** (06:00 Notion AI → canonical handoff), #655 (snapshot provenance tests), or #690/#695 (scheduled research validation fixes).\n\n### Read-only production audit at 10 Oct 2026 ~07:40 MYT\n- `market_series_observations`: 288 rows, 9 series (GLD, QQQ, SPY, TLT, US10Y, US2Y, USDJPY, USO, UUP). **Latest observation date 2026-08-03**. No SMH, XLF, RSP, DXY, HY/IG/CCC OAS, MOVE series in this table. Other market monitor providers may still provide fresher data; map them before changing ingestion.\n- `macro_series_observations`: NFP latest 2026-07; CPI/core CPI/PPI latest 2026-06.\n- `intelligence_evidence` created since 2026-10-08: 41 rows (23 news_report, 9 transcript, 7 market_observation, 2 official_release). **0 observed_value and 0 expected_value** across all 41; 32 non-transcript rows have **no affected_assets**. Some 9 Oct research handoff evidence contains generic website-observation language and old/static MOVE documentation—not a dated MOVE reading.\n- Latest persisted Dossier was as-of 2026-10-07T20:03:56Z; morning/evening scheduled resea",
+      "skills": [
+        "script",
+        "documentation"
+      ],
+      "score": 20,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:22:53Z"
+    },
+    {
       "id": 5785823459,
       "title": "[Astra] Full repository review: architecture, security, runtime wiring, and integration behavior",
       "url": "https://github.com/FlossWare/claude-ensemble/issues/349",
@@ -175,36 +190,6 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T23:21:27Z"
-    },
-    {
-      "id": 5796181090,
-      "title": "Add agent and bot platform directories",
-      "url": "https://github.com/pooriaarab/skills/issues/566",
-      "description": "## Problem\n\nThe skill covers web, SEO, and MCP directories but not the platform-native directories where an MCP server or bot becomes a first-class listing:\n\n- **Claude Connectors Directory** (claude.ai/directory/manage) — accepts remote MCP servers; any paid Claude plan can submit.\n- **ChatGPT app/plugin directory** (OpenAI Platform dashboard) — accepts MCP-connected plugins; custom GPTs retire Dec 2026, so the plugin path is the live one.\n- **cursor.directory** — GitHub/Google OAuth form at /mcp/new lists remote MCP servers.\n- **Grok bot template directories** — grokbots.best (JSON API), templatebot.lol (agent API), grokbot.wtf (GitHub PR), grok-bot.app (form). All need an x.ai/bot template link first.\n- **Poe** — prompt bots publish at poe.com/<handle> with no review.\n\nAlso missing from the AllMCPs row: the submit handler reads React state, so eval-setter fills silently no-op — agent-browser fill (real CDP input) is required.\n\n## Proposal\n\nAdd an \"Agent & bot platform directories\" subsection to §7 with method, gate, and asset-first requirements per channel. Fix the AllMCPs row in §4.",
-      "skills": [
-        "json",
-        "api"
-      ],
-      "score": 20,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:20:59Z"
-    },
-    {
-      "id": 5518867774,
-      "title": "OneCompany permanent Mistral Vibe cloud wake bus — owner dispatch only",
-      "url": "https://github.com/NTinkicht/OneCompany/issues/130",
-      "description": "Permanent, repository-scoped, GitHub-hosted Mistral wake bus. Do not close or reuse for unrelated providers. OneCompany native Work Units, current lease, exact SHA and dispatch policy are authority, not this issue's free-form comments. Initial `@mistral-vibe` wake is read-only, advisory and non-gating; it may inspect bounded source and report test ideas/failure analysis without writing code. It MUST fail closed when `MISTRAL_API_KEY` or subscription/PAYG-disabled guard is absent. No provider credentials in this issue. Full leased developer, binding reviewer and test-author lanes need separate qualification; no Codespace, laptop or open browser session may be required.",
-      "skills": [
-        "api",
-        "script"
-      ],
-      "score": 20,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:20:41Z"
     },
     {
       "id": 5696972941,
@@ -293,6 +278,60 @@
       "updated_at": "2026-10-10T21:09:38Z"
     },
     {
+      "id": 5696973317,
+      "title": "Research: establish explicit hardness and binding claims beyond regression evidence",
+      "url": "https://github.com/rickyjreyes/Wavelock/issues/32",
+      "description": "[Candidate B restricted binding](https://github.com/rickyjreyes/Wavelock/blob/master/docs/CC_CORE_V1_RESTRICTED_BINDING.md) leaves general trajectory uniqueness and inversion hardness unresolved. [PDE results](https://github.com/rickyjreyes/Wavelock/blob/master/docs/PDE_HASH_RESULTS.md) contain no lower bound on attack cost. Public Bounty v1 C1/C2 likewise have `security_proof: NONE`; these are distinct constructions and must not share claims by implication.\n\n- [ ] State separate security games, input distributions, attacker access, and work/memory accounting for each construction under study.\n- [ ] Identify what existing theorems establish and the exact missing lemmas for any proposed reduction or lower bound.\n- [ ] Adversarially review proposed arguments, including digest-level re-merging and computation shortcuts.\n- [ ] Publish a reproducible research checkpoint: proved conditional result, counterexample, or explicit unresolved obligations with bounded evidence.\n\nCompletion of a research checkpoint must not be relabeled a full security proof. Absence of a proof alone is not a qualifying bounty exploit.\n\nThis ticket tracks outstanding work; it does not report a newly reproduced v",
+      "skills": [],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:22:59Z"
+    },
+    {
+      "id": 5654799638,
+      "title": "Digest rehabilitation: ordered issue list and acceptance gates",
+      "url": "https://github.com/Lenivvenil/digest/issues/91",
+      "description": "## Current work order — 2026-10-10\n\nArchitecture first: the test-count target is withdrawn. Preserve meaningful behavioral/security protection and the >=92.93% coverage floor.\n\nVerified PR231–239 cover [feedback observation](https://github.com/Lenivvenil/digest/issues/148#issuecomment-6094745884), [README](https://github.com/Lenivvenil/digest/issues/148#issuecomment-6094838543), [task guides](https://github.com/Lenivvenil/digest/issues/148#issuecomment-6095225394), [historical anchors](https://github.com/Lenivvenil/digest/issues/148#issuecomment-6095370011), [Make installation](https://github.com/Lenivvenil/digest/issues/148#issuecomment-6095827919), [first-send warning correction](https://github.com/Lenivvenil/digest/issues/220#issuecomment-6095938742), [translation rejection reasons](https://github.com/Lenivvenil/digest/issues/55#issuecomment-6096165089), [provisional closer guidance](https://github.com/Lenivvenil/digest/issues/127#issuecomment-6096393899) and [installer observation](https://github.com/Lenivvenil/digest/issues/148#issuecomment-6096639141). Each linked record retains exact checks and limits. Later bounded corrections cover [configuration diagnostics](https://githu",
+      "skills": [
+        "documentation"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:22:44Z"
+    },
+    {
+      "id": 5635516115,
+      "title": "[M4] 对局强度：策略对局矩阵 + 扩规模训练 + 可恢复多机执行",
+      "url": "https://github.com/n0tevi1/ygorl/issues/83",
+      "description": "<!-- ygorl-activation-health-20261009:start -->\n**2026-10-09 warm/u256 milestone plus all four repeat alerts independently audited and ACKed.**\n\nStudy identity `270faf6a7cfd97e0084bb8bae3588d47a961e47ffd66f21f63a507f131bb3984` remains frozen. Cold seed0 completedu512; warm continuation running; remaining paired seeds/arms and final gate unchanged.\n\n| Metric | Warm u128 | Warm u256 | Cold u256 |\n|---|---:|---:|---:|\n| Primary-three win rate |77.474%|82.031%|78.906%|\n| Primary mean turns |10.660|10.513|9.523|\n| Historical-RL wins /256 |128|147|150|\n| Full1024-game cancellation count |51|224|65|\n| Fixed reference Q MSE |.856067|.799927|.850823|\n\nWarm continuation wins+4.557pp (conditional shared-deal95%CI+1.042 to+8.073); turns−.147 (−.600 to+.297), no clear reduction. Matchedu256 warm win lead+3.125pp (−.651 to+6.901), uncertain; mean+.990turns (+.604 to+1.375), longer. Cold/u512 primary85.026% is a different training-length endpoint, not the matched warm comparison. One training seed, exploratory intervals; no final gate or causal warmup claim.\n\nIndependent reference audit81,546rows/256games: Q MSE.856067→.799927, V.856633→.801963, far-horizon errors also decrease. No decline measur",
+      "skills": [
+        "script"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:22:36Z"
+    },
+    {
+      "id": 5635504649,
+      "title": "[M4] T4b.6 训练信号与探索：消融与设计决策（步长、熵、对手、奖励、UPGO、中局开局）",
+      "url": "https://github.com/n0tevi1/ygorl/issues/61",
+      "description": "<!-- ygorl-activation-health-20261009:start -->\n**2026-10-09 warm/u256 milestone plus all four repeat alerts independently audited and ACKed.**\n\nStudy identity `270faf6a7cfd97e0084bb8bae3588d47a961e47ffd66f21f63a507f131bb3984` remains frozen. Cold seed0 completedu512; warm continuation running; remaining paired seeds/arms and final gate unchanged.\n\n| Metric | Warm u128 | Warm u256 | Cold u256 |\n|---|---:|---:|---:|\n| Primary-three win rate |77.474%|82.031%|78.906%|\n| Primary mean turns |10.660|10.513|9.523|\n| Historical-RL wins /256 |128|147|150|\n| Full1024-game cancellation count |51|224|65|\n| Fixed reference Q MSE |.856067|.799927|.850823|\n\nWarm continuation wins+4.557pp (conditional shared-deal95%CI+1.042 to+8.073); turns−.147 (−.600 to+.297), no clear reduction. Matchedu256 warm win lead+3.125pp (−.651 to+6.901), uncertain; mean+.990turns (+.604 to+1.375), longer. Cold/u512 primary85.026% is a different training-length endpoint, not the matched warm comparison. One training seed, exploratory intervals; no final gate or causal warmup claim.\n\nIndependent reference audit81,546rows/256games: Q MSE.856067→.799927, V.856633→.801963, far-horizon errors also decrease. No decline measur",
+      "skills": [
+        "script"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:22:35Z"
+    },
+    {
       "id": 5796127874,
       "title": "[LAUNCH-001][P0][CIT] Implement and evidence one real source-grounded public-knowledge inference",
       "url": "https://github.com/sovereign-codex/AVOT-engine/issues/16",
@@ -349,34 +388,6 @@
       "updated_at": "2026-10-10T23:21:31Z"
     },
     {
-      "id": 5603480693,
-      "title": "Rust release: simplify fresh installation and delete remaining production Python",
-      "url": "https://github.com/craigbalding/safeyolo/issues/822",
-      "description": "Parent: [Rust product phase](https://github.com/craigbalding/safeyolo/issues/815). Final integration consumes the policy, host, guest/coordination, credential, workflow and operator-UX results. Start the minimal native install path with the first usable CLI; final release acceptance remains here.\n\n## Preparation update — 3 October 2026\n\nPrepared against master [`f1e16b4f`](https://github.com/craigbalding/safeyolo/commit/f1e16b4f94f1a829da92bef4d875c720dce03cfd) and tracked in [Rust product phase, Project 2](https://github.com/users/craigbalding/projects/2). Craig’s 4 October direction overrides the Project 1 completion gate: start actual #816 P1/P4/P6 coding with minimal #822 installation support no later than 22:07 UTC on 4 October 2026. Preserve unfinished Project 1 work at a safe checkpoint. Refresh the accepted master and relevant issue/PR results at that handoff; this revision is an analysis baseline, not a frozen implementation candidate. Existing acceptance labels and operator decisions remain in force. This preparation marks no case passed.\n\n[#880](https://github.com/craigbalding/safeyolo/pull/880) completed the proxy cutover, [#893](https://github.com/craigbalding/safeyolo",
-      "skills": [
-        "python"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:20:51Z"
-    },
-    {
-      "id": 5551915300,
-      "title": "[Program] Elsa 3 integration ecosystem: monorepo consolidation, independent releases, and researched connector catalog",
-      "url": "https://github.com/elsa-workflows/elsa-core/issues/8194",
-      "description": "<!-- selected-product-artifacts-8693 -->\n**Current delivery: Task #8693 remains In Progress / Assigned / Verification Failed, with all seven acceptance criteria open.** The [authoritative delivery checkpoint](https://github.com/elsa-workflows/elsa-core/issues/8693#issuecomment-6093202347) records exact heads, source freshness, artifact audits and remaining decisions.\n\nStructural consolidation into sibling `core/`, `studio/` and `extensions/` directories and nonpublishing individual-product planning are accepted. Actual main is `3cc81c652906fc0e18a2ec0c6732308440f8c720`; main-forward #8698 is merged. The latest release audit included all35 advertised3.8/3.9 release refs in main; latest stable was3.9.0 in all three repositories.\n\n[Studio source carryover #8699](https://github.com/elsa-workflows/elsa-core/pull/8699) and [main-forward #8703](https://github.com/elsa-workflows/elsa-core/pull/8703) are normally merged. Main8703 merge3cc81c has verified ordered parents and treeeb76a02 matching the independently reviewed prospective merge. Exact-head459 gates passed: independent APPROVE + HIGH, two clean lead passes, Greptile5/5, CodeRabbit and25 terminal checks (20 SUCCESS / five expected ",
-      "skills": [
-        "documentation"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:20:35Z"
-    },
-    {
       "id": 5697081525,
       "title": "Question: is the plugin registry still accepting community submissions?",
       "url": "https://github.com/MiniMax-AI/MiniMax-Code-Plugins/issues/71",
@@ -413,18 +424,6 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T23:20:00Z"
-    },
-    {
-      "id": 5696973317,
-      "title": "Research: establish explicit hardness and binding claims beyond regression evidence",
-      "url": "https://github.com/rickyjreyes/Wavelock/issues/32",
-      "description": "[Candidate B restricted binding](https://github.com/rickyjreyes/Wavelock/blob/master/docs/CC_CORE_V1_RESTRICTED_BINDING.md) leaves general trajectory uniqueness and inversion hardness unresolved. [PDE results](https://github.com/rickyjreyes/Wavelock/blob/master/docs/PDE_HASH_RESULTS.md) contain no lower bound on attack cost. Public Bounty v1 C1/C2 likewise have `security_proof: NONE`; these are distinct constructions and must not share claims by implication.\n\n- [ ] State separate security games, input distributions, attacker access, and work/memory accounting for each construction under study.\n- [ ] Identify what existing theorems establish and the exact missing lemmas for any proposed reduction or lower bound.\n- [ ] Adversarially review proposed arguments, including digest-level re-merging and computation shortcuts.\n- [ ] Publish a reproducible research checkpoint: proved conditional result, counterexample, or explicit unresolved obligations with bounded evidence.\n\nCompletion of a research checkpoint must not be relabeled a full security proof. Absence of a proof alone is not a qualifying bounty exploit.\n\nThis ticket tracks outstanding work; it does not report a newly reproduced v",
-      "skills": [],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:19:45Z"
     },
     {
       "id": 5650223300,
@@ -647,7 +646,7 @@
   "warnings": [],
   "execution": {
     "status": "demo_completed",
-    "timestamp": "2026-10-10T23:22:40+00:00",
+    "timestamp": "2026-10-10T23:23:06+00:00",
     "kind": "csv_cleaning",
     "result": {
       "processed_rows": 3,
