@@ -1,0 +1,24 @@
+name: Zenix AutoWorker
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 */8 * * *'
+permissions:
+  contents: write
+jobs:
+  agent:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run agent
+        run: python zenix-autoworker/engine/agent.py --scan
+      - name: Update dashboard data
+        run: |
+          git config user.name 'zenix-autoworker[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add zenix-autoworker/data/
+          git diff --cached --quiet || (git commit -m 'chore(autoworker): update opportunities' && git push)
