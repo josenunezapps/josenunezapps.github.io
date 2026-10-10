@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-10-10T23:25:32+00:00",
+  "generated_at": "2026-10-10T23:29:26+00:00",
   "opportunities": [
     {
       "id": 5752205252,
@@ -52,55 +52,6 @@
       "updated_at": "2026-10-10T21:39:09Z"
     },
     {
-      "id": 5793425997,
-      "title": "GOV-P02: unblock native Alibaba OCR and external live-release evidence",
-      "url": "https://github.com/TheHalfMoon/Tegara/issues/35",
-      "description": "## Purpose\n\nQualify genuine **native Alibaba OpenCodeReview** and externally verifiable launch evidence for Tegara, without misrepresenting green CI, paid market-data rights, brokerage executions, phone receipt, or independent review. Preserve the repository `TheHalfMoon/Tegara`, signed DCO, normal merge commits, no rebase/force-push, and no live brokerage orders.\n\n## Live evidence — October 10, 2026, Mac\n\n- Head: Draft PR #34, `e9c52006ecda48be05b369c2727e816a4dc68df8`; no local uncommitted changes at the last Mac inspection. `main` has not received the draft stack.\n- All **16 open PRs are Draft** and form one continuous parent-branch chain in order: **#2 → #4 → #6 → #8 → #10 → #14 → #16 → #18 → #20 → #22 → #24 → #26 → #28 → #30 → #32 → #34**. There is no missing base branch or cycle.\n- Each head had successful Python CI; browser e2e succeeded where introduced; CodeQL Python/JS succeeded where those jobs were introduced. The latest head has exact-head quality **38068120882** (Python and TesterArmy e2e PASS) and CodeQL **38068120887** (Python and JavaScript/TypeScript PASS). Local Mac previously passed 329/329 Python tests. **These checks do not mean independent review or live opti",
-      "skills": [
-        "python",
-        "javascript",
-        "typescript",
-        "script"
-      ],
-      "score": 40,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:23:01Z"
-    },
-    {
-      "id": 5779937201,
-      "title": "Compute board — shared GPU pods (uor-pod)",
-      "url": "https://github.com/UOR-Foundation/uor-r4/issues/2037",
-      "description": "Automatic mirror of the `uor-pod` ledger (`~/.local/share/uor-r4/compute/ledger.jsonl`). Successor of #1750. **Post only ledger lines and capacity reports here.** Discuss work on the milestone issues of the tracker #2028.\n\n### Owner rules (5–7 October)\n- **Caps**, all labs together: at most 4 running pods and $8/h. No new spending class.\n- **Ladder:** without `--gpu`, `uor-pod up` tries 2×RTX 5090, then 2×4090, then 2×PRO 6000, then one GPU of each.\n  - Datacenters: EUR-NO-1 (canonical volume), EU-RO-1, EUR-IS-1, then allowlisted regions by stock.\n  - Pods outside EUR-NO-1 are non-canonical. They get their data from the private HF store `caseyallard/uor-r4-store` and must archive results before `down`.\n- **Leases:**\n  - Identity is lab + session. Run `uor-pod status` first and share before you create.\n  - Lease with `--hours` covering the whole job plus margin, and renew it. An expiring lease is never a reason to stop a live job.\n  - Only an expired lease may be taken over. Release when done, then `down` if nobody else holds the pod.\n- **Storage:** durable output only on `/workspace`. Don't keep stopped pods as storage. Move downloaded results to iCloud with `cloud-store put`.\n- Fu",
-      "skills": [
-        "json"
-      ],
-      "score": 35,
-      "amount_mentions": [
-        "$8"
-      ],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:24:41Z"
-    },
-    {
-      "id": 5793089065,
-      "title": "Release 1.2.6:0: checklist",
-      "url": "https://github.com/DigiMonk73/BTCTX-MCP/issues/97",
-      "description": "**Where it stands (2026-10-10, evening):** six fixes merged; #106 merging (auto-merge on, CI running); #103 (#76) had a last finding fixed and is being re-checked, then goes back to the owner for \"merge\", with #105 (#91) right after it; #108 (#79) re-check running; the disclaimer in the app, PDFs and AI connector is #109 (review running); #98 approved, coding next; the StartOS wording and store descriptions not started.\n\nThe checklist for BitcoinTX 1.2.6:0, kept here so every session (and Claude after a context reset) works from the same list. Ticked as each lands. The release steps themselves are AGENTS.md \"Releasing\" and `startos/UPDATING.md`.\n\n## Fixes and changes in 1.2.6\n- [x] #89 Mac app: test builds on a throwaway folder (`desktop/run-test-build.sh`), needed for the Mac test below (merged)\n- [x] #93 #80 (first part): the printed IRS forms read back by the tests (merged)\n- [x] #96 #74: 8-decimal BTC amounts on Form 8949 and in Ledger Review (merged)\n- [x] #102 #75: losses in parentheses on Form 8949 and Schedule D (merged)\n- [ ] #106 #78: no empty Part I / Part II pages (reviewed, re-check passed, owner's \"merge\": auto-merge on, waiting for CI)\n- [x] #107 #77: Ledger Review f",
-      "skills": [
-        "script"
-      ],
-      "score": 35,
-      "amount_mentions": [
-        "$0"
-      ],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T21:46:49Z"
-    },
-    {
       "id": 3480616935,
       "title": "Promo Code & Discount Engine",
       "url": "https://github.com/gameguild-gg/gameguild/issues/418",
@@ -148,10 +99,10 @@
       "updated_at": "2026-10-10T23:10:05Z"
     },
     {
-      "id": 5438226799,
-      "title": "N5: separately authorized subscription task acceptance (M8-G)",
-      "url": "https://github.com/sushiHex/constructicon/issues/78",
-      "description": "## Outcome\n\nExecute [N5 — separately authorized subscription task acceptance](https://github.com/sushiHex/constructicon/blob/main/docs/plans/milestones/M8-live-executors-rev3.md#n5--separately-authorized-subscription-task-acceptance) of M8 rev 3: one bounded READ lane and a separately authorized WRITE/capture/gate lane through the same owned boundaries, completing only the observed profile's conformance.\n\n## Prerequisites and non-goals\n\nBlocked by N4. Requires explicit operator authorization of the selected binding/provider, model, permitted task data, fixed request/token budget, vendor overage policy and cost ceiling before any model call. If a requested hard spending bound cannot be enforced under that arrangement, stop for a different operator decision; do not promise one from a local token limit. No paid-API fallback and no repeated smokes until a model succeeds. No production provider is published and no conformance hash is invented.\n\n## Acceptance criteria\n\n- [ ] Real subscription-mode execution, model-session TLS/destinations, bounded results and timeout/cancellation are proved through the real launcher, driver, worker and leases.\n- [ ] Deterministic fakes are reused for res",
+      "id": 5789461316,
+      "title": "Session foundation: retire Viewer compatibility, Encrypted Relay and Canonical Trace Store",
+      "url": "https://github.com/onsager-ai/semon/issues/380",
+      "description": "## Overview\n\nConsolidate Semon around harness-native session evidence and Session Intelligence. Retire full-workspace Viewer compatibility, Encrypted Relay, and the Canonical Trace Store in dependency-safe stages. The user explicitly requested this architecture and reviewable implementation PRs; merges, deployments, live infrastructure changes and user-data deletion are excluded.\n\n## Verified baseline\n\nAudited Semon main `02a9ac17d525eb134b5952f7e55d30b47b16b8ec` and Hub main `9623986977ec69869276fa4224a939e0c9fa4312` on October 10, 2026. At that original baseline Hub pinned Semon `8d38fbbf254d52a9b9bac123d47df8b9c593800d`. Latest resolved mains are Semon `263a02da278716ab2309b8e34a463419e5c781e5` and Hub `4932e7ba256014cfdd9de64ed2d50a5656830a15`; Hub main now pins that Semon commit. Unmerged retirement stack revisions remain distinct from main.\n\n- Focused Catalog, Transcript, Entry, identity, capabilities and source inventory APIs exist. Completed #319/#320 are foundations to reuse.\n- `MachineView::refresh_model_locked` and catalog demand still construct a native full-machine model; Hub startup/push warms build models. Returning small focused responses does not remove these prepa",
       "skills": [
         "api",
         "script"
@@ -160,66 +111,7 @@
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:24:46Z"
-    },
-    {
-      "id": 5784542127,
-      "title": "[Hamilton H01][P0] Separate account institution, research subject and peer context",
-      "url": "https://github.com/Gilmore3088/FeeInsight.com/issues/976",
-      "description": "## Current checkpoint — normal Pro fixture and Settings follow-up\n\nCurrent #985 head: a6d1e5e14d2cf4cbbdd77e703e62025582618586; tree49dda0b3ea01f4976601a72fb42f0951d3391e58. User photos exposed the remaining Settings ownership-label contradiction. Twice-reproduced rendered regressions now pass for both admin and normal Pro accounts; Settings selection is explicitly research-only and never a membership grant. Root Settings/actions/peer-set focus35passed; touched lint passed. Full exact-head CI38093261586 SUCCESS: full624passedfiles/5,599passed/4prerequisite skips; agent1,153passed/3prerequisite skips; TypeScript; lint0errors/39inherited warnings; actual pipeline3/3; fee-audience SQL. H01-T09 is checked on this exact head. Normal exact-head preview dpl_2VB67UYJSPi9P4unzkiZjhEXm3my is READY: https://feeschedule-dbrqchyx0-fee-insight.vercel.app .\n\nDependent #988 ordinary merge is preserved at3bbac84437e5e90ce38657ee8cbf0a9e2ab84f17, exact tree77bd2a8c01bf048e31d0bdf41d179f179136feae; same16H02paths. Focus54passed; exact-source application/SQL CI38093416049 SUCCESS:629passedfiles/5,723tests/12prerequisite skips, actual8peer+3pipelineSQL, audienceSQL, agent1,153passed/3prerequisite skips",
-      "skills": [
-        "typescript",
-        "script"
-      ],
-      "score": 20,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:24:18Z"
-    },
-    {
-      "id": 5518867774,
-      "title": "OneCompany permanent Mistral Vibe cloud wake bus — owner dispatch only",
-      "url": "https://github.com/NTinkicht/OneCompany/issues/130",
-      "description": "Permanent, repository-scoped, GitHub-hosted Mistral wake bus. Do not close or reuse for unrelated providers. OneCompany native Work Units, current lease, exact SHA and dispatch policy are authority, not this issue's free-form comments. Initial `@mistral-vibe` wake is read-only, advisory and non-gating; it may inspect bounded source and report test ideas/failure analysis without writing code. It MUST fail closed when `MISTRAL_API_KEY` or subscription/PAYG-disabled guard is absent. No provider credentials in this issue. Full leased developer, binding reviewer and test-author lanes need separate qualification; no Codespace, laptop or open browser session may be required.",
-      "skills": [
-        "api",
-        "script"
-      ],
-      "score": 20,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:24:09Z"
-    },
-    {
-      "id": 5773868633,
-      "title": "Workout Monkeys — shared coordination and Monkey 001 evidence",
-      "url": "https://github.com/bvomstrength-cloud/bvom-strength/issues/38",
-      "description": "# BVOM Workout Monkeys — shared coordination\n\n**Purpose:** This issue is a shared handoff for the ChatGPT planning/review conversation and Codex Cloud. An issue is not a production change or an automatic task trigger.\n\n## Approved boundaries\n- Application: BVOM Strength **v2.9.0**.\n- Approved `main` baseline: `b551f07c5c68e127239de4963c82a8a53bd7a3eb`.\n- Production ZIP SHA-256: `22048220ceb88da2ef19f9c13812f13f976c0b53d6d5d53f6a7555d2cce3c0fe`.\n- Follow `AGENTS.md`, `BVOM_SPEC.md`, `TESTING.md`.\n- Do not change production, commit, push, open PRs, deploy, or touch real user data, Supabase, Stripe, or Strava without separate explicit approval.\n- Run exploration only in an isolated temporary workspace with synthetic storage and mocked external services.\n- Never publish credentials or user data to GitHub (this repository is public).\n\n## Monkey 001 — reported outcome\n- One novice LP/RPT agent; three workouts; two simulated storage restarts.\n- Codex reported **119 passing assertions**, **56 ordered actions**, no confirmed application bug, and no repository changes.\n- This is a **Codex-reported result**, not independently re-executed by the reviewer.\n- Original evidence ZIP remains in the",
-      "skills": [
-        "bug",
-        "script"
-      ],
-      "score": 20,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:23:47Z"
-    },
-    {
-      "id": 5696972941,
-      "title": "Reliability: specify and test crash recovery across replay consumption and chain append",
-      "url": "https://github.com/rickyjreyes/Wavelock/issues/25",
-      "description": "[The hardening report](https://github.com/rickyjreyes/Wavelock/blob/master/audit/BOUNTY_HARDENING_REPORT.md) records separate durable replay consumption and block append. A crash can burn a key without storing its block; interrupted JSONL writes can prevent loading. Rebuilding accepted identities from the chain does not recover every burned identity.\n\n- [ ] Specify crash states and safe operator recovery for signer, replay, and chain files.\n- [ ] Provide a recovery procedure or tool that preserves consumed identities and does not silently truncate authenticated history or authorize reuse.\n- [ ] Add fault-injection coverage at each relevant write boundary, including partial tails and restart.\n- [ ] Demonstrate normal continuation after recovery or a clear fail-closed diagnostic when recovery cannot be established.\n\nThis is availability/recovery work. Key burning without invalid acceptance is not a Public Bounty v1 exploit.\n\nThis ticket tracks outstanding work; it does not report a newly reproduced vulnerability. Preserve existing protocol versions, reference vectors, and the `v0.2.0` tag. Any new protocol behavior requires explicit versioning and review.",
-      "skills": [
-        "json"
-      ],
-      "score": 20,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:23:27Z"
+      "updated_at": "2026-10-10T23:28:10Z"
     },
     {
       "id": 5767603643,
@@ -233,7 +125,36 @@
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:10:36Z"
+      "updated_at": "2026-10-10T23:26:40Z"
+    },
+    {
+      "id": 5696972941,
+      "title": "Reliability: specify and test crash recovery across replay consumption and chain append",
+      "url": "https://github.com/rickyjreyes/Wavelock/issues/25",
+      "description": "[The hardening report](https://github.com/rickyjreyes/Wavelock/blob/master/audit/BOUNTY_HARDENING_REPORT.md) records separate durable replay consumption and block append. A crash can burn a key without storing its block; interrupted JSONL writes can prevent loading. Rebuilding accepted identities from the chain does not recover every burned identity.\n\n- [ ] Specify crash states and safe operator recovery for signer, replay, and chain files.\n- [ ] Provide a recovery procedure or tool that preserves consumed identities and does not silently truncate authenticated history or authorize reuse.\n- [ ] Add fault-injection coverage at each relevant write boundary, including partial tails and restart.\n- [ ] Demonstrate normal continuation after recovery or a clear fail-closed diagnostic when recovery cannot be established.\n\nThis is availability/recovery work. Key burning without invalid acceptance is not a Public Bounty v1 exploit.\n\nThis ticket tracks outstanding work; it does not report a newly reproduced vulnerability. Preserve existing protocol versions, reference vectors, and the `v0.2.0` tag. Any new protocol behavior requires explicit versioning and review.",
+      "skills": [
+        "json"
+      ],
+      "score": 20,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:26:33Z"
+    },
+    {
+      "id": 5796209932,
+      "title": "📈 گزارش تحلیل فارکس - 2026-10-10",
+      "url": "https://github.com/alicsx/my-news-feed/issues/3910",
+      "description": "## 📊 نتایج تحلیل فارکس\n\n### 🎯 سیگنال‌های متوسط: 2\n🔴 **EUR/USD** - SELL (اعتماد: 7/10)\n   - توافق: 4/8\n   - تحلیل: Extracted from text: \nAlright, I'm looking at the EUR/USD pair right now. The price is at 1.12017, and the trend is stron...\n\n🔴 **USD/CHF** - SELL (اعتماد: 6.4/10)\n   - توافق: 5/8\n   - تحلیل: Bearish trend with moderate strength and RSI at neutral level, indicating a potential sell opportunity.\n\n### 🎯 سیگنال‌های ضعیف: 2\n🔴 **EUR/JPY** - SELL (اعتماد: 7.3/10)\n   - توافق: 3/8\n   - تحلیل: Trend is STRONG_BEARISH despite weak strength, and RSI is neutral (49.4), allowing for a short position. Entry is at current price. Stop loss is placed above the immediate resistance at 177.34140 with a buffer. Take profit targets the support level at 177.30615 with a buffer, yielding a 2:1 risk-reward ratio.\n\n⚪ **GBP/USD** - HOLD (اعتماد: 4.2/10)\n   - توافق: 5/8\n   - تحلیل: Trend is neutral with weak strength, RSI is neutral at 52.6, and volatility is low. Due to lack of clear direction, HOLD is the safest option.\n\n### 📊 وضعیت مصرف API\n```json\n{\n  \"last_reset_date\": \"2026-10-10\",\n  \"providers\": {\n    \"google_gemini\": {\n      \"used_today\": 20,\n      \"limit\": 1500\n    },\n    \"cloudflare\": {",
+      "skills": [
+        "json",
+        "api"
+      ],
+      "score": 20,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:25:39Z"
     },
     {
       "id": 5678048194,
@@ -250,66 +171,24 @@
       "updated_at": "2026-10-10T21:09:38Z"
     },
     {
-      "id": 5779178573,
-      "title": "Educational Roadmap — Post-Academy Computer Engineering Schedule Through Graduation",
-      "url": "https://github.com/riley-berg/PASI/issues/49",
-      "description": "# Post-Academy Computer Engineering Schedule Through Graduation\n\n## Purpose and authority\nThis is the **single canonical issue for the post-Academy semester-by-semester schedule**, from Summer 2028 through graduation, with **Computer Engineering (CE) as the active target major**.\n\nUse:\n- [Issue #39 — Academy Common Path](https://github.com/riley-berg/PASI/issues/39) for the shared one-year Academy structure.\n- [Issue #48 — One-Year Academy Exit and Computer Engineering Target](https://github.com/riley-berg/PASI/issues/48) for the Spring 2027 foundation, Summer 2027 calculus plan, Fall 2027–Spring 2028 Academy semesters, and transition target.\n- This issue for **all schedule planning after the Academy**, including Summer 2028 and every subsequent summer/semester.\n\nThe schedule is provisional and will be refined one term at a time. Check each term against the applicable TAMU CE catalog, prerequisites, official transfer equivalencies, and the degree audit.\n\n## Major scope\n- **Active plan:** Computer Engineering.\n- **Placeholder only:** Computer Science (#40), Electrical Engineering (#42), Mechanical Engineering / Robotics (#43), and Mechatronics / Automation (#44). Retain these only a",
+      "id": 5603480693,
+      "title": "Rust release: simplify fresh installation and delete remaining production Python",
+      "url": "https://github.com/craigbalding/safeyolo/issues/822",
+      "description": "Parent: [Rust product phase](https://github.com/craigbalding/safeyolo/issues/815). Final integration consumes the policy, host, guest/coordination, credential, workflow and operator-UX results. Start the minimal native install path with the first usable CLI; final release acceptance remains here.\n\n## Preparation update — 3 October 2026\n\nPrepared against master [`f1e16b4f`](https://github.com/craigbalding/safeyolo/commit/f1e16b4f94f1a829da92bef4d875c720dce03cfd) and tracked in [Rust product phase, Project 2](https://github.com/users/craigbalding/projects/2). Craig’s 4 October direction overrides the Project 1 completion gate: start actual #816 P1/P4/P6 coding with minimal #822 installation support no later than 22:07 UTC on 4 October 2026. Preserve unfinished Project 1 work at a safe checkpoint. Refresh the accepted master and relevant issue/PR results at that handoff; this revision is an analysis baseline, not a frozen implementation candidate. Existing acceptance labels and operator decisions remain in force. This preparation marks no case passed.\n\n[#880](https://github.com/craigbalding/safeyolo/pull/880) completed the proxy cutover, [#893](https://github.com/craigbalding/safeyolo",
       "skills": [
-        "automation"
+        "python"
       ],
       "score": 10,
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:25:22Z"
-    },
-    {
-      "id": 5737002265,
-      "title": "Make image generation discoverable across providers: OpenAI + Gemini / Nano Banana",
-      "url": "https://github.com/microsoft/amplifier-unified/issues/426",
-      "description": "# Make image generation discoverable and support image-output-capable models across providers (OpenAI + Google/Gemini)\n\n## User request\n\nSupport generating and returning images from models that support image output, including OpenAI and Google/Gemini, without requiring the agent to fall back to handwritten direct API calls. Expose a clear distinction between vision/image input and image generation/output.\n\nUse case: authoring a cinematic, scroll-driven explainer with storyboard-specific art, using existing workspace artwork as references and preserving generated outputs for inspection and iteration.\n\n## Existing support — do not duplicate or regress\n\nUpstream `docs/IMAGE-GENERATION.md`, inspected at commit `2a46c6f1704121852aacc8b480a7ed3de2bb09ad`, already documents:\n\n- The optional portable imagegen behavior and `image_generate` tool.\n- An independently selected OpenAI Images API backend, enabled via nested advanced provider configuration.\n- Workspace PNGs, SHA-256 and durable receipts; `outputs.attachImage`, edit-parent lineage, and exact-image inspection.\n- Explicit behavior lists and existing session mounts remaining authoritative.\n- No implicit use of ChatGPT sign-in as ordin",
-      "skills": [
-        "api"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:25:20Z"
-    },
-    {
-      "id": 5602503136,
-      "title": "Build complete source-to-Legacy feature and route acceptance matrix",
-      "url": "https://github.com/MALIEV-Co-Ltd/Legacy.Maliev.Workflows/issues/98",
-      "description": "The source-commit ledger tracks commit disposition but does not prove every migrated service feature and Web/Intranet route works against production-derived local Aspire data. This is an explicit migration completion gate, not a deployment request.\n\nAcceptance:\n- Inventory each Legacy service feature, API, role, entity, background operation, and every Web/Intranet route against the latest committed original source; retain full source SHA, owning Legacy repo, main SHA, status, and exact evidence links.\n- Mark unverified items pending; distinguish source retirement approvals from migrations. Do not infer feature parity from a code mapping, route alias, smoke test, or green unit suite.\n- Record automated customer/employee authentication, permission, CRUD/lifecycle, validation, rollback/retry, cross-service effects, localization, responsive/browser/accessibility, and persisted-data checks as appropriate. Include safe failure/partial-failure evidence and suppress real notifications/payments/analytics in local review.\n- Verify the matrix against live source and each protected Legacy main, with a check that rejects missing routes/features or unsupported completion claims. Link per-service",
-      "skills": [
-        "api"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:25:19Z"
-    },
-    {
-      "id": 3764222711,
-      "title": "[Bug] CoreTrust signed MachO's may not resign properly",
-      "url": "https://github.com/claration/impactor/issues/60",
-      "description": "### Report\n\nThe codesigner has specific rules to follow and this is one of them:\n```\n// Rules:\n//\n// 1. If there is an existing signature, there must be no data in\n//    the binary after it. (We don't know how to update references to\n//    other data to reflect offset changes.)\n// 2. If there isn't an existing signature, there must be \"room\" between\n//    the last load command and the first section to write a new load\n//    command for the signature.\n```\nSome coretrust signed machos dont follow these rules and have data after them after the existing signature, causing the codesigner to fail and deem it as a malformed macho, @iosdecrypt telegram bot produces apps that evidently cause this error: \n\n`Err(AppleCodesignError::DataAfterSignature) \"__LINKEDIT segment contains data after signature\"` \nhttps://github.com/indygreg/apple-platform-rs/blob/main/apple-codesign/src/macho.rs#L298-L358\n\n\n### Contributor Checks\n\n- [x] I am willing to attempt to make a pull request to fix this bug\n\n### Additional Information\n\n- [ ] Developer mode enabled\n- [ ] Using paid developer account\n- [x] I will send an ipa of the app I'm having trouble installing if any\n- [x] I'm willing to provide crash logs o",
-      "skills": [
-        "bug"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:25:12Z"
+      "updated_at": "2026-10-10T23:29:20Z"
     },
     {
       "id": 5779878641,
       "title": "Tested flow ledger for #7536: which flows are tested, how and by whom",
       "url": "https://github.com/langwatch/langwatch/issues/8553",
-      "description": "<!-- ledger:summary:start -->\n## Progress summary\n\n**1,016 rows: 869 pass, 110 have problems, 1 being walked, 36 not started.**\n<sub>Counted 2026-10-10 23:25 UTC by `ledger-count.py` from the body and 2468 comments; a later result, claim or release comment overrides the body.</sub>\n\n| | rows | ✅ | 🟡 | ❌ | ⚠️ | ⏳ | ⬜ |\n|---|---:|---:|---:|---:|---:|---:|---:|\n| Upgrade | 48 | 3 | 4 | 4 |  | 1 | 36 |\n| Custom flows | 12 | 10 |  |  | 2 |  |  |\n| Product flows | 30 | 25 | 3 |  | 2 |  |  |\n| Beyond the UI | 9 | 7 |  |  | 2 |  |  |\n| Areas | 917 | 824 | 37 | 1 | 55 |  |  |\n| **Total** | 1,016 | 869 | 44 | 5 | 61 | 1 | 36 |\n\n<details><summary>Per area</summary>\n\n| | rows | ✅ | 🟡 | ❌ | ⚠️ | ⏳ | ⬜ |\n|---|---:|---:|---:|---:|---:|---:|---:|\n| ANA · Analytics, dashboards and LWQL | 17 | 15 | 2 |  |  |  |  |\n| ANN · Annotations and queues | 10 | 10 |  |  |  |  |  |\n| AUD · Audit log | 8 | 7 |  |  | 1 |  |  |\n| AUTH · Sign-in and identity | 53 | 35 | 8 |  | 10 |  |  |\n| AUTO · Automations, triggers, alerts and reports | 26 | 25 |  |  | 1 |  |  |\n| AZ · Authorization: grants and roles | 22 | 22 |  |  |  |  |  |\n| BIL · Billing, usage metering and limits (Cloud) | 22 | 18 | 4 |  |  |  |  |\n| CA ·",
+      "description": "<!-- ledger:summary:start -->\n## Progress summary\n\n**1,016 rows: 876 pass, 108 have problems, 1 being walked, 31 not started.**\n<sub>Counted 2026-10-10 23:29 UTC by `ledger-count.py` from the body and 2470 comments; a later result, claim or release comment overrides the body.</sub>\n\n| | rows | ✅ | 🟡 | ❌ | ⚠️ | ⏳ | ⬜ |\n|---|---:|---:|---:|---:|---:|---:|---:|\n| Upgrade | 48 | 7 | 2 | 7 |  | 1 | 31 |\n| Custom flows | 12 | 10 |  |  | 2 |  |  |\n| Product flows | 30 | 25 | 3 |  | 2 |  |  |\n| Beyond the UI | 9 | 7 |  |  | 2 |  |  |\n| Areas | 917 | 827 | 34 | 1 | 55 |  |  |\n| **Total** | 1,016 | 876 | 39 | 8 | 61 | 1 | 31 |\n\n<details><summary>Per area</summary>\n\n| | rows | ✅ | 🟡 | ❌ | ⚠️ | ⏳ | ⬜ |\n|---|---:|---:|---:|---:|---:|---:|---:|\n| ANA · Analytics, dashboards and LWQL | 17 | 15 | 2 |  |  |  |  |\n| ANN · Annotations and queues | 10 | 10 |  |  |  |  |  |\n| AUD · Audit log | 8 | 7 |  |  | 1 |  |  |\n| AUTH · Sign-in and identity | 53 | 38 | 5 |  | 10 |  |  |\n| AUTO · Automations, triggers, alerts and reports | 26 | 25 |  |  | 1 |  |  |\n| AZ · Authorization: grants and roles | 22 | 22 |  |  |  |  |  |\n| BIL · Billing, usage metering and limits (Cloud) | 22 | 18 | 4 |  |  |  |  |\n| CA ·",
       "skills": [
         "automation"
       ],
@@ -317,7 +196,125 @@
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:25:10Z"
+      "updated_at": "2026-10-10T23:29:19Z"
+    },
+    {
+      "id": 5696973317,
+      "title": "Research: establish explicit hardness and binding claims beyond regression evidence",
+      "url": "https://github.com/rickyjreyes/Wavelock/issues/32",
+      "description": "[Candidate B restricted binding](https://github.com/rickyjreyes/Wavelock/blob/master/docs/CC_CORE_V1_RESTRICTED_BINDING.md) leaves general trajectory uniqueness and inversion hardness unresolved. [PDE results](https://github.com/rickyjreyes/Wavelock/blob/master/docs/PDE_HASH_RESULTS.md) contain no lower bound on attack cost. Public Bounty v1 C1/C2 likewise have `security_proof: NONE`; these are distinct constructions and must not share claims by implication.\n\n- [ ] State separate security games, input distributions, attacker access, and work/memory accounting for each construction under study.\n- [ ] Identify what existing theorems establish and the exact missing lemmas for any proposed reduction or lower bound.\n- [ ] Adversarially review proposed arguments, including digest-level re-merging and computation shortcuts.\n- [ ] Publish a reproducible research checkpoint: proved conditional result, counterexample, or explicit unresolved obligations with bounded evidence.\n\nCompletion of a research checkpoint must not be relabeled a full security proof. Absence of a proof alone is not a qualifying bounty exploit.\n\nThis ticket tracks outstanding work; it does not report a newly reproduced v",
+      "skills": [],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:29:15Z"
+    },
+    {
+      "id": 5796129219,
+      "title": "[LAUNCH-001][P1][Collaborators] Prepare independent mobile cold-read bounty candidate (UNFUNDED)",
+      "url": "https://github.com/sovereign-codex/Codex-interface-/issues/18",
+      "description": "# TYME-HALL-LAUNCH-001 — Collaborators / External assurance\n**Priority:** P1 · **Requested evidence target:** 2026-10-13 · **State:** COMMISSIONED / OPEN; completion not assumed.\n**Accountable technical owner:** @sovereign-codex. **Independent reviewer:** unassigned, required before gate closure. **Governing command:** [Notion TYME-HALL-LAUNCH-001](https://app.notion.com/p/3f5c51d54b758197a92ff59d2c203045) · **Central dependency ledger:** [Codex-control-center #15](https://github.com/sovereign-codex/Codex-control-center/issues/15).\n\n## Existing baseline\nExisting `validation/CONTEXT_ZERO_PROTOCOL.md` and issue #9; extant public route `tymehall.org` (current response requires independent HTTP verification).\n\n## Outcome requested\nProduce a publishable, small-scope independent cold-read/a11y evaluation packet for a previously unfamiliar participant; explicit non-authorizing review and raw evidence capture.\n\n## Dependencies and boundaries\nLC-01 release scope; contributor terms/license/security process; no expenditure until explicit founder approval.\n\n## Acceptance evidence / review gate\n- [ ] Bounty is marked PROPOSED / UNFUNDED, with no dollar amount, hiring representation or payout of",
+      "skills": [],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:28:59Z"
+    },
+    {
+      "id": 5786149611,
+      "title": "compat(kicad): qualify 10.0.7 native CLI and platform contracts",
+      "url": "https://github.com/oaslananka/kicad-mcp-pro/issues/1181",
+      "description": "## Goal\nQualify KiCad **10.0.7** before changing `compatibility.yaml`'s `kicad.latestVerified=10.0.6` and related pinned Windows/Linux runners, documentation, parity baselines, or release support claims.\n\n## Verified Linux x86_64 preflight (2026-10-10)\nSource repository revision: `e8be26a5f79521173830be95c25d7b97cbf759ec`. Compared the existing 10.0.6 package against the official 10.0.7 stable lite AppImage from the KiCad stable mirror, without replacing the system KiCad installation.\n\n- Fixture: `packages/kicad-fixtures/fixtures/clean-led-kicad10` (PCB SHA-256 `7460ea575de1083ebebec0efba2c8560c186e5a81c3cd2e37c775eea03927aa2`, schematic SHA-256 `99687419c11831ccae6776c5e7face48697e7587e7ea09ee210a675afb6b7b69`).\n- 10.0.7 AppImage SHA-256: `05855274adb8eb7164ab886cfbbe8da7dd84f961d6d04783b66ffcb5011287cd`; downloaded over HTTPS from the listed stable mirror. Independent minisign verification was not completed.\n- Native DRC output: 17 violations and 4 unconnected items on **both** versions. Native ERC: 3 violations on both. With `--exit-code-violations`, both tools returned the expected nonzero exit code **5** on both versions, not a successful design verdict.\n- Outputs: both genera",
+      "skills": [
+        "documentation"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:28:44Z"
+    },
+    {
+      "id": 5792443725,
+      "title": "Fence hosted execution against exact PostgreSQL authority-session loss",
+      "url": "https://github.com/KestrelSovereignAI/kestrel-sovereign/issues/3569",
+      "description": "## Task Description\n\nClose the remaining P1 authority-session-loss finding from the independent complete-diff review of Frinz PR [#775](https://github.com/KestrelSovereignAI/frinz/pull/775), parent epic [Frinz #664](https://github.com/KestrelSovereignAI/frinz/issues/664) and rollout [#774](https://github.com/KestrelSovereignAI/frinz/issues/774). Core 0.53.27 is already published and verified; this is a separate canonical native contract extension, not a claim that its completed release failed.\n\nCurrent native `PostgresBackend.advisory_locks()` yields no capability and observes its dedicated session again only on exit. If PostgreSQL terminates that backend, a second host can transfer ownership while cancellation-resistant work from the first host continues through other native storage connections. A cancellation request or another preflight generation SELECT cannot close this race.\n\n## Implementation Notes / Files\n\n- Extend canonical `kestrel_sovereign/storage/db/postgres.py` advisory custody with an exact-session, irrevocably invalidated liveness handle and acquisition-time loss callback. Register before awaited acquisition; handle queued termination, normal retirement, exception a",
+      "skills": [
+        "script"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:28:13Z"
+    },
+    {
+      "id": 5795786763,
+      "title": "Actor primitive",
+      "url": "https://github.com/OpenAgentsInc/openagents/issues/11253",
+      "description": "Build our own actor primitive, taking ideas from Rivet Actors without depending on Rivet. The owner approved this on 2026-10-10. This issue is infrastructure and is not on the V1 launch board.\n\n**Spec:** [docs/architecture/actors.md](https://github.com/OpenAgentsInc/openagents/blob/main/docs/architecture/actors.md)\n\n## Summary\n\nAn actor is keyed by `(type, workspace_id, key)` and has:\n- typed state, stored as one `jsonb` row in a new `actor` schema in the `openagents` Cloud SQL database;\n- typed actions, a durable ordered inbox, at-least-once alarms (one-shot and cron), and effects run after commit;\n- work items that remote executors claim, heartbeat and finish, fenced by an epoch;\n- durable, sequenced events that web and phone receive over SSE.\n\nHow it runs:\n- **Single writer:** each transition is one transaction under `SELECT ... FOR UPDATE` on the actor's row. The row's `version` is the fencing token, so there is no long-held lease and placement does not matter for correctness.\n- **Outbox:** state, events, sends, alarms and effects commit together.\n- **Cross-process wake-up:** `pg_notify`, as the relay already does.\n- **Deployment:** no new service, broker or cache. The runtime ",
+      "skills": [
+        "json"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:28:08Z"
+    },
+    {
+      "id": 5765608846,
+      "title": "CB-M05 · Editorial CMS, Auth & Workflow [PLANNED]",
+      "url": "https://github.com/KayzenRoot/coinblink/issues/12",
+      "description": "# CB-M05 · Editorial CMS, Auth & Workflow\n\n**Status: PLANNED / NOT ADMITTED / NO CODE AUTHORIZED**\n**Priority:** P0. **Dependencies:** CB-M00.\n**Expected user-visible preview:** secure admin, CMS and editorial review.\n\nThe full long module Work Order lives at:\n[.engineering/planned-work-orders/CB-M05.md](https://github.com/KayzenRoot/coinblink/blob/docs/cb-plan-001-modular-product-roadmap/.engineering/planned-work-orders/CB-M05.md).\n\nSee the [Roadmap](https://github.com/KayzenRoot/coinblink/blob/docs/cb-plan-001-modular-product-roadmap/docs/product/ROADMAP_AND_MODULE_CATALOG_v0.1.md) and [Preview Protocol](https://github.com/KayzenRoot/coinblink/blob/docs/cb-plan-001-modular-product-roadmap/docs/product/CONTINUOUS_VISUAL_DELIVERY_PROTOCOL_v0.1.md).\n\n**Rules:** one large WO and single review PR per module with internal P0 visual preview, P1 end-to-end function and P2 exact-head CI/security/review. Must create user-visible browser preview; no fake live data or unapproved social posts, customer charges or unlicensed API redistribution. Activation requires owner product/architecture/DoD decisions, issue dependencies and a fresh GEF Context Lock. Existing issues are planning backlog, NO",
+      "skills": [
+        "api"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:28:07Z"
+    },
+    {
+      "id": 5665170798,
+      "title": "[BOUNTY] Suggestion #1250",
+      "url": "https://github.com/SPLURT-Station/S.P.L.U.R.T-tg/issues/1270",
+      "description": "### About the Bounty\n\n## Original issue text:\n\n**Suggestion:**\nPositive quirk that allows you to spawn with a powered wheelchair (T1 parts) instead of a plain one\n\n**Reason:**\n[BOUNTY] oky3\n\n**Results:**\n11x <:In_help:1056296636348899408>\n0x <:In_harm:1056296637909192794>\n\n\n### Suggestion Reference\n\n**Suggested by:** megamiana\nhttps://discord.com/channels/908082639704064051/1404686278351655055/1555247845341143203\n\n### Contact Information\n\nContact `mos_ley` in discord for payment information.\n\nContact `megamiana` in discord for information about the requirements.\n\n### Payment Details\n\nPayment methods:\n- PayPal\n- Cryptocurrency\n\n",
+      "skills": [],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:27:41Z"
+    },
+    {
+      "id": 5697081525,
+      "title": "Question: is the plugin registry still accepting community submissions?",
+      "url": "https://github.com/MiniMax-AI/MiniMax-Code-Plugins/issues/71",
+      "description": "## Question: is the plugin registry still accepting community submissions?\n\nThis is a process question, not a re-pitch. I have two PRs open (#69, #70) that have received no review, and I noticed the review queue looks stalled generally rather than specific to my submissions.\n\n**What I'm seeing:**\n\n- Last commit to `main`: 2026-09-21 (#48).\n- No review on #69 or #70, both open since 2026-10-02.\n- Other open PRs with substantial discussion and no review: #62 (11 comments), #57 (4), #41 (38).\n\n**What I'd like to know:**\n\n1. Is community Plugin submission still being accepted, or is review paused while the registry is reorganised?\n2. If it's active, roughly what should a contributor expect in review latency? `CONTRIBUTING.md` describes what review covers but names no reviewer or target, and `GOVERNANCE.md` notes the project \"may introduce additional reviewer and maintainer roles as contribution volume grows\" — so I can't tell whether review is expected to be staffed or best-effort.\n3. If my two PRs are fine as they are, no reply is needed — I just don't want them to sit indefinitely if something is expected from the contributor (a rebase onto `main`, a different manifest shape, splitti",
+      "skills": [
+        "script"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:27:06Z"
+    },
+    {
+      "id": 5696973063,
+      "title": "Roadmap: define and implement cross-node agreement for consumed OTS identities",
+      "url": "https://github.com/rickyjreyes/Wavelock/issues/28",
+      "description": "[The Merkle roadmap](https://github.com/rickyjreyes/Wavelock/blob/master/docs/WAVELOCK_MERKLE_ROADMAP.md) explicitly leaves cross-node replay-ledger replication open. Current locks and reconstruction enforce consistency on a shared host/filesystem; independently operated nodes do not obtain global agreement from those locks.\n\n- [ ] Specify the public network threat model, authoritative chain/finality rules, and replay-state derivation.\n- [ ] Define behavior for competing blocks, partitions, reconnects, restart, and reorganization.\n- [ ] Implement the approved agreement mechanism without treating ledger copying alone as consensus.\n- [ ] Add multi-node tests showing the same identity cannot be finalized twice under the declared assumptions, with partition and restart scenarios.\n- [ ] Document compatibility and deployment requirements.\n\nThis is future scope and is not a failure of Public Bounty v1's same-host AR-6 promise.\n\nThis ticket tracks outstanding work; it does not report a newly reproduced vulnerability. Preserve existing protocol versions, reference vectors, and the `v0.2.0` tag. Any new protocol behavior requires explicit versioning and review.",
+      "skills": [],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:26:13Z"
     },
     {
       "id": 4507461103,
@@ -358,62 +355,6 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T23:24:20Z"
-    },
-    {
-      "id": 5697081525,
-      "title": "Question: is the plugin registry still accepting community submissions?",
-      "url": "https://github.com/MiniMax-AI/MiniMax-Code-Plugins/issues/71",
-      "description": "## Question: is the plugin registry still accepting community submissions?\n\nThis is a process question, not a re-pitch. I have two PRs open (#69, #70) that have received no review, and I noticed the review queue looks stalled generally rather than specific to my submissions.\n\n**What I'm seeing:**\n\n- Last commit to `main`: 2026-09-21 (#48).\n- No review on #69 or #70, both open since 2026-10-02.\n- Other open PRs with substantial discussion and no review: #62 (11 comments), #57 (4), #41 (38).\n\n**What I'd like to know:**\n\n1. Is community Plugin submission still being accepted, or is review paused while the registry is reorganised?\n2. If it's active, roughly what should a contributor expect in review latency? `CONTRIBUTING.md` describes what review covers but names no reviewer or target, and `GOVERNANCE.md` notes the project \"may introduce additional reviewer and maintainer roles as contribution volume grows\" — so I can't tell whether review is expected to be staffed or best-effort.\n3. If my two PRs are fine as they are, no reply is needed — I just don't want them to sit indefinitely if something is expected from the contributor (a rebase onto `main`, a different manifest shape, splitti",
-      "skills": [
-        "script"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:24:05Z"
-    },
-    {
-      "id": 5717460257,
-      "title": "Gate 8A7C: account-backed continuity and explicit provider acceptance",
-      "url": "https://github.com/dezrobbo1/life-rhythm-prototype/issues/179",
-      "description": "Track Gate 8A7C under MVP_PLAN.md and app/docs/gate8a7c1-account-boundary-contract.md.\n\nC1 scope: metadata-only verified Supabase Auth user-session identity, restricted trial_access/account_heads reads, independent database grants/RLS isolation, schema/protocol/revision/generation fences, and fail-closed required app/API mode. Owner approved replacing Clerk with Supabase Auth; local implementation is published unmerged in existing draft PR #180 on feat/gate8a7c1-account-boundary; hosted C1 acceptance remains pending. Local tests do not establish native hosted trust or server personal-data durability.\n\nMANUAL ACTION REQUIRED before hosted C1: dedicated project life-rhythm (`lfwadowwdvcnibjkeerg`, organization `xbwsomlomdmyipdbaipk`, Sydney) is now provisioned, healthy and metadata-schema absent. Owner/operator must separately authorize restricted Supabase Auth account/signup settings, approved public asymmetric verification keys, exact Preview-branch public origin/environment settings, restricted disposable A/B accounts and reviewed non-production metadata schema/exposure/access apply. Existing root `app` must be verified; any global layout change, signing-key change, email/recovery",
-      "skills": [
-        "api"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:24:01Z"
-    },
-    {
-      "id": 5785388253,
-      "title": "P0: SteelSelfTest — po restore UI pokazuje niezgodne cookie/localStorage mimo raportu merged PASS",
-      "url": "https://github.com/napieraj2018-arch/Watcher-15/issues/111",
-      "description": "## P0 — niezależny test rzeczywistego odczytu po odtworzeniu profilu\n\nData: 10.10.2026, wyłącznie profil techniczny `SteelSelfTest`, syntetyczna strona `https://ai-browser-vault.floot.app/browser-check`. Żadnych kont Meta/Google, haseł, cookie values, storage values ani session IDs nie publikowano.\n\n### Sekwencja produkcyjnego testu Steel 0.4.5\n1. Profil testowy otwarty w trybie zapisu na stronie fixture. Poprzedni testowy cookie wygasł (strona stosuje `Max-Age=3600`), localStorage nadal istnieje.\n2. Kliknięto **Zapisz znacznik testowy**: UI zgłosił `cookie OBECNE / localStorage OBECNE / PASS`.\n3. `profile_flush` i `browser_stop` bez błędu; `full_profile_saved=true`.\n4. **Nowa** sesja z tym samym profilem, read_only: UI `cookie OBECNE / localStorage OBECNE / BRAK POTWIERDZENIA`; natomiast diagnostyka przed nawigacją twierdziła `portable.exact_pair_matches=true`, `resolved.exact_pair_matches=true`, `native.exact_pair_matches=false`. Zatrzymano tę sesję, `full_profile_saved=true`.\n5. Następna sesja read_only: UI nadal `BRAK POTWIERDZENIA` zarówno przed jak i po odświeżeniu strony. `native: cookie_readable=1 / exactStorage=0 / pair=false`, `portable: cookie=1 / pair=false`, `resolved:",
-      "skills": [
-        "api"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:23:55Z"
-    },
-    {
-      "id": 5551915300,
-      "title": "[Program] Elsa 3 integration ecosystem: monorepo consolidation, independent releases, and researched connector catalog",
-      "url": "https://github.com/elsa-workflows/elsa-core/issues/8194",
-      "description": "<!-- selected-product-artifacts-8693 -->\n**Current delivery: Task #8636 is the sole active implementation Task, In Progress / Assigned / Verification Pending. Task #8693 remains open, Todo / Not Ready / Pending for the external MySQL/.NET10 support decision; all seven criteria remain open.** The [authoritative delivery checkpoint](https://github.com/elsa-workflows/elsa-core/issues/8693#issuecomment-6093202347) records exact heads, source freshness, artifact audits and remaining decisions.\n\nStructural consolidation into sibling `core/`, `studio/` and `extensions/` directories and nonpublishing individual-product planning are accepted. Actual main is `3cc81c652906fc0e18a2ec0c6732308440f8c720`; main-forward #8698 is merged. The latest release audit included all35 advertised3.8/3.9 release refs in main; latest stable was3.9.0 in all three repositories.\n\n[Studio source carryover #8699](https://github.com/elsa-workflows/elsa-core/pull/8699) and [main-forward #8703](https://github.com/elsa-workflows/elsa-core/pull/8703) are normally merged. Main8703 merge3cc81c has verified ordered parents and treeeb76a02 matching the independently reviewed prospective merge. Exact-head459 gates passed: i",
-      "skills": [
-        "documentation"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:23:34Z"
     },
     {
       "id": 5532873490,
@@ -482,23 +423,9 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T21:39:32Z"
-    },
-    {
-      "id": 5530024379,
-      "title": "eval: tool-calling SLM tournament and Agent0-style self-evolution track",
-      "url": "https://github.com/kvnloo/evolution-lab/issues/23",
-      "description": "## Goal\n\nExtend the existing observer-first evaluation work in #20 into a reproducible tournament for local tool-calling/orchestration policies, then test whether Agent0-style self-evolution can improve the winning local policy on our own traces.\n\nRuntime inventory/control belongs in https://github.com/kvnloo/z0intelligence/issues/20. Evolution Lab owns grouped experiments, frozen evaluation, training/search, and promotion evidence.\n\n## Candidates\n\nEvaluate at least:\n\n- Nemotron-Orchestrator-8B\n- Qwen3.5-9B\n- Qwen3.5-4B\n- Hammer2.1-3B\n- Hammer2.1-7B where useful\n- FunctionGemma-270M after task-specific fine-tuning\n- JEV/OpenJev bounded scorer\n- deterministic/rules/logistic controls\n\nAgent0 is a separate **training methodology arm**, not just another checkpoint.\n\n## Benchmark the actual control problem\n\nDo not reduce this to JSON validity or one function-calling leaderboard.\n\nFor frozen work-item groups, measure:\n\n```text\nverified task success\ncorrect tool/model selection\ninvalid call rate\nunnecessary call rate\ndependency/order violations\ntool irrelevance rejection\nparallelization quality\nretry count\nrecovery success\nescalation precision/recall\nstop/continue quality\nwall-clock laten",
-      "skills": [
-        "json"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T21:35:22Z"
     }
   ],
-  "count": 33,
+  "count": 30,
   "warnings": [],
   "execution": {
     "status": "demo_completed",
