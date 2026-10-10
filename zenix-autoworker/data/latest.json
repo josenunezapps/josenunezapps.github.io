@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-10-10T23:21:31+00:00",
+  "generated_at": "2026-10-10T23:22:20+00:00",
   "opportunities": [
     {
       "id": 5752205252,
@@ -65,7 +65,7 @@
       ],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:20:35Z"
+      "updated_at": "2026-10-10T23:22:19Z"
     },
     {
       "id": 5793089065,
@@ -163,20 +163,6 @@
       "updated_at": "2026-10-10T23:10:05Z"
     },
     {
-      "id": 5687039740,
-      "title": "実公開完了まで自律実行：既存7工程の続行・Owner公開GO付与済み",
-      "url": "https://github.com/ginisato-hash/zao-rental/issues/47",
-      "description": "> **現行参照先（2026-10-10）**：現在地と残件はコメント [6103023533](https://github.com/ginisato-hash/zao-rental/issues/47#issuecomment-6103023533)（公開完了をゴールにした棚卸し）を正とする。以下の本文中の「現在地」「残件」は履歴として保持する（内容は変更していない）。\n\n# ZAO Rental — 実公開完了までの包括実行指示\n\n## 現行体制 — Owner直接指示による引継ぎ（2026-10-04）\n\n**指揮者／独立統合レビュアー：今回の引継ぎを発行したChatGPTチャット。Primary Implementer／唯一の書込み担当：Claude。** Ownerの直接指示「ここからこのチャットのあなたが指揮者、claudeを実装かかりとして作業を継続する」を適用する。旧Codex／旧指揮タスクの復帰を待たず、既存Mac・同worktree・同branch・PR #49を継承する。\n\n**[Claudeへの現行実行指示・進捗／TODO／前提／ゴールの正本](https://github.com/ginisato-hash/zao-rental/issues/47#issuecomment-5976801764)**。最初の作業は既存Mac final fullの実終了結果回収。新TDレビューとCIはexact066b734でPASS済み。開始再承認、旧タスクへの送信承認待ち、旧Claudeレビュアー制約を再開しない。一般の安全guard・独立レビュー・$5予算・本番前backup等は維持する。\n\n以下の過去記録の「Codex sole writer」「Claude起動不要／reviewer待ち」「旧headのTD FAIL／CI進行中」は、その時点の履歴。本節と最新実行指示が現在の体制・進行状態に優先する。新規課金や本人MFA・鍵custodyを自動承認するものではない。Claudeの実行開始はMacの着手証拠で確認し、Issue更新だけをRUNNINGとしない。\n\n## Owner確定入力・委任方針 — 2026-10-03 14:51:04 UTC\n\nOwner直接回答「開始は12/12で固定しているはずすでに。終了日は3/31、休業日はなし。その他よしなに指示出して」を採用する。**貸出期間2026-12-12〜2027-03-31（両端を含む）、両店舗休業日なし**。価格・Source A/B・共有サイズ・公開GOは再確認しない。以下の合理的な業務/運用判断もOwner委任の範囲で実装担当が確定・適用してよい。受領実数・現物検品・権利・本人の受入完了・鍵別保管・domain所有などの事実は、既存資料/実状態から取得して記録する。\n\n| ",
-      "skills": [],
-      "score": 25,
-      "amount_mentions": [
-        "$5"
-      ],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:19:31Z"
-    },
-    {
       "id": 5785823459,
       "title": "[Astra] Full repository review: architecture, security, runtime wiring, and integration behavior",
       "url": "https://github.com/FlossWare/claude-ensemble/issues/349",
@@ -189,7 +175,22 @@
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:21:19Z"
+      "updated_at": "2026-10-10T23:22:18Z"
+    },
+    {
+      "id": 5579705098,
+      "title": "Android no-purchase: on-device tester script (run against a real phone)",
+      "url": "https://github.com/joshualeestone/kosmos/issues/3699",
+      "description": "**What:** a step-by-step phone script that proves the Android app shows no purchase (kosmos #718; kosmos-relay #121, merged as `3558f2e4`), and that plain Chrome still can.\n\n**Where it starts:** a full draft is on branch `play-policy-doc-718-full`, commit `cd9a85417f376143f3f1ded8a3e631c21667c9da`, in `docs/phone-push-go-live.md` Step 5 (the \"No purchase inside the Android app\" item). It went through ten review rounds, and each round found the next edge of a script nobody has run: which account to use, uninstalling the sideloaded build first, a check that could not run in the order written, and more. Liu Kang (2026-09-25) cut it out of the go-live doc and parked it here.\n\n**How to finish it:** correct it against a real phone, not in the abstract. Run each check on a device, fix the wording to what actually happens, then fold the result into the go-live doc. The draft covers four checks:\n- **sideload:** an upload-key APK, after the coordinator deploy and assetlinks are live;\n- **background-return:** leave the app in the background, come back;\n- **Play install:** with a browser bar, before Play's key is in assetlinks.json;\n- **release:** a verified Play install, which gates productio",
+      "skills": [
+        "json",
+        "script"
+      ],
+      "score": 20,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:21:27Z"
     },
     {
       "id": 5796181090,
@@ -308,6 +309,62 @@
       "updated_at": "2026-10-10T21:09:38Z"
     },
     {
+      "id": 5796127874,
+      "title": "[LAUNCH-001][P0][CIT] Implement and evidence one real source-grounded public-knowledge inference",
+      "url": "https://github.com/sovereign-codex/AVOT-engine/issues/16",
+      "description": "# TYME-HALL-LAUNCH-001 — CIT Runtime\n**Priority:** P0 · **Requested evidence target:** 2026-10-17 · **State:** COMMISSIONED / OPEN; completion not assumed.\n**Accountable technical owner:** @sovereign-codex. **Independent reviewer:** unassigned, required before gate closure. **Governing command:** [Notion TYME-HALL-LAUNCH-001](https://app.notion.com/p/3f5c51d54b758197a92ff59d2c203045) · **Central dependency ledger:** [Codex-control-center #15](https://github.com/sovereign-codex/Codex-control-center/issues/15).\n\n## Existing baseline\n`CIT Envelope v0.1` Notion architecture; AGI-0001 `scrolls/AGI-0001/publication.json` approved public knowledge; AVOT-engine PR #13 & #14 are experimental non-authorizing work.\n\n## Outcome requested\nStage ONE genuine model-backed KNOW request for `Does PUBLISHED_CANONICAL mean self-governing authority?`, anchored to allowlisted AGI-0001 source, and return parsed `CIT-RETURN` with model/source, evidence, uncertainty, distinct from Hall receipts and without authority effects.\n\n## Dependencies and boundaries\nLC-02 infrastructure, source allowlist and G5 basic secret/privacy protections; coordinate Codex-control-center routing and Tyme-Lab CIT schema; do not ",
+      "skills": [
+        "json"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:21:57Z"
+    },
+    {
+      "id": 5143587553,
+      "title": "Run the Actions Runtime product, runtime-adapter, and control-room factory",
+      "url": "https://github.com/joshyorko/actions/issues/101",
+      "description": "## Actions Convergence & Closure Readiness — 2026-10-10\n\n> **Cloud convergence resumed — 2026-10-10.** Six bounded assignments restarted under existing owners: #309 import-order repair, local #299 union preparation, PostgreSQL SAVEPOINT verification, #195 installed-wheel proof preparation, release/closure preflight, and Sol diagnosis/review. [Recoverable dispatch checkpoint](https://github.com/joshyorko/actions/blob/050fa391fd599a2554a82e17d93a5e4d5a2bd317/docs/program/evidence/wave8-convergence-20261010/dispatch-contract.json). Two engineering source-writer slots and one local service gate. Devsy disabled. Executor's tunnel is unavailable: fresh Dakota ownership UNKNOWN; overlapping native RCC/Work Items work held.\n>\n> **New facts:** #221's 13 observed workflows pass; draft/closure/final admission remain held. #292 Windows job114257572296 exceeded six hours after six reload/generation failures: NOT ACCEPTED, no blind retry. #309 local repair6cdf7c31 awaits independent review/new-head CI. Counts below are the audited primary issue partition; this supplement updates worker activity.\n\n**58 open issues; 4 close-ready recommendations; 13 open PRs, 0 admitted ready. Runtime 1.0.3 is unr",
+      "skills": [
+        "json"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:21:47Z"
+    },
+    {
+      "id": 5591213010,
+      "title": "Staging smoke times out before Azure managed-engine cleanup converges",
+      "url": "https://github.com/valence-works/elsa-control/issues/594",
+      "description": "## Problem\n\nThe protected staging Hosted smoke accepted one synthetic managed-engine Create, then Azure reported `ManagedEnvironmentProvisioningError` while initializing a Container Apps managed environment. Control correctly exposed seven provisioning stages with state `stale` rather than inventing progress. The smoke's 30-minute engine Delete wait expired while the exact provider Delete was still `Running/CleanupSubmitted`; its Stripe test-subscription cleanup then refused to run while the engine remained active. See [failed Cloud run 36213835412](https://github.com/valence-works/elsa-cloud/actions/runs/36213835412) and the sanitized [#565 readout](https://github.com/valence-works/elsa-control/issues/565#issuecomment-5842968835).\n\nAzure later removed the run-scoped resource group. The guarded recovery workflow subsequently proved no active synthetic engine and cleared sandbox billing residue. This is a staging proof reliability and cleanup gap; it is not evidence that the current runtime-image candidate failed Studio authorization.\n\n## Outcome\n\nA provider initialization failure remains truthful and actionable, while the protected smoke retains responsibility for eventual run-scop",
+      "skills": [
+        "script"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:21:43Z"
+    },
+    {
+      "id": 5796076303,
+      "title": "[agent-e] Atomic public publication completion and post-commit handoff",
+      "url": "https://github.com/division-sh/swarm/issues/2611",
+      "description": "## Category And Ownership\n\nHigh-risk semantic-drift / public mutation completion / SQLite-PostgreSQL parity.\nAgent E; independent coding gate: reviewer-g. **Pre-audit only; production coding is not approved.**\nPart of #1930. Manifestations remain recorded under #2353.\nBinding promotion: https://github.com/division-sh/swarm/issues/2353#issuecomment-6102962572 .\n\n## Working Failure Class\n\nThe typed atomic public-publication / run-initiation completion boundary lacks one faithful\ncompletion independent of synchronous post-commit attachment, handoff and recovery.\nThis includes keyed `event.publish` (new/existing run), event-backed `run.start`,\ndeployment-feed-only `run.start`, and their unkeyed acceptance controls. It also includes\nthe confirmed PostgreSQL stored-versus-first/replay-wire response-byte discrepancy.\nIt does not include a generic API idempotency rewrite or other mutator domain ownership.\n\n## Source-Backed Manifestations\n\n- Historical frozen74b stage_gate header timeout; original RED retained.\n- Frozen88c proposed_effect initial `work.requested` timeout, uninstrumented RED321.892s.\n- Passive frozen88c RED265.735s: native ACK0.442294955s then4.558473615s to the\n  original5s",
+      "skills": [
+        "api"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:21:31Z"
+    },
+    {
       "id": 5603480693,
       "title": "Rust release: simplify fresh installation and delete remaining production Python",
       "url": "https://github.com/craigbalding/safeyolo/issues/822",
@@ -350,20 +407,6 @@
       "updated_at": "2026-10-10T23:20:30Z"
     },
     {
-      "id": 5796127874,
-      "title": "[LAUNCH-001][P0][CIT] Implement and evidence one real source-grounded public-knowledge inference",
-      "url": "https://github.com/sovereign-codex/AVOT-engine/issues/16",
-      "description": "# TYME-HALL-LAUNCH-001 — CIT Runtime\n**Priority:** P0 · **Requested evidence target:** 2026-10-17 · **State:** COMMISSIONED / OPEN; completion not assumed.\n**Accountable technical owner:** @sovereign-codex. **Independent reviewer:** unassigned, required before gate closure. **Governing command:** [Notion TYME-HALL-LAUNCH-001](https://app.notion.com/p/3f5c51d54b758197a92ff59d2c203045) · **Central dependency ledger:** [Codex-control-center #15](https://github.com/sovereign-codex/Codex-control-center/issues/15).\n\n## Existing baseline\n`CIT Envelope v0.1` Notion architecture; AGI-0001 `scrolls/AGI-0001/publication.json` approved public knowledge; AVOT-engine PR #13 & #14 are experimental non-authorizing work.\n\n## Outcome requested\nStage ONE genuine model-backed KNOW request for `Does PUBLISHED_CANONICAL mean self-governing authority?`, anchored to allowlisted AGI-0001 source, and return parsed `CIT-RETURN` with model/source, evidence, uncertainty, distinct from Hall receipts and without authority effects.\n\n## Dependencies and boundaries\nLC-02 infrastructure, source allowlist and G5 basic secret/privacy protections; coordinate Codex-control-center routing and Tyme-Lab CIT schema; do not ",
-      "skills": [
-        "json"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:20:22Z"
-    },
-    {
       "id": 5796135803,
       "title": "🎯 Bounty Alert: 3 New Opportunityies found",
       "url": "https://github.com/freedom-winds/BountyScout/issues/1229",
@@ -390,20 +433,6 @@
       "updated_at": "2026-10-10T23:20:17Z"
     },
     {
-      "id": 5749674900,
-      "title": "Complete project craftsmanship and publication readiness",
-      "url": "https://github.com/Lenivvenil/digest/issues/148",
-      "description": "### Purpose and current evidence\n\nFinish project craftsmanship and publication readiness under #91, retaining #126 as historical provenance: readable architecture, useful English documentation, honest tooling and evidence-backed operation. The test-count target is withdrawn; retain meaningful protection and the >=92.93% coverage floor.\n\nCompleted bounded work includes the [README](https://github.com/Lenivvenil/digest/issues/148#issuecomment-6094838543), [task guides](https://github.com/Lenivvenil/digest/issues/148#issuecomment-6095225394), [historical anchors](https://github.com/Lenivvenil/digest/issues/148#issuecomment-6095370011), [Make install repair](https://github.com/Lenivvenil/digest/issues/148#issuecomment-6095827919), [dated advisory evidence](https://github.com/Lenivvenil/digest/issues/148#issuecomment-6096468251) and [installer observation](https://github.com/Lenivvenil/digest/issues/148#issuecomment-6096639141). These records link exact reviewed commits/checks and their limits. Prior code/layout, templates, contributor guidance, root cleanup and coverage-policy reconciliation are preserved in the history index.\n\nOrdinary engine958f94de installation, frozen delivery/rece",
-      "skills": [
-        "documentation"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:20:10Z"
-    },
-    {
       "id": 5696973063,
       "title": "Roadmap: define and implement cross-node agreement for consumed OTS identities",
       "url": "https://github.com/rickyjreyes/Wavelock/issues/28",
@@ -426,62 +455,6 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T23:19:45Z"
-    },
-    {
-      "id": 5591213010,
-      "title": "Staging smoke times out before Azure managed-engine cleanup converges",
-      "url": "https://github.com/valence-works/elsa-control/issues/594",
-      "description": "## Problem\n\nThe protected staging Hosted smoke accepted one synthetic managed-engine Create, then Azure reported `ManagedEnvironmentProvisioningError` while initializing a Container Apps managed environment. Control correctly exposed seven provisioning stages with state `stale` rather than inventing progress. The smoke's 30-minute engine Delete wait expired while the exact provider Delete was still `Running/CleanupSubmitted`; its Stripe test-subscription cleanup then refused to run while the engine remained active. See [failed Cloud run 36213835412](https://github.com/valence-works/elsa-cloud/actions/runs/36213835412) and the sanitized [#565 readout](https://github.com/valence-works/elsa-control/issues/565#issuecomment-5842968835).\n\nAzure later removed the run-scoped resource group. The guarded recovery workflow subsequently proved no active synthetic engine and cleared sandbox billing residue. This is a staging proof reliability and cleanup gap; it is not evidence that the current runtime-image candidate failed Studio authorization.\n\n## Outcome\n\nA provider initialization failure remains truthful and actionable, while the protected smoke retains responsibility for eventual run-scop",
-      "skills": [
-        "script"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:19:39Z"
-    },
-    {
-      "id": 5718464523,
-      "title": "Mac Compatibility: shared desktop architecture and Apple Silicon support",
-      "url": "https://github.com/jeremyrunningphotography/lightflow-studio/issues/366",
-      "description": "## LF-ANY-RES-014 — current R2 qualification inventory (2026-10-10)\n\nResearch/documentation-only [Draft PR #420](https://github.com/jeremyrunningphotography/lightflow-studio/pull/420), head `6553a8052624da80ef6aa628c6c4b4581b854295`, publishes the [R2 acceptance matrix](https://github.com/jeremyrunningphotography/lightflow-studio/blob/6553a8052624da80ef6aa628c6c4b4581b854295/docs/qualification/R2-CATALOG-ACCEPTANCE.md). Owner review is pending; this is not R2 completion or support authorization.\n\nCurrent accepted A/B/C/E/D inventory: #388/#389/#390/#391/#392 are Closed/Completed/Project Done. #392's accepted head `3c5ac9e33f614f980034b0b7fdbb06dbba04abea` merged through #417 as `a0a04da07dde9c8c7609f61ab3e21656c8c8b4dd`. Older statements below describing #392 as unstarted/pending are historical; its bounded accepted Windows/shared-engine delivery does not establish full Mac transfer or physical product support.\n\nRemaining gates: #412 Settings/startup integration under owner-designated Agent 012; required broader #271 Catalog/Preview/setup acceptance; #406 physical qualification under Agent 013; native Mac transfer-effects and lifecycle/ownership composition scope; current-engine pr",
-      "skills": [
-        "documentation"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:19:38Z"
-    },
-    {
-      "id": 5789426430,
-      "title": "feat(analytics): privacy-first visitor tracking and owner-only engagement dashboard",
-      "url": "https://github.com/Abdulrahmanelsayyad/sirati/issues/87",
-      "description": "## Goal\nProvide an **owner-only**, bilingual (Arabic/English) Sirati Analytics dashboard showing meaningful site engagement rather than just Supabase registrations. User approved preparing this work in chat on 2026-10-10; **no approval to modify Production/merge/deploy or activate an external tracker has been granted**.\n\n## Baseline: verified 2026-10-10\nProduction Supabase currently stores `auth.users`, `auth.sessions`, `public.cv_documents`, `public.cv_versions`, and historical `public.pdf_orders`; **there is no observed pageview/visitor-events table**. Existing user/document counts do not give visits or unique anonymous visitors. Historic paid PDF orders are NOT evidence of PDF downloads or current revenue.\n\n## Scope & implementation plan\n### Phase 1 — design and privacy gate\n- Check latest `main`, `AGENT_POLICY.md`, `AGENT_TEAM.md`, issues/PRs, and generated-source hooks before edits; coordinate with Manager and avoid Builder conflicts.\n- Compare **zero-cost, privacy-conscious** visit measurement approaches suitable for GitHub Pages: e.g. a vetted cookie-less third-party pageview service vs a first-party event backend. Confirm provider/account ownership, data retention, privacy ",
-      "skills": [
-        "script"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:19:30Z"
-    },
-    {
-      "id": 5795786763,
-      "title": "Actor primitive",
-      "url": "https://github.com/OpenAgentsInc/openagents/issues/11253",
-      "description": "Build our own actor primitive, taking ideas from Rivet Actors without depending on Rivet. The owner approved this on 2026-10-10. This issue is infrastructure and is not on the V1 launch board.\n\n**Spec:** [docs/architecture/actors.md](https://github.com/OpenAgentsInc/openagents/blob/main/docs/architecture/actors.md)\n\n## Summary\n\nAn actor is keyed by `(type, workspace_id, key)` and has:\n- typed state, stored as one `jsonb` row in a new `actor` schema in the `openagents` Cloud SQL database;\n- typed actions, a durable ordered inbox, at-least-once alarms (one-shot and cron), and effects run after commit;\n- work items that remote executors claim, heartbeat and finish, fenced by an epoch;\n- durable, sequenced events that web and phone receive over SSE.\n\nHow it runs:\n- **Single writer:** each transition is one transaction under `SELECT ... FOR UPDATE` on the actor's row. The row's `version` is the fencing token, so there is no long-held lease and placement does not matter for correctness.\n- **Outbox:** state, events, sends, alarms and effects commit together.\n- **Cross-process wake-up:** `pg_notify`, as the relay already does.\n- **Deployment:** no new service, broker or cache. The runtime ",
-      "skills": [
-        "json"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:19:26Z"
     },
     {
       "id": 5650223300,
@@ -700,11 +673,11 @@
       "updated_at": "2026-10-10T21:35:22Z"
     }
   ],
-  "count": 49,
+  "count": 47,
   "warnings": [],
   "execution": {
     "status": "demo_completed",
-    "timestamp": "2026-10-10T23:21:31+00:00",
+    "timestamp": "2026-10-10T23:22:20+00:00",
     "kind": "csv_cleaning",
     "result": {
       "processed_rows": 3,
