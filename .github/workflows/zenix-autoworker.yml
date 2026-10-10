@@ -1,5 +1,5 @@
 name: Zenix AutoWorker Agent
-# QA verification: free structured coding call; never post to third parties.
+# QA verification: free single-file coding with syntax self-repair.
 on:
   workflow_dispatch:
     inputs:
