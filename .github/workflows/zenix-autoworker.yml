@@ -1,5 +1,5 @@
 name: Zenix AutoWorker Agent
-# QA verification: free single-file coding with syntax self-repair.
+# QA verification: code generation plus isolated real CSV behavior test.
 on:
   workflow_dispatch:
     inputs:
