@@ -11,6 +11,12 @@
   <div id="bountyList" class="list"><div class="empty">Leyendo recompensas publicadas…</div></div>
   <p class="muted" style="margin-top:10px">Una cifra publicada no garantiza disponibilidad, financiación, aceptación del trabajo ni que puedas cobrar desde Argentina.</p>
   <div style="border-top:1px solid #344763;margin-top:18px;padding-top:15px">
+    <div class="toolbar"><div><h2>BountyBoard · Trabajos para agentes</h2><p>Consulta pública; cada tarea debe autorizar explícitamente agentes de IA.</p></div>
+    <span class="tag" id="bbStatus">Cargando…</span></div>
+    <div id="bbList" class="list"><div class="empty">Buscando ofertas aptas para automatizar…</div></div>
+    <p class="muted">Para cobrar hay que comprobar el alta del agente, requisitos del anuncio y elegibilidad de cobro con Stripe Connect.</p>
+  </div>
+  <div style="border-top:1px solid #344763;margin-top:18px;padding-top:15px">
     <div class="toolbar"><div><h2>Revisión y autorizaciones</h2><p id="reviewSummary">Consultando decisiones de prueba…</p></div>
       <a class="button" href="https://github.com/josenunezapps/josenunezapps.github.io/actions/workflows/zenix-autoworker-review.yml" target="_blank" rel="noopener noreferrer">Abrir aprobaciones ↗</a></div>
     <div id="reviewList" class="list"></div>
@@ -105,5 +111,41 @@ async function loadBountiesAndReviews(){
   }catch(e){set("reviewSummary","Historial de aprobaciones todavía no disponible");}
 }
 loadBountiesAndReviews();
+
+const BB_SOURCE="https://raw.githubusercontent.com/josenunezapps/josenunezapps.github.io/main/zenix-autoworker/data/bountyboard.json";
+async function loadBountyBoard(){
+ const list=$("bbList");
+ try {
+  const r=await fetch(BB_SOURCE+"?v="+Date.now(),{cache:"no-store"});
+  if(!r.ok)throw Error("HTTP "+r.status);
+  const x=await r.json();list.replaceChildren();
+  if(x.source_status!=="ok"){
+   set("bbStatus","Fuente no disponible");
+   list.append(element("div","empty","No se pudo verificar BountyBoard. No se deben asumir recompensas abiertas."));
+   return;
+  }
+  set("bbStatus",(x.agent_eligible_count||0)+" aptas para agente / "+(x.listed_count||0)+" anunciadas");
+  if(!x.opportunities?.length){
+   list.append(element("div","empty","Sin tareas abiertas publicadas."));
+  }
+  for(const job of (x.opportunities||[]).slice(0,20)){
+   const card=element("div","status");
+   card.append(element("div","issueTitle",job.title||"Trabajo"));
+   const labels=element("div","meta");
+   labels.append(element("span","pill money",String(job.currency||"")+" "+Number(job.reward_listed||0).toFixed(2)));
+   labels.append(element("span","pill",job.eligible_for_agent?"Compatible para evaluar":"NO apto para agente"));
+   card.append(labels);
+   card.append(element("p","muted",(job.reasons||[]).join(". ") || "Aún requiere comprobar pago, plazo y capacidad real de resolverlo."));
+   list.append(card);
+  }
+  const link=element("a","button testLink","Ver BountyBoard ↗");
+  link.href="https://www.bountyboard.work/bounties";link.target="_blank";link.rel="noopener noreferrer";list.append(link);
+ } catch (e) {
+  set("bbStatus","No disponible");
+  list.replaceChildren(element("div","empty","No se pudo leer la fuente de BountyBoard."));
+ }
+}
+loadBountyBoard();
+
 
 </script></body></html>
