@@ -67,3 +67,24 @@ El workflow valida la identidad autenticada de GitHub y guarda la auditoría. Si
 - Integrar postulaciones y entregas **solamente** en plataformas autorizadas, tras una decisión humana explícita.
 
 GitHub Actions se utiliza aquí **para desarrollo y pruebas**, no como infraestructura para ejecutar un negocio automático permanente. No se promete ingreso alguno.
+
+
+### Piloto automático local o en servidor propio
+
+El comando siguiente consulta fuentes públicas y crea automáticamente una cola de candidatos y propuestas para revisión; no presenta ofertas ni entrega resultados:
+
+```bash
+python zenix-autoworker/engine/autopilot.py --once
+```
+
+Para mantenerlo buscando cada 6 horas en un **equipo o servidor propio** (NO en los runners de GitHub), usar:
+
+```bash
+python zenix-autoworker/engine/autopilot.py --loop --hours 6 --self-hosted
+```
+
+Opcionalmente, `--attempt-code` intenta generar una solución para el primer candidato de Algora que tenga un issue GitHub, utilizando un modelo gratuito configurado y Docker. **Es experimental**: puede fallar o producir código incorrecto; no verifica que el cliente lo acepte ni publica nada externamente.
+
+`data/agent_queue.json` contiene una lista automática de candidaturas elegibles para evaluar. Solo aparece trabajo allí si existen anuncios reales que pasan los filtros. Si la plataforma bloquea agentes o no hay cupo, la tarea se descarta.
+
+En GitHub Actions los flujos de detección se ejecutan solo para pruebas del software. El panel GitHub Pages no es por sí mismo un motor de ejecución continua.
