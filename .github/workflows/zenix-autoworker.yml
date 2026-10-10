@@ -40,7 +40,7 @@ jobs:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           AUTO_WORKER_MODEL: ${{ vars.AUTO_WORKER_MODEL }}
           ISSUE_URL: ${{ inputs.issue_url }}
-          QA_SMOKE: ${{ contains(github.event.head_commit.message, '[ai-smoke]') }}
+          QA_SMOKE: ${{ contains(github.event.head_commit.message, 'ai-smoke') }}
         run: |
           if [ -n "$ISSUE_URL" ]; then
             python zenix-autoworker/engine/agent.py --issue-url "$ISSUE_URL"
