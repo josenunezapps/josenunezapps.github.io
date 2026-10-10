@@ -58,6 +58,14 @@ class AgentTests(unittest.TestCase):
                 with self.assertRaisesRegex(RuntimeError,"contenido vacio"):
                     agent.model({"title":"QA","body":"Test"},"")
 
+    def test_internal_qa_generates_real_python_file(self):
+        response={"choices":[{"finish_reason":"stop","message":{"content":"def main():\n    print(1)\n"}}]}
+        with patch.dict(os.environ,{"OPENROUTER_API_KEY":"test-dummy"}):
+            with patch.object(agent,"api",return_value=response) as mocked:
+                result=agent.qa_python_one_file({"body":"Create a Python file"})
+                self.assertEqual(result["files"][0]["path"],"zenix-autoworker/examples/clean_csv.py")
+                self.assertEqual(mocked.call_args.args[2]["model"],"nvidia/nemotron-3.5-lightning:free")
+
     def test_paid_model_rejected(self):
         with patch.dict(os.environ,{"OPENROUTER_API_KEY":"test-dummy","AUTO_WORKER_MODEL":"openai/gpt-4"}):
             with self.assertRaises(ValueError):
