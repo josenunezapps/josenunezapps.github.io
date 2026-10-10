@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-10-10T20:47:45+00:00",
+  "generated_at": "2026-10-10T20:48:22+00:00",
   "opportunities": [
     {
       "id": 5387618577,
@@ -151,6 +151,38 @@
       "updated_at": "2026-10-10T20:00:24Z"
     },
     {
+      "id": 5775621247,
+      "title": "[Bounty: $70] Stop silently skipping ledgers when INDEXER_START_LEDGER is raised",
+      "url": "https://github.com/SUSU-LABS/susu-indexer/issues/45",
+      "description": "## Context\n\n`supabase/functions/_shared/checkpoint.ts:68-70` computes `from = max(lastProcessedLedger + 1, startLedger)`. Once a checkpoint exists, raising `INDEXER_START_LEDGER` (or `indexer_checkpoints.start_ledger`) jumps `from` forward and silently skips every ledger in between, with no log, warning, or alert, carving a permanent invisible gap.\n\n## Proposed Change\n\nUse `startLedger` only when there is no checkpoint; when a checkpoint exists and `startLedger > checkpoint + 1`, ignore it or fail/log a warning and raise an alert.\n\n## Acceptance Criteria\n\n- With a checkpoint present, `computeLedgerRange` never advances past `lastProcessedLedger + 1` because of a higher `startLedger`\n- A test covers a raised `startLedger` and asserts a warning/failure rather than a silent skip\n- The documented rebuild procedure still works\n\n**Suggested Label:** correctness\n**ETA:** 48 hours",
+      "skills": [],
+      "score": 35,
+      "amount_mentions": [
+        "$70"
+      ],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:48:06Z"
+    },
+    {
+      "id": 5676478610,
+      "title": "Manual regression pass: real provider keys and Windows checks (creation phase)",
+      "url": "https://github.com/fernandolisboa/bardo/issues/51",
+      "description": "Part of #4 (MVP PRD).\n\n## Why\n\nThe automated tests run against fake providers and recorded fixtures, and several of those fixtures follow each provider's documented response shape rather than a live answer. The checks below need real provider keys, paid usage, or a Windows desktop, so they run once, together, instead of slice by slice. Each section links the checklist it came from.\n\n## When\n\nAfter the creation-phase slices (`phase:creation`) are merged, and before publishing work starts. A midpoint pass is optional, only if an adapter looks wrong earlier. Run it on Windows.\n\n## Convention for new slices\n\nA slice that needs manual checks (real keys, paid calls, Windows-only behavior) adds them as a comment on this issue instead of asking for a per-slice validation. The slice's own issue closes once CI is green.\n\n## Keys and rough cost\n\nPrices come from `crates/app/data/rates.toml` (checked 2026-10-02). Short scenes and short clips keep the pass cheap.\n\n| Provider | Key | Used by | Rough cost of this pass |\n|---|---|---|---|\n| YouTube Data API | API key | #10 | Free quota (about 102 units per niche, 10,000 per day) |\n| Anthropic Claude | API key | #11, #12, #15 | Under $1 |\n| TypeSaf",
+      "skills": [
+        "api"
+      ],
+      "score": 35,
+      "amount_mentions": [
+        "$1",
+        "$0.01",
+        "$1"
+      ],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:47:40Z"
+    },
+    {
       "id": 5659096903,
       "title": "[Bounty] Test the 2.40.0 browser half in your own DSH host (6 seats, screenshot + probe evidence)",
       "url": "https://github.com/Ikalus1988/MisakaNet/issues/2593",
@@ -163,22 +195,6 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T20:40:36Z"
-    },
-    {
-      "id": 5795130571,
-      "title": "OpenAI dated mini-transcribe models default to unsupported verbose_json when provider options are set",
-      "url": "https://github.com/vercel/ai/issues/22619",
-      "description": "### Description\n\nAdding `providerOptions.openai.language` to either supported dated `gpt-4o-mini-transcribe` model makes the SDK send `response_format=verbose_json`. The undated alias correctly sends `json`. The dated IDs are explicitly listed in `OpenAITranscriptionModelId`.\n\nThis breaks snapshot-pinned transcription when callers add ordinary provider options. [OpenAI's transcription API reference](https://developers.openai.com/api/reference/resources/audio/subresources/transcriptions/methods/create) documents JSON support for this model family. The reproduction checks the actual request serialization with a mocked response; it does not make a paid request or claim a live API test.\n\n### Reproduction\n\n```sh\nnpm install @ai-sdk/openai@4.0.91\nnode repro.mjs\n```\n\nSave as `repro.mjs`:\n\n```js\nimport assert from 'node:assert/strict';\nconst { createOpenAI } = await import(process.env.OPENAI_ENTRY ?? '@ai-sdk/openai');\nconst requests = [];\nconst provider = createOpenAI({ apiKey: 'synthetic', fetch: async (_url, init) => {\n  requests.push({ model: init.body.get('model'), format: init.body.get('response_format') });\n  return Response.json({ text: 'Hello' });\n}});\nfor (const id of ['gpt-4o-mi",
-      "skills": [
-        "json",
-        "api",
-        "script"
-      ],
-      "score": 30,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:46:15Z"
     },
     {
       "id": 5662643363,
@@ -194,7 +210,22 @@
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:44:41Z"
+      "updated_at": "2026-10-10T20:48:00Z"
+    },
+    {
+      "id": 5775497571,
+      "title": "P0 | Compass Risk-to-Action Reliability Mission - October 2026 pullback + altseason/distribution readiness",
+      "url": "https://github.com/Donh91/Investering-Framework-Archive-v1/issues/1553",
+      "description": "# P0 MISSION | Compass risk-to-action reliability, capital preservation, altseason & distribution hardening\n**Issued:** 2026-10-09 Europe/Copenhagen | **Authority:** SUPERVISOR_EXECUTION_MANDATE, not a new trading signal or automatic code-promotion authority.\n**Owner:** existing `Daglig Supervisor + Alpha Meta-Governor` (ChatGPT automation, already enabled); delegate into EXISTING Official Compass, CN, Master Monday, Framework Learning, M6/EDGE-001, Portfolio Compass, Site/Pages, QA, and governed Codex/Work/Bridge lanes. **One mission, bounded child PRs.**\n**Status:** ACTIVE remaining scientific/source-admission and delivery stages. Site release #1550 VERIFIED_COMPLETE and closed; #1549 merged `cdbe153ef25a27ffa18967a25948574fae9bc2e7`, real Pages/premium/Shadow-refresh verified in receipt 6099953683. Research integrity #1556 merged; naturally regenerated production report still POST_FIX_WAIT. Public-source master audit #1565 merged; its scope remains PARTIAL, no proven information/action edge. External Vault release gates are DEFERRED_BY_OWNER per direct user directive recorded in6099831222, not PASS.\n\n## Executive problem and cause hypotheses, grounded in actual current repo\nPoin",
+      "skills": [
+        "api",
+        "automation"
+      ],
+      "score": 20,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:48:08Z"
     },
     {
       "id": 5518867774,
@@ -310,6 +341,62 @@
       "updated_at": "2026-10-10T20:19:40Z"
     },
     {
+      "id": 5794349943,
+      "title": "RelayWA International SEO — Master Tracker (12 batches)",
+      "url": "https://github.com/Haider-Shakoori/wa/issues/90",
+      "description": "# RelayWA International SEO — Master Tracker\n**Scope:** English-only global SEO on `relaywa.com`; 8 initial research targets (India, Brazil, Indonesia, Mexico, Colombia, Nigeria, UAE, Pakistan) plus 5 expansion research targets (Saudi Arabia, South Africa, Spain, Germany, UK). Accurate QR-linked/session messaging API positioning. Country pages only when evidenced by genuinely distinct English buyer needs.\n\n## Batch checklist (implement in order unless noted)\n- [x] [Batch 01 — Research & positioning](https://github.com/Haider-Shakoori/wa/issues/78)\n- [x] [Batch 02 — Technical SEO](https://github.com/Haider-Shakoori/wa/issues/79)\n- [x] [Batch 03 — Analytics & conversion instrumentation](https://github.com/Haider-Shakoori/wa/issues/80)\n- [x] [Batch 04 — Performance & CWV](https://github.com/Haider-Shakoori/wa/issues/81)\n- [x] [Batch 05 — English-only global architecture and canonical targeting](https://github.com/Haider-Shakoori/wa/issues/82)\n- [x] [Batch 06 — Existing English docs and on-page SEO improvements](https://github.com/Haider-Shakoori/wa/issues/83)\n- [ ] [Batch 07 — Integration landing pages](https://github.com/Haider-Shakoori/wa/issues/84)\n- [ ] [Batch 08 — English-only re",
+      "skills": [
+        "api"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:48:18Z"
+    },
+    {
+      "id": 5779878641,
+      "title": "Tested flow ledger for #7536: which flows are tested, how and by whom",
+      "url": "https://github.com/langwatch/langwatch/issues/8553",
+      "description": "<!-- ledger:summary:start -->\n## Progress summary\n\n**1,016 rows: 836 pass, 143 have problems, 1 being walked, 36 not started.**\n<sub>Counted 2026-10-10 20:47 UTC by `ledger-count.py` from the body and 2430 comments; a later result, claim or release comment overrides the body.</sub>\n\n| | rows | ✅ | 🟡 | ❌ | ⚠️ | ⏳ | ⬜ |\n|---|---:|---:|---:|---:|---:|---:|---:|\n| Upgrade | 48 | 3 | 4 | 4 |  | 1 | 36 |\n| Custom flows | 12 | 9 |  |  | 3 |  |  |\n| Product flows | 30 | 25 | 3 |  | 2 |  |  |\n| Beyond the UI | 9 | 7 |  |  | 2 |  |  |\n| Areas | 917 | 792 | 45 |  | 80 |  |  |\n| **Total** | 1,016 | 836 | 52 | 4 | 87 | 1 | 36 |\n\n<details><summary>Per area</summary>\n\n| | rows | ✅ | 🟡 | ❌ | ⚠️ | ⏳ | ⬜ |\n|---|---:|---:|---:|---:|---:|---:|---:|\n| ANA · Analytics, dashboards and LWQL | 17 | 15 | 2 |  |  |  |  |\n| ANN · Annotations and queues | 10 | 10 |  |  |  |  |  |\n| AUD · Audit log | 8 | 7 |  |  | 1 |  |  |\n| AUTH · Sign-in and identity | 53 | 30 | 3 |  | 20 |  |  |\n| AUTO · Automations, triggers, alerts and reports | 26 | 25 |  |  | 1 |  |  |\n| AZ · Authorization: grants and roles | 22 | 22 |  |  |  |  |  |\n| BIL · Billing, usage metering and limits (Cloud) | 22 | 18 | 3 |  | 1 |  |  |\n| CA · ",
+      "skills": [
+        "automation"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:48:16Z"
+    },
+    {
+      "id": 5675867230,
+      "title": "SN-005: проверить контракт Authentik actor → project authorization для control API",
+      "url": "https://github.com/pupkinson/SymphonyNext/issues/33",
+      "description": "## Цель нового независимого разбора\nПосле подтверждённой активации capacity100/10 продолжить проектирование следующей пользовательской вертикали: вход через Authentik и разрешённое чтение control API. Нужен минимальный реализационный контракт, не повтор прежнего review исходников PR14 и не фактическая настройка Authentik.\n\nИсточник PR14 HEAD21ce4282e7ef8330cc1155bcb7b94fbf132032a8, BASE2bf21950e0725bc9228b262e1495f5af5eeea1d6, TREE29fe41a2873a3db13ac2c0dc74b7f149391c9eeb. Очередь приложит текущие RuntimeIdentity/controller/router/runtime configuration и baseline SPECIFICATION.md. Исходники PR14 уже имеют source acceptance; protected execution и packaged acceptance пока отдельно не завершены.\n\n## Проект контракта для оценки\nСерверная авторизация получает actor только из проверенного локального Authentik login/session, не из query/header с произвольным actor_id и не из task-tracker credentials. Нормализованный Actor имеет issuer+subject и локальный user reference; действительные роли проекта читаются сервером. User, service identity и agent различаются. Read-only endpoint /api/v1/control/identity раскрывает данные только после ровно :ok от authorizer; текущая default-deny ветка сохра",
+      "skills": [
+        "api"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:48:12Z"
+    },
+    {
+      "id": 5738368585,
+      "title": "Qualify the OpenAI MCP tunnel against Astral authentication and discovery",
+      "url": "https://github.com/AstralDeep/AstralDeep/issues/323",
+      "description": "## Problem or idea\n\nOpenAI tunnel-client could make a private Astral MCP endpoint reachable from OpenAI products using an outbound connection. Source review suggests a modern discovery-401/legacy-initialize fallback may leave readiness at 503 against Astral's strict modern contract, but this has not been reproduced.\n\n## Expected outcome\n\nDeliver a pinned synthetic smoke test and operator qualification guide for optional tunneled MCP, with an honest compatibility decision. Any reproduced defect is fixed at its owning seam without bypassing IAM or downgrading the protocol.\n\n## Environment\n\nMVP mode; owning repository: AstralDeep. Reviewed baseline: `f89ba2ae9c0e8decd271544e05a93f6c8a202a66` (2026-10-06). Production Python remains 3.11. This is a proposed, source-reviewed improvement; no pilot or performance benefit has been demonstrated in Astral.\n\n## Acceptance checks\n\n- [ ] Pin tunnel-client fda241e2343ddd49dd63a7da3e1afab2a6e91722 and its reviewed Go MCP SDK dependency; keep the Astral MCP flag off unless the operator enables the pilot.\n- [ ] Exercise unauthenticated discovery, ready/auth-required behavior, modern metadata/headers, valid owner token and cross-owner/expired/revoked",
+      "skills": [
+        "python"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:48:01Z"
+    },
+    {
       "id": 5119142806,
       "title": "test(release): requalify both Production journeys after biopsy fixes",
       "url": "https://github.com/relativityE/speaksharp/issues/1258",
@@ -321,7 +408,49 @@
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:47:03Z"
+      "updated_at": "2026-10-10T20:47:48Z"
+    },
+    {
+      "id": 5785210240,
+      "title": "Epic: Enforce precise type safety and test fidelity across Keiko",
+      "url": "https://github.com/oscharko-dev/Keiko/issues/3914",
+      "description": "## Summary\n\nImplement precise anti-slop quality enforcement and complete its production migration across Keiko, without weakening hostile-input validation, canonical evidence, test fidelity or existing quality gates. Owner direction: package the audit into an implementation-ready epic; exclude additional naming and spacing rules.\n\nPlanning baseline: `origin/dev@3d46ff9aca669c349bf0528a2a356ba95991099a` (fresh fetch, equal to audited checkout). Profile: keiko-web; current target AGENTS/CONTRIBUTING and amended ADRs override stale profile recipes. Upstream: [anti-slop c44ef22](https://github.com/dmmulroy/anti-slop/tree/c44ef22ca116d0ba62a3ff663a0bd13a3f3fa40b), version 0.1.2; audited Oxlint/@oxlint/plugins 1.78.0. Current source corpus: 7,854 tracked files / 6,166 JS/TS / all 27 packages, plus all 27 HTML documents’ embedded JS. Documentation review indexed 1,283 files, 821 text files and all 164 ADRs.\n\nThere are 341 navigation-classified production double-cast matches and 2,876 missing assertion-marker matches across 739 candidate files; 731 module-interception matches across 337 test files. These are overlapping diagnostics, not defect counts. The authoritative implementation censu",
+      "skills": [
+        "documentation"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:47:43Z"
+    },
+    {
+      "id": 5793881903,
+      "title": "P0: prevent coordination comment storms from amplifying archival workflow dispatch",
+      "url": "https://github.com/Distributed-Minds/Fleet-Control-Public/issues/338",
+      "description": "Phase0 spec version: 3\n\n## Spec 3 correction — a queued six-hour recovery run can be displaced by an unrelated comment (2026-10-10)\n\n**Disposition:** Independent **source-static and documented-platform-semantics** defect. This supersedes spec 2 **only** for the workflow-level queue/rescue authority described here; all spec-2 compact-dependency requirements, spec-1 event/epoch filtering, and archive safety remain mandatory. It does not prove any particular hosted scheduled run has already been displaced, that archives were lost, or that operational recovery failed.\n\n**OBSERVED source:** Installed public default workflow at [main 085605f1](https://github.com/Distributed-Minds/Fleet-Control-Public/blob/085605f1bd08c2a5c49d158c7a0bdfdb731df54d/.github/workflows/coordination-slots.yml), blob 1054aa40cab9b9f5476483dae4c358cf3c64e4c4, has three event triggers (schedule, workflow_dispatch, unrestricted issue_comment: created) sharing **workflow-level** concurrency.group = coordination-slots-maintenance with cancel-in-progress = false. Expensive-job issue/author/count filters live only in each **job condition**, downstream of workflow-run admission.\n\n**External platform contract:** [GitHub ",
+      "skills": [
+        "documentation"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:47:42Z"
+    },
+    {
+      "id": 5794115033,
+      "title": "YAC next product — multi-fire conversations, native AI client, repeatable operator",
+      "url": "https://github.com/markgoodbody-bit/COM/issues/813",
+      "description": "# YAC next product — independent AI conversations, not another short pilot\n\nStatus: **THREE PARALLEL BOUNDED SOURCE/LOCAL BUILD LANES — NOT LIVE DEPLOYMENT OR GENERAL PUBLIC-WRITE GRANT**. Date: 10 October 2026. Owner/integrator: FRAMEWORK / CAMPFIRE. Related existing finite live experiment and operator controls: COM #792. Source baseline: YAC main 6f9f854bbc1a743d970b20a859a6434a48ad57f6 (reverify before touching).\n\n## Direct human direction\n\nMark: \"try and also give them more to do. I spend a lot of time just going between tabs telling CC Codex and BUILD to COMSYNC. i think they can be building bigger.\"\n\nStop organising tiny one-file tasks that make Mark a COMSYNC courier. Give each aperture a meaningful, multi-step, end-to-end product slice, with room for independent technical judgement. **One COMSYNC and ACK of this issue should be enough to proceed through the full owned source/local task within the session**, without asking Mark to retype PROCEED. Use COM for bounded milestone/terminal receipts and conflicts, not every thought. GitHub does not wake dormant chat tabs or give them background execution: do not claim that posting a task automatically starts the recipient.\n\n## Sha",
+      "skills": [
+        "json"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:47:36Z"
     },
     {
       "id": 5784134858,
@@ -366,60 +495,18 @@
       "updated_at": "2026-10-10T20:46:55Z"
     },
     {
-      "id": 5770925524,
-      "title": "OWNER DISPATCH: close out Hey Aria physical-test evidence and continue approved ready work",
-      "url": "https://github.com/caosos/CAOSCARE.COM/issues/117",
-      "description": "# Owner-directed CAOSCare coordinator assignment — 2026-10-08\n\n**Owner:** Michael. **Instruction:** \"Beautiful. I like it. Let's give these guys something to do.\"\n\n**For:** The *existing* CAOSCare coordinator on `integration/2026-09-27`. This is issue-based owner intake, not a parallel agent, not an unrestricted merge or deployment instruction.\n\n## Evidence Michael has reported from his live desk / eMeet tests\n- **Wake phrase remains \"Hey Aria\"**, not a renamed wake word. Michael is satisfied with that decision and does **not** authorize more generic wake-word naming/lab exploration right now.\n- One recent physical set was **5 wake detections in 6 spoken attempts**, with one missed attempt. This count is owner-reported; identify detector timestamps and session IDs before labeling the exact detector statistic verified.\n- **No unintended wake-ups observed** during the owner's normal conversation / \"area\" utterances to date (not a formal long-duration false-positive rate).\n- Saying goodbye now allows Aria's closing line to play fully and then ends the session. Earlier endings were abruptly cut off; Michael sees the new behavior as improved.\n- Michael expects always-available room voic",
+      "id": 5343575250,
+      "title": "Control Tower — Multi-thread integration queue",
+      "url": "https://github.com/sbu001monterecco/por-derecho/issues/1428",
+      "description": "## Purpose\n\nCanonical coordination issue for concurrent ChatGPT/Codex/agent work under the Multi-Thread Collaboration & Publication v2 control.\n\n## Rule\n\n- Research and evidence work may proceed in parallel.\n- Only one active integration/publication lane may exist at a time.\n- Worker threads do not independently publish, merge, or create competing continuity universes; they return structured deltas tied to canonical IDs and task issues.\n- An integration lane is represented by one current-main-based `integration/` or expressly designated integration PR.\n- If an integration PR is already active, other related threads remain workers and feed deltas into this queue or linked task issues.\n- Pre-control open PRs are preserved as legacy backlog until explicitly reactivated, reconciled, superseded or closed.\n\n## Worker delta minimum\n\n`task / canonical IDs / sources / corrections / new propositions / open gaps / proposed files or routes / conflicts with current main / readiness`\n\n## Publication rule\n\nOne logical release should normally produce one integration PR. Deterministic generated artifacts must be created before merge and CI should verify them rather than mutate `main` after merge. P",
       "skills": [
-        "json"
+        "automation"
       ],
       "score": 10,
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:46:51Z"
-    },
-    {
-      "id": 5361348957,
-      "title": "Agent wake bus: Claude review handoffs (do not close)",
-      "url": "https://github.com/NTinkicht/Tabibi/issues/11",
-      "description": "## Purpose\nPermanent repository-level dispatch channel for Claude review work.\n\nClaude's primary runtime wake mechanism has been PR-activity subscription. Per-PR subscriptions can leave Claude idle when work moves to a new PR. This issue is intentionally permanent and must not be closed while Tabibi uses Claude as an independent reviewer.\n\n## Required Claude behavior\nWhen this channel first reaches Claude, establish the closest persistent subscription/monitoring mechanism available for this issue/repository and treat every new `HANDOFF_TO_CLAUDE` comment here as a dispatch to the named target PR/SHA. If issue-level event subscription is unsupported, use this issue as the canonical queue inspected by the existing recurring repository heartbeat and establish the target PR subscription immediately on each dispatch.\n\nA dispatch here does **not** replace the review evidence on the target PR. Review findings/verdicts remain on the target PR; this channel exists only to guarantee wake/dispatch continuity across PR changes.\n\n## Current dispatch queue\n1. PR #9 — coordination v4 review. Target exact head: `537d93a3226902a757ebc2fc90f37d4d6b8f9869` at time of initial queueing, but inspect PR ",
-      "skills": [
-        "script"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:46:48Z"
-    },
-    {
-      "id": 5760402393,
-      "title": "[P1][TIGERIQ NEWS] Hoàn thiện xuất bản bài/ảnh công khai và tự xác minh tin thật",
-      "url": "https://github.com/newsdayads/tigeriq-ai-lab/issues/4574",
-      "description": "TIGERIQ_JOB_V1\nSOURCE=Owner direct chat 2026-10-08: \"Tôi cần xem kết quả thực tế trên trang chứ không muốn nhìn vào thẻ công việc rồi đoán mò\"\nOWNER_DIRECT=true\nOWNER_POLICY=AUTO\nPRIORITY=P1\nCURRENT_STATE=READY_AUTOMATED_CODING\nTIGERIQ_EXECUTABLE=true\nAUTO_QUEUE=INCLUDED\nCAPABILITY=coding\nEXECUTION_SURFACE=CODING\nAUTONOMOUS_CODE=true\nMUTATION_OWNER=CORE_DYNAMIC_LEASE\nRESOURCE_SCOPE=TIGERIQ_NEWS_PUBLIC_ARTICLE_COVER_LIVE_E2E_V1\nPROJECT_ID=tigeriq-news\nWORK_PACKAGE_ID=news-autonomous-newsroom\nTARGET_REPOSITORY=newsdayads/tigeriq-media\nBASE_BRANCH=main\nRELATED_PARENT=4456\nRELATED_TRACKER=3899\nRELATED_SOAK=3904\nRESULT_INBOX=4426\nONE_RESOURCE_SCOPE_ONE_WRITER=true\nZERO_COST=true\nNO_PAID_COST=true\nNO_CREDENTIAL_CHANGE=true\nNO_SECURITY_BOUNDARY_CHANGE=true\nNO_DESTRUCTIVE=true\nNO_DIRECT_MAIN=true\nNO_PRODUCTION_RELEASE=true\nNO_VERCEL_DEPLOY=true\nNO_APP_CHROME_MUTATION=true\nAPP_CHROME_MUTATION=FORBIDDEN\nNO_CODEX=true\nINDEPENDENT_REVIEW_REQUIRED=true\nKEEP_OPEN_ON_STEP_COMPLETE=true\nLIVE_ACCEPTANCE_REQUIRED=true\nDONE=false\n\n## MỤC TIÊU THỰC TẾ\nTigerIQ News phải tự tìm tin -> xác minh -> viết -> rà soát độc lập -> tạo/đưa ảnh lên nguồn công khai -> xuất bản nội dung tới đúng nguồn website đang ",
-      "skills": [
-        "script"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:46:39Z"
-    },
-    {
-      "id": 5317560534,
-      "title": "Audit — (tracking)",
-      "url": "https://github.com/tvofi/heatpump_optimizer/issues/201",
-      "description": "Tracking issue for the open-issues programme (audit round 2 through leftover/product). Register: `docs/audit-2026-09.md`. Delivery-status: `docs/plan-2026-09-open-issues.md`. Durable handover: `docs/HANDOVER.md`. Leftover-row list is in that plan file; this body is remaining leftover/product work, measured against live GitHub, not a comment.\n\n**Measured** after `git fetch origin main`, `gh issue list --state open --limit 200`, `gh pr list --state open`, `gh pr view 897 --json state,mergeCommit`, `gh issue view 195 --json state`:\n\n| | |\n|---|---|\n| `origin/main` | `8cad9ed256dd4b8adcca8956c97b14abc3a54844` |\n| VERSION | 6.4.2 (manifest 6.4.2) |\n| HANDOVER cap | 1000 on main (`.claude/workflows/policy_budgets.json`) |\n| Open issues | **#201** only |\n| Nightly Tests | last concluded `schedule` is [34680074952](https://github.com/tvofi/heatpump_optimizer/actions/runs/34680074952) on `1768e20` — **red**. Dispatch [34687504611](https://github.com/tvofi/heatpump_optimizer/actions/runs/34687504611) on `ce09947` has both `nightly-ha` arms **success**; the run is still in progress. |\n\nRound-2 finder/verify/judge phases are done. Named leftover/product work that already shipped is in the left",
-      "skills": [
-        "json"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:46:29Z"
+      "updated_at": "2026-10-10T20:46:54Z"
     },
     {
       "id": 5699176902,
@@ -554,20 +641,6 @@
       "updated_at": "2026-10-10T20:40:51Z"
     },
     {
-      "id": 5793235147,
-      "title": "ROOT INTAKE — ledger truth, capability-loss recovery, and model-to-Root throughput",
-      "url": "https://github.com/amillimatrix-eng/CARBON-Creation-Hub/issues/31",
-      "description": "# ROOT disposition requested — bounded proposals, no authority change\n\n**Classification requested:** GOVERNANCE-READY RECOVERY / DATA-INTEGRITY + MODEL-TO-ROOT THROUGHPUT\n**Priority recommendation:** P1 recovery enabler, without displacing existing P0 Intake clearance or primary Matrix recovery obligations. Promote only if ROOT determines the finding directly blocks P0 work.\n**Scope:** proposals for ROOT to decide and assign to existing owners. This issue does not itself change Canon, Blue State, mandates, worker ownership, runtime code, CRM truth, or commercial lifecycle.\n\n## Verified current evidence\n\n### A. Opportunities ledger count disagreement\n- Current overdrive/opportunities.json blob: b04be618dccf1fed8405ccd7ff5c4be34d18004d.\n- record_count: **66**.\n- Distinct keys in records: **83**.\n- Difference: **17**.\n- last_run.full_ledger_count: **62**, with last_run.run_at = 2026-10-03T17:42:00Z; last_updated_at = 2026-10-09T13:05:00Z.\n\nDo not overwrite the historical last_run snapshot merely to make it match today's map. The current derived record count and the count captured at the last run are different kinds of truth. The immediate defect is that the field presented as the ledg",
-      "skills": [
-        "json"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:40:12Z"
-    },
-    {
       "id": 5515702753,
       "title": "Jarvis publications — replies and Daily Board",
       "url": "https://github.com/braydenparker999/jarvis/issues/2",
@@ -648,52 +721,23 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T19:57:44Z"
-    },
-    {
-      "id": 5532873490,
-      "title": "[Wallet Rewards] Latest eligibility",
-      "url": "https://github.com/oguzpoyrazyasin/poyraz/issues/5",
-      "description": "# Wallet Rewards — 2026-10-10 19:30 UTC\n\nRead-only ownership-scoped eligibility monitor. No private keys, no signing, no automatic claims.\n\n## Self-owned wallet health\n\n|Chain|Wallet|Native balance|Status|\n|---|---|---:|---|\n|—|No verified wallets configured|—|—|\n\n## Reward eligibility\n\n|Decision|Program|Wallet|Token|Amount|Gross USD|Net EV USD|Confidence|\n|---|---|---|---|---:|---:|---:|---:|\n|—|No enabled official reward sources or verified wallets|—|—|—|—|—|—|\n\n## EV model\n\nNet EV = gross token value - gas - swap fee - off-ramp fee - risk haircut\n\nCLAIM_REVIEW is only a review state. This agent never signs or submits a transaction.\n\n## Guardrails\n\n- Only addresses explicitly marked owner_verified=true are processed.\n- No seed phrases/private keys are read or stored.\n- No abandoned-wallet or third-party balance scanning.\n- No claim transaction generation or signing.\n- Only configured official allocation/API sources are queried.\n- KYC, tax, sanctions and off-ramp checks remain separate gates.\n",
-      "skills": [
-        "api"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T19:30:14Z"
-    },
-    {
-      "id": 5458955395,
-      "title": "Cloud Revenue Command Dashboard",
-      "url": "https://github.com/Nish916/revenue-command-runner/issues/1",
-      "description": "# Cloud Revenue Command Dashboard\n\nUpdated: 2026-10-10 19:24:04 UTC\n\n## Decision\n## Evidence-based revenue execution\n- ROLE: AUTOMATION_ONLY. Cloud discovery is advisory only; authenticated mutations run in the local executor.\n- MODE: AUTOMATION_ONLY_SUPER_INFINITY_AGGRESSIVE\n- TARGET: Discover and rank legitimate machine-executable paid work requiring minimal human attendance; authenticated mutations remain local; never guarantee income.\n- TOKEN BALANCE: RustChain reports 177.1 RTC; this is not verified fiat proceeds or withdrawal readiness.\n- VERIFIED: Cognitive-OS PR #53 state is open.\n- VERIFIED: RustChain #2259 state is unknown.\n- NOW: No cloud-discovered opportunity qualifies as cash-near. Do not confuse screening-required roles, freelance listings, or buyer-intent signals with earnings; local authenticated executor owns real APPLY/CLAIM/START_WORK actions.\n- DISCOVERY ONLY — FREELANCE: [laborx] Robotics Engineer: build and ship a bot — parsed budget 6000.0; application/bid not yet executed.\n- APPLICATION PIPELINE (NOT CASH-NEAR): [nearskill] 3D Slicer Medical Imaging Evaluator — published floor/reference 125.0 USD; screening/application required.\n- DISCOVERY ONLY — INTENT BE",
-      "skills": [
-        "automation"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T19:24:05Z"
     }
   ],
-  "count": 47,
+  "count": 50,
   "warnings": [],
   "execution": {
-    "status": "demo_completed",
-    "timestamp": "2026-10-10T20:47:45+00:00",
-    "kind": "csv_cleaning",
-    "result": {
-      "processed_rows": 3,
-      "output_rows": 2,
-      "duplicates_removed": 1,
-      "verified": true
-    },
+    "status": "ready_for_review",
+    "timestamp": "2026-10-10T20:48:34+00:00",
+    "issue_url": "https://github.com/josenunezapps/josenunezapps.github.io/issues/1",
+    "model": "nvidia/nemotron-3.5-lightning:free",
+    "summary": "Programa Python generado por IA; se comprobo sintaxis (no funcionalidad)",
     "files": [
-      "clientes_limpios.csv",
-      "reporte.json"
-    ]
+      "zenix-autoworker/examples/clean_csv.py"
+    ],
+    "tests_passed": true,
+    "test_log": "Syntax OK\n\nUnable to find image 'python:3.12-slim' locally\n3.12-slim: Pulling from library/python\necc510c1e359: Pulling fs layer\n75b6a36c64a1: Pulling fs layer\n6912e23eb445: Pulling fs layer\nbbc5a1223747: Pulling fs layer\nbbc5a1223747: Waiting\n75b6a36c64a1: Verifying Checksum\n75b6a36c64a1: Download complete\n6912e23eb445: Verifying Checksum\n6912e23eb445: Download complete\necc510c1e359: Verifying Checksum\necc510c1e359: Download complete\nbbc5a1223747: Verifying Checksum\nbbc5a1223747: Download complete\necc510c1e359: Pull complete\n75b6a36c64a1: Pull complete\n6912e23eb445: Pull complete\nbbc5a1223747: Pull complete\nDigest: sha256:a6e34c598f2467ed0e9a8d349809fcd8b5c603269512df273a0bb1784edc11b1\nStatus: Downloaded newer image for python:3.12-slim\n\nPrueba funcional: CSV QA FUNCIONAL OK\n\n",
+    "posted": false,
+    "delivered": false
   },
   "notice": "Candidatos públicos; pago y disponibilidad sin verificar. No se contacta a nadie."
 }
