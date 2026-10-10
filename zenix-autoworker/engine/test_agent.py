@@ -66,6 +66,17 @@ class AgentTests(unittest.TestCase):
                 self.assertEqual(result["files"][0]["path"],"zenix-autoworker/examples/clean_csv.py")
                 self.assertEqual(mocked.call_args.args[2]["model"],"nvidia/nemotron-3.5-lightning:free")
 
+    def test_qa_repairs_invalid_python_once(self):
+        broken={"choices":[{"message":{"content":"def broken(:\n  pass"}}]}
+        fixed={"choices":[{"message":{"content":"def main():\n    print(1)\n"}}]}
+        with tempfile.TemporaryDirectory() as tmp:
+            with patch.object(agent,"OUT",Path(tmp)):
+                with patch.dict(os.environ,{"OPENROUTER_API_KEY":"test-dummy"}):
+                    with patch.object(agent,"api",side_effect=[broken,fixed]) as mocked:
+                        result=agent.qa_python_one_file({"body":"Write a python script"})
+                        self.assertEqual(mocked.call_count,2)
+                        self.assertIn("def main",result["files"][0]["content"])
+
     def test_paid_model_rejected(self):
         with patch.dict(os.environ,{"OPENROUTER_API_KEY":"test-dummy","AUTO_WORKER_MODEL":"openai/gpt-4"}):
             with self.assertRaises(ValueError):
