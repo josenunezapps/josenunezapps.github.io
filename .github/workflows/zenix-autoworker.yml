@@ -1,5 +1,5 @@
 name: Zenix AutoWorker Agent
-# AI smoke tests use our own GitHub QA issue; submissions stay disabled.
+# QA verification: free structured coding call; never post to third parties.
 on:
   workflow_dispatch:
     inputs:
