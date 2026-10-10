@@ -37,6 +37,8 @@ jobs:
         run: python zenix-autoworker/engine/marketplace.py
       - name: Filter BountyBoard listings by explicit AI-agent permission
         run: python zenix-autoworker/engine/bountyboard.py
+      - name: Build autonomous shortlist for human review, no external submissions
+        run: python zenix-autoworker/engine/autopilot.py --once --reuse-snapshots
       - name: Complete and verify real CSV processing task
         run: python zenix-autoworker/engine/agent.py --demo
       - name: Optional AI coding attempt in isolated Docker
