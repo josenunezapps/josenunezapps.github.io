@@ -26,7 +26,7 @@ Los proveedores de IA pueden cobrar segun modelo. GitHub Models cerro en julio d
 - Las validaciones actuales revisan sintaxis basica Python/JSON, NO garantizan que una correccion funcione.
 - Si Docker no esta disponible, la verificacion se marca como incompleta.
 - No hay postulacion ni entrega automatica: estan bloqueadas por diseño.
-- El flujo programado de GitHub Actions puede demorarse o suspenderse por inactividad.
+- GitHub Actions se utiliza aqui solo para pruebas de desarrollo bajo demanda, no como un servicio comercial permanente. El modo continuo debera ejecutarse en infraestructura apta para ello.
 
 ## Archivos
 engine/agent.py: buscador y ejecutor real.
