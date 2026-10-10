@@ -1,0 +1,73 @@
+name: Zenix AutoWorker - Approval QA
+on:
+  workflow_dispatch:
+    inputs:
+      review_action:
+        description: "Manual review state only. No external messages."
+        required: true
+        default: "prepare"
+        type: choice
+        options:
+          - prepare
+          - approve_apply
+          - mark_applied
+          - ready_delivery
+          - approve_delivery
+          - mark_delivered
+      issue_url:
+        description: "Public GitHub issue URL"
+        required: true
+        type: string
+      title:
+        description: "Task title for preparing review"
+        required: false
+        type: string
+      delivery_sha256:
+        description: "Reviewed deliverable SHA256, for ready_delivery only"
+        required: false
+        type: string
+      evidence_url:
+        description: "URL proof of manually posted action"
+        required: false
+        type: string
+permissions:
+  contents: write
+concurrency:
+  group: autoworker-approval-qa
+  cancel-in-progress: false
+jobs:
+  review:
+    if: ${{ github.actor == 'josenunezapps' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test review state machine
+        run: python -m unittest discover -s zenix-autoworker/engine -p "test_reviews.py" -v
+      - name: Record review without contacting third parties
+        env:
+          REVIEW_ACTION: ${{ inputs.review_action }}
+          ISSUE_URL: ${{ inputs.issue_url }}
+          TITLE: ${{ inputs.title }}
+          SHA: ${{ inputs.delivery_sha256 }}
+          EVIDENCE: ${{ inputs.evidence_url }}
+          AUTHENTICATED_ACTOR: ${{ github.actor }}
+        run: |
+          if [ "$REVIEW_ACTION" = "prepare" ]; then
+            python zenix-autoworker/engine/reviews.py --prepare-url "$ISSUE_URL" --title "$TITLE"
+          else
+            python zenix-autoworker/engine/reviews.py --url "$ISSUE_URL" --action "$REVIEW_ACTION" --actor "$AUTHENTICATED_ACTOR" --sha256 "$SHA" --evidence "$EVIDENCE"
+          fi
+      - name: Save audit trail to repository
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add zenix-autoworker/data/reviews.json
+          if ! git diff --cached --quiet; then
+            git commit -m "test(autoworker): record human review decision [skip ci]"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
