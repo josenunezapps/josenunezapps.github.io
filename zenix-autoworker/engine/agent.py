@@ -166,21 +166,33 @@ def qa_python_one_file(issue):
          "eliminar filas enteramente vacias y duplicados exactos, manejar CSV con comillas. "
          "ISSUE:\n"+str(issue.get("body",""))[:1800]}],
         "temperature":0.1,"max_tokens":3000,"reasoning":{"enabled":False}}
-    data=api("https://openrouter.ai/api/v1/chat/completions",secret,request)
-    choice=(data.get("choices") or [{}])[0]
-    answer=(choice.get("message") or {}).get("content") or ""
-    answer=answer.strip()
-    if not answer:raise RuntimeError("El modelo de QA devolvio codigo vacio (fin="+str(choice.get("finish_reason"))+")")
-    fence=chr(96)*3
-    if answer.startswith(fence):
-        lines=answer.splitlines()
-        if lines and lines[0].startswith(fence):lines=lines[1:]
-        if lines and lines[-1].strip().startswith(fence):lines=lines[:-1]
-        answer="\n".join(lines).strip()
-    try:ast.parse(answer)
-    except SyntaxError as exc:raise RuntimeError("Codigo IA generado no valido: "+str(exc)) from None
-    return {"summary":"Programa Python producido por IA para QA; falta revision funcional humana",
-        "model":model_id,"files":[{"path":"zenix-autoworker/examples/clean_csv.py","content":answer}]}
+    for attempt in range(2):
+        data=api("https://openrouter.ai/api/v1/chat/completions",secret,request)
+        choice=(data.get("choices") or [{}])[0]
+        answer=((choice.get("message") or {}).get("content") or "").strip()
+        if not answer:
+            raise RuntimeError("Modelo gratuito sin codigo (fin="+str(choice.get("finish_reason"))+")")
+        fence=chr(96)*3
+        if answer.startswith(fence):
+            lines=answer.splitlines()
+            if lines and lines[0].startswith(fence):lines=lines[1:]
+            if lines and lines[-1].strip().startswith(fence):lines=lines[:-1]
+            answer="\n".join(lines).strip()
+        try:
+            ast.parse(answer)
+            return {"summary":"Programa Python generado por IA; se comprobo sintaxis (no funcionalidad)",
+                "model":model_id,"files":[{"path":"zenix-autoworker/examples/clean_csv.py","content":answer}]}
+        except SyntaxError as exc:
+            OUT.mkdir(parents=True,exist_ok=True)
+            (OUT/("qa_candidato_invalido_"+str(attempt+1)+".py")).write_text(answer,encoding="utf-8")
+            if attempt==1:
+                raise RuntimeError("Tras dos intentos, el codigo IA conserva error de sintaxis: "+str(exc)) from None
+            request["messages"].append({"role":"assistant","content":answer[:10000]})
+            request["messages"].append({"role":"user","content":"El codigo anterior no compila: linea "+
+                str(exc.lineno)+", "+str(exc.msg)+". Reescribilo completo, corregido y mas corto. "+
+                "Responde SOLO codigo Python valido, sin markdown."})
+    raise RuntimeError("No se obtuvo codigo valido")
+
 
 def verify_inside_container(folder):
     if not shutil.which("docker"):return False,"Docker no instalado, pruebas no ejecutadas"
