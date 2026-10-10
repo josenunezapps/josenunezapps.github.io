@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-10-10T23:21:09+00:00",
+  "generated_at": "2026-10-10T23:21:31+00:00",
   "opportunities": [
     {
       "id": 5752205252,
@@ -177,6 +177,21 @@
       "updated_at": "2026-10-10T23:19:31Z"
     },
     {
+      "id": 5785823459,
+      "title": "[Astra] Full repository review: architecture, security, runtime wiring, and integration behavior",
+      "url": "https://github.com/FlossWare/claude-ensemble/issues/349",
+      "description": "## Purpose\n\nPerform a systematic review of the whole Claude Ensemble repository, not only a test-inventory sweep, and use evidence from the current source and executable tests to identify defects before returning to GA work.\n\n## Review order\n\n1. **Runtime/deployment correctness:** canonical install defaults, systemd units, service URLs/sockets, development checkout vs installed runtime, startup ordering, health checks, upgrade/uninstall behavior, and preservation of user state.\n2. **End-to-end integrations:** Memory, Learning, Thompson, Graph, gateway REST forwarding, Alert, Messenger, Claude Code hooks, Knowledge/context retrieval, operational metrics/cost tracking, provider registry, arbitration, collaboration, reviewer MCP, Code Search MCP, caching, compression, and workflow skills.\n3. **Correctness and failure semantics:** persistence/retry/idempotency, error/status mapping, timeouts, shutdown, concurrency, missing dependencies, and partial failures.\n4. **Security/privacy:** credentials and logging, auth boundaries, external-data opt-in, SSRF/path handling, PR mutation authorization, loopback binding, input validation, and dependency/supply-chain risks.\n5. **Architecture and ma",
+      "skills": [
+        "api",
+        "documentation"
+      ],
+      "score": 20,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:21:19Z"
+    },
+    {
       "id": 5796181090,
       "title": "Add agent and bot platform directories",
       "url": "https://github.com/pooriaarab/skills/issues/566",
@@ -234,21 +249,6 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T23:19:56Z"
-    },
-    {
-      "id": 5785823459,
-      "title": "[Astra] Full repository review: architecture, security, runtime wiring, and integration behavior",
-      "url": "https://github.com/FlossWare/claude-ensemble/issues/349",
-      "description": "## Purpose\n\nPerform a systematic review of the whole Claude Ensemble repository, not only a test-inventory sweep, and use evidence from the current source and executable tests to identify defects before returning to GA work.\n\n## Review order\n\n1. **Runtime/deployment correctness:** canonical install defaults, systemd units, service URLs/sockets, development checkout vs installed runtime, startup ordering, health checks, upgrade/uninstall behavior, and preservation of user state.\n2. **End-to-end integrations:** Memory, Learning, Thompson, Graph, gateway REST forwarding, Alert, Messenger, Claude Code hooks, Knowledge/context retrieval, operational metrics/cost tracking, provider registry, arbitration, collaboration, reviewer MCP, Code Search MCP, caching, compression, and workflow skills.\n3. **Correctness and failure semantics:** persistence/retry/idempotency, error/status mapping, timeouts, shutdown, concurrency, missing dependencies, and partial failures.\n4. **Security/privacy:** credentials and logging, auth boundaries, external-data opt-in, SSRF/path handling, PR mutation authorization, loopback binding, input validation, and dependency/supply-chain risks.\n5. **Architecture and ma",
-      "skills": [
-        "api",
-        "documentation"
-      ],
-      "score": 20,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:19:30Z"
     },
     {
       "id": 5796128106,
@@ -704,7 +704,7 @@
   "warnings": [],
   "execution": {
     "status": "demo_completed",
-    "timestamp": "2026-10-10T23:21:09+00:00",
+    "timestamp": "2026-10-10T23:21:31+00:00",
     "kind": "csv_cleaning",
     "result": {
       "processed_rows": 3,
