@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-10-10T20:34:30+00:00",
+  "generated_at": "2026-10-10T20:37:54+00:00",
   "opportunities": [
     {
       "id": 5387618577,
@@ -204,37 +204,22 @@
       "updated_at": "2026-10-10T20:00:24Z"
     },
     {
-      "id": 5779937201,
-      "title": "Compute board — shared GPU pods (uor-pod)",
-      "url": "https://github.com/UOR-Foundation/uor-r4/issues/2037",
-      "description": "Automatic mirror of the `uor-pod` ledger (`~/.local/share/uor-r4/compute/ledger.jsonl`). Successor of #1750. **Post only ledger lines and capacity reports here.** Discuss work on the milestone issues of the tracker #2028.\n\n### Owner rules (5–7 October)\n- **Caps**, all labs together: at most 4 running pods and $8/h. No new spending class.\n- **Ladder:** without `--gpu`, `uor-pod up` tries 2×RTX 5090, then 2×4090, then 2×PRO 6000, then one GPU of each.\n  - Datacenters: EUR-NO-1 (canonical volume), EU-RO-1, EUR-IS-1, then allowlisted regions by stock.\n  - Pods outside EUR-NO-1 are non-canonical. They get their data from the private HF store `caseyallard/uor-r4-store` and must archive results before `down`.\n- **Leases:**\n  - Identity is lab + session. Run `uor-pod status` first and share before you create.\n  - Lease with `--hours` covering the whole job plus margin, and renew it. An expiring lease is never a reason to stop a live job.\n  - Only an expired lease may be taken over. Release when done, then `down` if nobody else holds the pod.\n- **Storage:** durable output only on `/workspace`. Don't keep stopped pods as storage. Move downloaded results to iCloud with `cloud-store put`.\n- Fu",
+      "id": 5784622276,
+      "title": "Spend the work Team plan's monthly Claude API credits: $20 allowance, burst the unused pool before the cycle ends",
+      "url": "https://github.com/mkny13/mahler/issues/903",
+      "description": "> **Original request:** ## Problem\n> \n> Mike's work Team plan now comes with pooled monthly **Claude API credits**: $260/month today ($20 per Standard seat, $100 per Premium seat, pooled, capped at $500). The amount changes with seat count. Docs: https://platform.claude.com/docs/en/about-claude/api-credits-for-subscribers\n> \n> Mike's policy for Mahler:\n> \n> 1. **Allowance.** Mahler may spend up to **$20 per billing cycle** of these credits whenever it likes, like any other quota pool.\n> 2. **Burst at the end of the cycle.** Credits expire at the end of each billing cycle and **don't roll over**. Near the end of the cycle, Mahler should spend whatever is left in the pool, beyond its $20, before it expires. This works like D23 (burst before a Claude window resets) and D35 (spend banked Codex resets before they expire).\n> \n> ## Facts from the docs that shape the design\n> \n> - **Claude Code is NOT covered.** If an org holds only these credits, a Claude Code session fails with \"Credit balance too low\". The credits do cover the Claude API, the **Claude Agent SDK**, Managed Agents and the playground. So the existing `claude` platform can't spend them just by setting `ANTHROPIC_API_KEY`. T",
       "skills": [
-        "json"
+        "api"
       ],
       "score": 35,
       "amount_mentions": [
-        "$8"
+        "$20",
+        "$260",
+        "$20"
       ],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:34:14Z"
-    },
-    {
-      "id": 5791884291,
-      "title": "AUD: recuperar plan original desde pestañas, veto Nemotron y mínimo de inferencia (USD 0)",
-      "url": "https://github.com/simondalmasso/0liviA/issues/97",
-      "description": "# AUD — Recuperación del plan original 0liviA / inventario de pestañas, 2026-10-10\n\n**Carácter:** handoff auditable al ARQ paralelo. **No reemplaza `docs/ARCHITECTURE.md` ni autoriza facturación, modelo nuevo, merge, deploy o mutación OCI.**\n\n## Restricciones firmes\n\n1. **NEMOTRON PROHIBIDO**: nunca seleccionarlo, recomendarlo, cargarlo, probarlo ni usarlo como fallback; excluir `@cf/nvidia/nemotron-3-120b-a12b` y todo `nemotron*` en selección/presets. Si existe en alguna configuración, remover mediante PR con test que rechace la ruta ANTES del gasto/llamada.\n2. Cloud-first, sin PC propietaria en el plano de cómputo; browser/mobile B&W ultraliviano; voz `es-AR`; propietario único; Core Python + SQLite WAL/FTS5 en OCI; memoria/jobs durables; código/procedimientos canónicos en GitHub.\n3. **USD 0 recurrente real / sin overages.** No ampliar cuenta Paid ni convertir créditos de prueba en gasto; no basarse sólo en `25 requests/day` como límite monetario. Proveedores falibles deben detenerse sin fallback facturable. Ningún secreto en browser/Git.\n4. Mínimas llamadas: 0 llamadas para UI, memoria local, FAQs deterministas y tareas de SQLite; 1 inferencia externa por turno normal; sólo segu",
-      "skills": [
-        "python"
-      ],
-      "score": 35,
-      "amount_mentions": [
-        "usd 0",
-        "usd 0"
-      ],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:33:26Z"
+      "updated_at": "2026-10-10T20:36:45Z"
     },
     {
       "id": 5690041095,
@@ -309,22 +294,6 @@
       "updated_at": "2026-10-10T20:20:59Z"
     },
     {
-      "id": 3746059973,
-      "title": "[Due for payment 2026-09-22] [$250] Android - Split - Percentage input has to be focused twice to be able to edit it.",
-      "url": "https://github.com/Expensify/App/issues/78089",
-      "description": "If you haven’t already, check out our [contributing guidelines](https://github.com/Expensify/ReactNativeChat/blob/main/contributingGuides/CONTRIBUTING.md) for onboarding and email contributors@expensify.com to request to join our Slack channel!\n___\n\n**Version Number:** 9.2.82-0\n**Reproducible in staging?:** Yes\n**Reproducible in production?:** N/A - new feature, doesn't exist in prod\n**If this was caught during regression testing, add the test name, ID and link from BrowserStack:** https://github.com/Expensify/App/pull/74652\n**Email or phone of affected tester (no customers):** ibellicotest+2230@gmail.com\n**Issue reported by:** Applause Internal Team\n**Bug source:** Exploratory - Significant User Experience Deterioration\n**Device used:** Motorola MotoG60 / Android 12 (Hybrid app)\n**App Component:** Money Requests\n\n## Action Performed:\nPrerequisite: Account has at least one workspace.\n1. Open the Expensify app.\n2. Open any workspace chat.\n3. Create a manual expense.\n4. Open the just created expense.\n5. Tap on \"More\" > \"Split\"\n6. Switch to \"Percentage\" tab.\n7. Tap on the percentage input of any split to edit it.\n8. Note that keyboard opens but input is automatically unfocused.\n9. Tap",
-      "skills": [
-        "bug"
-      ],
-      "score": 35,
-      "amount_mentions": [
-        "$250"
-      ],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:20:25Z"
-    },
-    {
       "id": 5662643363,
       "title": "refactor(api): remove db/tx handle passing and shrink transactions in billing and IM integrations",
       "url": "https://github.com/okou-ai/okou/issues/37510",
@@ -338,7 +307,23 @@
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:32:41Z"
+      "updated_at": "2026-10-10T20:37:48Z"
+    },
+    {
+      "id": 5734515632,
+      "title": "COORD BOARD (controllers)",
+      "url": "https://github.com/chetan-anand-hub/Lazytopper-Production/issues/973",
+      "description": "Mirror of Desktop/diff/COORD/BOARD.md (every board line is also a comment here). This description is the **STATUS SNAPSHOT**, rewritten by CI-1 (coordinator). Rules: LANE_RULES v1.1 · DISPATCH_PACK v1.3 · DECISIONs 1–26 (mirrored in BOARD.md).\n\n## STATUS SNAPSHOT — 2026-10-10T19:20Z\n**Trunk** `543177db` — fix(worksheet): PENDING-UPLOAD-1 PR-2 - a downloaded worksheet gets a pending record + sav\n**Production** version.json `543177db` · /api/health HTTP 200\n**Sessions:** live = CI-1, A, B, C1 · parked = C3 · C2 starts after MERGE #1034 · Sub-agent models OK? ✅ (verifiers Opus; mechanical Sonnet low)\n\n### Controllers (pack v1.3 §2; DECISION 19/23/25/26)\n| Role | State | Lane · branch/PR | State of lane | Next (in order) |\n|---|---|---|---|---|\n| **CI-1** (coordinator) | LIVE (eebaebbd) | Merge queue DONE: #1036 88333796 · #1038 20a534c0 · #1034 3be3e3da (all LIVE PASS) | queue complete; now coordinating (board 15-20 min, §3 collisions) | sweep #2 Mon 12 Oct · hourly summary + OWNER-BATCH |\n| **A** | FRESH A TAKEN OVER 17:0xZ | #1061 PENDING-UPLOAD-1 PR-1 open (lane-overlap re-run) · PR-2 option B (D50a) | #1037/#1046/#1013 temp-closed | PR-2 → TOPIC-FIX-1 (D50, before #1037; eval-gate",
+      "skills": [
+        "json",
+        "api",
+        "script"
+      ],
+      "score": 30,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:36:51Z"
     },
     {
       "id": 5795016381,
@@ -371,19 +356,19 @@
       "updated_at": "2026-10-10T20:23:39Z"
     },
     {
-      "id": 5491358901,
-      "title": "[bounty] 真机对照测量：装了 MisakaNet 的 agent 是否真的更少重复犯错（要原始日志）",
-      "url": "https://github.com/Ikalus1988/MisakaNet/issues/1819",
-      "description": "> 这是本轮评估（`docs/maintainer/strategic-assessment-2026-09-18.md`）得出的**唯一一个**能改变结论的缺口：\n> 仓库里所有\"装了 MisakaNet 的 agent 会更少重复犯错\"的说法，目前**没有任何一项测量**支持。\n> 现有的两个 benchmark 是占位符（`bench/self-healing/run_benchmark.py:137-140` 里\n> `success = with_misakanet  # Placeholder — real implementation needed`；`scripts/lesson_reuse_bench.py:4`\n> import 一个不存在的 `agents.YourAgent`），README 的 21%→43% 量的是\"课程修复命令关键词有没有出现在**模型回复文本**里\"\n> （`scripts/benchmark_workers_ai.py:129-152` 的 `score_response()`），而维护者自己的评估写着\n> 「我们对遵循率**没有任何测量**」（`docs/maintainer/setup-value-assessment-2026-09-16.md:73-74`）。\n\n## 要收集什么\n\n**任务级的对照数据**：同一个 agent、同一套任务，装 MisakaNet 与不装各跑一遍，按**任务是否成功**评分。\n\n## 硬性验收条件（不降标准；缺任意一条即不接受）\n\n1. **先写规则再跑**：任务集、每题的\"成功判据\"（测试通过 / 文件状态 / 退出码）、跑法，**先在 issue 里贴出来**，\n   跑完不许改。改过的提交另起一条。\n2. **环境写全**：OS 与版本、助手（Claude Code / Codex / …）与版本、Node 与 Python 版本、模型名与版本、\n   任务集里每条任务的来源。缺任何一项即不接受。\n3. **两臂对称**：同一模型、同一任务集、同一机器；\"装\"这一臂必须由 `npx @misaka-net/misakanet-setup`\n   真实安装（附 `--report` 输出），\"不装\"这一臂必须是干净家目录（附同一份 `--report` 输出以证明没装）。\n4. **评分对象是任务结果**，不是回复文本：不允许用\"回复里出现了课程关键词\"当成功判据\n   （那正是现有 benchmark 的问题）。\n5. **提交原始日志**，不接受人工摘要：两臂每一题的完整 transcript 与完整 stderr（可以脱敏密钥/路径，\n   但要保留工具调用的时间线）。日志里必须能看出**哪一次工具调用**是 `misakanet_search`（或它缺席）。",
+      "id": 5518867774,
+      "title": "OneCompany permanent Mistral Vibe cloud wake bus — owner dispatch only",
+      "url": "https://github.com/NTinkicht/OneCompany/issues/130",
+      "description": "Permanent, repository-scoped, GitHub-hosted Mistral wake bus. Do not close or reuse for unrelated providers. OneCompany native Work Units, current lease, exact SHA and dispatch policy are authority, not this issue's free-form comments. Initial `@mistral-vibe` wake is read-only, advisory and non-gating; it may inspect bounded source and report test ideas/failure analysis without writing code. It MUST fail closed when `MISTRAL_API_KEY` or subscription/PAYG-disabled guard is absent. No provider credentials in this issue. Full leased developer, binding reviewer and test-author lanes need separate qualification; no Codespace, laptop or open browser session may be required.",
       "skills": [
-        "python",
+        "api",
         "script"
       ],
-      "score": 30,
+      "score": 20,
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:20:55Z"
+      "updated_at": "2026-10-10T20:37:09Z"
     },
     {
       "id": 5438226799,
@@ -398,52 +383,7 @@
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:33:34Z"
-    },
-    {
-      "id": 5792401648,
-      "title": "fix(frontend): repair demo and real workspace UI regressions",
-      "url": "https://github.com/whritou/WhitePlate/issues/65",
-      "description": "Scope: fix the reported demo and real frontend regressions using the existing Lovable design and API contracts.\n\nAcceptance criteria:\n- Remove unused dark mode and fix hover/active contrast.\n- Prevent long product copy and shop/Studio previews from overflowing on mobile.\n- Widen product editor sheets; create categories inside the product form without nested modals.\n- Align history filters, padding, three page-scoped KPIs and CSV export, including empty state.\n- Make demo locale changes work and use authentic Google/Microsoft provider logos.\n- Preserve organization context in overview/navigation; show restaurant cards with entry links.\n- Provide restaurant settings and a storefront visit shortcut without inventing persisted capabilities.\n- Verify EN/FR, keyboard and responsive flows, unit tests, lint, types, formatting and build; record limitations.\n\nRelated existing roadmap: S1-S5 restaurant settings and D4 storefront shortcuts remain separate backend work. Theme publication T3 remains separate.",
-      "skills": [
-        "csv",
-        "api"
-      ],
-      "score": 20,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:32:41Z"
-    },
-    {
-      "id": 5785823459,
-      "title": "[Astra] Full repository review: architecture, security, runtime wiring, and integration behavior",
-      "url": "https://github.com/FlossWare/claude-ensemble/issues/349",
-      "description": "## Purpose\n\nPerform a systematic review of the whole Claude Ensemble repository, not only a test-inventory sweep, and use evidence from the current source and executable tests to identify defects before returning to GA work.\n\n## Review order\n\n1. **Runtime/deployment correctness:** canonical install defaults, systemd units, service URLs/sockets, development checkout vs installed runtime, startup ordering, health checks, upgrade/uninstall behavior, and preservation of user state.\n2. **End-to-end integrations:** Memory, Learning, Thompson, Graph, gateway REST forwarding, Alert, Messenger, Claude Code hooks, Knowledge/context retrieval, operational metrics/cost tracking, provider registry, arbitration, collaboration, reviewer MCP, Code Search MCP, caching, compression, and workflow skills.\n3. **Correctness and failure semantics:** persistence/retry/idempotency, error/status mapping, timeouts, shutdown, concurrency, missing dependencies, and partial failures.\n4. **Security/privacy:** credentials and logging, auth boundaries, external-data opt-in, SSRF/path handling, PR mutation authorization, loopback binding, input validation, and dependency/supply-chain risks.\n5. **Architecture and ma",
-      "skills": [
-        "api",
-        "documentation"
-      ],
-      "score": 20,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:32:35Z"
-    },
-    {
-      "id": 5518867774,
-      "title": "OneCompany permanent Mistral Vibe cloud wake bus — owner dispatch only",
-      "url": "https://github.com/NTinkicht/OneCompany/issues/130",
-      "description": "Permanent, repository-scoped, GitHub-hosted Mistral wake bus. Do not close or reuse for unrelated providers. OneCompany native Work Units, current lease, exact SHA and dispatch policy are authority, not this issue's free-form comments. Initial `@mistral-vibe` wake is read-only, advisory and non-gating; it may inspect bounded source and report test ideas/failure analysis without writing code. It MUST fail closed when `MISTRAL_API_KEY` or subscription/PAYG-disabled guard is absent. No provider credentials in this issue. Full leased developer, binding reviewer and test-author lanes need separate qualification; no Codespace, laptop or open browser session may be required.",
-      "skills": [
-        "api",
-        "script"
-      ],
-      "score": 20,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:31:10Z"
+      "updated_at": "2026-10-10T20:35:58Z"
     },
     {
       "id": 5600067058,
@@ -517,48 +457,6 @@
       "updated_at": "2026-10-10T20:19:40Z"
     },
     {
-      "id": 5795047669,
-      "title": "Semantics CLI contracts and cluster read model",
-      "url": "https://github.com/PavloSEO/spiderhead/issues/1298",
-      "description": "One semantics core design: JSON dry-run and preview contract shared by status, import and export, plus a cluster read model with rules-as-data for recommendations. Store and runner change in one branch. Missing signals are null with a reason; the read path makes no paid provider calls.\n\n**Area:** semantics core (CLI, store, cluster, recommendations)\n\n## Checklist\n- [ ] #1208: per-stage state (done, running, failed) and last run time from the runs table in _status\n- [ ] #1208: dry run and request-count estimate for paid stages before confirm_paid; read-only timestamped run journal per project; machine-readable choices for region, engine and query source\n- [ ] #1205: import --dry-run --json (new, already in core, duplicates, group counts, preview rows with applied mapping); XLSX input with sheet selection\n- [ ] #1205: explicit column mapping (query, frequency, group, subgroup, URL, comment); Category / Cluster path parsing; merge policy flag (add, update, replace)\n- [ ] #1205: excel or export --scope all, cluster:<name> or no-landing with --json planned files and row counts; offline tests with a synthetic workbook\n- [ ] #1204: semantics clusters list and cluster show JSON with aggreg",
-      "skills": [
-        "json"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:34:17Z"
-    },
-    {
-      "id": 5602503136,
-      "title": "Build complete source-to-Legacy feature and route acceptance matrix",
-      "url": "https://github.com/MALIEV-Co-Ltd/Legacy.Maliev.Workflows/issues/98",
-      "description": "The source-commit ledger tracks commit disposition but does not prove every migrated service feature and Web/Intranet route works against production-derived local Aspire data. This is an explicit migration completion gate, not a deployment request.\n\nAcceptance:\n- Inventory each Legacy service feature, API, role, entity, background operation, and every Web/Intranet route against the latest committed original source; retain full source SHA, owning Legacy repo, main SHA, status, and exact evidence links.\n- Mark unverified items pending; distinguish source retirement approvals from migrations. Do not infer feature parity from a code mapping, route alias, smoke test, or green unit suite.\n- Record automated customer/employee authentication, permission, CRUD/lifecycle, validation, rollback/retry, cross-service effects, localization, responsive/browser/accessibility, and persisted-data checks as appropriate. Include safe failure/partial-failure evidence and suppress real notifications/payments/analytics in local review.\n- Verify the matrix against live source and each protected Legacy main, with a check that rejects missing routes/features or unsupported completion claims. Link per-service",
-      "skills": [
-        "api"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:34:04Z"
-    },
-    {
-      "id": 5795044893,
-      "title": "Track paid tool spend during subscription runs before final ledgering",
-      "url": "https://github.com/kgforais1/k-dense-byok-mcp/issues/53",
-      "description": "Greptile's outside-diff comment on PR #51 identifies a live budget-accounting gap in `server/src/agent/run-pipeline.ts`.\n\n`trackInFlightRun` currently registers only when the chat model's billing counts toward the cap. Separate tool-model usage is collected at `turn_end` and ledgered after the whole run finishes. A subscription chat can therefore complete a paid OpenRouter image call and admit further paid work against an outdated committed total before final ledgering.\n\nThis is distinct from the image-save failure fix in PR #51: preserving returned usage ensures final accounting, but does not make completed tool charges visible during the run.\n\nFollow-up:\n- Track completed tool-model spend promptly, including during subscription chats; resolve billing per tool model/credential, failing closed when classification fails.\n- Preserve zero cap-counted spend for subscription/local tool models and avoid double-counting delegated usage already ledgered by the child meter.\n- Test a second image call and another tab's admission before the subscription run ends, plus final ledger reconciliation and failure/compaction paths.\n- Separately assess reservations for parallel paid calls; completion",
-      "skills": [
-        "script"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:33:55Z"
-    },
-    {
       "id": 5794829645,
       "title": "Add an iac plugin for inter-agent messaging over GitHub comments",
       "url": "https://github.com/cjus/cjus-skills/issues/77",
@@ -570,13 +468,41 @@
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:33:54Z"
+      "updated_at": "2026-10-10T20:37:47Z"
     },
     {
-      "id": 5795041838,
-      "title": "Project settings, inbox views and agent permissions",
-      "url": "https://github.com/PavloSEO/spiderhead/issues/1293",
-      "description": "Project-level settings writes and the permission model around agents: project update and delete, saved finding views, inbox question type, action log, spend limits and settings proposals. One owner for job_contracts and project_handlers avoids conflicts.\n\n**Area:** projects settings, inbox and agent policy\n\n## Checklist\n- [ ] #976: project-update command (label, policy, revision) so the ProjSettings save can be enabled; project delete that moves folder to Trash and keeps exports\n- [ ] #976: goal accepted_at and completed_at (check project_inbox_goal list/status/add first; PR #1115 open); project scan schedules; project-level export settings\n- [ ] #978: finish finding-view delete and rename (branch with PR #1135 open, not merged); URL view type in project-view-*; numeric and prefix conditions\n- [ ] #978: inbox 'question' type; action log read via CLI and MCP with paging, filters, client field, denied or pending outcome; verify project access allowlist in job_contracts\n- [ ] #977: monthly spend limit and paid-call confirmation with estimate and approve or deny protocol\n- [ ] #977: enforce agent-closed areas beyond scan operations (keys, spend limits, data deletion, self-granted permi",
+      "id": 5795072633,
+      "title": "AKO: Build verified Docker-ready GCP image and complete uninterrupted Montage58 run",
+      "url": "https://github.com/UFFeScience/akoflow/issues/136",
+      "description": "Prepare a dedicated disposable builder through the Akoflow API, install and verify Docker/runtime tools, sanitize image-specific identity and credentials, stop builder, capture an immutable GCP custom image, and validate fresh worker boot. Register the image for the same 10 e2-micro and 2 e2-medium targets without changing scientific scope or routing. Replan/simulate and submit a new fresh 58-activity real experiment; no activity/workspace recovery may count as uninterrupted success. Preserve diagnostics on failures, fix scoped issues before a new attempt, export final product and stage metrics, and remove disposable paid resources. Local main commits and issues only, no push, per explicit user workflow.",
+      "skills": [
+        "api"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:37:41Z"
+    },
+    {
+      "id": 5603480693,
+      "title": "Rust release: simplify fresh installation and delete remaining production Python",
+      "url": "https://github.com/craigbalding/safeyolo/issues/822",
+      "description": "Parent: [Rust product phase](https://github.com/craigbalding/safeyolo/issues/815). Final integration consumes the policy, host, guest/coordination, credential, workflow and operator-UX results. Start the minimal native install path with the first usable CLI; final release acceptance remains here.\n\n## Preparation update — 3 October 2026\n\nPrepared against master [`f1e16b4f`](https://github.com/craigbalding/safeyolo/commit/f1e16b4f94f1a829da92bef4d875c720dce03cfd) and tracked in [Rust product phase, Project 2](https://github.com/users/craigbalding/projects/2). Craig’s 4 October direction overrides the Project 1 completion gate: start actual #816 P1/P4/P6 coding with minimal #822 installation support no later than 22:07 UTC on 4 October 2026. Preserve unfinished Project 1 work at a safe checkpoint. Refresh the accepted master and relevant issue/PR results at that handoff; this revision is an analysis baseline, not a frozen implementation candidate. Existing acceptance labels and operator decisions remain in force. This preparation marks no case passed.\n\n[#880](https://github.com/craigbalding/safeyolo/pull/880) completed the proxy cutover, [#893](https://github.com/craigbalding/safeyolo",
+      "skills": [
+        "python"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:37:35Z"
+    },
+    {
+      "id": 5770925524,
+      "title": "OWNER DISPATCH: close out Hey Aria physical-test evidence and continue approved ready work",
+      "url": "https://github.com/caosos/CAOSCARE.COM/issues/117",
+      "description": "# Owner-directed CAOSCare coordinator assignment — 2026-10-08\n\n**Owner:** Michael. **Instruction:** \"Beautiful. I like it. Let's give these guys something to do.\"\n\n**For:** The *existing* CAOSCare coordinator on `integration/2026-09-27`. This is issue-based owner intake, not a parallel agent, not an unrestricted merge or deployment instruction.\n\n## Evidence Michael has reported from his live desk / eMeet tests\n- **Wake phrase remains \"Hey Aria\"**, not a renamed wake word. Michael is satisfied with that decision and does **not** authorize more generic wake-word naming/lab exploration right now.\n- One recent physical set was **5 wake detections in 6 spoken attempts**, with one missed attempt. This count is owner-reported; identify detector timestamps and session IDs before labeling the exact detector statistic verified.\n- **No unintended wake-ups observed** during the owner's normal conversation / \"area\" utterances to date (not a formal long-duration false-positive rate).\n- Saying goodbye now allows Aria's closing line to play fully and then ends the session. Earlier endings were abruptly cut off; Michael sees the new behavior as improved.\n- Michael expects always-available room voic",
       "skills": [
         "json"
       ],
@@ -584,7 +510,89 @@
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:33:29Z"
+      "updated_at": "2026-10-10T20:37:31Z"
+    },
+    {
+      "id": 5793235147,
+      "title": "ROOT INTAKE — ledger truth, capability-loss recovery, and model-to-Root throughput",
+      "url": "https://github.com/amillimatrix-eng/CARBON-Creation-Hub/issues/31",
+      "description": "# ROOT disposition requested — bounded proposals, no authority change\n\n**Classification requested:** GOVERNANCE-READY RECOVERY / DATA-INTEGRITY + MODEL-TO-ROOT THROUGHPUT\n**Priority recommendation:** P1 recovery enabler, without displacing existing P0 Intake clearance or primary Matrix recovery obligations. Promote only if ROOT determines the finding directly blocks P0 work.\n**Scope:** proposals for ROOT to decide and assign to existing owners. This issue does not itself change Canon, Blue State, mandates, worker ownership, runtime code, CRM truth, or commercial lifecycle.\n\n## Verified current evidence\n\n### A. Opportunities ledger count disagreement\n- Current overdrive/opportunities.json blob: b04be618dccf1fed8405ccd7ff5c4be34d18004d.\n- record_count: **66**.\n- Distinct keys in records: **83**.\n- Difference: **17**.\n- last_run.full_ledger_count: **62**, with last_run.run_at = 2026-10-03T17:42:00Z; last_updated_at = 2026-10-09T13:05:00Z.\n\nDo not overwrite the historical last_run snapshot merely to make it match today's map. The current derived record count and the count captured at the last run are different kinds of truth. The immediate defect is that the field presented as the ledg",
+      "skills": [
+        "json"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:37:28Z"
+    },
+    {
+      "id": 5421716421,
+      "title": "[UI 4.0.2] Finish the icon system for the shared concepts — 1,099 emoji across 174 files",
+      "url": "https://github.com/Jarvichi/jarvs-amazing-web-game/issues/2321",
+      "description": "Narrows #2172 to the part that actually causes cross-screen inconsistency. Second of the two Phase 4 (#2319) foundations.\n\n## Problem\n\n#2172 built the icon system — `ui/icons/Icon.tsx`, `ui/icons/IconSprite.tsx`, 24 names in `ICON_NAMES` — and it never propagated past the title screen.\n\nProduction `.tsx` files (excluding stories and tests) contain **1,099 emoji glyphs across 174 files**.\n\nThe clearest case is the game's primary currency. `<Icon name=\"crystal\">` has **exactly one call site** — `title/titlescreen/TitleIdentityFooter.tsx`. `💎` appears in **25 other files**, including Shop, Collection, Merchant node, Mini-games menu, Home shelf, Hall of Achievements, Bounty board, Daily login and four mini-games.\n\nWorst offenders overall:\n\n| File | Emoji |\n|---|---:|\n| `minigames/FruitMachine.tsx` | 89 |\n| `minigames/CityBuilder.tsx` | 62 |\n| `hub/HubWorld.tsx` | 52 |\n| `mapEditor/EntityInspector.tsx` | 44 |\n| `minigames/TowerDefence.tsx` | 27 |\n| `app/AppOverlays.tsx` | 25 |\n| `screens/MiniGamesMenu.tsx` | 23 |\n| `minigames/HigherOrLower.tsx` | 19 |\n| `screens/ShopScreen.tsx` | 19 |\n\nThis is why screens that are individually fine still don't look like each other: the same concept is d",
+      "skills": [],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:36:48Z"
+    },
+    {
+      "id": 5795063906,
+      "title": "Backlinks, link rel classes and paid-spend gates",
+      "url": "https://github.com/PavloSEO/spiderhead/issues/1310",
+      "description": "Paid DataForSEO calls and the backlink analyzer built on them, plus link rel classification from stored links. Spend gate and backlink calls share dataforseo.py, so one branch. Owner decides spend units (RUB or USD) before the limits slice.\n\n**Area:** DataForSEO spend gate and backlink analyzer\n\n## Checklist\n- [ ] #949: pre-call estimate (cost, query count, cache hits) for paid calls; verify slice 1 (confirm_paid gate) on origin/main, not in this checkout\n- [ ] #949: project and monthly limits enforced in core (units owner decision; core uses spend_ceiling_usd today); spend journal of DataForSEO costs; confirm_paid in CLI and MCP\n- [ ] #999: DataForSEO backlinks, referring_domains, history and domain_pages_summary with cost confirmation and spend journal; backlinks-profile CLI and MCP with project-DB history\n- [ ] #999: merge and dedupe, first and last seen, anchors, referring domains, spam heuristics, disavow export; free sources (Yandex Webmaster, Bing GetUrlLinks, GSC CSV, Ahrefs CSV, Common Crawl)\n- [ ] #999: paid CSV import; direct Ahrefs, Majestic and Moz connectors (lowest priority)\n- [ ] #1040: internal sponsored and ugc registry findings (PR #1143 open); mixed rel-token fi",
+      "skills": [
+        "csv"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:36:28Z"
+    },
+    {
+      "id": 5794349943,
+      "title": "RelayWA International SEO — Master Tracker (12 batches)",
+      "url": "https://github.com/Haider-Shakoori/wa/issues/90",
+      "description": "# RelayWA International SEO — Master Tracker\n**Scope:** English-only global SEO on `relaywa.com`; 8 initial research targets (India, Brazil, Indonesia, Mexico, Colombia, Nigeria, UAE, Pakistan) plus 5 expansion research targets (Saudi Arabia, South Africa, Spain, Germany, UK). Accurate QR-linked/session messaging API positioning. Country pages only when evidenced by genuinely distinct English buyer needs.\n\n## Batch checklist (implement in order unless noted)\n- [x] [Batch 01 — Research & positioning](https://github.com/Haider-Shakoori/wa/issues/78)\n- [x] [Batch 02 — Technical SEO](https://github.com/Haider-Shakoori/wa/issues/79)\n- [x] [Batch 03 — Analytics & conversion instrumentation](https://github.com/Haider-Shakoori/wa/issues/80)\n- [x] [Batch 04 — Performance & CWV](https://github.com/Haider-Shakoori/wa/issues/81)\n- [x] [Batch 05 — English-only global architecture and canonical targeting](https://github.com/Haider-Shakoori/wa/issues/82)\n- [ ] [Batch 06 — Existing English docs and on-page SEO improvements](https://github.com/Haider-Shakoori/wa/issues/83)\n- [ ] [Batch 07 — Integration landing pages](https://github.com/Haider-Shakoori/wa/issues/84)\n- [ ] [Batch 08 — English-only re",
+      "skills": [
+        "api"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:36:19Z"
+    },
+    {
+      "id": 5795062484,
+      "title": "Source connectors: OAuth, bindings, PageSpeed, Telegram",
+      "url": "https://github.com/PavloSEO/spiderhead/issues/1309",
+      "description": "Connecting external sources: GSC OAuth lifecycle, provider verify and readiness, source bindings and discovery, a new read-only Telegram source, and the PageSpeed and CrUX desktop screen. Credential and OAuth code is shared, so one branch. Owner decides secret storage (Keychain vs files).\n\n**Area:** data source connectors and credentials\n\n## Checklist\n- [ ] #964: start action (oauth_flow.create_flow with safe authorization URL and bounded correlation ID, same in CLI and MCP)\n- [ ] #964: callback with state verification and late-callback rejection after cancel or expiry; connected transition with verified timestamps and token expiry; status never connected from configuration alone\n- [ ] #934: provider_verify for yandex_cloud, ga4, metrika, pagespeed, crux and dataforseo (falls through to credential_present today); normalised invalid_grant on refresh and verify\n- [ ] #934: quota and response time in provider readiness; scan-verify integrity and restore from checkpoint; owner decides secret storage backend\n- [ ] #990: sources discover --provider google, yandex or topvisor with a mocked-API test; per-provider auth methods (service account, OAuth, API key, Yandex OAuth, Topvisor key)\n- ",
+      "skills": [
+        "api"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:36:16Z"
+    },
+    {
+      "id": 5760402393,
+      "title": "[P1][TIGERIQ NEWS] Hoàn thiện xuất bản bài/ảnh công khai và tự xác minh tin thật",
+      "url": "https://github.com/newsdayads/tigeriq-ai-lab/issues/4574",
+      "description": "TIGERIQ_JOB_V1\nSOURCE=Owner direct chat 2026-10-08: \"Tôi cần xem kết quả thực tế trên trang chứ không muốn nhìn vào thẻ công việc rồi đoán mò\"\nOWNER_DIRECT=true\nOWNER_POLICY=AUTO\nPRIORITY=P1\nCURRENT_STATE=READY_AUTOMATED_CODING\nTIGERIQ_EXECUTABLE=true\nAUTO_QUEUE=INCLUDED\nCAPABILITY=coding\nEXECUTION_SURFACE=CODING\nAUTONOMOUS_CODE=true\nMUTATION_OWNER=CORE_DYNAMIC_LEASE\nRESOURCE_SCOPE=TIGERIQ_NEWS_PUBLIC_ARTICLE_COVER_LIVE_E2E_V1\nPROJECT_ID=tigeriq-news\nWORK_PACKAGE_ID=news-autonomous-newsroom\nTARGET_REPOSITORY=newsdayads/tigeriq-media\nBASE_BRANCH=main\nRELATED_PARENT=4456\nRELATED_TRACKER=3899\nRELATED_SOAK=3904\nRESULT_INBOX=4426\nONE_RESOURCE_SCOPE_ONE_WRITER=true\nZERO_COST=true\nNO_PAID_COST=true\nNO_CREDENTIAL_CHANGE=true\nNO_SECURITY_BOUNDARY_CHANGE=true\nNO_DESTRUCTIVE=true\nNO_DIRECT_MAIN=true\nNO_PRODUCTION_RELEASE=true\nNO_VERCEL_DEPLOY=true\nNO_APP_CHROME_MUTATION=true\nAPP_CHROME_MUTATION=FORBIDDEN\nNO_CODEX=true\nINDEPENDENT_REVIEW_REQUIRED=true\nKEEP_OPEN_ON_STEP_COMPLETE=true\nLIVE_ACCEPTANCE_REQUIRED=true\nDONE=false\n\n## MỤC TIÊU THỰC TẾ\nTigerIQ News phải tự tìm tin -> xác minh -> viết -> rà soát độc lập -> tạo/đưa ảnh lên nguồn công khai -> xuất bản nội dung tới đúng nguồn website đang ",
+      "skills": [
+        "script"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:35:57Z"
     },
     {
       "id": 5748323491,
@@ -611,20 +619,6 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T20:31:40Z"
-    },
-    {
-      "id": 5781994659,
-      "title": "Temporary coordination: local Gitea/GSD repairs and two cloud dots",
-      "url": "https://github.com/HouMinXi/forge/issues/43",
-      "description": "# Temporary Forge coordination: local repairs and two cloud dots\n\nVersion 2, 2026-10-09. Scope: HouMinXi/forge only. The user authorized temporary publication of this coordination record on GitHub. It does not grant new credentials, resource budgets or execution permissions. Keep it open until the participating tasks finish or the user replaces it.\n\n## Sources and visibility\n\nGitHub is the shared coordination surface. The local agent can also inspect Gitea, the Yinhe tunnel and private GSD evidence; the cloud dots must not assume those resources are visible to them. Local ownership therefore includes Gitea triage, GSD architecture/checkpoints, cross-host acceptance and synchronization.\n\nVerified GitHub snapshot: draft PR [#26](https://github.com/HouMinXi/forge/pull/26) has head `7056f4ec4f2b93bc2a7377cc49e118eec4a7d80b`, base `d153329b9045107e79651894852a79fc9c87785e`, and 91 changed files. The supplied cloud handoff identifies diagnostic branch `ci/baseline-b-4dd7214cf1a24483a42c7e19cfc8ec28` and published diagnostic commit `443870dfb221e89d2d6b1fae172a815f7c0f2e47`. These are different candidates. Read their current tips before acting; a handoff timestamp is not a live status or ",
-      "skills": [
-        "python"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:31:33Z"
     },
     {
       "id": 5795012971,
@@ -760,10 +754,19 @@
   "count": 50,
   "warnings": [],
   "execution": {
-    "status": "work_failed",
-    "timestamp": "2026-10-10T20:37:04+00:00",
-    "issue_url": "https://github.com/josenunezapps/josenunezapps.github.io/issues/1",
-    "error": "La IA devolvio contenido vacio. Modelo: poolside/laguna-s-2.1:free; finalizacion: length"
+    "status": "demo_completed",
+    "timestamp": "2026-10-10T20:37:54+00:00",
+    "kind": "csv_cleaning",
+    "result": {
+      "processed_rows": 3,
+      "output_rows": 2,
+      "duplicates_removed": 1,
+      "verified": true
+    },
+    "files": [
+      "clientes_limpios.csv",
+      "reporte.json"
+    ]
   },
   "notice": "Candidatos públicos; pago y disponibilidad sin verificar. No se contacta a nadie."
 }
