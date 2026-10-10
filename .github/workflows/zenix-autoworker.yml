@@ -35,6 +35,8 @@ jobs:
         run: python zenix-autoworker/engine/agent.py --scan
       - name: Check publicly listed monetary bounties on Algora
         run: python zenix-autoworker/engine/marketplace.py
+      - name: Filter BountyBoard listings by explicit AI-agent permission
+        run: python zenix-autoworker/engine/bountyboard.py
       - name: Complete and verify real CSV processing task
         run: python zenix-autoworker/engine/agent.py --demo
       - name: Optional AI coding attempt in isolated Docker
