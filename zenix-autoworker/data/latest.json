@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-10-10T23:23:06+00:00",
+  "generated_at": "2026-10-10T23:25:16+00:00",
   "opportunities": [
     {
       "id": 5752205252,
@@ -52,6 +52,23 @@
       "updated_at": "2026-10-10T21:39:09Z"
     },
     {
+      "id": 5793425997,
+      "title": "GOV-P02: unblock native Alibaba OCR and external live-release evidence",
+      "url": "https://github.com/TheHalfMoon/Tegara/issues/35",
+      "description": "## Purpose\n\nQualify genuine **native Alibaba OpenCodeReview** and externally verifiable launch evidence for Tegara, without misrepresenting green CI, paid market-data rights, brokerage executions, phone receipt, or independent review. Preserve the repository `TheHalfMoon/Tegara`, signed DCO, normal merge commits, no rebase/force-push, and no live brokerage orders.\n\n## Live evidence — October 10, 2026, Mac\n\n- Head: Draft PR #34, `e9c52006ecda48be05b369c2727e816a4dc68df8`; no local uncommitted changes at the last Mac inspection. `main` has not received the draft stack.\n- All **16 open PRs are Draft** and form one continuous parent-branch chain in order: **#2 → #4 → #6 → #8 → #10 → #14 → #16 → #18 → #20 → #22 → #24 → #26 → #28 → #30 → #32 → #34**. There is no missing base branch or cycle.\n- Each head had successful Python CI; browser e2e succeeded where introduced; CodeQL Python/JS succeeded where those jobs were introduced. The latest head has exact-head quality **38068120882** (Python and TesterArmy e2e PASS) and CodeQL **38068120887** (Python and JavaScript/TypeScript PASS). Local Mac previously passed 329/329 Python tests. **These checks do not mean independent review or live opti",
+      "skills": [
+        "python",
+        "javascript",
+        "typescript",
+        "script"
+      ],
+      "score": 40,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:23:01Z"
+    },
+    {
       "id": 5779937201,
       "title": "Compute board — shared GPU pods (uor-pod)",
       "url": "https://github.com/UOR-Foundation/uor-r4/issues/2037",
@@ -65,7 +82,7 @@
       ],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:22:25Z"
+      "updated_at": "2026-10-10T23:24:41Z"
     },
     {
       "id": 5793089065,
@@ -115,22 +132,6 @@
       "updated_at": "2026-10-10T20:48:54Z"
     },
     {
-      "id": 5796141058,
-      "title": "Agent CLI node-status exits success for an invalid blockchain-list response",
-      "url": "https://github.com/PayRam/payram-scripts/issues/98",
-      "description": "`node-status` reports success when the HTTP-200 blockchain list cannot be decoded or does not have the expected shape. The Python parser failure is swallowed by `|| true`, after which an empty `chains` value is treated as a legitimate empty configuration.\n\nAffected: [`cmd_node_status`, lines 990–999 at current main `8b3b564`](https://github.com/PayRam/payram-scripts/blob/8b3b56487ff2a9f34822ba77bd4d3f78e1db7bf6/setup_payram_agents.sh#L990-L999).\n\nExpected: an invalid list produces a nonzero exit and an explicit inability to determine node health. A valid empty list or genuinely inactive configuration can retain the current success result.\n\nObserved: all four invalid fixtures below exit **0** and print `No active chains configured.`. A script using `node-status` as a health gate therefore receives the same success status as a valid empty configuration, even though no chain health was established.\n\n| Local HTTP-200 fixture | Original exit | Patched exit |\n|---|---:|---:|\n| Valid active BASE chain, running listener and fresh connected node | 0 | 0 |\n| Valid empty list `[]` | 0 | 0 |\n| Valid inactive BASE chain | 0 | 0 |\n| HTML instead of JSON | 0 | 1 |\n| Truncated JSON list | 0 | 1 |\n",
-      "skills": [
-        "python",
-        "json",
-        "script"
-      ],
-      "score": 30,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:14:30Z"
-    },
-    {
       "id": 5662643363,
       "title": "refactor(api): remove db/tx handle passing and shrink transactions in billing and IM integrations",
       "url": "https://github.com/okou-ai/okou/issues/37510",
@@ -147,49 +148,78 @@
       "updated_at": "2026-10-10T23:10:05Z"
     },
     {
-      "id": 5786099311,
-      "title": "Part 2: restore measured credit, price, issuer and dependency evidence for crack tests",
-      "url": "https://github.com/clydigital/alchemy-live-market-desk/issues/697",
-      "description": "## Partition 2 — measured evidence before market-crack alerting\nFollow **PR #696** (Part 1 quantified research tripwires). **Do not duplicate #667** (06:00 Notion AI → canonical handoff), #655 (snapshot provenance tests), or #690/#695 (scheduled research validation fixes).\n\n### Read-only production audit at 10 Oct 2026 ~07:40 MYT\n- `market_series_observations`: 288 rows, 9 series (GLD, QQQ, SPY, TLT, US10Y, US2Y, USDJPY, USO, UUP). **Latest observation date 2026-08-03**. No SMH, XLF, RSP, DXY, HY/IG/CCC OAS, MOVE series in this table. Other market monitor providers may still provide fresher data; map them before changing ingestion.\n- `macro_series_observations`: NFP latest 2026-07; CPI/core CPI/PPI latest 2026-06.\n- `intelligence_evidence` created since 2026-10-08: 41 rows (23 news_report, 9 transcript, 7 market_observation, 2 official_release). **0 observed_value and 0 expected_value** across all 41; 32 non-transcript rows have **no affected_assets**. Some 9 Oct research handoff evidence contains generic website-observation language and old/static MOVE documentation—not a dated MOVE reading.\n- Latest persisted Dossier was as-of 2026-10-07T20:03:56Z; morning/evening scheduled resea",
-      "skills": [
-        "script",
-        "documentation"
+      "id": 5687039740,
+      "title": "実公開完了まで自律実行：既存7工程の続行・Owner公開GO付与済み",
+      "url": "https://github.com/ginisato-hash/zao-rental/issues/47",
+      "description": "> **現行参照先（2026-10-10）**：現在地と残件はコメント [6103023533](https://github.com/ginisato-hash/zao-rental/issues/47#issuecomment-6103023533)（公開完了をゴールにした棚卸し）を正とする。以下の本文中の「現在地」「残件」は履歴として保持する（内容は変更していない）。\n\n# ZAO Rental — 実公開完了までの包括実行指示\n\n## 現行体制 — Owner直接指示による引継ぎ（2026-10-04）\n\n**指揮者／独立統合レビュアー：今回の引継ぎを発行したChatGPTチャット。Primary Implementer／唯一の書込み担当：Claude。** Ownerの直接指示「ここからこのチャットのあなたが指揮者、claudeを実装かかりとして作業を継続する」を適用する。旧Codex／旧指揮タスクの復帰を待たず、既存Mac・同worktree・同branch・PR #49を継承する。\n\n**[Claudeへの現行実行指示・進捗／TODO／前提／ゴールの正本](https://github.com/ginisato-hash/zao-rental/issues/47#issuecomment-5976801764)**。最初の作業は既存Mac final fullの実終了結果回収。新TDレビューとCIはexact066b734でPASS済み。開始再承認、旧タスクへの送信承認待ち、旧Claudeレビュアー制約を再開しない。一般の安全guard・独立レビュー・$5予算・本番前backup等は維持する。\n\n以下の過去記録の「Codex sole writer」「Claude起動不要／reviewer待ち」「旧headのTD FAIL／CI進行中」は、その時点の履歴。本節と最新実行指示が現在の体制・進行状態に優先する。新規課金や本人MFA・鍵custodyを自動承認するものではない。Claudeの実行開始はMacの着手証拠で確認し、Issue更新だけをRUNNINGとしない。\n\n## Owner確定入力・委任方針 — 2026-10-03 14:51:04 UTC\n\nOwner直接回答「開始は12/12で固定しているはずすでに。終了日は3/31、休業日はなし。その他よしなに指示出して」を採用する。**貸出期間2026-12-12〜2027-03-31（両端を含む）、両店舗休業日なし**。価格・Source A/B・共有サイズ・公開GOは再確認しない。以下の合理的な業務/運用判断もOwner委任の範囲で実装担当が確定・適用してよい。受領実数・現物検品・権利・本人の受入完了・鍵別保管・domain所有などの事実は、既存資料/実状態から取得して記録する。\n\n| ",
+      "skills": [],
+      "score": 25,
+      "amount_mentions": [
+        "$5"
       ],
-      "score": 20,
-      "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:22:53Z"
+      "updated_at": "2026-10-10T23:23:03Z"
     },
     {
-      "id": 5785823459,
-      "title": "[Astra] Full repository review: architecture, security, runtime wiring, and integration behavior",
-      "url": "https://github.com/FlossWare/claude-ensemble/issues/349",
-      "description": "## Purpose\n\nPerform a systematic review of the whole Claude Ensemble repository, not only a test-inventory sweep, and use evidence from the current source and executable tests to identify defects before returning to GA work.\n\n## Review order\n\n1. **Runtime/deployment correctness:** canonical install defaults, systemd units, service URLs/sockets, development checkout vs installed runtime, startup ordering, health checks, upgrade/uninstall behavior, and preservation of user state.\n2. **End-to-end integrations:** Memory, Learning, Thompson, Graph, gateway REST forwarding, Alert, Messenger, Claude Code hooks, Knowledge/context retrieval, operational metrics/cost tracking, provider registry, arbitration, collaboration, reviewer MCP, Code Search MCP, caching, compression, and workflow skills.\n3. **Correctness and failure semantics:** persistence/retry/idempotency, error/status mapping, timeouts, shutdown, concurrency, missing dependencies, and partial failures.\n4. **Security/privacy:** credentials and logging, auth boundaries, external-data opt-in, SSRF/path handling, PR mutation authorization, loopback binding, input validation, and dependency/supply-chain risks.\n5. **Architecture and ma",
+      "id": 5438226799,
+      "title": "N5: separately authorized subscription task acceptance (M8-G)",
+      "url": "https://github.com/sushiHex/constructicon/issues/78",
+      "description": "## Outcome\n\nExecute [N5 — separately authorized subscription task acceptance](https://github.com/sushiHex/constructicon/blob/main/docs/plans/milestones/M8-live-executors-rev3.md#n5--separately-authorized-subscription-task-acceptance) of M8 rev 3: one bounded READ lane and a separately authorized WRITE/capture/gate lane through the same owned boundaries, completing only the observed profile's conformance.\n\n## Prerequisites and non-goals\n\nBlocked by N4. Requires explicit operator authorization of the selected binding/provider, model, permitted task data, fixed request/token budget, vendor overage policy and cost ceiling before any model call. If a requested hard spending bound cannot be enforced under that arrangement, stop for a different operator decision; do not promise one from a local token limit. No paid-API fallback and no repeated smokes until a model succeeds. No production provider is published and no conformance hash is invented.\n\n## Acceptance criteria\n\n- [ ] Real subscription-mode execution, model-session TLS/destinations, bounded results and timeout/cancellation are proved through the real launcher, driver, worker and leases.\n- [ ] Deterministic fakes are reused for res",
       "skills": [
         "api",
-        "documentation"
-      ],
-      "score": 20,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:22:18Z"
-    },
-    {
-      "id": 5579705098,
-      "title": "Android no-purchase: on-device tester script (run against a real phone)",
-      "url": "https://github.com/joshualeestone/kosmos/issues/3699",
-      "description": "**What:** a step-by-step phone script that proves the Android app shows no purchase (kosmos #718; kosmos-relay #121, merged as `3558f2e4`), and that plain Chrome still can.\n\n**Where it starts:** a full draft is on branch `play-policy-doc-718-full`, commit `cd9a85417f376143f3f1ded8a3e631c21667c9da`, in `docs/phone-push-go-live.md` Step 5 (the \"No purchase inside the Android app\" item). It went through ten review rounds, and each round found the next edge of a script nobody has run: which account to use, uninstalling the sideloaded build first, a check that could not run in the order written, and more. Liu Kang (2026-09-25) cut it out of the go-live doc and parked it here.\n\n**How to finish it:** correct it against a real phone, not in the abstract. Run each check on a device, fix the wording to what actually happens, then fold the result into the go-live doc. The draft covers four checks:\n- **sideload:** an upload-key APK, after the coordinator deploy and assetlinks are live;\n- **background-return:** leave the app in the background, come back;\n- **Play install:** with a browser bar, before Play's key is in assetlinks.json;\n- **release:** a verified Play install, which gates productio",
-      "skills": [
-        "json",
         "script"
       ],
       "score": 20,
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:21:27Z"
+      "updated_at": "2026-10-10T23:24:46Z"
+    },
+    {
+      "id": 5784542127,
+      "title": "[Hamilton H01][P0] Separate account institution, research subject and peer context",
+      "url": "https://github.com/Gilmore3088/FeeInsight.com/issues/976",
+      "description": "## Current checkpoint — normal Pro fixture and Settings follow-up\n\nCurrent #985 head: a6d1e5e14d2cf4cbbdd77e703e62025582618586; tree49dda0b3ea01f4976601a72fb42f0951d3391e58. User photos exposed the remaining Settings ownership-label contradiction. Twice-reproduced rendered regressions now pass for both admin and normal Pro accounts; Settings selection is explicitly research-only and never a membership grant. Root Settings/actions/peer-set focus35passed; touched lint passed. Full exact-head CI38093261586 SUCCESS: full624passedfiles/5,599passed/4prerequisite skips; agent1,153passed/3prerequisite skips; TypeScript; lint0errors/39inherited warnings; actual pipeline3/3; fee-audience SQL. H01-T09 is checked on this exact head. Normal exact-head preview dpl_2VB67UYJSPi9P4unzkiZjhEXm3my is READY: https://feeschedule-dbrqchyx0-fee-insight.vercel.app .\n\nDependent #988 ordinary merge is preserved at3bbac84437e5e90ce38657ee8cbf0a9e2ab84f17, exact tree77bd2a8c01bf048e31d0bdf41d179f179136feae; same16H02paths. Focus54passed; exact-source application/SQL CI38093416049 SUCCESS:629passedfiles/5,723tests/12prerequisite skips, actual8peer+3pipelineSQL, audienceSQL, agent1,153passed/3prerequisite skips",
+      "skills": [
+        "typescript",
+        "script"
+      ],
+      "score": 20,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:24:18Z"
+    },
+    {
+      "id": 5518867774,
+      "title": "OneCompany permanent Mistral Vibe cloud wake bus — owner dispatch only",
+      "url": "https://github.com/NTinkicht/OneCompany/issues/130",
+      "description": "Permanent, repository-scoped, GitHub-hosted Mistral wake bus. Do not close or reuse for unrelated providers. OneCompany native Work Units, current lease, exact SHA and dispatch policy are authority, not this issue's free-form comments. Initial `@mistral-vibe` wake is read-only, advisory and non-gating; it may inspect bounded source and report test ideas/failure analysis without writing code. It MUST fail closed when `MISTRAL_API_KEY` or subscription/PAYG-disabled guard is absent. No provider credentials in this issue. Full leased developer, binding reviewer and test-author lanes need separate qualification; no Codespace, laptop or open browser session may be required.",
+      "skills": [
+        "api",
+        "script"
+      ],
+      "score": 20,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:24:09Z"
+    },
+    {
+      "id": 5773868633,
+      "title": "Workout Monkeys — shared coordination and Monkey 001 evidence",
+      "url": "https://github.com/bvomstrength-cloud/bvom-strength/issues/38",
+      "description": "# BVOM Workout Monkeys — shared coordination\n\n**Purpose:** This issue is a shared handoff for the ChatGPT planning/review conversation and Codex Cloud. An issue is not a production change or an automatic task trigger.\n\n## Approved boundaries\n- Application: BVOM Strength **v2.9.0**.\n- Approved `main` baseline: `b551f07c5c68e127239de4963c82a8a53bd7a3eb`.\n- Production ZIP SHA-256: `22048220ceb88da2ef19f9c13812f13f976c0b53d6d5d53f6a7555d2cce3c0fe`.\n- Follow `AGENTS.md`, `BVOM_SPEC.md`, `TESTING.md`.\n- Do not change production, commit, push, open PRs, deploy, or touch real user data, Supabase, Stripe, or Strava without separate explicit approval.\n- Run exploration only in an isolated temporary workspace with synthetic storage and mocked external services.\n- Never publish credentials or user data to GitHub (this repository is public).\n\n## Monkey 001 — reported outcome\n- One novice LP/RPT agent; three workouts; two simulated storage restarts.\n- Codex reported **119 passing assertions**, **56 ordered actions**, no confirmed application bug, and no repository changes.\n- This is a **Codex-reported result**, not independently re-executed by the reviewer.\n- Original evidence ZIP remains in the",
+      "skills": [
+        "bug",
+        "script"
+      ],
+      "score": 20,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:23:47Z"
     },
     {
       "id": 5696972941,
@@ -203,51 +233,22 @@
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:20:10Z"
+      "updated_at": "2026-10-10T23:23:27Z"
     },
     {
-      "id": 3825637122,
-      "title": "When using multiline examples the docs generator breaks",
-      "url": "https://github.com/SkriptLang/Skript/issues/8383",
-      "description": "### Skript/Server Version\n\n```markdown\nN/A\n```\n\n### Bug Description\n\nWhen using multiline java strings in examples on functions the docs generator seems to mess up and loses indentions leading to syntax joining together on a single line (see image)\n\n### Expected Behavior\n\nSkript to properly handle newlines & indentions when using multiline string in function examples\n\n### Steps to Reproduce\n\nhttps://docs.skriptlang.org/docs.html?search=#fromBase\n\n### Errors or Screenshots\n\n<img width=\"1546\" height=\"548\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4dd1aa2a-56d2-44db-b5de-2ac4d1f31f05\" />\n\n### Other\n\nThis issue is currently persistent on `location` and `fromBase` function no other functions seem to use `\"\"\"`\n\n### Agreement\n\n- [x] I have read the guidelines above and affirm I am following them with this report.",
+      "id": 5786099311,
+      "title": "Part 2: restore measured credit, price, issuer and dependency evidence for crack tests",
+      "url": "https://github.com/clydigital/alchemy-live-market-desk/issues/697",
+      "description": "## Partition 2 — measured evidence before market-crack alerting\nFollow **PR #696** (Part 1 quantified research tripwires). **Do not duplicate #667** (06:00 Notion AI → canonical handoff), #655 (snapshot provenance tests), or #690/#695 (scheduled research validation fixes).\n\n### Read-only production audit at 10 Oct 2026 ~07:40 MYT\n- `market_series_observations`: 288 rows, 9 series (GLD, QQQ, SPY, TLT, US10Y, US2Y, USDJPY, USO, UUP). **Latest observation date 2026-08-03**. No SMH, XLF, RSP, DXY, HY/IG/CCC OAS, MOVE series in this table. Other market monitor providers may still provide fresher data; map them before changing ingestion.\n- `macro_series_observations`: NFP latest 2026-07; CPI/core CPI/PPI latest 2026-06.\n- `intelligence_evidence` created since 2026-10-08: 41 rows (23 news_report, 9 transcript, 7 market_observation, 2 official_release). **0 observed_value and 0 expected_value** across all 41; 32 non-transcript rows have **no affected_assets**. Some 9 Oct research handoff evidence contains generic website-observation language and old/static MOVE documentation—not a dated MOVE reading.\n- Latest persisted Dossier was as-of 2026-10-07T20:03:56Z; morning/evening scheduled resea",
       "skills": [
-        "bug",
-        "script"
+        "script",
+        "documentation"
       ],
       "score": 20,
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:19:56Z"
-    },
-    {
-      "id": 5796128106,
-      "title": "[LAUNCH-001][P0][Office] Establish fresh read-only state projection and bounded signal receipts",
-      "url": "https://github.com/sovereign-codex/Tyme-Lab/issues/55",
-      "description": "# TYME-HALL-LAUNCH-001 — Office Circulation\n**Priority:** P0 · **Requested evidence target:** 2026-10-17 · **State:** COMMISSIONED / OPEN; completion not assumed.\n**Accountable technical owner:** @sovereign-codex. **Independent reviewer:** unassigned, required before gate closure. **Governing command:** [Notion TYME-HALL-LAUNCH-001](https://app.notion.com/p/3f5c51d54b758197a92ff59d2c203045) · **Central dependency ledger:** [Codex-control-center #15](https://github.com/sovereign-codex/Codex-control-center/issues/15).\n\n## Existing baseline\nPublic `Codex-interface-/office/state.json` snapshot_id from Sep 8; Oct 9 BRIDGE-INTAKE-001 confirms shadow receipts but missing production scheduler evidence; Tyme-Lab PR #52, #53 open.\n\n## Outcome requested\nMap Notion Office truth to a reviewed timestamped PUBLIC projection without promoting private data or implying live automation. Separate snapshot generation, successful persistence, review, and public projection.\n\n## Dependencies and boundaries\nLC-02 current deployment mapping; PR #52 Notion read-provider review and stable scope gate; Phase 2 monitor producer/receipt identity must be independently attributable.\n\n## Acceptance evidence / review",
-      "skills": [
-        "json",
-        "automation"
-      ],
-      "score": 20,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:12:30Z"
-    },
-    {
-      "id": 5796125913,
-      "title": "Pin the remaining GitHub Actions to full commit SHAs",
-      "url": "https://github.com/elsa-workflows/elsa-core/issues/8705",
-      "description": "## Problem\n37 `uses:` references in 9 workflows point at moving tags (`@vN`) or `@main`, while about 150 others are already pinned. One of them, `NuGet/login@v1`, runs in the nuget.org publish job. That job's own comment says every third-party action in it is pinned to a commit SHA, so that a retargeted tag cannot substitute the composite action before it receives the credential.\n\n## Evidence\n- `grep -rnE '^[[:space:]]*-?[[:space:]]*uses:' .github | grep -v 'uses: *\\./' | grep -vE '@[0-9a-f]{40}'` finds 37 refs in 9 files. 30 remain once the dead-workflow deletion lands:\n  - `packages.yml` (19):\n    - checkout@v4 at lines 70/157/260/331\n    - setup-dotnet@v4 at 73/160/263/359\n    - cache@v4 at 83/170\n    - upload-artifact@v4 at 146/238/245/287/367\n    - download-artifact@v4 at 268\n    - upload-pages-artifact@v3 at 294\n    - `NuGet/login@v1` at 445\n    - deploy-pages@v4 at 472\n  - `docker-ca.yml` (3): lines 49/52/60\n  - `bounty.yml` (3): checkout@v2 at 13, `jaywcjlove/github-action-read-file@main` at 17, github-script@v7 at 22\n  - `copilot-setup-steps.yml` (2): lines 14/17\n  - `pr.yml` (3): lines 39/43/48\n- The comment at `packages.yml:416-419` says every action in the job is pinned",
-      "skills": [
-        "script"
-      ],
-      "score": 20,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:12:08Z"
+      "updated_at": "2026-10-10T23:22:53Z"
     },
     {
       "id": 5767603643,
@@ -278,258 +279,18 @@
       "updated_at": "2026-10-10T21:09:38Z"
     },
     {
-      "id": 5696973317,
-      "title": "Research: establish explicit hardness and binding claims beyond regression evidence",
-      "url": "https://github.com/rickyjreyes/Wavelock/issues/32",
-      "description": "[Candidate B restricted binding](https://github.com/rickyjreyes/Wavelock/blob/master/docs/CC_CORE_V1_RESTRICTED_BINDING.md) leaves general trajectory uniqueness and inversion hardness unresolved. [PDE results](https://github.com/rickyjreyes/Wavelock/blob/master/docs/PDE_HASH_RESULTS.md) contain no lower bound on attack cost. Public Bounty v1 C1/C2 likewise have `security_proof: NONE`; these are distinct constructions and must not share claims by implication.\n\n- [ ] State separate security games, input distributions, attacker access, and work/memory accounting for each construction under study.\n- [ ] Identify what existing theorems establish and the exact missing lemmas for any proposed reduction or lower bound.\n- [ ] Adversarially review proposed arguments, including digest-level re-merging and computation shortcuts.\n- [ ] Publish a reproducible research checkpoint: proved conditional result, counterexample, or explicit unresolved obligations with bounded evidence.\n\nCompletion of a research checkpoint must not be relabeled a full security proof. Absence of a proof alone is not a qualifying bounty exploit.\n\nThis ticket tracks outstanding work; it does not report a newly reproduced v",
-      "skills": [],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:22:59Z"
-    },
-    {
-      "id": 5654799638,
-      "title": "Digest rehabilitation: ordered issue list and acceptance gates",
-      "url": "https://github.com/Lenivvenil/digest/issues/91",
-      "description": "## Current work order — 2026-10-10\n\nArchitecture first: the test-count target is withdrawn. Preserve meaningful behavioral/security protection and the >=92.93% coverage floor.\n\nVerified PR231–239 cover [feedback observation](https://github.com/Lenivvenil/digest/issues/148#issuecomment-6094745884), [README](https://github.com/Lenivvenil/digest/issues/148#issuecomment-6094838543), [task guides](https://github.com/Lenivvenil/digest/issues/148#issuecomment-6095225394), [historical anchors](https://github.com/Lenivvenil/digest/issues/148#issuecomment-6095370011), [Make installation](https://github.com/Lenivvenil/digest/issues/148#issuecomment-6095827919), [first-send warning correction](https://github.com/Lenivvenil/digest/issues/220#issuecomment-6095938742), [translation rejection reasons](https://github.com/Lenivvenil/digest/issues/55#issuecomment-6096165089), [provisional closer guidance](https://github.com/Lenivvenil/digest/issues/127#issuecomment-6096393899) and [installer observation](https://github.com/Lenivvenil/digest/issues/148#issuecomment-6096639141). Each linked record retains exact checks and limits. Later bounded corrections cover [configuration diagnostics](https://githu",
+      "id": 5779878641,
+      "title": "Tested flow ledger for #7536: which flows are tested, how and by whom",
+      "url": "https://github.com/langwatch/langwatch/issues/8553",
+      "description": "<!-- ledger:summary:start -->\n## Progress summary\n\n**1,016 rows: 869 pass, 110 have problems, 1 being walked, 36 not started.**\n<sub>Counted 2026-10-10 23:25 UTC by `ledger-count.py` from the body and 2468 comments; a later result, claim or release comment overrides the body.</sub>\n\n| | rows | ✅ | 🟡 | ❌ | ⚠️ | ⏳ | ⬜ |\n|---|---:|---:|---:|---:|---:|---:|---:|\n| Upgrade | 48 | 3 | 4 | 4 |  | 1 | 36 |\n| Custom flows | 12 | 10 |  |  | 2 |  |  |\n| Product flows | 30 | 25 | 3 |  | 2 |  |  |\n| Beyond the UI | 9 | 7 |  |  | 2 |  |  |\n| Areas | 917 | 824 | 37 | 1 | 55 |  |  |\n| **Total** | 1,016 | 869 | 44 | 5 | 61 | 1 | 36 |\n\n<details><summary>Per area</summary>\n\n| | rows | ✅ | 🟡 | ❌ | ⚠️ | ⏳ | ⬜ |\n|---|---:|---:|---:|---:|---:|---:|---:|\n| ANA · Analytics, dashboards and LWQL | 17 | 15 | 2 |  |  |  |  |\n| ANN · Annotations and queues | 10 | 10 |  |  |  |  |  |\n| AUD · Audit log | 8 | 7 |  |  | 1 |  |  |\n| AUTH · Sign-in and identity | 53 | 35 | 8 |  | 10 |  |  |\n| AUTO · Automations, triggers, alerts and reports | 26 | 25 |  |  | 1 |  |  |\n| AZ · Authorization: grants and roles | 22 | 22 |  |  |  |  |  |\n| BIL · Billing, usage metering and limits (Cloud) | 22 | 18 | 4 |  |  |  |  |\n| CA ·",
       "skills": [
-        "documentation"
+        "automation"
       ],
       "score": 10,
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:22:44Z"
-    },
-    {
-      "id": 5635516115,
-      "title": "[M4] 对局强度：策略对局矩阵 + 扩规模训练 + 可恢复多机执行",
-      "url": "https://github.com/n0tevi1/ygorl/issues/83",
-      "description": "<!-- ygorl-activation-health-20261009:start -->\n**2026-10-09 warm/u256 milestone plus all four repeat alerts independently audited and ACKed.**\n\nStudy identity `270faf6a7cfd97e0084bb8bae3588d47a961e47ffd66f21f63a507f131bb3984` remains frozen. Cold seed0 completedu512; warm continuation running; remaining paired seeds/arms and final gate unchanged.\n\n| Metric | Warm u128 | Warm u256 | Cold u256 |\n|---|---:|---:|---:|\n| Primary-three win rate |77.474%|82.031%|78.906%|\n| Primary mean turns |10.660|10.513|9.523|\n| Historical-RL wins /256 |128|147|150|\n| Full1024-game cancellation count |51|224|65|\n| Fixed reference Q MSE |.856067|.799927|.850823|\n\nWarm continuation wins+4.557pp (conditional shared-deal95%CI+1.042 to+8.073); turns−.147 (−.600 to+.297), no clear reduction. Matchedu256 warm win lead+3.125pp (−.651 to+6.901), uncertain; mean+.990turns (+.604 to+1.375), longer. Cold/u512 primary85.026% is a different training-length endpoint, not the matched warm comparison. One training seed, exploratory intervals; no final gate or causal warmup claim.\n\nIndependent reference audit81,546rows/256games: Q MSE.856067→.799927, V.856633→.801963, far-horizon errors also decrease. No decline measur",
-      "skills": [
-        "script"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:22:36Z"
-    },
-    {
-      "id": 5635504649,
-      "title": "[M4] T4b.6 训练信号与探索：消融与设计决策（步长、熵、对手、奖励、UPGO、中局开局）",
-      "url": "https://github.com/n0tevi1/ygorl/issues/61",
-      "description": "<!-- ygorl-activation-health-20261009:start -->\n**2026-10-09 warm/u256 milestone plus all four repeat alerts independently audited and ACKed.**\n\nStudy identity `270faf6a7cfd97e0084bb8bae3588d47a961e47ffd66f21f63a507f131bb3984` remains frozen. Cold seed0 completedu512; warm continuation running; remaining paired seeds/arms and final gate unchanged.\n\n| Metric | Warm u128 | Warm u256 | Cold u256 |\n|---|---:|---:|---:|\n| Primary-three win rate |77.474%|82.031%|78.906%|\n| Primary mean turns |10.660|10.513|9.523|\n| Historical-RL wins /256 |128|147|150|\n| Full1024-game cancellation count |51|224|65|\n| Fixed reference Q MSE |.856067|.799927|.850823|\n\nWarm continuation wins+4.557pp (conditional shared-deal95%CI+1.042 to+8.073); turns−.147 (−.600 to+.297), no clear reduction. Matchedu256 warm win lead+3.125pp (−.651 to+6.901), uncertain; mean+.990turns (+.604 to+1.375), longer. Cold/u512 primary85.026% is a different training-length endpoint, not the matched warm comparison. One training seed, exploratory intervals; no final gate or causal warmup claim.\n\nIndependent reference audit81,546rows/256games: Q MSE.856067→.799927, V.856633→.801963, far-horizon errors also decrease. No decline measur",
-      "skills": [
-        "script"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:22:35Z"
-    },
-    {
-      "id": 5796127874,
-      "title": "[LAUNCH-001][P0][CIT] Implement and evidence one real source-grounded public-knowledge inference",
-      "url": "https://github.com/sovereign-codex/AVOT-engine/issues/16",
-      "description": "# TYME-HALL-LAUNCH-001 — CIT Runtime\n**Priority:** P0 · **Requested evidence target:** 2026-10-17 · **State:** COMMISSIONED / OPEN; completion not assumed.\n**Accountable technical owner:** @sovereign-codex. **Independent reviewer:** unassigned, required before gate closure. **Governing command:** [Notion TYME-HALL-LAUNCH-001](https://app.notion.com/p/3f5c51d54b758197a92ff59d2c203045) · **Central dependency ledger:** [Codex-control-center #15](https://github.com/sovereign-codex/Codex-control-center/issues/15).\n\n## Existing baseline\n`CIT Envelope v0.1` Notion architecture; AGI-0001 `scrolls/AGI-0001/publication.json` approved public knowledge; AVOT-engine PR #13 & #14 are experimental non-authorizing work.\n\n## Outcome requested\nStage ONE genuine model-backed KNOW request for `Does PUBLISHED_CANONICAL mean self-governing authority?`, anchored to allowlisted AGI-0001 source, and return parsed `CIT-RETURN` with model/source, evidence, uncertainty, distinct from Hall receipts and without authority effects.\n\n## Dependencies and boundaries\nLC-02 infrastructure, source allowlist and G5 basic secret/privacy protections; coordinate Codex-control-center routing and Tyme-Lab CIT schema; do not ",
-      "skills": [
-        "json"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:21:57Z"
-    },
-    {
-      "id": 5143587553,
-      "title": "Run the Actions Runtime product, runtime-adapter, and control-room factory",
-      "url": "https://github.com/joshyorko/actions/issues/101",
-      "description": "## Actions Convergence & Closure Readiness — 2026-10-10\n\n> **Cloud convergence resumed — 2026-10-10.** Six bounded assignments restarted under existing owners: #309 import-order repair, local #299 union preparation, PostgreSQL SAVEPOINT verification, #195 installed-wheel proof preparation, release/closure preflight, and Sol diagnosis/review. [Recoverable dispatch checkpoint](https://github.com/joshyorko/actions/blob/050fa391fd599a2554a82e17d93a5e4d5a2bd317/docs/program/evidence/wave8-convergence-20261010/dispatch-contract.json). Two engineering source-writer slots and one local service gate. Devsy disabled. Executor's tunnel is unavailable: fresh Dakota ownership UNKNOWN; overlapping native RCC/Work Items work held.\n>\n> **New facts:** #221's 13 observed workflows pass; draft/closure/final admission remain held. #292 Windows job114257572296 exceeded six hours after six reload/generation failures: NOT ACCEPTED, no blind retry. #309 local repair6cdf7c31 awaits independent review/new-head CI. Counts below are the audited primary issue partition; this supplement updates worker activity.\n\n**58 open issues; 4 close-ready recommendations; 13 open PRs, 0 admitted ready. Runtime 1.0.3 is unr",
-      "skills": [
-        "json"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:21:47Z"
-    },
-    {
-      "id": 5591213010,
-      "title": "Staging smoke times out before Azure managed-engine cleanup converges",
-      "url": "https://github.com/valence-works/elsa-control/issues/594",
-      "description": "## Problem\n\nThe protected staging Hosted smoke accepted one synthetic managed-engine Create, then Azure reported `ManagedEnvironmentProvisioningError` while initializing a Container Apps managed environment. Control correctly exposed seven provisioning stages with state `stale` rather than inventing progress. The smoke's 30-minute engine Delete wait expired while the exact provider Delete was still `Running/CleanupSubmitted`; its Stripe test-subscription cleanup then refused to run while the engine remained active. See [failed Cloud run 36213835412](https://github.com/valence-works/elsa-cloud/actions/runs/36213835412) and the sanitized [#565 readout](https://github.com/valence-works/elsa-control/issues/565#issuecomment-5842968835).\n\nAzure later removed the run-scoped resource group. The guarded recovery workflow subsequently proved no active synthetic engine and cleared sandbox billing residue. This is a staging proof reliability and cleanup gap; it is not evidence that the current runtime-image candidate failed Studio authorization.\n\n## Outcome\n\nA provider initialization failure remains truthful and actionable, while the protected smoke retains responsibility for eventual run-scop",
-      "skills": [
-        "script"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:21:43Z"
-    },
-    {
-      "id": 5796076303,
-      "title": "[agent-e] Atomic public publication completion and post-commit handoff",
-      "url": "https://github.com/division-sh/swarm/issues/2611",
-      "description": "## Category And Ownership\n\nHigh-risk semantic-drift / public mutation completion / SQLite-PostgreSQL parity.\nAgent E; independent coding gate: reviewer-g. **Pre-audit only; production coding is not approved.**\nPart of #1930. Manifestations remain recorded under #2353.\nBinding promotion: https://github.com/division-sh/swarm/issues/2353#issuecomment-6102962572 .\n\n## Working Failure Class\n\nThe typed atomic public-publication / run-initiation completion boundary lacks one faithful\ncompletion independent of synchronous post-commit attachment, handoff and recovery.\nThis includes keyed `event.publish` (new/existing run), event-backed `run.start`,\ndeployment-feed-only `run.start`, and their unkeyed acceptance controls. It also includes\nthe confirmed PostgreSQL stored-versus-first/replay-wire response-byte discrepancy.\nIt does not include a generic API idempotency rewrite or other mutator domain ownership.\n\n## Source-Backed Manifestations\n\n- Historical frozen74b stage_gate header timeout; original RED retained.\n- Frozen88c proposed_effect initial `work.requested` timeout, uninstrumented RED321.892s.\n- Passive frozen88c RED265.735s: native ACK0.442294955s then4.558473615s to the\n  original5s",
-      "skills": [
-        "api"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:21:31Z"
-    },
-    {
-      "id": 5697081525,
-      "title": "Question: is the plugin registry still accepting community submissions?",
-      "url": "https://github.com/MiniMax-AI/MiniMax-Code-Plugins/issues/71",
-      "description": "## Question: is the plugin registry still accepting community submissions?\n\nThis is a process question, not a re-pitch. I have two PRs open (#69, #70) that have received no review, and I noticed the review queue looks stalled generally rather than specific to my submissions.\n\n**What I'm seeing:**\n\n- Last commit to `main`: 2026-09-21 (#48).\n- No review on #69 or #70, both open since 2026-10-02.\n- Other open PRs with substantial discussion and no review: #62 (11 comments), #57 (4), #41 (38).\n\n**What I'd like to know:**\n\n1. Is community Plugin submission still being accepted, or is review paused while the registry is reorganised?\n2. If it's active, roughly what should a contributor expect in review latency? `CONTRIBUTING.md` describes what review covers but names no reviewer or target, and `GOVERNANCE.md` notes the project \"may introduce additional reviewer and maintainer roles as contribution volume grows\" — so I can't tell whether review is expected to be staffed or best-effort.\n3. If my two PRs are fine as they are, no reply is needed — I just don't want them to sit indefinitely if something is expected from the contributor (a rebase onto `main`, a different manifest shape, splitti",
-      "skills": [
-        "script"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:20:30Z"
-    },
-    {
-      "id": 5796135803,
-      "title": "🎯 Bounty Alert: 3 New Opportunityies found",
-      "url": "https://github.com/freedom-winds/BountyScout/issues/1229",
-      "description": "### Active Bounty Scan Results\n\n**Scan Time:** 2026-10-10 23:13 UTC\n\n#### 1. [Pin the remaining GitHub Actions to full commit SHAs](https://github.com/elsa-workflows/elsa-core/issues/8705)\n- **Repository:** [elsa-workflows/elsa-core](https://github.com/elsa-workflows/elsa-core)\n- **Comments:** 0\n- **Last Updated:** 2026-10-10T23:12:08Z\n\n#### 2. [Delete the dead stale, Claude and Greploop workflows](https://github.com/elsa-workflows/elsa-core/issues/8704)\n- **Repository:** [elsa-workflows/elsa-core](https://github.com/elsa-workflows/elsa-core)\n- **Comments:** 0\n- **Last Updated:** 2026-10-10T23:12:05Z\n\n#### 3. [CI post-merge failure: Dart Far Timezones](https://github.com/BasedHardware/omi/issues/20470)\n- **Repository:** [BasedHardware/omi](https://github.com/BasedHardware/omi)\n- **Comments:** 2\n- **Last Updated:** 2026-10-10T22:38:38Z\n\n",
-      "skills": [],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:20:21Z"
-    },
-    {
-      "id": 5696973063,
-      "title": "Roadmap: define and implement cross-node agreement for consumed OTS identities",
-      "url": "https://github.com/rickyjreyes/Wavelock/issues/28",
-      "description": "[The Merkle roadmap](https://github.com/rickyjreyes/Wavelock/blob/master/docs/WAVELOCK_MERKLE_ROADMAP.md) explicitly leaves cross-node replay-ledger replication open. Current locks and reconstruction enforce consistency on a shared host/filesystem; independently operated nodes do not obtain global agreement from those locks.\n\n- [ ] Specify the public network threat model, authoritative chain/finality rules, and replay-state derivation.\n- [ ] Define behavior for competing blocks, partitions, reconnects, restart, and reorganization.\n- [ ] Implement the approved agreement mechanism without treating ledger copying alone as consensus.\n- [ ] Add multi-node tests showing the same identity cannot be finalized twice under the declared assumptions, with partition and restart scenarios.\n- [ ] Document compatibility and deployment requirements.\n\nThis is future scope and is not a failure of Public Bounty v1's same-host AR-6 promise.\n\nThis ticket tracks outstanding work; it does not report a newly reproduced vulnerability. Preserve existing protocol versions, reference vectors, and the `v0.2.0` tag. Any new protocol behavior requires explicit versioning and review.",
-      "skills": [],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:20:00Z"
-    },
-    {
-      "id": 5650223300,
-      "title": "Implement missing OSRS minigames and activities (40 tasks, with reference sources)",
-      "url": "https://github.com/RSPSApp/tsps/issues/153",
-      "description": "## Missing OSRS minigames and activities\n\nAudit date: **2 October 2026**. **40 checklist subtasks: 19 with substantial server scripts, 5 with partial sources, 16 with no source available** in the checked reference servers.\n\nInventory was rechecked across `server/plugins/`, including minigames, areas, skills and quest activity hooks. This keeps the original issue's OSRS minigame/activity scope and promotes its previously mentioned no-source candidates to checklist subtasks. Rat Pits is also included. It is not an exhaustive backlog for every OSRS skilling activity or boss.\n\nOSRS behavior references: [minigames](https://oldschool.runescape.wiki/w/Minigames), [Grouping](https://oldschool.runescape.wiki/w/Grouping) and [minigame teleports](https://osrsindex.com/wiki/minigame-teleport?site=osrs_wiki). Sources are starting points; use current OSRS Wiki behavior and validate IDs against our cache, especially for LostCity's 2004 and Void's 2011 content. Having source code does not establish a complete or directly portable implementation.\n\nEach checkbox means implement the missing playable activity, including entry/exit, game rules and progression, interfaces, rewards and saved state where ",
-      "skills": [
-        "script"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:18:19Z"
-    },
-    {
-      "id": 5665170798,
-      "title": "[BOUNTY] Suggestion #1250",
-      "url": "https://github.com/SPLURT-Station/S.P.L.U.R.T-tg/issues/1270",
-      "description": "### About the Bounty\n\n## Original issue text:\n\n**Suggestion:**\nPositive quirk that allows you to spawn with a powered wheelchair (T1 parts) instead of a plain one\n\n**Reason:**\n[BOUNTY] oky3\n\n**Results:**\n11x <:In_help:1056296636348899408>\n0x <:In_harm:1056296637909192794>\n\n\n### Suggestion Reference\n\n**Suggested by:** megamiana\nhttps://discord.com/channels/908082639704064051/1404686278351655055/1555247845341143203\n\n### Contact Information\n\nContact `mos_ley` in discord for payment information.\n\nContact `megamiana` in discord for information about the requirements.\n\n### Payment Details\n\nPayment methods:\n- PayPal\n- Cryptocurrency\n\n",
-      "skills": [],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:18:08Z"
-    },
-    {
-      "id": 5066574206,
-      "title": "Downloading fails due to some error.",
-      "url": "https://github.com/CuteTenshii/crunchyroll-downloader/issues/32",
-      "description": "I run the latest git version on linux. I used the release but got a pssh error or something. I tried to download things but it just made a folder called One Piece and never put anything in it here is the command output:\n\n```\nDownloading season 21 of One Piece (208 episodes)\n\nDownloading: The Land of Wano! To the Samurai Country where Cherry Blossoms Flutter! (S21E892) from One Piece\nAudio locales: ja-JP, en-US | Subtitle locales: en-US\nDownloading subtitles for English...\nDownloaded subtitles!\nCleaning up...Recovered from error:(0x911a20,0xa0d060)Downloading: Otama Appears! Luffy vs. Kaido's Army! (S21E893) from One Piece\nAudio locales: ja-JP, en-US | Subtitle locales: en-US\nDownloading subtitles for English...\nDownloaded subtitles!\nCleaning up...Recovered from error:(0x911a20,0x3e98ea95f5a0)Downloading: He'll Come! The Legend of Ace in the Land of Wano! (S21E894) from One Piece\nAudio locales: ja-JP, en-US | Subtitle locales: en-US\nDownloading subtitles for English...\nDownloaded subtitles!\nCleaning up...Recovered from error:(0x911a20,0x3e98ea95fb60)Downloading: Side Story! The World's Greatest Bounty Hunter, Cidre! (S21E895) from One Piece\nAudio locales: ja-JP, en-US | Subtitle loc",
-      "skills": [],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:17:19Z"
-    },
-    {
-      "id": 5796129219,
-      "title": "[LAUNCH-001][P1][Collaborators] Prepare independent mobile cold-read bounty candidate (UNFUNDED)",
-      "url": "https://github.com/sovereign-codex/Codex-interface-/issues/18",
-      "description": "# TYME-HALL-LAUNCH-001 — Collaborators / External assurance\n**Priority:** P1 · **Requested evidence target:** 2026-10-13 · **State:** COMMISSIONED / OPEN; completion not assumed.\n**Accountable technical owner:** @sovereign-codex. **Independent reviewer:** unassigned, required before gate closure. **Governing command:** [Notion TYME-HALL-LAUNCH-001](https://app.notion.com/p/3f5c51d54b758197a92ff59d2c203045) · **Central dependency ledger:** [Codex-control-center #15](https://github.com/sovereign-codex/Codex-control-center/issues/15).\n\n## Existing baseline\nExisting `validation/CONTEXT_ZERO_PROTOCOL.md` and issue #9; extant public route `tymehall.org` (current response requires independent HTTP verification).\n\n## Outcome requested\nProduce a publishable, small-scope independent cold-read/a11y evaluation packet for a previously unfamiliar participant; explicit non-authorizing review and raw evidence capture.\n\n## Dependencies and boundaries\nLC-01 release scope; contributor terms/license/security process; no expenditure until explicit founder approval.\n\n## Acceptance evidence / review gate\n- [ ] Bounty is marked PROPOSED / UNFUNDED, with no dollar amount, hiring representation or payout of",
-      "skills": [],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:12:41Z"
-    },
-    {
-      "id": 5796128968,
-      "title": "[LAUNCH-001][P0][Security] Threat register, privacy boundaries, rate limits and rollback tests",
-      "url": "https://github.com/sovereign-codex/Codex-control-center/issues/17",
-      "description": "# TYME-HALL-LAUNCH-001 — Security / Assurance\n**Priority:** P0 · **Requested evidence target:** 2026-10-22 · **State:** COMMISSIONED / OPEN; completion not assumed.\n**Accountable technical owner:** @sovereign-codex. **Independent reviewer:** unassigned, required before gate closure. **Governing command:** [Notion TYME-HALL-LAUNCH-001](https://app.notion.com/p/3f5c51d54b758197a92ff59d2c203045) · **Central dependency ledger:** [Codex-control-center #15](https://github.com/sovereign-codex/Codex-control-center/issues/15).\n\n## Existing baseline\nPublic Hall source static; future model API request boundary and Notion/Cloudflare secrets unverified. Existing Office doctrine separates capability and authority; this is not a safety test.\n\n## Outcome requested\nDefine concrete security, privacy, reliability and incident constraints and an executable adversarial/release test suite for the actual launch footprint.\n\n## Dependencies and boundaries\nLC-02 deployment topology and secrets custody; LC-04 model endpoint threat surface; distinct independent assessor required for release gate G5.\n\n## Acceptance evidence / review gate\n- [ ] Model/source injection test corpus: provenance spoofing, fake autho",
-      "skills": [
-        "api"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:12:38Z"
-    },
-    {
-      "id": 5796128330,
-      "title": "[LAUNCH-001][P1][Publications] Freeze approved AGI-0001 release manifest and GFC exclusion",
-      "url": "https://github.com/sovereign-codex/Codex-interface-/issues/16",
-      "description": "# TYME-HALL-LAUNCH-001 — Publications\n**Priority:** P1 · **Requested evidence target:** 2026-10-16 · **State:** COMMISSIONED / OPEN; completion not assumed.\n**Accountable technical owner:** @sovereign-codex. **Independent reviewer:** unassigned, required before gate closure. **Governing command:** [Notion TYME-HALL-LAUNCH-001](https://app.notion.com/p/3f5c51d54b758197a92ff59d2c203045) · **Central dependency ledger:** [Codex-control-center #15](https://github.com/sovereign-codex/Codex-control-center/issues/15).\n\n## Existing baseline\n`scrolls/AGI-0001/publication.json` and `scrolls/AGI-0001/` in main; Notion SIRI PUBLICATION 001 completion; `GFC-0001` remains PUBLIC_REVIEWED.\n\n## Outcome requested\nLock an immutable manifest for authorized publications, source/semantic warnings, checksums, accessible reading surfaces and machine-consumable links; exclude unpublished works from beta release outputs.\n\n## Dependencies and boundaries\nCanonical AGI-0001 closed; separate human GFC-0001 publication authorization remains PENDING. Production deployment remains separate.\n\n## Acceptance evidence / review gate\n- [ ] Independent test validates AGI-0001 publication number, identifier, title, state,",
-      "skills": [
-        "json"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:12:32Z"
-    },
-    {
-      "id": 5796127653,
-      "title": "[LAUNCH-001][P0][Infrastructure] Verify domain, Cloudflare bindings, active deployments and rollback",
-      "url": "https://github.com/sovereign-codex/Codex-control-center/issues/16",
-      "description": "# TYME-HALL-LAUNCH-001 — Infrastructure verification\n**Priority:** P0 · **Requested evidence target:** 2026-10-12 · **State:** COMMISSIONED / OPEN; completion not assumed.\n**Accountable technical owner:** @sovereign-codex. **Independent reviewer:** unassigned, required before gate closure. **Governing command:** [Notion TYME-HALL-LAUNCH-001](https://app.notion.com/p/3f5c51d54b758197a92ff59d2c203045) · **Central dependency ledger:** [Codex-control-center #15](https://github.com/sovereign-codex/Codex-control-center/issues/15).\n\n## Existing baseline\nDNS tymehall.org Cloudflare NS `ethan.ns.cloudflare.com`, `laylah.ns.cloudflare.com`, A/AAAA resolve. Static source `Codex-interface-/main` at 5342cbaf1098391879a15c7ccca752d3fbc241b8. Account access not present in current ChatGPT connector; Cloudflare resource types and binding state UNKNOWN.\n\n## Outcome requested\nObtain read-only operator inventory of active zone/Workers/Pages/Routes/D1/KV/Secrets/CI, reproducible deploy version and manual rollback mechanism, source-to-domain binding proof, upstream TLS/caching status, and a fresh public HTTP route smoke report.\n\n## Dependencies and boundaries\nLC-01 governing charter. Blocks release G1 a",
-      "skills": [
-        "json"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:12:26Z"
-    },
-    {
-      "id": 5796127448,
-      "title": "[LAUNCH-001][P0][Hall UI] Audit and harden beta foyer, mobile routing and current-state clarity",
-      "url": "https://github.com/sovereign-codex/Codex-interface-/issues/15",
-      "description": "# TYME-HALL-LAUNCH-001 — Hall UI\n**Priority:** P0 · **Requested evidence target:** 2026-10-16 · **State:** COMMISSIONED / OPEN; completion not assumed.\n**Accountable technical owner:** @sovereign-codex. **Independent reviewer:** unassigned, required before gate closure. **Governing command:** [Notion TYME-HALL-LAUNCH-001](https://app.notion.com/p/3f5c51d54b758197a92ff59d2c203045) · **Central dependency ledger:** [Codex-control-center #15](https://github.com/sovereign-codex/Codex-control-center/issues/15).\n\n## Existing baseline\nmain 5342cbaf1098391879a15c7ccca752d3fbc241b8; `index.html`, `projections/cit-learning-v0.1/`, `office/state.json`, `validation/CONTEXT_ZERO_PROTOCOL.md`.\n\n## Outcome requested\nVerify mobile iPhone/Safari/Android usability of foyer ASK/SEEK/KNOW/KNOCK and five institutional doors, learning versus Share preview, actual links/cross-links to source evidence, accessibly distinct current/candidate/deprecated features, clear no-authority/exit semantics.\n\n## Dependencies and boundaries\nLC-01 command; infrastructure inventory; existing Hall issue #9. PR #14 merged intent-first foyer is baseline; no new authority surfaces.\n\n## Acceptance evidence / review gate\n- [ ] R",
-      "skills": [
-        "json"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:12:23Z"
+      "updated_at": "2026-10-10T23:25:10Z"
     },
     {
       "id": 4507461103,
@@ -543,7 +304,115 @@
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:00:46Z"
+      "updated_at": "2026-10-10T23:24:49Z"
+    },
+    {
+      "id": 3885310528,
+      "title": "Launch Another DoraHacks Bounty Post",
+      "url": "https://github.com/devpool-directory/devpool-directory/issues/5924",
+      "description": "https://github.com/ubiquity/business-development/issues/174",
+      "skills": [],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:24:48Z"
+    },
+    {
+      "id": 5261240491,
+      "title": "Workflow Immune System — OpenAmer's self-healing UI automation",
+      "url": "https://github.com/openamer/openamer/issues/18",
+      "description": "Just shipped the Workflow Immune System for OpenAmer — an open-source AI agent that drives your real desktop in the background.\n\nIt re-finds UI elements when sites redesign, patches its own workflows, and keeps going. Fully self-hosted.\n\nRepo: https://github.com/openamer/openamer",
+      "skills": [
+        "automation"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:24:20Z"
+    },
+    {
+      "id": 5697081525,
+      "title": "Question: is the plugin registry still accepting community submissions?",
+      "url": "https://github.com/MiniMax-AI/MiniMax-Code-Plugins/issues/71",
+      "description": "## Question: is the plugin registry still accepting community submissions?\n\nThis is a process question, not a re-pitch. I have two PRs open (#69, #70) that have received no review, and I noticed the review queue looks stalled generally rather than specific to my submissions.\n\n**What I'm seeing:**\n\n- Last commit to `main`: 2026-09-21 (#48).\n- No review on #69 or #70, both open since 2026-10-02.\n- Other open PRs with substantial discussion and no review: #62 (11 comments), #57 (4), #41 (38).\n\n**What I'd like to know:**\n\n1. Is community Plugin submission still being accepted, or is review paused while the registry is reorganised?\n2. If it's active, roughly what should a contributor expect in review latency? `CONTRIBUTING.md` describes what review covers but names no reviewer or target, and `GOVERNANCE.md` notes the project \"may introduce additional reviewer and maintainer roles as contribution volume grows\" — so I can't tell whether review is expected to be staffed or best-effort.\n3. If my two PRs are fine as they are, no reply is needed — I just don't want them to sit indefinitely if something is expected from the contributor (a rebase onto `main`, a different manifest shape, splitti",
+      "skills": [
+        "script"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:24:05Z"
+    },
+    {
+      "id": 5717460257,
+      "title": "Gate 8A7C: account-backed continuity and explicit provider acceptance",
+      "url": "https://github.com/dezrobbo1/life-rhythm-prototype/issues/179",
+      "description": "Track Gate 8A7C under MVP_PLAN.md and app/docs/gate8a7c1-account-boundary-contract.md.\n\nC1 scope: metadata-only verified Supabase Auth user-session identity, restricted trial_access/account_heads reads, independent database grants/RLS isolation, schema/protocol/revision/generation fences, and fail-closed required app/API mode. Owner approved replacing Clerk with Supabase Auth; local implementation is published unmerged in existing draft PR #180 on feat/gate8a7c1-account-boundary; hosted C1 acceptance remains pending. Local tests do not establish native hosted trust or server personal-data durability.\n\nMANUAL ACTION REQUIRED before hosted C1: dedicated project life-rhythm (`lfwadowwdvcnibjkeerg`, organization `xbwsomlomdmyipdbaipk`, Sydney) is now provisioned, healthy and metadata-schema absent. Owner/operator must separately authorize restricted Supabase Auth account/signup settings, approved public asymmetric verification keys, exact Preview-branch public origin/environment settings, restricted disposable A/B accounts and reviewed non-production metadata schema/exposure/access apply. Existing root `app` must be verified; any global layout change, signing-key change, email/recovery",
+      "skills": [
+        "api"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:24:01Z"
+    },
+    {
+      "id": 5785388253,
+      "title": "P0: SteelSelfTest — po restore UI pokazuje niezgodne cookie/localStorage mimo raportu merged PASS",
+      "url": "https://github.com/napieraj2018-arch/Watcher-15/issues/111",
+      "description": "## P0 — niezależny test rzeczywistego odczytu po odtworzeniu profilu\n\nData: 10.10.2026, wyłącznie profil techniczny `SteelSelfTest`, syntetyczna strona `https://ai-browser-vault.floot.app/browser-check`. Żadnych kont Meta/Google, haseł, cookie values, storage values ani session IDs nie publikowano.\n\n### Sekwencja produkcyjnego testu Steel 0.4.5\n1. Profil testowy otwarty w trybie zapisu na stronie fixture. Poprzedni testowy cookie wygasł (strona stosuje `Max-Age=3600`), localStorage nadal istnieje.\n2. Kliknięto **Zapisz znacznik testowy**: UI zgłosił `cookie OBECNE / localStorage OBECNE / PASS`.\n3. `profile_flush` i `browser_stop` bez błędu; `full_profile_saved=true`.\n4. **Nowa** sesja z tym samym profilem, read_only: UI `cookie OBECNE / localStorage OBECNE / BRAK POTWIERDZENIA`; natomiast diagnostyka przed nawigacją twierdziła `portable.exact_pair_matches=true`, `resolved.exact_pair_matches=true`, `native.exact_pair_matches=false`. Zatrzymano tę sesję, `full_profile_saved=true`.\n5. Następna sesja read_only: UI nadal `BRAK POTWIERDZENIA` zarówno przed jak i po odświeżeniu strony. `native: cookie_readable=1 / exactStorage=0 / pair=false`, `portable: cookie=1 / pair=false`, `resolved:",
+      "skills": [
+        "api"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:23:55Z"
+    },
+    {
+      "id": 5551915300,
+      "title": "[Program] Elsa 3 integration ecosystem: monorepo consolidation, independent releases, and researched connector catalog",
+      "url": "https://github.com/elsa-workflows/elsa-core/issues/8194",
+      "description": "<!-- selected-product-artifacts-8693 -->\n**Current delivery: Task #8636 is the sole active implementation Task, In Progress / Assigned / Verification Pending. Task #8693 remains open, Todo / Not Ready / Pending for the external MySQL/.NET10 support decision; all seven criteria remain open.** The [authoritative delivery checkpoint](https://github.com/elsa-workflows/elsa-core/issues/8693#issuecomment-6093202347) records exact heads, source freshness, artifact audits and remaining decisions.\n\nStructural consolidation into sibling `core/`, `studio/` and `extensions/` directories and nonpublishing individual-product planning are accepted. Actual main is `3cc81c652906fc0e18a2ec0c6732308440f8c720`; main-forward #8698 is merged. The latest release audit included all35 advertised3.8/3.9 release refs in main; latest stable was3.9.0 in all three repositories.\n\n[Studio source carryover #8699](https://github.com/elsa-workflows/elsa-core/pull/8699) and [main-forward #8703](https://github.com/elsa-workflows/elsa-core/pull/8703) are normally merged. Main8703 merge3cc81c has verified ordered parents and treeeb76a02 matching the independently reviewed prospective merge. Exact-head459 gates passed: i",
+      "skills": [
+        "documentation"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:23:34Z"
+    },
+    {
+      "id": 5785210240,
+      "title": "Epic: Enforce precise type safety and test fidelity across Keiko",
+      "url": "https://github.com/oscharko-dev/Keiko/issues/3914",
+      "description": "## Summary\n\nImplement precise anti-slop quality enforcement and complete its production migration across Keiko, without weakening hostile-input validation, canonical evidence, test fidelity or existing quality gates. Owner direction: package the audit into an implementation-ready epic; exclude additional naming and spacing rules.\n\nPlanning baseline: `origin/dev@3d46ff9aca669c349bf0528a2a356ba95991099a` (fresh fetch, equal to audited checkout). Profile: keiko-web; current target AGENTS/CONTRIBUTING and amended ADRs override stale profile recipes. Upstream: [anti-slop c44ef22](https://github.com/dmmulroy/anti-slop/tree/c44ef22ca116d0ba62a3ff663a0bd13a3f3fa40b), version 0.1.2; audited Oxlint/@oxlint/plugins 1.78.0. Current source corpus: 7,854 tracked files / 6,166 JS/TS / all 27 packages, plus all 27 HTML documents’ embedded JS. Documentation review indexed 1,283 files, 821 text files and all 164 ADRs.\n\nThere are 341 navigation-classified production double-cast matches and 2,876 missing assertion-marker matches across 739 candidate files; 731 module-interception matches across 337 test files. These are overlapping diagnostics, not defect counts. The authoritative implementation censu",
+      "skills": [
+        "documentation"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:23:13Z"
+    },
+    {
+      "id": 5696973063,
+      "title": "Roadmap: define and implement cross-node agreement for consumed OTS identities",
+      "url": "https://github.com/rickyjreyes/Wavelock/issues/28",
+      "description": "[The Merkle roadmap](https://github.com/rickyjreyes/Wavelock/blob/master/docs/WAVELOCK_MERKLE_ROADMAP.md) explicitly leaves cross-node replay-ledger replication open. Current locks and reconstruction enforce consistency on a shared host/filesystem; independently operated nodes do not obtain global agreement from those locks.\n\n- [ ] Specify the public network threat model, authoritative chain/finality rules, and replay-state derivation.\n- [ ] Define behavior for competing blocks, partitions, reconnects, restart, and reorganization.\n- [ ] Implement the approved agreement mechanism without treating ledger copying alone as consensus.\n- [ ] Add multi-node tests showing the same identity cannot be finalized twice under the declared assumptions, with partition and restart scenarios.\n- [ ] Document compatibility and deployment requirements.\n\nThis is future scope and is not a failure of Public Bounty v1's same-host AR-6 promise.\n\nThis ticket tracks outstanding work; it does not report a newly reproduced vulnerability. Preserve existing protocol versions, reference vectors, and the `v0.2.0` tag. Any new protocol behavior requires explicit versioning and review.",
+      "skills": [],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:23:04Z"
     },
     {
       "id": 5532873490,
@@ -572,20 +441,6 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T22:54:46Z"
-    },
-    {
-      "id": 5261240491,
-      "title": "Workflow Immune System — OpenAmer's self-healing UI automation",
-      "url": "https://github.com/openamer/openamer/issues/18",
-      "description": "Just shipped the Workflow Immune System for OpenAmer — an open-source AI agent that drives your real desktop in the background.\n\nIt re-finds UI elements when sites redesign, patches its own workflows, and keeps going. Fully self-hosted.\n\nRepo: https://github.com/openamer/openamer",
-      "skills": [
-        "automation"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T22:47:00Z"
     },
     {
       "id": 5720560754,
@@ -642,7 +497,7 @@
       "updated_at": "2026-10-10T21:35:22Z"
     }
   ],
-  "count": 45,
+  "count": 34,
   "warnings": [],
   "execution": {
     "status": "demo_completed",
