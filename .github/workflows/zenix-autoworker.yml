@@ -64,8 +64,18 @@ jobs:
           git add zenix-autoworker/data/
           if ! git diff --cached --quiet; then
             git commit -m "data(autoworker): update public status [skip ci]"
-            git pull --rebase -X theirs origin main
-            git push
+            for attempt in 1 2 3 4; do
+              git fetch origin main
+              git rebase -X theirs origin/main
+              if git push origin HEAD:main; then
+                echo "Datos publicados con exito"
+                exit 0
+              fi
+              echo "Cambio concurrente de GitHub; reintentando..."
+              sleep 2
+            done
+            echo "No se pudo publicar tras cuatro intentos" >&2
+            exit 1
           fi
       - name: Upload work for human review only
         if: always()
