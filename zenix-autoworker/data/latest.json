@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-10-10T20:37:54+00:00",
+  "generated_at": "2026-10-10T20:40:53+00:00",
   "opportunities": [
     {
       "id": 5387618577,
@@ -100,6 +100,25 @@
       "updated_at": "2026-10-10T20:00:07Z"
     },
     {
+      "id": 5309787720,
+      "title": "[App] Mantle Turing Test Hackathon",
+      "url": "https://github.com/gitcoinco/gitcoin_co_30/issues/490",
+      "description": "### Slug\n\n<!--\nIMPORTANT: If editing this issue as raw markdown, do not rename or remove section headers (### Name).\nThey are used as parsing keys by the publishing automation — changing them will break content generation.\n-->\n\n\n### Short Description\n\nA $120K+ two-phase AI x on-chain hackathon on Mantle where autonomous agents trade and compete with every decision logged on-chain\n\n### Tags\n\nhackathon, mantle, ai-agents, defi, on-chain, rwa\n\n\n### Featured\n\n- [ ] Feature this app on the homepage\n\n### Banner Image\n\n<img width=\"2048\" height=\"1151\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7cab7f6e-500d-4db1-98f0-dc57806f9f91\" />\n\n\n### Logo\n\n<img width=\"866\" height=\"650\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4caf8d6f-91bf-428c-8e14-8f5b1fcc5df2\" />\n\n### Description\n\n- **Category**: Grant Program\n- **Status**: Active\n- **Website**: https://devhub.mantle.xyz/\n- **Blockchains**: Mantle\n- **Funding Volume**: $120,000+ total prize pool (plus $110K+ in compute credits from Nansen, Elfa AI, Surf AI, Orbit AI, AltLLM)\n- **Social Links**: [X/Twitter](https://twitter.com/0xMantle), [DoraHacks listing](https://dorahacks.io/hackathon/mantleturingtesthackathon",
+      "skills": [
+        "automation",
+        "script"
+      ],
+      "score": 45,
+      "amount_mentions": [
+        "$120",
+        "$120,000",
+        "$110"
+      ],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:39:35Z"
+    },
+    {
       "id": 4086863047,
       "title": "[BOUNTY $130] Home Automation — Home Assistant + Node-RED + Zigbee2MQTT",
       "url": "https://github.com/illbnm/homelab-stack/issues/7",
@@ -154,22 +173,6 @@
       "updated_at": "2026-10-10T20:30:09Z"
     },
     {
-      "id": 5533799153,
-      "title": "[Bounty proposal] security: eight plugins — unauthenticated GET /disconnect?uid= deletes any user's stored OAuth tokens ($150 proposed)",
-      "url": "https://github.com/BasedHardware/omi/issues/15589",
-      "description": "### Summary\n\n`GET /disconnect?uid=<victim>` deletes a user's stored OAuth tokens with **no authentication of any kind** in eight plugins. Anyone who knows or guesses a uid can unplug that user's integration, and because it is a side-effecting `GET`, it also fires from a plain `<img src=\"...\">` on any page the victim (or anyone) loads.\n\nThis is the same defect class as #14505, which covered `omi-twitter-chat-tools-app` only. The remaining plugins have not been filed.\n\n### Affected routes\n\n| Plugin | Line | Handler | Deletes |\n|---|---|---|---|\n| `omi-dropbox-app` | 498 | `disconnect` | `delete_dropbox_tokens(uid)` |\n| `omi-google-calendar-app` | 1253 | `disconnect` | `delete_google_tokens(uid)` |\n| `omi-hive-app` | 644 | `disconnect_hive` | `delete_hive_credentials(uid)` |\n| `omi-linear-app` | 536 | `disconnect_linear` | `delete_linear_tokens(uid)` |\n| `omi-ms365-app` | 135 | `disconnect` | `await auth.disconnect(uid)` (POST) |\n| `omi-notion-app` | 1299 | `disconnect` | `delete_notion_tokens(clean_uid)` |\n| `omi-shipbob-app` | 595 | `disconnect_shipbob` | `delete_shipbob_tokens(uid)` |\n| `omi-shopify-app` | 468 | `disconnect_shopify` | `delete_shopify_tokens(uid)` |\n\nRepresentative ",
-      "skills": [
-        "python"
-      ],
-      "score": 45,
-      "amount_mentions": [
-        "$150"
-      ],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:21:15Z"
-    },
-    {
       "id": 5719999132,
       "title": "Build the UseAgent mobile app for iOS and Android",
       "url": "https://github.com/useagenthq/useagent/issues/61",
@@ -204,22 +207,48 @@
       "updated_at": "2026-10-10T20:00:24Z"
     },
     {
-      "id": 5784622276,
-      "title": "Spend the work Team plan's monthly Claude API credits: $20 allowance, burst the unused pool before the cycle ends",
-      "url": "https://github.com/mkny13/mahler/issues/903",
-      "description": "> **Original request:** ## Problem\n> \n> Mike's work Team plan now comes with pooled monthly **Claude API credits**: $260/month today ($20 per Standard seat, $100 per Premium seat, pooled, capped at $500). The amount changes with seat count. Docs: https://platform.claude.com/docs/en/about-claude/api-credits-for-subscribers\n> \n> Mike's policy for Mahler:\n> \n> 1. **Allowance.** Mahler may spend up to **$20 per billing cycle** of these credits whenever it likes, like any other quota pool.\n> 2. **Burst at the end of the cycle.** Credits expire at the end of each billing cycle and **don't roll over**. Near the end of the cycle, Mahler should spend whatever is left in the pool, beyond its $20, before it expires. This works like D23 (burst before a Claude window resets) and D35 (spend banked Codex resets before they expire).\n> \n> ## Facts from the docs that shape the design\n> \n> - **Claude Code is NOT covered.** If an org holds only these credits, a Claude Code session fails with \"Credit balance too low\". The credits do cover the Claude API, the **Claude Agent SDK**, Managed Agents and the playground. So the existing `claude` platform can't spend them just by setting `ANTHROPIC_API_KEY`. T",
-      "skills": [
-        "api"
-      ],
+      "id": 5659096903,
+      "title": "[Bounty] Test the 2.40.0 browser half in your own DSH host (6 seats, screenshot + probe evidence)",
+      "url": "https://github.com/Ikalus1988/MisakaNet/issues/2593",
+      "description": "> **Payment:** this project pays no money — `zero-bounty` / `$0` means credit only\n> (merge credit, leaderboard, Hall of Fame). A real bounty exists only when someone funds\n> it via Opire's `/reward <amount>` on that issue. See `JOIN.md` § \"Bounties & payment\".\n\n## 📌 Context & Feature Request\n\n**2.40.0 shipped a browser half for the DeepSeek Harness plugin, and we can only test the environment we\nhave** — dsh `0.2.0-rc.2`, Linux/WSL, a host we start ourselves. The interesting failures live in the\nenvironments we do not have, so this task is a **test report**: reproduce the surfaces below on your own\nmachine and tell us what actually happened.\n\nWhat the plugin now puts on screen (all six, from `README.md` → \"What the DeepSeek Harness plugin adds\"):\n\n| Seat | Scope | What it is |\n| --- | --- | --- |\n| Left column, under `Plugins` | root | A permanent `MisakaNet` entry — a shortcut, not the panel |\n| `main` page | root | What that entry opens: the browser-scoped view |\n| Conversation tab ring | session | A `MisakaNet` tab beside Chat and Trajectory |\n| Right column pane | session | The same panel as a pane, beside the other tools |\n| Tool call rows | session | One row per `misakanet_s",
+      "skills": [],
       "score": 35,
       "amount_mentions": [
-        "$20",
-        "$260",
-        "$20"
+        "$0"
       ],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:36:45Z"
+      "updated_at": "2026-10-10T20:40:36Z"
+    },
+    {
+      "id": 5779937201,
+      "title": "Compute board — shared GPU pods (uor-pod)",
+      "url": "https://github.com/UOR-Foundation/uor-r4/issues/2037",
+      "description": "Automatic mirror of the `uor-pod` ledger (`~/.local/share/uor-r4/compute/ledger.jsonl`). Successor of #1750. **Post only ledger lines and capacity reports here.** Discuss work on the milestone issues of the tracker #2028.\n\n### Owner rules (5–7 October)\n- **Caps**, all labs together: at most 4 running pods and $8/h. No new spending class.\n- **Ladder:** without `--gpu`, `uor-pod up` tries 2×RTX 5090, then 2×4090, then 2×PRO 6000, then one GPU of each.\n  - Datacenters: EUR-NO-1 (canonical volume), EU-RO-1, EUR-IS-1, then allowlisted regions by stock.\n  - Pods outside EUR-NO-1 are non-canonical. They get their data from the private HF store `caseyallard/uor-r4-store` and must archive results before `down`.\n- **Leases:**\n  - Identity is lab + session. Run `uor-pod status` first and share before you create.\n  - Lease with `--hours` covering the whole job plus margin, and renew it. An expiring lease is never a reason to stop a live job.\n  - Only an expired lease may be taken over. Release when done, then `down` if nobody else holds the pod.\n- **Storage:** durable output only on `/workspace`. Don't keep stopped pods as storage. Move downloaded results to iCloud with `cloud-store put`.\n- Fu",
+      "skills": [
+        "json"
+      ],
+      "score": 35,
+      "amount_mentions": [
+        "$8"
+      ],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:39:43Z"
+    },
+    {
+      "id": 5534274466,
+      "title": "[demand] high-priority 2026-09-22T01:33",
+      "url": "https://github.com/relayhop/ClaudeEarnSelf-runtime/issues/1017",
+      "description": "Demand-side radar 高優先訊號:\n\n```\n5\tgithub\t1.3\t$0.01\tOPEN_ISSUE,LOW_COMP\thttps://github.com/winsznx/routedock/issues/407\tModeRouter fails open on a malformed budget_per_request and pays the cheapest mode at any price\n5\tgithub\t0.7\t000 SATS\tOPEN_ISSUE,LOW_COMP\thttps://github.com/relayhop/sn-monetization-runtime/issues/1148\t[radar] SN open bounty 2026-09-22T00:53\n5\tgithub\t2.4\t000 SATS\tOPEN_ISSUE,LOW_COMP\thttps://github.com/relayhop/sn-monetization-runtime/issues/1146\t[radar] SN open bounty 2026-09-21T23:12\n```",
+      "skills": [],
+      "score": 35,
+      "amount_mentions": [
+        "$0.01"
+      ],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:39:26Z"
     },
     {
       "id": 5690041095,
@@ -264,34 +293,20 @@
       "updated_at": "2026-10-10T20:29:30Z"
     },
     {
-      "id": 5689016337,
-      "title": "[BOUNTY] Medium: depositSpl ignores confirmation timeout, leaving a phantom re-shield note and double-counted balance",
-      "url": "https://github.com/paraloom-labs/paraloom-core/issues/853",
-      "description": "> **Severity:** Medium · **Component:** `paraloom-wallet` · **Reward tier:** up to $150 USDC\n> **Tested:** wallet `main` @ `1e79eec8fbe99cd7e1381f6971c855bdce883d41` · local mocks only · no live chain touched\n\n## Summary\n\n`depositSpl()` persists a re-shield note at submission time (correctly preserving the random blinding), but then **ignores a real confirmation timeout**.\n\n`confirmBySignatureStatus()` returns `false` when a submitted signature is never observed before its 90-second deadline. The caller does this:\n\n```ts\nawait confirmBySignatureStatus(connection, signature)\nreturn result\n```\n\nThe boolean is discarded, so a transaction that was submitted but never landed is returned as a successful `DepositResult`.\n\nThat is especially harmful in the private-swap re-shield path because the `onSubmitted` callback has already persisted the note into the wallet's confirmed-looking local note set.\n\n## Root cause\n\nIn `lib/paraloom/bridge.ts`:\n\n```ts\nconst signature = await connection.sendRawTransaction(tx.serialize(), {\n  maxRetries: 5\n})\nconst result = { signature, blinding, assetId, amount }\n\nif (onSubmitted) {\n  try {\n    await onSubmitted(result)\n  } catch {\n    // recovery scan is th",
-      "skills": [],
-      "score": 35,
-      "amount_mentions": [
-        "$150"
-      ],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:29:26Z"
-    },
-    {
-      "id": 4754366017,
-      "title": "[Due for payment 2026-10-05] [$250] [Exploratory] Expense-Error is shown when vacation delegate clicks \"Download as PDF\" on rejected expense",
-      "url": "https://github.com/Expensify/App/issues/94728",
-      "description": "If you haven’t already, check out our [contributing guidelines](https://github.com/Expensify/ReactNativeChat/blob/main/contributingGuides/CONTRIBUTING.md) for onboarding and email contributors@expensify.com to request to join our Slack channel!\n___\n\n**Version Number:** 9.4.20-1\n**Reproducible in staging?:** Yes\n**Reproducible in production?:** Yes\n**If this was caught during regression testing, add the test name, ID and link from BrowserStack:** https://github.com/Expensify/App/pull/92885\n**Email or phone of affected tester (no customers):** N/A\n**Issue reported by:** Applause Internal Team\n**Bug source:** Exploratory - Significant User Experience Deterioration\n**Device used:** MacBook Air 26.5 Chrome\n**App Component:** Money Requests\n\n## Action Performed:\nPreconditions:\nAccount A: workspace owner\nAccount B: workspace approver\nAccount C: vacation delegate\nAccount D: workspace submitter\nAs Account A, create a workspace and invite Account B (approver), Account C, and Account D (submitter) as members. As Account B, set Account C as B's vacation delegate via Account > Profile > Status > Vacation delegate. \n\n1. As Account D (submitter), submit an expense to the workspace chat\n2. Log in ",
+      "id": 5775497571,
+      "title": "P0 | Compass Risk-to-Action Reliability Mission - October 2026 pullback + altseason/distribution readiness",
+      "url": "https://github.com/Donh91/Investering-Framework-Archive-v1/issues/1553",
+      "description": "# P0 MISSION | Compass risk-to-action reliability, capital preservation, altseason & distribution hardening\n**Issued:** 2026-10-09 Europe/Copenhagen | **Authority:** SUPERVISOR_EXECUTION_MANDATE, not a new trading signal or automatic code-promotion authority.\n**Owner:** existing `Daglig Supervisor + Alpha Meta-Governor` (ChatGPT automation, already enabled); delegate into EXISTING Official Compass, CN, Master Monday, Framework Learning, M6/EDGE-001, Portfolio Compass, Site/Pages, QA, and governed Codex/Work/Bridge lanes. **One mission, bounded child PRs.**\n**Status:** P0 scoped mission queued for fresh-state owner triage; **NOT IMPLEMENTED / NOT LIVE / NOT CODEX_READY** merely because this issue exists.\n\n## Executive problem and cause hypotheses, grounded in actual current repo\nPoint-in-time audit window 2026-09-11 through 2026-10-09. Market weakness and weak broad-alt transmission were recognized, but a sufficiently actionable and timely warning of the 2026-10-07/08 altcoin drawdown was not demonstrated. The failure to diagnose is **forecast -> market-protection state -> action-review translation -> delivery -> outcome/learning**, not merely insufficient indicators.\n\nReproduced co",
       "skills": [
-        "bug"
+        "api",
+        "automation",
+        "script"
       ],
-      "score": 35,
-      "amount_mentions": [
-        "$250"
-      ],
+      "score": 30,
+      "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:20:59Z"
+      "updated_at": "2026-10-10T20:38:39Z"
     },
     {
       "id": 5662643363,
@@ -307,23 +322,7 @@
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:37:48Z"
-    },
-    {
-      "id": 5734515632,
-      "title": "COORD BOARD (controllers)",
-      "url": "https://github.com/chetan-anand-hub/Lazytopper-Production/issues/973",
-      "description": "Mirror of Desktop/diff/COORD/BOARD.md (every board line is also a comment here). This description is the **STATUS SNAPSHOT**, rewritten by CI-1 (coordinator). Rules: LANE_RULES v1.1 · DISPATCH_PACK v1.3 · DECISIONs 1–26 (mirrored in BOARD.md).\n\n## STATUS SNAPSHOT — 2026-10-10T19:20Z\n**Trunk** `543177db` — fix(worksheet): PENDING-UPLOAD-1 PR-2 - a downloaded worksheet gets a pending record + sav\n**Production** version.json `543177db` · /api/health HTTP 200\n**Sessions:** live = CI-1, A, B, C1 · parked = C3 · C2 starts after MERGE #1034 · Sub-agent models OK? ✅ (verifiers Opus; mechanical Sonnet low)\n\n### Controllers (pack v1.3 §2; DECISION 19/23/25/26)\n| Role | State | Lane · branch/PR | State of lane | Next (in order) |\n|---|---|---|---|---|\n| **CI-1** (coordinator) | LIVE (eebaebbd) | Merge queue DONE: #1036 88333796 · #1038 20a534c0 · #1034 3be3e3da (all LIVE PASS) | queue complete; now coordinating (board 15-20 min, §3 collisions) | sweep #2 Mon 12 Oct · hourly summary + OWNER-BATCH |\n| **A** | FRESH A TAKEN OVER 17:0xZ | #1061 PENDING-UPLOAD-1 PR-1 open (lane-overlap re-run) · PR-2 option B (D50a) | #1037/#1046/#1013 temp-closed | PR-2 → TOPIC-FIX-1 (D50, before #1037; eval-gate",
-      "skills": [
-        "json",
-        "api",
-        "script"
-      ],
-      "score": 30,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:36:51Z"
+      "updated_at": "2026-10-10T20:38:06Z"
     },
     {
       "id": 5795016381,
@@ -341,49 +340,64 @@
       "updated_at": "2026-10-10T20:30:00Z"
     },
     {
-      "id": 5627292444,
-      "title": "check_contrast.py: add --json output and a CI action that fails on contrast regressions",
-      "url": "https://github.com/codeswithroh/tastemaker/issues/85",
-      "description": "## Problem\n`check_contrast.py --matrix` is the one part of tastemaker that is a computation rather than judgment, but its output is human-readable text only. That means nothing downstream can consume it: a project can't fail CI when a palette change breaks a text-safe pairing, and the agent has to re-parse prose to update the style lock.\n\n## Proposal\n1. Add a `--json` flag to `skills/tastemaker/scripts/check_contrast.py` (all three modes: pair, `--palette`, `--matrix`). For `--matrix`, emit every pair with its ratio and class (`text-safe` / `ui-safe` / `decorative`), plus the grouped legal pairings.\n2. Exit non-zero when a pairing that the style lock marks as text-safe drops below 4.5:1.\n3. Ship a small composite GitHub Action (e.g. `.github/actions/contrast-check`) that reads the palette from `.tastemaker/style-lock.md` and runs the check on PRs.\n\n## Acceptance\n- `--json` output is stable and documented in the script's docstring.\n- Existing text output is unchanged without the flag.\n- A PR that lowers a text-safe pair below 4.5:1 fails the action with the offending pair named.\n\n---\n💰 This issue has a **MergePay** bounty in USDC on Arc. See it on https://mergepay.fun/app#bounties",
+      "id": 5794983444,
+      "title": "P0 launch gate: restore authentication, signup email delivery, and visible live checkout",
+      "url": "https://github.com/dreamzzzz120-cell/software-passport-registry/issues/1163",
+      "description": "## Verified 2026-10-10\n- Supabase Auth project `gezmtnleoyrudxztegoj` ACTIVE_HEALTHY. Password login succeeded at 20:07:30 UTC, logout at 20:17:16 UTC, and failed with `invalid_credentials` at 20:18:31 and 20:20:00 UTC. Do not assume password changed without auditing updates/reset events.\n- Active production Railway service group: `spr-app` on Hhh, project `91a6cee9-ad96-4f12-98d3-9c963849cb24`, production app deployed successfully at approx 19:50 UTC.\n- Production Railway app has `STRIPE_SECRET_KEY`, `STRIPE_PUBLISHABLE_KEY`, `STRIPE_WEBHOOK_SECRET` and `STRIPE_PRICE_*` variable names populated (presence only, values not inspected).\n- Live Stripe account `Softwarepassportregistry` has active recurring $149 Starter and $399 Professional prices plus live Checkout Sessions. Recent review says public pricing displays only Free and 'Online checkout is currently unavailable'. **This is a storefront/backend mismatch, not evidence that live prices are missing.**\n- User review 2026-10-09 reports signup confirmations were not delivered. Current Auth log query did not establish SMTP diagnosis.\n\n## Required work\n1. Trace client Supabase login and auth recovery paths, audit password resets/ide",
+      "skills": [],
+      "score": 25,
+      "amount_mentions": [
+        "$149",
+        "$399"
+      ],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:40:49Z"
+    },
+    {
+      "id": 3825637122,
+      "title": "When using multiline examples the docs generator breaks",
+      "url": "https://github.com/SkriptLang/Skript/issues/8383",
+      "description": "### Skript/Server Version\n\n```markdown\nN/A\n```\n\n### Bug Description\n\nWhen using multiline java strings in examples on functions the docs generator seems to mess up and loses indentions leading to syntax joining together on a single line (see image)\n\n### Expected Behavior\n\nSkript to properly handle newlines & indentions when using multiline string in function examples\n\n### Steps to Reproduce\n\nhttps://docs.skriptlang.org/docs.html?search=#fromBase\n\n### Errors or Screenshots\n\n<img width=\"1546\" height=\"548\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4dd1aa2a-56d2-44db-b5de-2ac4d1f31f05\" />\n\n### Other\n\nThis issue is currently persistent on `location` and `fromBase` function no other functions seem to use `\"\"\"`\n\n### Agreement\n\n- [x] I have read the guidelines above and affirm I am following them with this report.",
+      "skills": [
+        "bug",
+        "script"
+      ],
+      "score": 20,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:40:00Z"
+    },
+    {
+      "id": 5795057632,
+      "title": "Collector gaps: Tesla operating metrics, SpaceX, Nvidia, and watchlist ticker status",
+      "url": "https://github.com/ram290476/investor-dashboard/issues/141",
+      "description": "## Summary\nA read-only review on 2026-10-10 (after PR #135 deployed at about 12:30 PM PT and image `ae41442` at 1:18 PM PT) found that the company-metrics collector still can't fill operating metrics for any company. This issue tracks the gaps and the fixes in progress.\n\nContext: #126 (collector), PR #132 (initial build), PR #135 (index URL, partial outcome, cash tag), #140 (show collected data in Fundamentals and on the company page).\n\n## 1. Earnings-release files still aren't recognized\nPR #135 fixed the 8-K index 404s by switching to `index.json`, but `exhibits_from_index` still finds **0 exhibits**:\n- EDGAR's `index.json` lists `type: \"text.gif\"`, not `EX-99.1`.\n- Real filenames don't match the `ex[-_]?99\\.?1` regex: Tesla `exhibit991.htm`, `exhibit991111111.htm`, `exhibit99111111.htm`; SpaceX `earningsreleaseq22608042.htm`; Nvidia `q2fy27pr.htm`, with the CFO commentary as EX-99.2 in `q2fy27cfocommentary.htm`.\n\nThese are the **8-K EX-99.1 / EX-99.2 exhibits** (the deliveries release and update deck, or the earnings release), not 10-Q/10-K files. Because of that, Tesla's **deliveries, production, FSD subscriptions, energy storage and Supercharger counts** stay empty, and a week",
       "skills": [
         "json",
         "script"
       ],
-      "score": 30,
+      "score": 20,
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:23:39Z"
+      "updated_at": "2026-10-10T20:39:47Z"
     },
     {
-      "id": 5518867774,
-      "title": "OneCompany permanent Mistral Vibe cloud wake bus — owner dispatch only",
-      "url": "https://github.com/NTinkicht/OneCompany/issues/130",
-      "description": "Permanent, repository-scoped, GitHub-hosted Mistral wake bus. Do not close or reuse for unrelated providers. OneCompany native Work Units, current lease, exact SHA and dispatch policy are authority, not this issue's free-form comments. Initial `@mistral-vibe` wake is read-only, advisory and non-gating; it may inspect bounded source and report test ideas/failure analysis without writing code. It MUST fail closed when `MISTRAL_API_KEY` or subscription/PAYG-disabled guard is absent. No provider credentials in this issue. Full leased developer, binding reviewer and test-author lanes need separate qualification; no Codespace, laptop or open browser session may be required.",
+      "id": 5795083668,
+      "title": "Submit MCP Server: DataBazaar — dataset discovery, retrieval, listings and bounties",
+      "url": "https://github.com/chatmcp/mcpso/issues/5093",
+      "description": "I maintain DataBazaar and would like to submit its MCP server for the directory.\n\n**Name:** DataBazaar\n**Repository:** https://github.com/shagarwal/databazaar-mcp\n**npm:** https://www.npmjs.com/package/databazaar-mcp (current version 1.5.1)\n**Website and integration instructions:** https://databazaar.io/integrations?utm_source=mcpso&utm_medium=directory&utm_campaign=marketplace-recruitment\n**Category:** Datasets / data marketplace\n**License:** MIT (MCP server code; individual datasets have their own licenses)\n\nDataBazaar lets people and agents discover datasets, retrieve free or purchased data with an account, publish datasets, and post data bounties. Search and sample previews are public. Full dataset downloads, including free datasets, require account authentication; purchases and account mutations use the authenticated tools.\n\n### Remote connection — public discovery\n\n- Transport: Streamable HTTP\n- URL: `https://api.databazaar.io/mcp/public`\n- Authentication: none\n- Tools: `search_datasets`, `get_dataset`, `preview_sample`\n\nThis public endpoint supports discovery and samples only. The authenticated endpoint is `https://api.databazaar.io/mcp`; account authorization is required fo",
       "skills": [
-        "api",
-        "script"
+        "json",
+        "api"
       ],
       "score": 20,
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:37:09Z"
-    },
-    {
-      "id": 5438226799,
-      "title": "N5: separately authorized subscription task acceptance (M8-G)",
-      "url": "https://github.com/sushiHex/constructicon/issues/78",
-      "description": "## Outcome\n\nExecute [N5 — separately authorized subscription task acceptance](https://github.com/sushiHex/constructicon/blob/main/docs/plans/milestones/M8-live-executors-rev3.md#n5--separately-authorized-subscription-task-acceptance) of M8 rev 3: one bounded READ lane and a separately authorized WRITE/capture/gate lane through the same owned boundaries, completing only the observed profile's conformance.\n\n## Prerequisites and non-goals\n\nBlocked by N4. Requires explicit operator authorization of the selected binding/provider, model, permitted task data, fixed request/token budget, vendor overage policy and cost ceiling before any model call. If a requested hard spending bound cannot be enforced under that arrangement, stop for a different operator decision; do not promise one from a local token limit. No paid-API fallback and no repeated smokes until a model succeeds. No production provider is published and no conformance hash is invented.\n\n## Acceptance criteria\n\n- [ ] Real subscription-mode execution, model-session TLS/destinations, bounded results and timeout/cancellation are proved through the real launcher, driver, worker and leases.\n- [ ] Deterministic fakes are reused for res",
-      "skills": [
-        "api",
-        "script"
-      ],
-      "score": 20,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:35:58Z"
+      "updated_at": "2026-10-10T20:39:13Z"
     },
     {
       "id": 5600067058,
@@ -414,21 +428,6 @@
       "updated_at": "2026-10-10T20:30:13Z"
     },
     {
-      "id": 3825637122,
-      "title": "When using multiline examples the docs generator breaks",
-      "url": "https://github.com/SkriptLang/Skript/issues/8383",
-      "description": "### Skript/Server Version\n\n```markdown\nN/A\n```\n\n### Bug Description\n\nWhen using multiline java strings in examples on functions the docs generator seems to mess up and loses indentions leading to syntax joining together on a single line (see image)\n\n### Expected Behavior\n\nSkript to properly handle newlines & indentions when using multiline string in function examples\n\n### Steps to Reproduce\n\nhttps://docs.skriptlang.org/docs.html?search=#fromBase\n\n### Errors or Screenshots\n\n<img width=\"1546\" height=\"548\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4dd1aa2a-56d2-44db-b5de-2ac4d1f31f05\" />\n\n### Other\n\nThis issue is currently persistent on `location` and `fromBase` function no other functions seem to use `\"\"\"`\n\n### Agreement\n\n- [x] I have read the guidelines above and affirm I am following them with this report.",
-      "skills": [
-        "bug",
-        "script"
-      ],
-      "score": 20,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:29:58Z"
-    },
-    {
       "id": 5767603643,
       "title": "Claim Scout Persistent Memory",
       "url": "https://github.com/close2ground1-debug/agent-market-x402/issues/1",
@@ -457,24 +456,10 @@
       "updated_at": "2026-10-10T20:19:40Z"
     },
     {
-      "id": 5794829645,
-      "title": "Add an iac plugin for inter-agent messaging over GitHub comments",
-      "url": "https://github.com/cjus/cjus-skills/issues/77",
-      "description": "## Goal\n\nLet non-Anthropic models work alongside Claude Code sessions: a ChatGPT dot first, then Codex, local Ollama models and OpenRouter models. Named agents exchange addressed JSON messages as comments on a shared GitHub thread. There is no server to host. `iac` stands for Inter-Agent Communication.\n\n## Transport: one private repo, one issue per channel\n\n```\n<operator>/iac-channels       private; only the operator's account can read it\n├── roster.json               agent names and kinds, plus the channel list\n├── docs/\n│   └── iac-protocol.md       the protocol card: format and rules, readable by any agent\n└── Issues\n    ├── #1  iac:bookcraft     a channel; each comment on it is a message\n    └── #2  iac:pr\n```\n\n- Every agent posts as the operator's account, whether through `gh` or a GitHub connector.\n- A channel is an issue. Closing it tells agents to stop using the channel, though GitHub still accepts comments on a closed issue.\n- Shared documents that change slowly, and that nobody edits at the same moment, live as files in the repo, not as messages.\n\n## Messages are append-only\n\n**Nobody edits or deletes a message.** Each message is one comment holding one JSON object, optio",
-      "skills": [
-        "json"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:37:47Z"
-    },
-    {
-      "id": 5795072633,
-      "title": "AKO: Build verified Docker-ready GCP image and complete uninterrupted Montage58 run",
-      "url": "https://github.com/UFFeScience/akoflow/issues/136",
-      "description": "Prepare a dedicated disposable builder through the Akoflow API, install and verify Docker/runtime tools, sanitize image-specific identity and credentials, stop builder, capture an immutable GCP custom image, and validate fresh worker boot. Register the image for the same 10 e2-micro and 2 e2-medium targets without changing scientific scope or routing. Replan/simulate and submit a new fresh 58-activity real experiment; no activity/workspace recovery may count as uninterrupted success. Preserve diagnostics on failures, fix scoped issues before a new attempt, export final product and stage metrics, and remove disposable paid resources. Local main commits and issues only, no push, per explicit user workflow.",
+      "id": 5602503136,
+      "title": "Build complete source-to-Legacy feature and route acceptance matrix",
+      "url": "https://github.com/MALIEV-Co-Ltd/Legacy.Maliev.Workflows/issues/98",
+      "description": "The source-commit ledger tracks commit disposition but does not prove every migrated service feature and Web/Intranet route works against production-derived local Aspire data. This is an explicit migration completion gate, not a deployment request.\n\nAcceptance:\n- Inventory each Legacy service feature, API, role, entity, background operation, and every Web/Intranet route against the latest committed original source; retain full source SHA, owning Legacy repo, main SHA, status, and exact evidence links.\n- Mark unverified items pending; distinguish source retirement approvals from migrations. Do not infer feature parity from a code mapping, route alias, smoke test, or green unit suite.\n- Record automated customer/employee authentication, permission, CRUD/lifecycle, validation, rollback/retry, cross-service effects, localization, responsive/browser/accessibility, and persisted-data checks as appropriate. Include safe failure/partial-failure evidence and suppress real notifications/payments/analytics in local review.\n- Verify the matrix against live source and each protected Legacy main, with a check that rejects missing routes/features or unsupported completion claims. Link per-service",
       "skills": [
         "api"
       ],
@@ -482,21 +467,21 @@
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:37:41Z"
+      "updated_at": "2026-10-10T20:40:47Z"
     },
     {
-      "id": 5603480693,
-      "title": "Rust release: simplify fresh installation and delete remaining production Python",
-      "url": "https://github.com/craigbalding/safeyolo/issues/822",
-      "description": "Parent: [Rust product phase](https://github.com/craigbalding/safeyolo/issues/815). Final integration consumes the policy, host, guest/coordination, credential, workflow and operator-UX results. Start the minimal native install path with the first usable CLI; final release acceptance remains here.\n\n## Preparation update — 3 October 2026\n\nPrepared against master [`f1e16b4f`](https://github.com/craigbalding/safeyolo/commit/f1e16b4f94f1a829da92bef4d875c720dce03cfd) and tracked in [Rust product phase, Project 2](https://github.com/users/craigbalding/projects/2). Craig’s 4 October direction overrides the Project 1 completion gate: start actual #816 P1/P4/P6 coding with minimal #822 installation support no later than 22:07 UTC on 4 October 2026. Preserve unfinished Project 1 work at a safe checkpoint. Refresh the accepted master and relevant issue/PR results at that handoff; this revision is an analysis baseline, not a frozen implementation candidate. Existing acceptance labels and operator decisions remain in force. This preparation marks no case passed.\n\n[#880](https://github.com/craigbalding/safeyolo/pull/880) completed the proxy cutover, [#893](https://github.com/craigbalding/safeyolo",
+      "id": 5593257885,
+      "title": "[CODEX][P0] Own today's schedule and roster: reconcile Enrollware sessions into canonical LanderWare",
+      "url": "https://github.com/Brian910cpr/910cpr-class-landers/issues/297",
+      "description": "## Production incident, September 26, 2026\n\nBrian asked for today's schedule and roster. ChatGPT used Google Calendar and Gmail because the owned schedule and participant model did not provide a complete answer. This violates the operational goal that LanderWare own and answer class/roster truth.\n\n### Reproduced evidence\n\n- `docs/data/admin_schedule.json` generated 2026-09-26 05:47 UTC includes:\n  - Enrollware session `14186375`, Heartsaver First Aid CPR AED, 9:00–11:30 AM ET.\n  - `14145607`, Heartsaver CPR AED, 10:00 AM–noon ET.\n  - `14184955`, BLS Initial, 5:00–7:00 PM ET.\n- Each external row has `participant_count: null`, `count_available: false`, `count_source: canonical_session_workspace_required`.\n- `docs/data/schedule_future.json` also has null enrollment fields.\n- Read-only production SQL on LanderWare Supabase at about 6:20 AM ET returned **zero class_sessions rows for September 26**. Thus the canonical workspace cannot join these classes to registrations. Nearby days did contain operational rows (September 28: one session/four active registrations; September 29: three sessions/two active registrations; October 3: one session/zero).\n- Enrollware registration notices show t",
       "skills": [
-        "python"
+        "json"
       ],
       "score": 10,
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:37:35Z"
+      "updated_at": "2026-10-10T20:40:40Z"
     },
     {
       "id": 5770925524,
@@ -510,7 +495,7 @@
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:37:31Z"
+      "updated_at": "2026-10-10T20:40:13Z"
     },
     {
       "id": 5793235147,
@@ -524,7 +509,159 @@
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:37:28Z"
+      "updated_at": "2026-10-10T20:40:12Z"
+    },
+    {
+      "id": 5593929116,
+      "title": "Master Control — open items carried forward from #3",
+      "url": "https://github.com/Presidente49/gatorbait-media-redesign/issues/34",
+      "description": "Carried forward from #3, closed September 26, 2026 after the homepage/Magazine restoration (PR #33, merged). This is the new shared coordination thread for these remaining items — read the opening and newest comments before work, same as #3's original contract.\n\n## Canonical reference\n- Repository: **Presidente49/gatorbait-media-redesign**.\n- Production Wix site: **18fb3a4e-d7f6-414a-aeb9-3047db3ea115** at `https://www.gatorbaitmedia.com/`.\n- Approved default: free sports-news homepage; Magazine stays separate. This is now live and verified (see #3's closing summary).\n\n## Open items\n\n### 1. Automatic article emails — UNVERIFIED\nToday's two publication alerts (as of the #3 closure) had no confirmed delivery evidence. An active workflow and a valid custom template are not proof of send. Needs: per-article automation activity/delivery results (sent/delivered/failed counts), intended audience, and matching evidence in the actual send log — not just workflow status.\n\n### 2. Email footer address\nThe active custom email template has a street-address footer. Needs reconciliation with Brenden's privacy preference and an approved compliant business mailing address before the next template ch",
+      "skills": [
+        "automation"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:40:05Z"
+    },
+    {
+      "id": 5082535457,
+      "title": "[PM seat] domain:spec — 🟢 os-project-manager · session_01S3aAf11JjbW1mSGL1EhfFj",
+      "url": "https://github.com/objectstack-ai/objectstack/issues/6017",
+      "description": "## Current PM\n\n🟢 **`os-project-manager`** · session `session_01S3aAf11JjbW1mSGL1EhfFj` · seated 2026-10-10T20:39Z on the maintainer's summons (`/pm-dispatch spec@objectstack seat 1`). Batch 3, `mode:subagent` by default.\n\n- **Charter:** `.claude/skills/pm-dispatch/references/lanes/spec.md`.\n- **Holders:** `os-project-manager` · `session_01S3aAf11JjbW1mSGL1EhfFj`, from 2026-10-10T20:39Z. Before it: `os-tesla` · `session_01VZqqwTj2wsihZEbfT6yyYN`, 2026-10-09T04:08Z → 2026-10-10T11:37Z (stand-down brief `6097111309`; its full ledger is this body's revision last edited before this one). Before that: `os-litant` · `session_01LAi5BVvQNiYzepSAcsoFLK` (ledger in the body revision of 2026-10-09T03:34Z).\n- **Other seats in the lane:** seat 2 #18549, seat 3 #18883. Read their posts' titles for their state.\n\n## Handover ledger\n\n**Landed this tenure:** #22683 (PR #22703, `9f159397fb`); #22698 (PR #22713, `e5899a67d6`). Each landing record is on its card.\n\n**In flight (this seat; claims and records on each card):**\n- #22301 item 1's remaining composition gap — claim `6099249975`, branch `claude/issue-22301-item1-composition-gap`, `Clause-②: yes`. The dev was stopped once by the account's usage l",
+      "skills": [
+        "script"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:40:03Z"
+    },
+    {
+      "id": 5771253669,
+      "title": "W21: single Bloom panel server for complete Enthusia AI stack, followed by approved live SFTP",
+      "url": "https://github.com/wsg138/Enthusia-AI/issues/119",
+      "description": "## Goal\n\nDeploy the complete Enthusia AI stack as **one persistent Bloom-hosted Pterodactyl server**, operated through the Bloom panel, instead of relying on the owner's temporary Windows PowerShell launcher. This is the intended owner-preferred packaging target, subject to measured Pterodactyl, node/container and model-resource feasibility. **No production deployment or live SFTP connection is authorized by this issue.**\n\n### Existing implementation versus desired topology\n\n- Existing `deploy/bloom/egg.json`, `startup.sh` and `README.md` (W21) are **prepare-only templates** and currently require **one Pterodactyl server per role** (`gateway|agent|discord|inference|indexer`). The `discord` and `indexer` startup paths still explicitly fail because their entrypoints were not completed in that template.\n- The isolated Windows test already starts the three running Node components together in one launcher; it uses a local Ollama instance for Qwen3 and deliberately does not connect live tools.\n- The production-capable Agent composition root already has optional SFTP typed read tools via `ENTHUSIA_AGENT_SFTP_CONFIG_PATH`. The independent `integrations/sftp/LIVE-SOURCE-SETUP.md` remains th",
+      "skills": [
+        "json"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:40:01Z"
+    },
+    {
+      "id": 5760881127,
+      "title": "Framework review 2026-10-10 (dev e3857da): typed DI core, but a suppression-green gate and dead shipped features (1.8/5)",
+      "url": "https://github.com/PavelRavvich/graphcompose/issues/177",
+      "description": "## Why\n\nAI agents write most of the code in this repo, not people. A framework built for that has to make two things true. A correct change should be cheap for an agent to make. A wrong change should be caught quickly, by `tsc`, by assembly or by a gate, and not show up as a silent failure in production.\n\nThis epic records a full architecture review (`.claude/skills/framework-review`) of `dev` at **`e3857da`** (2026-10-10). The review comes at the point where the core is considered nearly finished, and every finding has a concrete proposal.\n\n**Verdict.**\n- **What has improved since the first review:**\n  - The build, `tsc` (including tests), prettier and all 720 tests are green.\n  - The DI graph checks catch more at assembly time.\n- **The green gate overstates the code's health:**\n  - Lint passes only because **822 errors are suppressed**, through 326 `eslint-disable` comments and 7 files that disable lint for the whole file.\n  - Several tests pass without exercising the real code path.\n- **Most features added in the last 50 commits ship dead or broken.** They compile, assemble and pass their tests, then do nothing or crash on first real use: judges, `batchParallel`, memory strategi",
+      "skills": [
+        "api"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:39:40Z"
+    },
+    {
+      "id": 5794829645,
+      "title": "Add an iac plugin for inter-agent messaging over GitHub comments",
+      "url": "https://github.com/cjus/cjus-skills/issues/77",
+      "description": "## Goal\n\nLet non-Anthropic models work alongside Claude Code sessions: a ChatGPT dot first, then Codex, local Ollama models and OpenRouter models. Named agents exchange addressed JSON messages as comments on a shared GitHub thread. There is no server to host. `iac` stands for Inter-Agent Communication.\n\n## Transport: one private repo, one issue per channel\n\n```\n<operator>/iac-channels       private; only the operator's account can read it\n├── roster.json               agent names and kinds, plus the channel list\n├── docs/\n│   └── iac-protocol.md       the protocol card: format and rules, readable by any agent\n└── Issues\n    ├── #1  iac:bookcraft     a channel; each comment on it is a message\n    └── #2  iac:pr\n```\n\n- Every agent posts as the operator's account, whether through `gh` or a GitHub connector.\n- A channel is an issue. Closing it tells agents to stop using the channel, though GitHub still accepts comments on a closed issue.\n- Shared documents that change slowly, and that nobody edits at the same moment, live as files in the repo, not as messages.\n\n## Messages are append-only\n\n**Nobody edits or deletes a message.** Each message is one comment holding one JSON object, optio",
+      "skills": [
+        "json"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:39:23Z"
+    },
+    {
+      "id": 5783251271,
+      "title": "Shopify App Store approval readiness: compliance, billing, listing and Bakatá pilot",
+      "url": "https://github.com/donardi-1997/diaglob/issues/148",
+      "description": "## Goal\nComplete and verify DIAGLOB readiness for Shopify App Store review and enable the Bakatá pilot after Shopify allows installation.\n\n## Required work\n- [ ] Integrate/review #147 first; require final-head CI before merge.\n- [ ] Implement Shopify App Pricing/provider selection for Shopify App Store organizations while keeping Paddle for independent DIAGLOB contracts.\n- [ ] Implement compliance webhook behavior for `customers/data_request`, `customers/redact`, and `shop/redact`, including idempotency, approved retention handling, customer data export/redaction coverage, and tests.\n- [ ] Reconcile OAuth/install/reinstall/uninstall and embedded App Bridge/session requirements with the actual app configuration.\n- [ ] Audit scopes and all order/COD/draft-order flows against current Shopify checkout/order policies.\n- [ ] Verify plan limits and features against public pricing; create public plan entries only after approval of any subscription activation.\n- [ ] Finish protected customer data application and privacy/terms copy with evidence-backed retention/security statements.\n- [ ] Complete English listing, icon, real screenshots, screencast, support contact, reviewer credentials, and",
+      "skills": [
+        "script"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:39:04Z"
+    },
+    {
+      "id": 5787262135,
+      "title": "P1 AUTO_TRADING: close cross-strategy proposal-time trial denominator gap",
+      "url": "https://github.com/Donh91/Investering-Framework-Archive-v1/issues/1557",
+      "description": "## Objective\nClose the **verified** AUTO_TRADING global proposal-time trial-denominator gap, using the existing Experiment Lifecycle / Scientific Admission owner, without a parallel experiment engine, ledger authority, scheduler or model-driven search loop.\n\n**Priority:** P1 research-integrity prerequisite, **not** a production outage or CODEX_READY declaration. No code/PR or broad-search start is authorized merely by creation of this issue.\n\n## Verified current-main evidence\n- `06_RESEARCH_LAB/m4_checkpoints/2026-10-05__RL-AUTOTRADING-EVIDENCE-004__FINAL_ADJUDICATION_v1.md` explicitly finds `CENTRALIZATION GAP / BROAD-SEARCH BLOCKER`, `BUILD_NOTHING` for new economic hypotheses and `PARTIALLY_READY` for the evidence machine.\n- `04_RESEARCH_LAB/auto_trading/trials/AT_TRIAL_LEDGER_v2.json` is referenced historically but absent from current main; this is **not** an instruction to recreate that legacy path.\n- #885 is **closed** and demonstrated LOCAL monotonic `AT-HYP-0019` N1-N5 accounting, including failures and a blocked N4; #952/#941 historical reconciliation and persistence repair are closed. Do not reopen these accomplishments.\n- `04_RESEARCH_LAB/auto_trading/experiments/E1X/E1X",
+      "skills": [
+        "json"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:38:42Z"
+    },
+    {
+      "id": 5087942150,
+      "title": "DAG fleet escalations — standing projection target for unbound NEEDS_HUMAN nodes",
+      "url": "https://github.com/ray-manaloto/dotfiles/issues/623",
+      "description": "**This issue is a standing target, not a task. Do not close it.**\n\nIt is the projection target defined by\n[`docs/specs/dag-needs-human-projection.md`](https://github.com/ray-manaloto/dotfiles/blob/main/docs/specs/dag-needs-human-projection.md)\n§2.2 (#602), and it exists because of one measurement: **nothing binds a\nbackground node to an issue.** There is no `issue`/`ticket` field in the union of\nevery `state.json` key set on this host, and a job dir holds only `state.json`,\n`timeline.jsonl` and `tmp/`.\n\nSo an escalated node — `state == \"blocked\"` with a non-empty `needs` payload and\nno `queuedPrompt`, which `dag_tick.py` classifies `NodeClass.NEEDS_HUMAN` — has\nnowhere to be projected *to* unless the scheduler dispatched it and wrote a\n`dag-binding.json`. Without this issue, an **unbound** escalation would stay\nvisible in a launchd log only, which is exactly the silence #602 exists to end.\n\n## The contract\n\n| | |\n|---|---|\n| **Receives** | one append-only comment per (node, question) for any NEEDS_HUMAN node with **no** `dag-binding.json` |\n| **Never receives** | anything for a **bound** node — that projects to its own issue |\n| **Never** | has its body machine-written (`docs/recei",
+      "skills": [
+        "json"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:38:26Z"
+    },
+    {
+      "id": 5348586257,
+      "title": "[RADAR] Superteam agent-eligible work",
+      "url": "https://github.com/markabramov1993/arbitr/issues/1",
+      "description": "# Superteam agent-eligible live radar\n\nUTC: 2026-10-10T20:38:22.501204+00:00\n\nEligible live listings: 1\n\n## Crea Contenido para Promocionar El Encuentro 2026 en Madrid\n- id: b8fe03a2-01ac-4879-be1a-e58a5496927f\n- slug: crea-contenido-para-promocionar-el-encuentro-2026\n- agentAccess: AGENT_ALLOWED\n- status: OPEN\n- deadline: 2026-10-24T22:59:59.999Z\n- reward_detected: 0.0\n- token: USDG\n- type: bounty\n\nMAX_AGENT_REWARD_DETECTED=0.0",
+      "skills": [],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:38:24Z"
+    },
+    {
+      "id": 5789991986,
+      "title": "Customer business draft creation, private preview and revision pipeline",
+      "url": "https://github.com/christianza1989/nisiniai-puslapiai-monetizavimui/issues/77",
+      "description": "## Human objective\n\n2026-10-10 owner in core chat asks a real test-customer UI journey: registration, idea conversation, AI prepares a business/site for exact mokyai-ai.lt, delivers its work, receives critique and makes revisions. Owner later explicitly requests autonomous work until a usable test-customer platform today by evening. Domain inventory catalogue is separately implemented under issue76. Existing read-only owner consultation cannot build artifacts.\n\n## Core scope\n\nSeparate branch/worktree from accepted P3 checkpoint4db56be. New creation module over the same core identity/session/organization/portfolio and PostgreSQL; migration0013; durable private creation/job/events/revisions/artifacts; current tenant/session source/lease admission and completion; pinned bounded Codex generation adapter with no browser-selected tools/paths/models; typed safe draft renderer; canonical creation.v1 customer/v2 read/write wire; domain catalogue authenticated read mounts. Minimal shared config/API/migration metadata and reusable CLI transport changes with prior consultation regressions. Focused PostgreSQL/security/worker/persistence/cancel/idempotency/output/race checks and a portable runbo",
+      "skills": [
+        "api"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:38:24Z"
+    },
+    {
+      "id": 5515702753,
+      "title": "Jarvis publications — replies and Daily Board",
+      "url": "https://github.com/braydenparker999/jarvis/issues/2",
+      "description": "This thread carries public Jarvis replies and Daily Board publications. Posting here does not deploy the website or Worker.\n\nThe Worker imports only validated publication JSON posted by the repository owner (GitHub user ID 183016859). Other comments are ignored. Ordinary messages are sent through the Jarvis website.\n\nSchema: jarvis-publication-v1. Each publication has a UUID id and type reply or briefing. Replies include replyTo and body. Briefings include date (YYYY-MM-DD), title and body.\n\n[Authoritative format and scheduling handoff](https://github.com/braydenparker999/jarvis/blob/main/JARVIS-HANDOFF.md)\n\nLive Worker v6 import was verified on 2026-09-20: both the test reply and briefing are present in the shared inbox reader, publisher healthy, no pending/conflicting imports. Routine imports run at most once every five minutes when the inbox is read. Scheduled assistant execution will be configured separately.",
+      "skills": [
+        "json"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:37:58Z"
     },
     {
       "id": 5421716421,
@@ -537,62 +674,6 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T20:36:48Z"
-    },
-    {
-      "id": 5795063906,
-      "title": "Backlinks, link rel classes and paid-spend gates",
-      "url": "https://github.com/PavloSEO/spiderhead/issues/1310",
-      "description": "Paid DataForSEO calls and the backlink analyzer built on them, plus link rel classification from stored links. Spend gate and backlink calls share dataforseo.py, so one branch. Owner decides spend units (RUB or USD) before the limits slice.\n\n**Area:** DataForSEO spend gate and backlink analyzer\n\n## Checklist\n- [ ] #949: pre-call estimate (cost, query count, cache hits) for paid calls; verify slice 1 (confirm_paid gate) on origin/main, not in this checkout\n- [ ] #949: project and monthly limits enforced in core (units owner decision; core uses spend_ceiling_usd today); spend journal of DataForSEO costs; confirm_paid in CLI and MCP\n- [ ] #999: DataForSEO backlinks, referring_domains, history and domain_pages_summary with cost confirmation and spend journal; backlinks-profile CLI and MCP with project-DB history\n- [ ] #999: merge and dedupe, first and last seen, anchors, referring domains, spam heuristics, disavow export; free sources (Yandex Webmaster, Bing GetUrlLinks, GSC CSV, Ahrefs CSV, Common Crawl)\n- [ ] #999: paid CSV import; direct Ahrefs, Majestic and Moz connectors (lowest priority)\n- [ ] #1040: internal sponsored and ugc registry findings (PR #1143 open); mixed rel-token fi",
-      "skills": [
-        "csv"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:36:28Z"
-    },
-    {
-      "id": 5794349943,
-      "title": "RelayWA International SEO — Master Tracker (12 batches)",
-      "url": "https://github.com/Haider-Shakoori/wa/issues/90",
-      "description": "# RelayWA International SEO — Master Tracker\n**Scope:** English-only global SEO on `relaywa.com`; 8 initial research targets (India, Brazil, Indonesia, Mexico, Colombia, Nigeria, UAE, Pakistan) plus 5 expansion research targets (Saudi Arabia, South Africa, Spain, Germany, UK). Accurate QR-linked/session messaging API positioning. Country pages only when evidenced by genuinely distinct English buyer needs.\n\n## Batch checklist (implement in order unless noted)\n- [x] [Batch 01 — Research & positioning](https://github.com/Haider-Shakoori/wa/issues/78)\n- [x] [Batch 02 — Technical SEO](https://github.com/Haider-Shakoori/wa/issues/79)\n- [x] [Batch 03 — Analytics & conversion instrumentation](https://github.com/Haider-Shakoori/wa/issues/80)\n- [x] [Batch 04 — Performance & CWV](https://github.com/Haider-Shakoori/wa/issues/81)\n- [x] [Batch 05 — English-only global architecture and canonical targeting](https://github.com/Haider-Shakoori/wa/issues/82)\n- [ ] [Batch 06 — Existing English docs and on-page SEO improvements](https://github.com/Haider-Shakoori/wa/issues/83)\n- [ ] [Batch 07 — Integration landing pages](https://github.com/Haider-Shakoori/wa/issues/84)\n- [ ] [Batch 08 — English-only re",
-      "skills": [
-        "api"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:36:19Z"
-    },
-    {
-      "id": 5795062484,
-      "title": "Source connectors: OAuth, bindings, PageSpeed, Telegram",
-      "url": "https://github.com/PavloSEO/spiderhead/issues/1309",
-      "description": "Connecting external sources: GSC OAuth lifecycle, provider verify and readiness, source bindings and discovery, a new read-only Telegram source, and the PageSpeed and CrUX desktop screen. Credential and OAuth code is shared, so one branch. Owner decides secret storage (Keychain vs files).\n\n**Area:** data source connectors and credentials\n\n## Checklist\n- [ ] #964: start action (oauth_flow.create_flow with safe authorization URL and bounded correlation ID, same in CLI and MCP)\n- [ ] #964: callback with state verification and late-callback rejection after cancel or expiry; connected transition with verified timestamps and token expiry; status never connected from configuration alone\n- [ ] #934: provider_verify for yandex_cloud, ga4, metrika, pagespeed, crux and dataforseo (falls through to credential_present today); normalised invalid_grant on refresh and verify\n- [ ] #934: quota and response time in provider readiness; scan-verify integrity and restore from checkpoint; owner decides secret storage backend\n- [ ] #990: sources discover --provider google, yandex or topvisor with a mocked-API test; per-provider auth methods (service account, OAuth, API key, Yandex OAuth, Topvisor key)\n- ",
-      "skills": [
-        "api"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:36:16Z"
-    },
-    {
-      "id": 5760402393,
-      "title": "[P1][TIGERIQ NEWS] Hoàn thiện xuất bản bài/ảnh công khai và tự xác minh tin thật",
-      "url": "https://github.com/newsdayads/tigeriq-ai-lab/issues/4574",
-      "description": "TIGERIQ_JOB_V1\nSOURCE=Owner direct chat 2026-10-08: \"Tôi cần xem kết quả thực tế trên trang chứ không muốn nhìn vào thẻ công việc rồi đoán mò\"\nOWNER_DIRECT=true\nOWNER_POLICY=AUTO\nPRIORITY=P1\nCURRENT_STATE=READY_AUTOMATED_CODING\nTIGERIQ_EXECUTABLE=true\nAUTO_QUEUE=INCLUDED\nCAPABILITY=coding\nEXECUTION_SURFACE=CODING\nAUTONOMOUS_CODE=true\nMUTATION_OWNER=CORE_DYNAMIC_LEASE\nRESOURCE_SCOPE=TIGERIQ_NEWS_PUBLIC_ARTICLE_COVER_LIVE_E2E_V1\nPROJECT_ID=tigeriq-news\nWORK_PACKAGE_ID=news-autonomous-newsroom\nTARGET_REPOSITORY=newsdayads/tigeriq-media\nBASE_BRANCH=main\nRELATED_PARENT=4456\nRELATED_TRACKER=3899\nRELATED_SOAK=3904\nRESULT_INBOX=4426\nONE_RESOURCE_SCOPE_ONE_WRITER=true\nZERO_COST=true\nNO_PAID_COST=true\nNO_CREDENTIAL_CHANGE=true\nNO_SECURITY_BOUNDARY_CHANGE=true\nNO_DESTRUCTIVE=true\nNO_DIRECT_MAIN=true\nNO_PRODUCTION_RELEASE=true\nNO_VERCEL_DEPLOY=true\nNO_APP_CHROME_MUTATION=true\nAPP_CHROME_MUTATION=FORBIDDEN\nNO_CODEX=true\nINDEPENDENT_REVIEW_REQUIRED=true\nKEEP_OPEN_ON_STEP_COMPLETE=true\nLIVE_ACCEPTANCE_REQUIRED=true\nDONE=false\n\n## MỤC TIÊU THỰC TẾ\nTigerIQ News phải tự tìm tin -> xác minh -> viết -> rà soát độc lập -> tạo/đưa ảnh lên nguồn công khai -> xuất bản nội dung tới đúng nguồn website đang ",
-      "skills": [
-        "script"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:35:57Z"
     },
     {
       "id": 5748323491,
@@ -657,18 +738,6 @@
       "updated_at": "2026-10-10T20:29:27Z"
     },
     {
-      "id": 5794991262,
-      "title": "GH_BOUNTY_ACTOR_POLICY_FIELD_CREATE_20261010",
-      "url": "https://github.com/09sd-org/gh-bounty-org-issue-field-lab-20261008/issues/9",
-      "description": "",
-      "skills": [],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:26:29Z"
-    },
-    {
       "id": 5530024379,
       "title": "eval: tool-calling SLM tournament and Agent0-style self-evolution track",
       "url": "https://github.com/kvnloo/evolution-lab/issues/23",
@@ -681,81 +750,13 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T20:19:46Z"
-    },
-    {
-      "id": 5515702753,
-      "title": "Jarvis publications — replies and Daily Board",
-      "url": "https://github.com/braydenparker999/jarvis/issues/2",
-      "description": "This thread carries public Jarvis replies and Daily Board publications. Posting here does not deploy the website or Worker.\n\nThe Worker imports only validated publication JSON posted by the repository owner (GitHub user ID 183016859). Other comments are ignored. Ordinary messages are sent through the Jarvis website.\n\nSchema: jarvis-publication-v1. Each publication has a UUID id and type reply or briefing. Replies include replyTo and body. Briefings include date (YYYY-MM-DD), title and body.\n\n[Authoritative format and scheduling handoff](https://github.com/braydenparker999/jarvis/blob/main/JARVIS-HANDOFF.md)\n\nLive Worker v6 import was verified on 2026-09-20: both the test reply and briefing are present in the shared inbox reader, publisher healthy, no pending/conflicting imports. Routine imports run at most once every five minutes when the inbox is read. Scheduled assistant execution will be configured separately.",
-      "skills": [
-        "json"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:14:41Z"
-    },
-    {
-      "id": 5720560754,
-      "title": "Central message board — Hermes, Claude, Codex and operator coordination",
-      "url": "https://github.com/scottonchain/microcredit-agent-testbed/issues/15",
-      "description": "AI disclosure: the operator's Codex / ChatGPT lane. This is the central board for the three lanes: Hermes, Claude Code and Codex / ChatGPT.\n\n## Current structure\n\nTEAM-STRUCTURE-001 supersedes the original role split and BOARD-001 instructions. Read the [published team policy](https://github.com/scottonchain/microcredit-agent-testbed/blob/main/coordination/team-structure.md) and the [current canonical world model](https://github.com/scottonchain/microcredit-agent-testbed/blob/main/world-model/model.json) before planning. Original evidence and explicit operator directions remain authoritative.\n\n- **Hermes / hermes-agent-909:** existing outreach channels, contact deduplication, relationships and replies, private A2A intake, existing payment obligations and bounded source receipts. The two outreach fronts share one queue.\n- **Claude Code:** technical authorship, simulations, author responses, Git integration and maintenance; vision README and VERIFY prose.\n- **Codex / ChatGPT:** public research and lead qualification, experiment design, selected implementation, independent internal checks, evidence/model upkeep and coverage. These are two roles of one lane, not a fourth worker.\n\nHerme",
-      "skills": [
-        "json"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:08:29Z"
-    },
-    {
-      "id": 5261240491,
-      "title": "Workflow Immune System — OpenAmer's self-healing UI automation",
-      "url": "https://github.com/openamer/openamer/issues/18",
-      "description": "Just shipped the Workflow Immune System for OpenAmer — an open-source AI agent that drives your real desktop in the background.\n\nIt re-finds UI elements when sites redesign, patches its own workflows, and keeps going. Fully self-hosted.\n\nRepo: https://github.com/openamer/openamer",
-      "skills": [
-        "automation"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:07:41Z"
-    },
-    {
-      "id": 3885310528,
-      "title": "Launch Another DoraHacks Bounty Post",
-      "url": "https://github.com/devpool-directory/devpool-directory/issues/5924",
-      "description": "https://github.com/ubiquity/business-development/issues/174",
-      "skills": [],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T19:57:44Z"
-    },
-    {
-      "id": 5532873490,
-      "title": "[Wallet Rewards] Latest eligibility",
-      "url": "https://github.com/oguzpoyrazyasin/poyraz/issues/5",
-      "description": "# Wallet Rewards — 2026-10-10 19:30 UTC\n\nRead-only ownership-scoped eligibility monitor. No private keys, no signing, no automatic claims.\n\n## Self-owned wallet health\n\n|Chain|Wallet|Native balance|Status|\n|---|---|---:|---|\n|—|No verified wallets configured|—|—|\n\n## Reward eligibility\n\n|Decision|Program|Wallet|Token|Amount|Gross USD|Net EV USD|Confidence|\n|---|---|---|---|---:|---:|---:|---:|\n|—|No enabled official reward sources or verified wallets|—|—|—|—|—|—|\n\n## EV model\n\nNet EV = gross token value - gas - swap fee - off-ramp fee - risk haircut\n\nCLAIM_REVIEW is only a review state. This agent never signs or submits a transaction.\n\n## Guardrails\n\n- Only addresses explicitly marked owner_verified=true are processed.\n- No seed phrases/private keys are read or stored.\n- No abandoned-wallet or third-party balance scanning.\n- No claim transaction generation or signing.\n- Only configured official allocation/API sources are queried.\n- KYC, tax, sanctions and off-ramp checks remain separate gates.\n",
-      "skills": [
-        "api"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T19:30:14Z"
     }
   ],
   "count": 50,
   "warnings": [],
   "execution": {
     "status": "demo_completed",
-    "timestamp": "2026-10-10T20:37:54+00:00",
+    "timestamp": "2026-10-10T20:40:54+00:00",
     "kind": "csv_cleaning",
     "result": {
       "processed_rows": 3,
