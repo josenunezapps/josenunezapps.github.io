@@ -33,3 +33,37 @@ engine/agent.py: buscador y ejecutor real.
 data/latest.json: resultados de las ejecuciones.
 output/: artefactos para revision; no se guardan en el repositorio.
 .github/workflows/zenix-autoworker.yml: trabajo programado en la raiz del repositorio.
+
+
+## Actualización 1.2 — búsqueda con recompensas y controles de aprobación
+
+Se integraron dos mercados reales, de **consulta solamente**:
+
+1. Algora: obtiene bounties con importe publicado desde la API pública, verifica que haya una URL de issue GitHub y guarda la fuente. No garantiza que el dinero pueda cobrarse ni que el anuncio siga abierto.
+2. BountyBoard: consulta anuncios públicos y descarta automáticamente los que NO autorizan agentes de IA, no sean de desarrollo, o no tengan cupos conocidos. No genera bids ni reclamaciones.
+
+Resultados publicados en:
+- `data/bounties.json`: Algora, estado actual, precio anunciado, pago no verificado.
+- `data/bountyboard.json`: BountyBoard y razones de exclusión.
+- `data/reviews.json`: decisiones humanas públicas; **no poner datos privados de clientes**.
+
+### Cómo probar las aprobaciones (solo QA de desarrollo)
+
+1. Entra en el workflow **Zenix AutoWorker - Approval QA** de GitHub Actions.
+2. Acción `prepare`, URL `https://github.com/josenunezapps/josenunezapps.github.io/issues/1` y título de la tarea. Esto prepara una propuesta y un expediente público.
+3. `approve_apply`: el usuario dueño del repositorio autoriza que se prepare una postulación. **No se envía nada**.
+4. `mark_applied`: solo después de que una persona haya hecho realmente la postulación, registrar evidencia pública.
+5. `ready_delivery`: exige el SHA256 del artefacto revisado, luego `approve_delivery`.
+6. `mark_delivered`: solo después de que una persona haya entregado realmente los archivos, registrar constancia pública.
+
+El workflow valida la identidad autenticada de GitHub y guarda la auditoría. Si intentás saltar una etapa, rechaza la operación.
+
+### Para pasar de las pruebas al trabajo remunerado
+
+- Verificar un anuncio elegible, que acepte IA, que tenga recompensa y que pueda pagarse a una cuenta de Argentina.
+- Obtener aceptación del trabajo conforme a las normas de cada plataforma.
+- Revisar la calidad técnica de la solución, sus licencias y las pruebas de funcionamiento.
+- Implementar un backend seguro y un trabajador aislado en infraestructura adecuada (GitHub Pages es estático).
+- Integrar postulaciones y entregas **solamente** en plataformas autorizadas, tras una decisión humana explícita.
+
+GitHub Actions se utiliza aquí **para desarrollo y pruebas**, no como infraestructura para ejecutar un negocio automático permanente. No se promete ingreso alguno.
