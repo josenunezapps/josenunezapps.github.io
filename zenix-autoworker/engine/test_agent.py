@@ -59,7 +59,7 @@ class AgentTests(unittest.TestCase):
                     agent.model({"title":"QA","body":"Test"},"")
 
     def test_internal_qa_generates_real_python_file(self):
-        response={"choices":[{"finish_reason":"stop","message":{"content":"def main():\n    print(1)\n"}}]}
+        response={"choices":[{"finish_reason":"stop","message":{"content":"def main():\n    print(1)\nif __name__ == '__main__':\n    main()\n"}}]}
         with patch.dict(os.environ,{"OPENROUTER_API_KEY":"test-dummy"}):
             with patch.object(agent,"api",return_value=response) as mocked:
                 result=agent.qa_python_one_file({"body":"Create a Python file"})
@@ -68,7 +68,7 @@ class AgentTests(unittest.TestCase):
 
     def test_qa_repairs_invalid_python_once(self):
         broken={"choices":[{"message":{"content":"def broken(:\n  pass"}}]}
-        fixed={"choices":[{"message":{"content":"def main():\n    print(1)\n"}}]}
+        fixed={"choices":[{"message":{"content":"def main():\n    print(1)\nif __name__ == '__main__':\n    main()\n"}}]}
         with tempfile.TemporaryDirectory() as tmp:
             with patch.object(agent,"OUT",Path(tmp)):
                 with patch.dict(os.environ,{"OPENROUTER_API_KEY":"test-dummy"}):
