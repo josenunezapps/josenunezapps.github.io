@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-10-10T20:30:28+00:00",
+  "generated_at": "2026-10-10T20:34:02+00:00",
   "opportunities": [
     {
       "id": 5387618577,
@@ -63,42 +63,6 @@
       "updated_at": "2026-10-10T20:00:12Z"
     },
     {
-      "id": 4543756397,
-      "title": "[PAID BOUNTY - $660] Enhanced Image Preview",
-      "url": "https://github.com/warpspeedopen-source/warpspeed-bounties/issues/6",
-      "description": "## Bounty Overview\n\nBuild an enhanced full-screen image preview experience for the warpSpeed app.\n\nThis bounty upgrades how users view images across the app. When a user taps an image, it should open in a fast, smooth, full-screen modal/lightbox with zoom, pan, swipe navigation, and optional actions such as download, share, and delete where permissions allow.\n\nThe goal is to make image viewing feel modern, responsive, and consistent across the app.\n\nThis bounty is part of the warpSpeed OPEN developer bounty programme.\n\n## Reward\n\n$660\n\n## Difficulty\n\nMedium\n\n## Main Skills\n\n* React Native\n* TypeScript\n* Gesture Handling\n* Image Preview UI\n* Mobile Interaction Design\n* Reusable Component Architecture\n\n## Design Reference\n\nhttps://xd.adobe.com/view/1ed5f38b-2e22-4086-b041-6922a0313bf6-4b86/\n\n## High-Level Scope\n\nThe selected developer will build a reusable enhanced image preview feature.\n\nThe implementation should include:\n\n* Full-screen image preview modal or lightbox\n* Open preview when a user taps an image\n* Pinch-to-zoom support\n* Panning support\n* Swipe navigation between multiple images\n* Smooth transitions and responsive gestures\n* Reliable scaling without freezing or pixelati",
-      "skills": [
-        "typescript",
-        "script"
-      ],
-      "score": 55,
-      "amount_mentions": [
-        "$660",
-        "$660"
-      ],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:19:21Z"
-    },
-    {
-      "id": 4543282894,
-      "title": "[PAID BOUNTY - $660] Inline Image Editing",
-      "url": "https://github.com/warpspeedopen-source/warpspeed-bounties/issues/5",
-      "description": "## Bounty Overview\n\nBuild an inline image editing feature for the warpSpeed app.\n\nThis bounty allows users to make quick, lightweight image edits directly inside the app without exporting images to another tool. From the image preview, users should be able to open an editor, crop, rotate, adjust basic image settings, and add simple annotations.\n\nEdited images must be saved as a new version while keeping the original image intact.\n\nThis bounty is part of the warpSpeed OPEN developer bounty programme.\n\n## Reward\n\n$660\n\n## Difficulty\n\nMedium\n\n## Main Skills\n\n* React Native\n* TypeScript\n* Image Editing UI\n* Mobile Interaction Design\n* Notes / Messenger UI Flow\n* Reusable Component Architecture\n\n## Design Reference\n\nhttps://xd.adobe.com/view/1ed5f38b-2e22-4086-b041-6922a0313bf6-4b86/\n\n## High-Level Scope\n\nThe selected developer will build an inline image editor that supports quick image modifications inside the app.\n\nThe implementation should include:\n\n* Edit button from image preview\n* Inline image editor screen or modal\n* Crop and rotate tools\n* Brightness, contrast, and saturation adjustments\n* Simple annotations such as pen, text, arrows, and highlights\n* Undo and redo functionality",
-      "skills": [
-        "typescript",
-        "script"
-      ],
-      "score": 55,
-      "amount_mentions": [
-        "$660",
-        "$660"
-      ],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:19:16Z"
-    },
-    {
       "id": 5406530812,
       "title": "[Bounty] [Bounty: $400] Script API Custom Slash Command Throws Unhandled Startup Exceptio",
       "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/1323",
@@ -134,6 +98,42 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T20:00:07Z"
+    },
+    {
+      "id": 4086863047,
+      "title": "[BOUNTY $130] Home Automation — Home Assistant + Node-RED + Zigbee2MQTT",
+      "url": "https://github.com/illbnm/homelab-stack/issues/7",
+      "description": "---\nname: 💰 Bounty - Home Automation Stack\nabout: 实现家庭自动化栈 (Home Assistant, Node-RED, Mosquitto, Zigbee2MQTT)\ntitle: '[BOUNTY $130] Home Automation Stack — 家庭自动化'\nlabels: bounty, medium\nassignees: ''\n---\n\n## 赏金金额\n\n**$130 USDT**\n\n## 任务描述\n\n实现完整的智能家居自动化栈，支持 Zigbee 设备接入和可视化流程编排。\n\n## 服务清单\n\n| 服务 | 镜像 | 用途 |\n|------|------|------|\n| Home Assistant | `ghcr.io/home-assistant/home-assistant:2024.9.3` | 智能家居中枢 |\n| Node-RED | `nodered/node-red:4.0.3` | 可视化流程编排 |\n| Mosquitto | `eclipse-mosquitto:2.0.19` | MQTT Broker |\n| Zigbee2MQTT | `koenkk/zigbee2mqtt:1.40.2` | Zigbee 设备网关 |\n| ESPHome | `ghcr.io/esphome/esphome:2024.9.3` | ESP 设备固件管理 |\n\n## 核心要求\n\n### 1. Home Assistant 网络模式\n\nHome Assistant 必须使用 `network_mode: host`，并在 README 中说明原因（mDNS/UPnP 设备发现）。\n\n同时提供 bridge 模式的替代配置（注释掉），说明功能限制。\n\n### 2. Mosquitto 安全配置\n\n```\nconfig/mosquitto/mosquitto.conf:\n  -",
+      "skills": [
+        "automation"
+      ],
+      "score": 45,
+      "amount_mentions": [
+        "$130",
+        "$130",
+        "$130"
+      ],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:30:45Z"
+    },
+    {
+      "id": 4086864334,
+      "title": "[BOUNTY $130] Database Layer — PostgreSQL + Redis + MariaDB 共享实例",
+      "url": "https://github.com/illbnm/homelab-stack/issues/11",
+      "description": "---\nname: 💰 Bounty - Databases Stack\nabout: 实现共享数据库栈 (PostgreSQL, Redis, MariaDB) + 管理界面\ntitle: '[BOUNTY $100] Databases Stack — 共享数据库'\nlabels: bounty, medium\nassignees: ''\n---\n\n## 赏金金额\n\n**$100 USDT**\n\n## 任务描述\n\n实现共享数据库层，供 Nextcloud、Outline、Gitea、Authentik 等服务共用，避免每个服务各自运行独立数据库浪费资源。\n\n## 服务清单\n\n| 服务 | 镜像 | 用途 |\n|------|------|------|\n| PostgreSQL | `postgres:16.4-alpine` | 主数据库 (多租户) |\n| Redis | `redis:7.4.0-alpine` | 缓存/队列 |\n| MariaDB | `mariadb:11.5.2` | MySQL 兼容 (Nextcloud 可选) |\n| pgAdmin | `dpage/pgadmin4:8.11` | PostgreSQL 管理界面 |\n| Redis Commander | `rediscommander/redis-commander:latest-sha` | Redis 管理界面 |\n\n## 核心要求\n\n### 1. 多租户 PostgreSQL\n\n`scripts/init-databases.sh` 初始化脚本：\n\n```bash\n# 为每个服务创建独立 database + user\ncreate_db \"nextcloud\" \"${NEXTCLOUD_DB_PASSWORD}\"\ncreate_db \"gitea\"     \"${GITEA_DB_PASSWORD}\"\ncreate_db \"outline\"   \"${OUTLINE_DB_PASSWORD}\"\ncreate_db \"authentik\" \"${AUTHENTIK_DB_PASSWORD}\"\ncreate_db \"grafana\"   \"${GRAFANA_DB_PASSWORD}\"\n```\n\n脚本必须是**幂等的**（重复执行不报错，不重置已有数据）。\n\n### 2. Redis 多数据库分配\n\n在各服务的 compose 中通过 `?db=N` 参数隔离：\n\n```\nDB 0 — Authentik\nDB 1 — Outline\nDB 2 — Gitea\nDB 3 — Nextcloud\nDB 4 — Grafana sessions\n```\n\n### 3. 备份集成\n\n`scripts/backup-databases.sh`：\n- `pg_dumpa",
+      "skills": [
+        "script"
+      ],
+      "score": 45,
+      "amount_mentions": [
+        "$130",
+        "$100",
+        "$100"
+      ],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:30:40Z"
     },
     {
       "id": 4086864561,
@@ -204,12 +204,12 @@
       "updated_at": "2026-10-10T20:00:24Z"
     },
     {
-      "id": 5794935195,
-      "title": "Brain E2E production closure: historical first-proof failure, daily budget and autonomous canary",
-      "url": "https://github.com/RafaLopezCode/Axignal/issues/199",
-      "description": "## CTO validation of Claude Brain E2E simulation — 2026-10-10\n\n**Source:** local non-tracked `docs/research/brain-e2e-baseline-2026-10-10/INFORME_SIMULACION_E2E_BRAIN.md` and JSON benchmarks. Experimental results are NOT observations from a live production portfolio. No paid model calls in the benchmark.\n\n### Simulated baseline (controlled network)\n- First proof: 4/7 profiles READY without semantic enrichment, 5/7 in an explicitly enabled semantic variant (2 simulated provider calls, ~1,664 estimated tokens, modeled USD 0.00007). Denied robots correctly fails closed.\n- Forty-day tick with one organization: 760 vs 125 HTTP requests (-84%); 280 vs 6 semantic calls (-98%); 4/4 demand candidates recovered, with one-day detection lag.\n- Global default constraints modeled: 60 HTTP/day, 40 actions/day, 900 seconds per run, paid daily budget zero; observed cost of all deterministic simulations zero. Modeled sustained capacity ~20 organizations/day and ~2 complete new admissions/day. THESE ARE scenario-specific average estimates and not throughput/SLA guarantees; peak actions can saturate earlier.\n- Large 2,000,000 run-token semantic cap represents theoretical USD 0.084 at 0.042/M tokens in",
+      "id": 5791884291,
+      "title": "AUD: recuperar plan original desde pestañas, veto Nemotron y mínimo de inferencia (USD 0)",
+      "url": "https://github.com/simondalmasso/0liviA/issues/97",
+      "description": "# AUD — Recuperación del plan original 0liviA / inventario de pestañas, 2026-10-10\n\n**Carácter:** handoff auditable al ARQ paralelo. **No reemplaza `docs/ARCHITECTURE.md` ni autoriza facturación, modelo nuevo, merge, deploy o mutación OCI.**\n\n## Restricciones firmes\n\n1. **NEMOTRON PROHIBIDO**: nunca seleccionarlo, recomendarlo, cargarlo, probarlo ni usarlo como fallback; excluir `@cf/nvidia/nemotron-3-120b-a12b` y todo `nemotron*` en selección/presets. Si existe en alguna configuración, remover mediante PR con test que rechace la ruta ANTES del gasto/llamada.\n2. Cloud-first, sin PC propietaria en el plano de cómputo; browser/mobile B&W ultraliviano; voz `es-AR`; propietario único; Core Python + SQLite WAL/FTS5 en OCI; memoria/jobs durables; código/procedimientos canónicos en GitHub.\n3. **USD 0 recurrente real / sin overages.** No ampliar cuenta Paid ni convertir créditos de prueba en gasto; no basarse sólo en `25 requests/day` como límite monetario. Proveedores falibles deben detenerse sin fallback facturable. Ningún secreto en browser/Git.\n4. Mínimas llamadas: 0 llamadas para UI, memoria local, FAQs deterministas y tareas de SQLite; 1 inferencia externa por turno normal; sólo segu",
       "skills": [
-        "json"
+        "python"
       ],
       "score": 35,
       "amount_mentions": [
@@ -218,7 +218,7 @@
       ],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:30:26Z"
+      "updated_at": "2026-10-10T20:33:26Z"
     },
     {
       "id": 5690041095,
@@ -309,22 +309,6 @@
       "updated_at": "2026-10-10T20:20:25Z"
     },
     {
-      "id": 5404683219,
-      "title": "T-09: Platform Engineering Report, the decision register from PT1 to the 2026 dev kit",
-      "url": "https://github.com/Arrow-air/project-quiver/issues/256",
-      "description": "**Task board row T-09**\n\n| | |\n|---|---|\n| Price | $500 in two paid milestones after an unpaid gate: M0 the sample (unpaid, it is the application), M1 the decision register $300, M2 the narrative, images, weight breakdown, and review revisions $200 |\n| Funding line | QGB-01, Platform Engineering Report, reserved since May |\n| Owner | OPEN. Applicants submit milestone 0 in this issue. Assignment follows an accepted sample, never precedes it. |\n| Reviewers | Erick (electrical, configuration), Alperen (structure, CAD) |\n| Deadline | M0 whenever you apply, M1 2026-11-07, M2 2026-11-30 |\n| Done when | `docs/Engineering-Reports/Platform-Engineering-Report.md` is merged with every entry in the decision register verified by a reviewer against its citation. |\n\n**What this report is**\n\nThe Quiver has three engineering reports (PT1, PT2, PT3) and a Dev Kit report, plus about thirty information notes under `task-grant-bounty/` across pt1, pt2, pt3, Dev-Kit, equipment, and general. Nobody can read that stack and come away knowing why the aircraft is the way it is. This report is the answer to that question: every design decision from the PT1 concept to the 2026 dev kit, what was chosen, what it",
-      "skills": [],
-      "score": 35,
-      "amount_mentions": [
-        "$500",
-        "$300,",
-        "$200"
-      ],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:19:37Z"
-    },
-    {
       "id": 5662643363,
       "title": "refactor(api): remove db/tx handle passing and shrink transactions in billing and IM integrations",
       "url": "https://github.com/okou-ai/okou/issues/37510",
@@ -338,7 +322,7 @@
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:30:17Z"
+      "updated_at": "2026-10-10T20:32:41Z"
     },
     {
       "id": 5795016381,
@@ -386,18 +370,78 @@
       "updated_at": "2026-10-10T20:20:55Z"
     },
     {
-      "id": 5784554447,
-      "title": "[Hamilton H03][P0] Admin hold, correct and publish fees with durable audit history",
-      "url": "https://github.com/Gilmore3088/FeeInsight.com/issues/978",
-      "description": "Parent tracker: #975. Original complaint: #6.\n\n**Status:** Queued; acceptance not verified. **Implementation owner:** Unassigned. **Product/release approver:** James, approval pending. **Dependencies:** H06-T02 evidence contract and current source/publication contracts; integrate refresh behavior with H01/H02/H04. H03 design can start independently. External registry identity corrections remain in #54.\n\n## Required outcome\nAn authorized operator can identify, hold, correct, publish and verify an incorrect fee inside Fee Insight without SQL, a code release or an external coding assistant. An automated re-extraction cannot silently undo a human-reviewed correction; a genuinely newer source can propose a visible, reviewable change.\n\n## P0 data-integrity defect — distinct same-priced fees incorrectly flagged by rules recheck\n\n**Status: OPEN / NOT FIXED OR RELEASED.** This is a specific verified production safeguard failure related to H03's hold/correction and reprocessing requirements, especially H03-T07/T11. It is recorded here in the existing canonical issue; it does **not** assert ownership of new H03 implementation work, create another PR, or complete H03 acceptance. Preserve PR #9",
-      "skills": [],
-      "score": 25,
-      "amount_mentions": [
-        "$30,"
+      "id": 5438226799,
+      "title": "N5: separately authorized subscription task acceptance (M8-G)",
+      "url": "https://github.com/sushiHex/constructicon/issues/78",
+      "description": "## Outcome\n\nExecute [N5 — separately authorized subscription task acceptance](https://github.com/sushiHex/constructicon/blob/main/docs/plans/milestones/M8-live-executors-rev3.md#n5--separately-authorized-subscription-task-acceptance) of M8 rev 3: one bounded READ lane and a separately authorized WRITE/capture/gate lane through the same owned boundaries, completing only the observed profile's conformance.\n\n## Prerequisites and non-goals\n\nBlocked by N4. Requires explicit operator authorization of the selected binding/provider, model, permitted task data, fixed request/token budget, vendor overage policy and cost ceiling before any model call. If a requested hard spending bound cannot be enforced under that arrangement, stop for a different operator decision; do not promise one from a local token limit. No paid-API fallback and no repeated smokes until a model succeeds. No production provider is published and no conformance hash is invented.\n\n## Acceptance criteria\n\n- [ ] Real subscription-mode execution, model-session TLS/destinations, bounded results and timeout/cancellation are proved through the real launcher, driver, worker and leases.\n- [ ] Deterministic fakes are reused for res",
+      "skills": [
+        "api",
+        "script"
       ],
+      "score": 20,
+      "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:29:58Z"
+      "updated_at": "2026-10-10T20:33:34Z"
+    },
+    {
+      "id": 5792401648,
+      "title": "fix(frontend): repair demo and real workspace UI regressions",
+      "url": "https://github.com/whritou/WhitePlate/issues/65",
+      "description": "Scope: fix the reported demo and real frontend regressions using the existing Lovable design and API contracts.\n\nAcceptance criteria:\n- Remove unused dark mode and fix hover/active contrast.\n- Prevent long product copy and shop/Studio previews from overflowing on mobile.\n- Widen product editor sheets; create categories inside the product form without nested modals.\n- Align history filters, padding, three page-scoped KPIs and CSV export, including empty state.\n- Make demo locale changes work and use authentic Google/Microsoft provider logos.\n- Preserve organization context in overview/navigation; show restaurant cards with entry links.\n- Provide restaurant settings and a storefront visit shortcut without inventing persisted capabilities.\n- Verify EN/FR, keyboard and responsive flows, unit tests, lint, types, formatting and build; record limitations.\n\nRelated existing roadmap: S1-S5 restaurant settings and D4 storefront shortcuts remain separate backend work. Theme publication T3 remains separate.",
+      "skills": [
+        "csv",
+        "api"
+      ],
+      "score": 20,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:32:41Z"
+    },
+    {
+      "id": 5785823459,
+      "title": "[Astra] Full repository review: architecture, security, runtime wiring, and integration behavior",
+      "url": "https://github.com/FlossWare/claude-ensemble/issues/349",
+      "description": "## Purpose\n\nPerform a systematic review of the whole Claude Ensemble repository, not only a test-inventory sweep, and use evidence from the current source and executable tests to identify defects before returning to GA work.\n\n## Review order\n\n1. **Runtime/deployment correctness:** canonical install defaults, systemd units, service URLs/sockets, development checkout vs installed runtime, startup ordering, health checks, upgrade/uninstall behavior, and preservation of user state.\n2. **End-to-end integrations:** Memory, Learning, Thompson, Graph, gateway REST forwarding, Alert, Messenger, Claude Code hooks, Knowledge/context retrieval, operational metrics/cost tracking, provider registry, arbitration, collaboration, reviewer MCP, Code Search MCP, caching, compression, and workflow skills.\n3. **Correctness and failure semantics:** persistence/retry/idempotency, error/status mapping, timeouts, shutdown, concurrency, missing dependencies, and partial failures.\n4. **Security/privacy:** credentials and logging, auth boundaries, external-data opt-in, SSRF/path handling, PR mutation authorization, loopback binding, input validation, and dependency/supply-chain risks.\n5. **Architecture and ma",
+      "skills": [
+        "api",
+        "documentation"
+      ],
+      "score": 20,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:32:35Z"
+    },
+    {
+      "id": 5518867774,
+      "title": "OneCompany permanent Mistral Vibe cloud wake bus — owner dispatch only",
+      "url": "https://github.com/NTinkicht/OneCompany/issues/130",
+      "description": "Permanent, repository-scoped, GitHub-hosted Mistral wake bus. Do not close or reuse for unrelated providers. OneCompany native Work Units, current lease, exact SHA and dispatch policy are authority, not this issue's free-form comments. Initial `@mistral-vibe` wake is read-only, advisory and non-gating; it may inspect bounded source and report test ideas/failure analysis without writing code. It MUST fail closed when `MISTRAL_API_KEY` or subscription/PAYG-disabled guard is absent. No provider credentials in this issue. Full leased developer, binding reviewer and test-author lanes need separate qualification; no Codespace, laptop or open browser session may be required.",
+      "skills": [
+        "api",
+        "script"
+      ],
+      "score": 20,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:31:10Z"
+    },
+    {
+      "id": 5600067058,
+      "title": "AGENT-ECON-00 — Économie d’agents, Bounty Market et amélioration autonome gouvernée",
+      "url": "https://github.com/3a7i3/crypto-ia-terminal/issues/284",
+      "description": "<!-- CURRENT_STATUS_START -->\n## ÉTAT COURANT AGENT-ECON — 2026-10-04\n\nStatut :\n`ARCHITECTURE FUTURE / AUCUNE AUTORITÉ RUNTIME`.\n\nLe prochain chantier principal n'est pas l'économie d'agents mais #323 — Operator App unique.\n\nLes agents/bounties/AIC restent volontairement `NON DÉPLOYÉ` tant que :\n- le burn-in actif #282 n'est pas finalisé ;\n- #315 Gate O n'est pas résolu pour les décisions opérateur ;\n- les registres Problem/Bounty/Agent/Economy n'ont pas leurs propriétaires et contrats gouvernés.\n\nTravail autorisé en parallèle :\n- documentation ;\n- contrats ;\n- schémas ;\n- UX placeholder honnête dans Direction ;\n- aucune donnée fictive.\n\nL'Operator App peut afficher `NON DÉPLOYÉ` et les futures frontières, mais ne doit inventer ni agents actifs, ni AIC, ni bounties.\n\nAucun worker autonome, paiement, auto-merge, déploiement ou autorité PAPER n'est autorisé.\n\n#286 reste actif.\n\n### Contrats A0/A1 — canoniques sur main (2026-10-04)\n\nSource certifiée : PR #348, tête `18f7c159f207159243cb0227773427f2a209b26a`, merge `eeaec5ae29a72b765bb97feb46520032aba44e2a`.\nEnregistrement de la certification : PR #363, merge `d3719e0ff7acc437f8ff9112fccdc3df1cef122b`.\n#347 : fermée administrativement ",
+      "skills": [
+        "documentation"
+      ],
+      "score": 20,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:30:29Z"
     },
     {
       "id": 5664544302,
@@ -414,21 +458,6 @@
       "updated_at": "2026-10-10T20:30:13Z"
     },
     {
-      "id": 5746485816,
-      "title": "Internet Alpha Harvest → Economic Survivor Pipeline V1",
-      "url": "https://github.com/leegkssk2000-commits/vultr-z/issues/1388",
-      "description": "# INTERNET_ALPHA_HARVEST_ECONOMIC_PIPELINE_V1\n\n## 목적\nZEL을 연구 프로젝트가 아니라 **비용 후 수익형 트레이딩 프로그램**으로 빠르게 완성한다. 사용자가 후보/세부 절차를 매번 지정하지 않아도 총괄이 외부 공개 전략을 직접 선별하고 경제성 기준으로 탈락/승격시킨다.\n\n이번 scope는 기존 25개를 또 미세튜닝하는 작업이 아니다. 현재 살아 있는 Keltner/HG, Trend Rider, Squeeze/MR/Micro 및 기존 실패/재료 기록은 보존하되, **외부에서 이미 공개된 실행 가능한 전략/코드/논문 규칙을 대량 intake -> cheap economic screen -> 소수 survivor full test**로 처리한다.\n\n## 운영 원칙\n1. 완료 단위는 문서/PR/CI가 아니라 **경제판정**이다.\n2. 한 후보가 막혀도 전체 총괄은 멈추지 않는다. 해당 후보만 BLOCKED/REJECT하고 다음 적격 후보로 이동한다.\n3. 이미 승인된 research-only 개발/백테스트에 사용자 재승인을 반복 요구하지 않는다. 실주문/Live/Paper/배포/새 유료 API/secret/권한 변경만 별도 권한으로 유지한다.\n4. strategy마다 새 프레임워크/approval chain을 만들지 않는다. 공통 runner, 공통 cost model, 공통 result schema를 재사용한다.\n5. 미래정보/lookahead, 불가능 체결, 비용 누락, 동일 데이터 재튜닝은 fail-closed.\n6. 인터넷 수익 주장/커뮤니티 후기는 후보 생성 근거일 뿐 PASS 증거가 아니다. 실제 ZEL replay 결과만 경제판정에 사용한다.\n7. 공개 코드의 license/attribution을 확인한다. 코드 재사용이 허용되지 않으면 복사하지 말고 공개 규칙/메커니즘만 독립 구현한다.\n\n## 외부 소스 우선순위\n### Tier E — executable/open-source 우선\n- Freqtrade 공식/free strategy repository와 명시적으로 오픈소스인 crypto strategy repos.\n- Hummingbot 공식 V1/V2 strategies/scripts: directional, PMM, XEMM, spot/perp/funding/arbitrage 등.\n- QuantConnect/LEAN의 공개 crypto algorithm exa",
-      "skills": [
-        "api",
-        "script"
-      ],
-      "score": 20,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:30:05Z"
-    },
-    {
       "id": 3825637122,
       "title": "When using multiline examples the docs generator breaks",
       "url": "https://github.com/SkriptLang/Skript/issues/8383",
@@ -442,21 +471,6 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T20:29:58Z"
-    },
-    {
-      "id": 5785823459,
-      "title": "[Astra] Full repository review: architecture, security, runtime wiring, and integration behavior",
-      "url": "https://github.com/FlossWare/claude-ensemble/issues/349",
-      "description": "## Purpose\n\nPerform a systematic review of the whole Claude Ensemble repository, not only a test-inventory sweep, and use evidence from the current source and executable tests to identify defects before returning to GA work.\n\n## Review order\n\n1. **Runtime/deployment correctness:** canonical install defaults, systemd units, service URLs/sockets, development checkout vs installed runtime, startup ordering, health checks, upgrade/uninstall behavior, and preservation of user state.\n2. **End-to-end integrations:** Memory, Learning, Thompson, Graph, gateway REST forwarding, Alert, Messenger, Claude Code hooks, Knowledge/context retrieval, operational metrics/cost tracking, provider registry, arbitration, collaboration, reviewer MCP, Code Search MCP, caching, compression, and workflow skills.\n3. **Correctness and failure semantics:** persistence/retry/idempotency, error/status mapping, timeouts, shutdown, concurrency, missing dependencies, and partial failures.\n4. **Security/privacy:** credentials and logging, auth boundaries, external-data opt-in, SSRF/path handling, PR mutation authorization, loopback binding, input validation, and dependency/supply-chain risks.\n5. **Architecture and ma",
-      "skills": [
-        "api",
-        "documentation"
-      ],
-      "score": 20,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:29:32Z"
     },
     {
       "id": 5767603643,
@@ -487,24 +501,10 @@
       "updated_at": "2026-10-10T20:19:40Z"
     },
     {
-      "id": 5793438750,
-      "title": "Separate user documentation from configuration and developer references",
-      "url": "https://github.com/IamK77/Lattice/issues/82",
-      "description": "**Current reading checkpoint:** The maintainer rejected the earlier Chinese first-use prose as obscure and defensive. Rework #91 is now merged into `develop` (`60f9e4a`), with 39 focused checks and all six applicable CI checks passing. Start the next reading review with only `docs/getting-started.zh-CN.md`; the broader route criteria below remain pending.\n\n## Problem\n\nThe documentation has named categories, but ordinary users still encounter implementation, audit, storage, and maintenance details in their main reading path. Recent work has added technically accurate caveats without consistently deciding which audience needs them. More detail alone does not resolve the product/developer boundary.\n\nThis issue tracks a documentation reorganization, not a product redesign. The maintainer has approved the three reader-task routes and representative first-use scope in the audit proposal. Implementation has been delivered through bounded child issues and protected PRs; overall reader-path acceptance remains outstanding.\n\n## Desired outcome\n\nReaders can find the information needed for their task without learning unrelated internals:\n\n- Ordinary users can install, connect a model, start and",
-      "skills": [
-        "documentation"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:30:22Z"
-    },
-    {
-      "id": 5793723116,
-      "title": "95. Frontend: Administración book catalogue, metadata search and statuses",
-      "url": "https://github.com/rferper/small-bookclub/issues/95",
-      "description": "## Goal\nThe admin can create and correct the club catalogue from Administración, using a fictional metadata search or entering everything manually. Statuses and reading dates remain manual, with at most one book marked «Leyendo».\n\n## Acceptance criteria\n- [ ] Administración links to «Libros» at `/administracion/libros`. The admin list shows every catalogue book with title and status, links to create and edit, and Spanish loading, retryable error and empty states. Create and edit routes are covered by the existing `AdminGuard`; an unknown edit id shows a Spanish not-found state.\n- [ ] Create and edit forms allow title, multiple authors, plain-text description, publication date, publisher, ISBN, page count, cover, status, planned start/end dates, actual start/end dates and «Fechas aproximadas». A historical book can be saved with only a title and chosen status, without dates, cover, authors, meetings or a reading plan. Saving is one atomic operation; editing preserves the book id and existing related records.\n- [ ] «Buscar metadatos» searches through the central client and returns deterministic fictional results without any external request. Selecting a result pre-fills available met",
+      "id": 5795044893,
+      "title": "Track paid tool spend during subscription runs before final ledgering",
+      "url": "https://github.com/kgforais1/k-dense-byok-mcp/issues/53",
+      "description": "Greptile's outside-diff comment on PR #51 identifies a live budget-accounting gap in `server/src/agent/run-pipeline.ts`.\n\n`trackInFlightRun` currently registers only when the chat model's billing counts toward the cap. Separate tool-model usage is collected at `turn_end` and ledgered after the whole run finishes. A subscription chat can therefore complete a paid OpenRouter image call and admit further paid work against an outdated committed total before final ledgering.\n\nThis is distinct from the image-save failure fix in PR #51: preserving returned usage ensures final accounting, but does not make completed tool charges visible during the run.\n\nFollow-up:\n- Track completed tool-model spend promptly, including during subscription chats; resolve billing per tool model/credential, failing closed when classification fails.\n- Preserve zero cap-counted spend for subscription/local tool models and avoid double-counting delegated usage already ledgered by the child meter.\n- Test a second image call and another tab's admission before the subscription run ends, plus final ledger reconciliation and failure/compaction paths.\n- Separately assess reservations for parallel paid calls; completion",
       "skills": [
         "script"
       ],
@@ -512,47 +512,35 @@
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:30:10Z"
+      "updated_at": "2026-10-10T20:33:55Z"
     },
     {
-      "id": 5626094407,
-      "title": "hermes update stalls about 11 minutes after \"Update complete!\" on hosts with many checkpoint projects",
-      "url": "https://github.com/NousResearch/hermes-agent/issues/127450",
-      "description": "## Symptom\n\nOn a host with many checkpoint projects, `hermes update` prints \"Update complete!\" and then sits for about 11 minutes before returning. The same slowdown hits anything that calls the checkpoint footprint notice or store status (for example `hermes doctor`), and it scales with the number of projects in `~/.hermes/checkpoints`.\n\nEnvironment: headless Linux VPS, Python 3.14 managed runtime.\n\n## Evidence\n\n- A py-spy dump during the stall placed the process in `checkpoint_footprint_notice()` -> `store_status()` (tools/checkpoint_maintenance.py).\n- The checkpoint store held 666 projects and was only about 4.9 MB on disk, so the time was not spent on data volume.\n- Each git call went through `selected_git_env()` (hermes_cli/_subprocess_compat.py), which started a PM helper process roughly once per second. 666 projects at about one second each is about 11 minutes.\n- Secondary finding on the same host: the store had lost its `objects/` and `refs/` directories. Every git call failed with \"not a git repository\", yet each failing call still paid the env resolution, and `hermes checkpoints prune` reported \"Scanned 1, Errors 1\".\n\n## Root cause\n\n`_git_env()` in tools/checkpoint_manage",
+      "id": 5795041838,
+      "title": "Project settings, inbox views and agent permissions",
+      "url": "https://github.com/PavloSEO/spiderhead/issues/1293",
+      "description": "Project-level settings writes and the permission model around agents: project update and delete, saved finding views, inbox question type, action log, spend limits and settings proposals. One owner for job_contracts and project_handlers avoids conflicts.\n\n**Area:** projects settings, inbox and agent policy\n\n## Checklist\n- [ ] #976: project-update command (label, policy, revision) so the ProjSettings save can be enabled; project delete that moves folder to Trash and keeps exports\n- [ ] #976: goal accepted_at and completed_at (check project_inbox_goal list/status/add first; PR #1115 open); project scan schedules; project-level export settings\n- [ ] #978: finish finding-view delete and rename (branch with PR #1135 open, not merged); URL view type in project-view-*; numeric and prefix conditions\n- [ ] #978: inbox 'question' type; action log read via CLI and MCP with paging, filters, client field, denied or pending outcome; verify project access allowlist in job_contracts\n- [ ] #977: monthly spend limit and paid-call confirmation with estimate and approve or deny protocol\n- [ ] #977: enforce agent-closed areas beyond scan operations (keys, spend limits, data deletion, self-granted permi",
       "skills": [
-        "python"
+        "json"
       ],
       "score": 10,
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:30:00Z"
+      "updated_at": "2026-10-10T20:33:29Z"
     },
     {
-      "id": 5785375564,
-      "title": "BETTOR RECOVERY GATE — first verified dual-venue AI trading lifecycle",
-      "url": "https://github.com/matthewtaylor141-lab/SportsAssets/issues/6",
-      "description": "## Owner-approved PM recovery contract — 2026-10-09\n\n**Current verdict: NO-GO.** This issue is the single integration/acceptance handoff. Claude owns implementation integration, gates, deploy and production evidence. Codex independently adversarially reviews and signs off on the claims. No new scope until this gate is demonstrated.\n\n### Evidence baseline\n- Production API/workers release `16d234506a0683acc8577465b1beadf5423dc3f7`; market-plane remains `732cc0c696db614cbf63f83c3f843adec00301d6`.\n- PR #5 `c2039f7e4fd0d07c98b78c0e884bfee1934c3752`: draft, unmerged, Day One inactive.\n- Latest 75-min SQL readback (run 37997445112): 49/49 ENTER decisions have order or refusal at 60 seconds, but original historical population not cleared; strategies quarantined; 611 nonpositive-EV and 98 fee-edge refusals; Xavier reviews 0, open PAPER positions 0, live orders 0. Audrey 5 reconciliations, `final=false`.\n- New acceptance workflow 37997539801 completed success as a **workflow**, but its **signed verdict must be read** before treating any category as GREEN.\n- Latest integration backend run 37991350854 failed before tests due Docker Hub anonymous quota; report INFRA BLOCKED and remediate separa",
+      "id": 5748323491,
+      "title": "Research and select trading/prediction strategies; build a stop-aware prediction benchmark",
+      "url": "https://github.com/ibrahimjaved12/crypto-watcher/issues/180",
+      "description": "> **Status: DRAFT written by Claude (AI) from an owner review session on 2026-10-07. The owner's original intent is the source of truth; this ticket is a proposal and not final.**\n\n## Why this ticket exists\n\nA review of the 74 existing tickets found that nothing owns the core of the product: **choosing and testing the actual trading / prediction algorithms.** The completed #70–#75, #111, #119–#128 work builds market-state descriptors (EWMA, CUSUM, Kalman, PELT, BOCPD, ATR, PCA, correlation, HMM, mark/trade, OI/funding, taker flow). Those are useful, but they are not trading strategies. #31 defines a strategy *contract* and only gives an illustrative support-bounce example. #123 explicitly does not evaluate trade profitability.\n\n## Guiding requirement: sound, trusted methods\n\nThe goal of this ticket is to **find good, established trading / mathematics / finance algorithms** and build the prediction system on them, instead of inventing ad-hoc rules or accepting whatever an AI suggests. Concretely:\n\n- Prefer methods with a published basis: peer-reviewed papers, well-regarded quantitative-finance and market-microstructure books, and reputable practitioner research. Cite them.\n- For eac",
       "skills": [
-        "api"
+        "script"
       ],
       "score": 10,
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:29:59Z"
-    },
-    {
-      "id": 5795012971,
-      "title": "network MVP v3: real Ed25519 votes, one trusted quorum per operator, adversarial chain, an explicit payout pool",
-      "url": "https://github.com/gHashTag/t27/issues/8788",
-      "description": "Part of the network MVP epic (see #8613). Follows the closed v2 lane (see #8685, #8729, #8730) and does not redo it. Related: see #8606 (more than one signer).\n\n## Problem\nThe acceptance brief of 2026-10-10 found these gaps in specs/network/mvp.t27 and mvp_v2.t27:\n- Signature validity is modelled as an input bool or a keyed stand-in. No test signs and verifies a receipt with specs/tri/crypto/ed25519.t27 on real bytes.\n- N, F and M sit as constants inside mvp_v2.t27, and there is no validator set. A vote is counted per signer slot, so two keys of one operator count as two votes. The two real labs (a05db80f53c317f6, fed03daa6459a7fa) are one operator.\n- The mutant \"n/2 + 1 in place of 2M > N + F\" survived in #8685, because at N 4, F 1 both give 3.\n- There is no adversarial run on one chain covering a tampered signature, a tampered result, a receipt replay, a treasurer restart mid-settlement, an event re-delivery and a challenge inside the window.\n- The pool's source and limit are implicit. In an honest network the VERIFIER_FEE, which is paid only from burned stake, is 0.\n\n## Plan\n- specs/network/quorum.t27 (no crypto, importable): the trusted N, F and M, and the validator set as (key",
-      "skills": [],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:29:31Z"
+      "updated_at": "2026-10-10T20:33:08Z"
     },
     {
       "id": 5602503136,
@@ -566,7 +554,85 @@
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:29:28Z"
+      "updated_at": "2026-10-10T20:31:45Z"
+    },
+    {
+      "id": 5795028506,
+      "title": "GH_BOUNTY_OWNER_ISSUE_POSTWRITE_CONTROL_1010",
+      "url": "https://github.com/09sd-org/gh-bounty-org-issue-field-lab-20261008/issues/11",
+      "description": "Owned authorization-boundary test",
+      "skills": [],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:31:40Z"
+    },
+    {
+      "id": 5781994659,
+      "title": "Temporary coordination: local Gitea/GSD repairs and two cloud dots",
+      "url": "https://github.com/HouMinXi/forge/issues/43",
+      "description": "# Temporary Forge coordination: local repairs and two cloud dots\n\nVersion 2, 2026-10-09. Scope: HouMinXi/forge only. The user authorized temporary publication of this coordination record on GitHub. It does not grant new credentials, resource budgets or execution permissions. Keep it open until the participating tasks finish or the user replaces it.\n\n## Sources and visibility\n\nGitHub is the shared coordination surface. The local agent can also inspect Gitea, the Yinhe tunnel and private GSD evidence; the cloud dots must not assume those resources are visible to them. Local ownership therefore includes Gitea triage, GSD architecture/checkpoints, cross-host acceptance and synchronization.\n\nVerified GitHub snapshot: draft PR [#26](https://github.com/HouMinXi/forge/pull/26) has head `7056f4ec4f2b93bc2a7377cc49e118eec4a7d80b`, base `d153329b9045107e79651894852a79fc9c87785e`, and 91 changed files. The supplied cloud handoff identifies diagnostic branch `ci/baseline-b-4dd7214cf1a24483a42c7e19cfc8ec28` and published diagnostic commit `443870dfb221e89d2d6b1fae172a815f7c0f2e47`. These are different candidates. Read their current tips before acting; a handoff timestamp is not a live status or ",
+      "skills": [
+        "python"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:31:33Z"
+    },
+    {
+      "id": 5795012971,
+      "title": "network MVP v3: real Ed25519 votes, one trusted quorum per operator, adversarial chain, an explicit payout pool",
+      "url": "https://github.com/gHashTag/t27/issues/8788",
+      "description": "Part of the network MVP epic (see #8613). Follows the closed v2 lane (see #8685, #8729, #8730) and does not redo it. Related: see #8606 (more than one signer).\n\n## Problem\nThe acceptance brief of 2026-10-10 found these gaps in specs/network/mvp.t27 and mvp_v2.t27:\n- Signature validity is modelled as an input bool or a keyed stand-in. No test signs and verifies a receipt with specs/tri/crypto/ed25519.t27 on real bytes.\n- N, F and M sit as constants inside mvp_v2.t27, and there is no validator set. A vote is counted per signer slot, so two keys of one operator count as two votes. The two real labs (a05db80f53c317f6, fed03daa6459a7fa) are one operator.\n- The mutant \"n/2 + 1 in place of 2M > N + F\" survived in #8685, because at N 4, F 1 both give 3.\n- There is no adversarial run on one chain covering a tampered signature, a tampered result, a receipt replay, a treasurer restart mid-settlement, an event re-delivery and a challenge inside the window.\n- The pool's source and limit are implicit. In an honest network the VERIFIER_FEE, which is paid only from burned stake, is 0.\n\n## Plan\n- specs/network/quorum.t27 (no crypto, importable): the trusted N, F and M, and the validator set as (key",
+      "skills": [],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:31:28Z"
+    },
+    {
+      "id": 5795021949,
+      "title": "GH_BOUNTY_REST_CREATE_FIELD_POC_1010",
+      "url": "https://github.com/09sd-org/gh-bounty-org-issue-field-lab-20261008/issues/10",
+      "description": "Owned test only",
+      "skills": [],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:31:15Z"
+    },
+    {
+      "id": 5119142806,
+      "title": "test(release): requalify both Production journeys after biopsy fixes",
+      "url": "https://github.com/relativityE/speaksharp/issues/1258",
+      "description": "<!-- pm-independent-queues:start -->\n## Independent Dev queues during review/CI\n\n[CLI Dev queue](https://github.com/relativityE/speaksharp/issues/1258#issuecomment-6101036097): #1581 repair/freeze → #1560 residual map → technical acquisition/identity/RECEIVED audit → wake acceptance. [App Dev queue](https://github.com/relativityE/speaksharp/issues/1258#issuecomment-6101036266): #1580 repair/freeze → serial rehearsal/cleanup packets → rendered journey closure audit → wake acceptance. No cross-branch writers; CLI PM serializes shared test-host usage and proves actual delivery. PM owns source review/CI/integration; both Devs stay on RWT until closure, then MVP.\n<!-- pm-independent-queues:end -->\n\n<!-- pm-live-checkpoint:start -->\n## Latest PM checkpoint — 10 October 2026\n\n#1258 remains **OPEN** on deployed current `main@1a724990e493fc2925028310d084cebeade24b5c`. #1576 and #1578 are merged. #1578 merged the fully qualified exact pair `2b3f341b7632fb8d877157a2072acf44c63f8bfc` / `3d62b75883690f49031decf9de159f34dbc12bea` under recorded PO authority as merge commit `1a724990e493fc2925028310d084cebeade24b5c`.\n\nProduction Canary 38077196756 attempt 1 failed closed on a transient Supabase M",
+      "skills": [
+        "api"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:31:09Z"
+    },
+    {
+      "id": 5785375564,
+      "title": "BETTOR RECOVERY GATE — first verified dual-venue AI trading lifecycle",
+      "url": "https://github.com/matthewtaylor141-lab/SportsAssets/issues/6",
+      "description": "## Owner-approved PM recovery contract — 2026-10-09\n\n**Current verdict: NO-GO.** This issue is the single integration/acceptance handoff. Claude owns implementation integration, gates, deploy and production evidence. Codex independently adversarially reviews and signs off on the claims. No new scope until this gate is demonstrated.\n\n### Evidence baseline\n- Production API/workers release `16d234506a0683acc8577465b1beadf5423dc3f7`; market-plane remains `732cc0c696db614cbf63f83c3f843adec00301d6`.\n- PR #5 `c2039f7e4fd0d07c98b78c0e884bfee1934c3752`: draft, unmerged, Day One inactive.\n- Latest 75-min SQL readback (run 37997445112): 49/49 ENTER decisions have order or refusal at 60 seconds, but original historical population not cleared; strategies quarantined; 611 nonpositive-EV and 98 fee-edge refusals; Xavier reviews 0, open PAPER positions 0, live orders 0. Audrey 5 reconciliations, `final=false`.\n- New acceptance workflow 37997539801 completed success as a **workflow**, but its **signed verdict must be read** before treating any category as GREEN.\n- Latest integration backend run 37991350854 failed before tests due Docker Hub anonymous quota; report INFRA BLOCKED and remediate separa",
+      "skills": [
+        "api"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:31:03Z"
     },
     {
       "id": 5794068339,
@@ -579,48 +645,6 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T20:29:27Z"
-    },
-    {
-      "id": 4815390805,
-      "title": "[channels] Epic: Multi-Channel Hub - providers, BYO contract, sync engine",
-      "url": "https://github.com/chase-sets/chase-sets/issues/4388",
-      "description": "## Goal\n\nPhase 3 of the enterprise-seller program: chase-sets as the multi-channel HUB — project listing/inventory/pricing truth onto external marketplaces, absorb their sales, and operate everything from one place. First-party providers (eBay, Cardmarket; TCGplayer access-gated), a published BYO channel contract (anything can be a channel, including an agent), and the compounding differentiator: m113's market-truth repricing pushed to every channel.\n\n## Design pillars\n\n1. **The hub posture**: chase-sets computes (prices via m113 from m111/m112 market truth), owns (inventory via m116/m117), and pushes; channels receive. Channel prices are DERIVED leaves — never anchors (the m113 stratified-anchoring DAG property extends: no channel-side dynamics can feed back into pricing).\n2. **Two allocation modes, seller-chosen per item** (#4381): `partitioned` (explicit per-channel units, zero oversell) vs `shared-pool` (capital-efficient, safety-buffer holdback, oversell window = sync latency — made trustworthy by #4382's reconciliation).\n3. **Deterministic collisions, both sides notified** (#4381): first-committed-wins between channel sales and chase-sets holds; chase-sets loser routes throug",
-      "skills": [
-        "api"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:29:16Z"
-    },
-    {
-      "id": 5675867230,
-      "title": "SN-005: проверить контракт Authentik actor → project authorization для control API",
-      "url": "https://github.com/pupkinson/SymphonyNext/issues/33",
-      "description": "## Цель нового независимого разбора\nПосле подтверждённой активации capacity100/10 продолжить проектирование следующей пользовательской вертикали: вход через Authentik и разрешённое чтение control API. Нужен минимальный реализационный контракт, не повтор прежнего review исходников PR14 и не фактическая настройка Authentik.\n\nИсточник PR14 HEAD21ce4282e7ef8330cc1155bcb7b94fbf132032a8, BASE2bf21950e0725bc9228b262e1495f5af5eeea1d6, TREE29fe41a2873a3db13ac2c0dc74b7f149391c9eeb. Очередь приложит текущие RuntimeIdentity/controller/router/runtime configuration и baseline SPECIFICATION.md. Исходники PR14 уже имеют source acceptance; protected execution и packaged acceptance пока отдельно не завершены.\n\n## Проект контракта для оценки\nСерверная авторизация получает actor только из проверенного локального Authentik login/session, не из query/header с произвольным actor_id и не из task-tracker credentials. Нормализованный Actor имеет issuer+subject и локальный user reference; действительные роли проекта читаются сервером. User, service identity и agent различаются. Read-only endpoint /api/v1/control/identity раскрывает данные только после ровно :ok от authorizer; текущая default-deny ветка сохра",
-      "skills": [
-        "api"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:29:15Z"
-    },
-    {
-      "id": 5788362837,
-      "title": "fix(review): provide a safe pre-merge high-critical reviewer bootstrap for #1411",
-      "url": "https://github.com/heimgewebe/grabowski/issues/1417",
-      "description": "## Verified blocker (2026-10-10)\n\n[PR #1411](https://github.com/heimgewebe/grabowski/pull/1411) is **OPEN / READY**, HEAD `79852028dfa2ba64d6790aa095434f32267fb238`, base/main `a75c1ed62e34d2262aec6e0bccec3693f17c33a8`. The exact-head Codex request and clean completion are authentic and the canonical [Codex settlement](https://github.com/heimgewebe/grabowski/actions/runs/38025828697) is SUCCESS; all historical Codex P2 threads were reconciled without deleting evidence. GitHub Python 3.10/3.12 and CodeQL checks pass. The five-pass, exact-head self-review has `independent_review_required=true`.\n\n**Different and still blocking:** the existing read-only Captain-preflight documented on [#1411](https://github.com/heimgewebe/grabowski/pull/1411#issuecomment-6094047574) reports `independent-review-policy: BLOCK / independent_review_pass_missing`. A Codex clean-result comment is *not* the required provenance-bound independent reviewer-role PASS.\n\nThere is a bootstrap dependency:\n- Deployed, healthy Grabowski runtime is `c6c2ff9fdd40bfb1c5f50e160145384bfe7f9fdb` (203 tools). The **actual installed** `grabowski_agent_role._review_sandbox_argv` handles Codex and Grok specially and passes `clau",
-      "skills": [
-        "python"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:28:45Z"
     },
     {
       "id": 5794991262,
@@ -729,29 +753,24 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T19:24:05Z"
-    },
-    {
-      "id": 5794208549,
-      "title": "Source spot check 2026-10: 44 sources for a second reviewer",
-      "url": "https://github.com/here-be-dragons-ai/sovereign-models/issues/29",
-      "description": "A random sample of the scorecard's checked sources, drawn by `scripts/review_sample.py sheet --n 40 --seed 2026` (stratified by issuer and scope). Every source was read once already, partly by AI agents; this is the independent second check by a person. The share of confirmed sources goes into METHODOLOGY as a data-quality figure.\n\n**How:** open the link, check whether the page states the value in bold. Tick the box if it does. If it does not, leave it unticked and edit the line: write what the page says after `--`. When done, comment \"done\"; the result is read back with `review_sample.py apply`.\n\n- [ ] 1. `family/nemotron-3.5/compute` = **unknown** — https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16 (provider; note: location not stated) --\n- [ ] 2. `family/borealis2/recipe` = **weights** — https://huggingface.co/NbAiLab/borealis2-26b-a4b-preview (provider; note: CPT corpus includes internal and licensed material; SFT set not public; no code linked) --\n- [ ] 3. `family/hy4/recipe` = **weights** — https://huggingface.co/tencent/Hy4-preview (provider; note: weights plus fine-tuning example scripts; no pre-training code or data) --\n- [ ] 4. `family/salamandra/te",
-      "skills": [
-        "script"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T18:44:33Z"
     }
   ],
-  "count": 49,
+  "count": 50,
   "warnings": [],
   "execution": {
-    "status": "work_failed",
-    "timestamp": "2026-10-10T20:32:10+00:00",
-    "issue_url": "https://github.com/josenunezapps/josenunezapps.github.io/issues/1",
-    "error": "Expecting value: line 1 column 1 (char 0)"
+    "status": "demo_completed",
+    "timestamp": "2026-10-10T20:34:02+00:00",
+    "kind": "csv_cleaning",
+    "result": {
+      "processed_rows": 3,
+      "output_rows": 2,
+      "duplicates_removed": 1,
+      "verified": true
+    },
+    "files": [
+      "clientes_limpios.csv",
+      "reporte.json"
+    ]
   },
   "notice": "Candidatos públicos; pago y disponibilidad sin verificar. No se contacta a nadie."
 }
