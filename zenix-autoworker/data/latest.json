@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-10-10T20:27:41+00:00",
+  "generated_at": "2026-10-10T20:29:46+00:00",
   "opportunities": [
     {
       "id": 5387618577,
@@ -186,20 +186,48 @@
       "updated_at": "2026-10-10T20:00:24Z"
     },
     {
-      "id": 5779937201,
-      "title": "Compute board — shared GPU pods (uor-pod)",
-      "url": "https://github.com/UOR-Foundation/uor-r4/issues/2037",
-      "description": "Automatic mirror of the `uor-pod` ledger (`~/.local/share/uor-r4/compute/ledger.jsonl`). Successor of #1750. **Post only ledger lines and capacity reports here.** Discuss work on the milestone issues of the tracker #2028.\n\n### Owner rules (5–7 October)\n- **Caps**, all labs together: at most 4 running pods and $8/h. No new spending class.\n- **Ladder:** without `--gpu`, `uor-pod up` tries 2×RTX 5090, then 2×4090, then 2×PRO 6000, then one GPU of each.\n  - Datacenters: EUR-NO-1 (canonical volume), EU-RO-1, EUR-IS-1, then allowlisted regions by stock.\n  - Pods outside EUR-NO-1 are non-canonical. They get their data from the private HF store `caseyallard/uor-r4-store` and must archive results before `down`.\n- **Leases:**\n  - Identity is lab + session. Run `uor-pod status` first and share before you create.\n  - Lease with `--hours` covering the whole job plus margin, and renew it. An expiring lease is never a reason to stop a live job.\n  - Only an expired lease may be taken over. Release when done, then `down` if nobody else holds the pod.\n- **Storage:** durable output only on `/workspace`. Don't keep stopped pods as storage. Move downloaded results to iCloud with `cloud-store put`.\n- Fu",
-      "skills": [
-        "json"
-      ],
+      "id": 5689074478,
+      "title": "[BOUNTY] Medium: dismissing a stuck private-swap row deletes the only key to funds still at the fresh address (paraloom-wallet)",
+      "url": "https://github.com/paraloom-labs/paraloom-core/issues/854",
+      "description": "> **Severity:** Medium · **Component:** `paraloom-wallet` · **Reward tier:** up to $150 USDC\n> **Status:** Reproduced locally · No live chain touched · Researcher-owned dummy keys\n\n## Summary\n\nThe Activity feed offers a **Dismiss** action on any private-swap row that is still \"pending\",\nand its detail sheet tells the user *\"Your funds are safe in your shielded balance. Dismissing\nonly clears this row.\"* (`src/popup/Home.tsx:1180-1184`). `dismissSwapOutput`\n(`lib/paraloom/swapOutputs.ts:51-55`) then **deletes the row — and with it\n`freshSecretKeyHex`, the only copy of the fresh address's secret key.**\n\nThat safety claim only holds when the row is one the reconciler genuinely could not account for.\nIt is **false** in a second, reachable state: the withdraw settled but the swap leg *and every\nautomatic resume attempt* failed, so the withdrawn assets are **still sitting at the fresh\naddress**. `reconcileSwapOutputs` leaves a failed resume and a genuinely-unresolved row in the\n*same* \"pending\" state (`lib/paraloom/swapReconcile.ts:117-123` vs `:148`), so the UI cannot tell\nthem apart and offers the destructive Dismiss on both — destroying the only means of recovering\nthe funds.\n\n## Impa",
+      "skills": [],
       "score": 35,
       "amount_mentions": [
-        "$8"
+        "$150"
       ],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:27:16Z"
+      "updated_at": "2026-10-10T20:29:30Z"
+    },
+    {
+      "id": 5689016337,
+      "title": "[BOUNTY] Medium: depositSpl ignores confirmation timeout, leaving a phantom re-shield note and double-counted balance",
+      "url": "https://github.com/paraloom-labs/paraloom-core/issues/853",
+      "description": "> **Severity:** Medium · **Component:** `paraloom-wallet` · **Reward tier:** up to $150 USDC\n> **Tested:** wallet `main` @ `1e79eec8fbe99cd7e1381f6971c855bdce883d41` · local mocks only · no live chain touched\n\n## Summary\n\n`depositSpl()` persists a re-shield note at submission time (correctly preserving the random blinding), but then **ignores a real confirmation timeout**.\n\n`confirmBySignatureStatus()` returns `false` when a submitted signature is never observed before its 90-second deadline. The caller does this:\n\n```ts\nawait confirmBySignatureStatus(connection, signature)\nreturn result\n```\n\nThe boolean is discarded, so a transaction that was submitted but never landed is returned as a successful `DepositResult`.\n\nThat is especially harmful in the private-swap re-shield path because the `onSubmitted` callback has already persisted the note into the wallet's confirmed-looking local note set.\n\n## Root cause\n\nIn `lib/paraloom/bridge.ts`:\n\n```ts\nconst signature = await connection.sendRawTransaction(tx.serialize(), {\n  maxRetries: 5\n})\nconst result = { signature, blinding, assetId, amount }\n\nif (onSubmitted) {\n  try {\n    await onSubmitted(result)\n  } catch {\n    // recovery scan is th",
+      "skills": [],
+      "score": 35,
+      "amount_mentions": [
+        "$150"
+      ],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:29:26Z"
+    },
+    {
+      "id": 5785352669,
+      "title": "MASTER: owner screenshots, 207 approved PDP descriptions recovery, contact/collections/cart visual previews",
+      "url": "https://github.com/THEFEYA/feya-commerce/issues/108",
+      "description": "**2026-10-10 OWNER RULE CONFIRMED (EUR, NO ambiguity):** €5 fee is charged ONCE per each additional DISTINCT canonical product listing above the first. ONE listing with several sizes, colors, options or quantities = €0 and the row is COMPLETELY HIDDEN (not “Additional listings €0”). Two different listings: €5; three: €10. Buyer-friendly label should be `Additional packaging for multiple items` (or `Extra packaging for a larger order`), not `additional listings` and not a made-up charge per parcel. This remains server-authoritative; no ability to change prices from a client UI. Owner-approved source-of-truth rate €5, never $5. Payment OFF until live Seller Online KYC/tax/provider truth.\n\n**Stage B ACTIVE:** [PR #109](https://github.com/THEFEYA/feya-commerce/pull/109) implements protected five-product exact pinned approved four-block SEO copy before/after review. Production PDP, source pins, SEO v12, prices/right PDP unchanged. Explicit owner YES required before public 207-page rollout. PR #106 remains separate.\n\n---\n\nTheFEYA MASTER checkpoint (2026-10-10): PLAN ONLY. Four owner screenshots and long voice notes, previous approved drafts. Do NOT change live storefront, shipping rates,",
+      "skills": [
+        "script"
+      ],
+      "score": 35,
+      "amount_mentions": [
+        "$5."
+      ],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:27:51Z"
     },
     {
       "id": 4754366017,
@@ -266,20 +294,20 @@
       "updated_at": "2026-10-10T20:18:48Z"
     },
     {
-      "id": 5734515632,
-      "title": "COORD BOARD (controllers)",
-      "url": "https://github.com/chetan-anand-hub/Lazytopper-Production/issues/973",
-      "description": "Mirror of Desktop/diff/COORD/BOARD.md (every board line is also a comment here). This description is the **STATUS SNAPSHOT**, rewritten by CI-1 (coordinator). Rules: LANE_RULES v1.1 · DISPATCH_PACK v1.3 · DECISIONs 1–26 (mirrored in BOARD.md).\n\n## STATUS SNAPSHOT — 2026-10-10T19:20Z\n**Trunk** `543177db` — fix(worksheet): PENDING-UPLOAD-1 PR-2 - a downloaded worksheet gets a pending record + sav\n**Production** version.json `543177db` · /api/health HTTP 200\n**Sessions:** live = CI-1, A, B, C1 · parked = C3 · C2 starts after MERGE #1034 · Sub-agent models OK? ✅ (verifiers Opus; mechanical Sonnet low)\n\n### Controllers (pack v1.3 §2; DECISION 19/23/25/26)\n| Role | State | Lane · branch/PR | State of lane | Next (in order) |\n|---|---|---|---|---|\n| **CI-1** (coordinator) | LIVE (eebaebbd) | Merge queue DONE: #1036 88333796 · #1038 20a534c0 · #1034 3be3e3da (all LIVE PASS) | queue complete; now coordinating (board 15-20 min, §3 collisions) | sweep #2 Mon 12 Oct · hourly summary + OWNER-BATCH |\n| **A** | FRESH A TAKEN OVER 17:0xZ | #1061 PENDING-UPLOAD-1 PR-1 open (lane-overlap re-run) · PR-2 option B (D50a) | #1037/#1046/#1013 temp-closed | PR-2 → TOPIC-FIX-1 (D50, before #1037; eval-gate",
+      "id": 5786867292,
+      "title": "[Bug][P1] OpenCode V2: Olympus project install fails across Git worktrees; initial prompt cancelled",
+      "url": "https://github.com/Edulynch/OpenCode-OlympusAgents/issues/27",
+      "description": "## Incident / impact\n\n**Priority: P1 — user-reported blocking defect, NOT a proposed enhancement.** On Windows/OpenCode V2, operating with multiple Git worktrees currently causes OlympusAgents to become unusable and **cancels the user's prompt**. The failure affects real use of stable **v0.4.4** and must be diagnosed and corrected before recommending Olympus + multi-worktree workflows. User report is the observation; the exact runtime abort event/log is **not yet captured**.\n\n**Expected:** one user prompt in any valid Git worktree under an Olympus-enabled project starts with Kael as the primary Olympus orchestrator, and safe native delegation/maintenance boundaries remain intact. Multiple independent worktrees can host distinct sessions without silent fallback to `build`, discarded prompts, cross-worktree edits, or session confusion.\n\n**Observed/reported:** multi-worktree use makes Olympus ineffective and the prompt is cancelled. No reproducible local trace, cancellation timing, UI vs TUI, or exact installed OpenCode version accompanied the initial report; do **not** label the cause confirmed.\n\n## Evidence and competing hypotheses (2026-10-09 read-only audit)\n\n1. **Confirmed struct",
       "skills": [
         "json",
-        "api",
+        "bug",
         "script"
       ],
       "score": 30,
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:27:20Z"
+      "updated_at": "2026-10-10T20:28:21Z"
     },
     {
       "id": 5662643363,
@@ -328,6 +356,36 @@
       "updated_at": "2026-10-10T20:20:55Z"
     },
     {
+      "id": 5785823459,
+      "title": "[Astra] Full repository review: architecture, security, runtime wiring, and integration behavior",
+      "url": "https://github.com/FlossWare/claude-ensemble/issues/349",
+      "description": "## Purpose\n\nPerform a systematic review of the whole Claude Ensemble repository, not only a test-inventory sweep, and use evidence from the current source and executable tests to identify defects before returning to GA work.\n\n## Review order\n\n1. **Runtime/deployment correctness:** canonical install defaults, systemd units, service URLs/sockets, development checkout vs installed runtime, startup ordering, health checks, upgrade/uninstall behavior, and preservation of user state.\n2. **End-to-end integrations:** Memory, Learning, Thompson, Graph, gateway REST forwarding, Alert, Messenger, Claude Code hooks, Knowledge/context retrieval, operational metrics/cost tracking, provider registry, arbitration, collaboration, reviewer MCP, Code Search MCP, caching, compression, and workflow skills.\n3. **Correctness and failure semantics:** persistence/retry/idempotency, error/status mapping, timeouts, shutdown, concurrency, missing dependencies, and partial failures.\n4. **Security/privacy:** credentials and logging, auth boundaries, external-data opt-in, SSRF/path handling, PR mutation authorization, loopback binding, input validation, and dependency/supply-chain risks.\n5. **Architecture and ma",
+      "skills": [
+        "api",
+        "documentation"
+      ],
+      "score": 20,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:29:32Z"
+    },
+    {
+      "id": 5739350912,
+      "title": "[P1][TIGERIQ NEWS] Chuyển Writer/Reviewer sang Core NV API + tự publish LIVE",
+      "url": "https://github.com/newsdayads/tigeriq-ai-lab/issues/4456",
+      "description": "## LỆNH OWNER — TỰ NHẬN KIỂM TRA TIN THẬT — 2026-10-08\nSOURCE=Owner direct chat 2026-10-08: \"đưa việc này lên hệ thống tự nhận và làm ... phải tự vào kiểm tra có lên tin tự động được không\"\nOWNER_DIRECT=true\nOWNER_POLICY=AUTO\nPRIORITY=P1\nTIGERIQ_EXECUTABLE=true\nAUTO_QUEUE=INCLUDED\nCURRENT_STATE=READY_AUTOMATED_PC01_READONLY_PREFLIGHT\nRESOURCE_SCOPE=TIGERIQ_NEWS_CORE_NV_API_INTEGRATION_V1\nMUTATION_OWNER=CORE_DYNAMIC_LEASE\nCAPABILITY=pc_operator\nEXECUTION_SURFACE=PC_OPERATOR_DIRECT_LOCAL\nASSIGNED_EXECUTOR=NV06\nONE_RESOURCE_SCOPE_ONE_WRITER=true\nNO_CODE_CHANGE=true\nNO_PC01_SHELL=true\nNO_DIRECT_MAIN=true\nNO_PRODUCTION_RELEASE=true\nNO_PAID_COST=true\nNO_CREDENTIAL_CHANGE=true\nNO_SECURITY_BOUNDARY_CHANGE=true\nNO_DESTRUCTIVE=true\nNO_RDC=true\nNO_CODEX=true\nNO_VERCEL_DEPLOY=true\nNO_MUTATION=true\nZERO_COST=true\nAPP_CHROME_MUTATION=FORBIDDEN\nKEEP_OPEN_ON_STEP_COMPLETE=true\nLIVE_ACCEPTANCE_REQUIRED=true\nFINAL_LIVE_REVIEW_REQUIRED=true\nPUBLIC_EVIDENCE_DIAGNOSTIC=true\nPUBLIC_EVIDENCE_KEYS=ok,lastCycleAt,error\nPC_OPERATOR_DIRECT_ACTION_JSON={\"action\":\"file_read\",\"path\":\"D:\\\\TigerIQ\\\\Workspace\\\\TigerIQMedia\\\\runtime\\\\news-engine-state.json\"}\nDONE=false\nREAL_BLOCKER=PC01_PRIVATE_REPOSITORY_GIT_AUTH_",
+      "skills": [
+        "json",
+        "api"
+      ],
+      "score": 20,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:28:21Z"
+    },
+    {
       "id": 5597031530,
       "title": "durability(hosted journal): concurrent appends + unbounded growth need bounds (follow-up to #4240)",
       "url": "https://github.com/daniel-ospina/tortoise/issues/5612",
@@ -355,36 +413,6 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T20:27:21Z"
-    },
-    {
-      "id": 5788942587,
-      "title": "[P0 WP06 / PP-EPIC] Production implementation epic and requirement coverage",
-      "url": "https://github.com/Jevelopers-neatHack-2026/print-production/issues/1",
-      "description": "**Stable key:** WP06 / PP-EPIC (reuses the original issue; no replacement epic).\n**Owner role:** Creative and fulfillment — production technical lead; accountable implementer/reviewer names remain kickoff decisions.\n**Priority:** P0 — This subsystem converts approved creative output into deterministic customer and supplier artifacts.\n**Required for v1:** Yes for the explicit ticket baseline and all required leaves. CSV and additional product formats are P1 extensions unless the approved launch roster promotes them. **Implementation state:** Planned.\n\n## Current evidence\nLive inspection 2026-10-10: main is [24fb18a](https://github.com/Jevelopers-neatHack-2026/print-production/tree/24fb18a1fc54d34ce71e99a2162d62ebca3a52cd). The complete tracked tree is [README](https://github.com/Jevelopers-neatHack-2026/print-production/blob/24fb18a1fc54d34ce71e99a2162d62ebca3a52cd/README.md), [OWNERSHIP](https://github.com/Jevelopers-neatHack-2026/print-production/blob/24fb18a1fc54d34ce71e99a2162d62ebca3a52cd/docs/architecture/OWNERSHIP.md), and [ACCEPTANCE](https://github.com/Jevelopers-neatHack-2026/print-production/blob/24fb18a1fc54d34ce71e99a2162d62ebca3a52cd/docs/architecture/ACCEPTANCE.md). N",
-      "skills": [
-        "csv",
-        "documentation"
-      ],
-      "score": 20,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:27:21Z"
-    },
-    {
-      "id": 5518867774,
-      "title": "OneCompany permanent Mistral Vibe cloud wake bus — owner dispatch only",
-      "url": "https://github.com/NTinkicht/OneCompany/issues/130",
-      "description": "Permanent, repository-scoped, GitHub-hosted Mistral wake bus. Do not close or reuse for unrelated providers. OneCompany native Work Units, current lease, exact SHA and dispatch policy are authority, not this issue's free-form comments. Initial `@mistral-vibe` wake is read-only, advisory and non-gating; it may inspect bounded source and report test ideas/failure analysis without writing code. It MUST fail closed when `MISTRAL_API_KEY` or subscription/PAYG-disabled guard is absent. No provider credentials in this issue. Full leased developer, binding reviewer and test-author lanes need separate qualification; no Codespace, laptop or open browser session may be required.",
-      "skills": [
-        "api",
-        "script"
-      ],
-      "score": 20,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:27:15Z"
     },
     {
       "id": 3825637122,
@@ -416,6 +444,170 @@
       "updated_at": "2026-10-10T20:19:40Z"
     },
     {
+      "id": 5795012971,
+      "title": "network MVP v3: real Ed25519 votes, one trusted quorum per operator, adversarial chain, an explicit payout pool",
+      "url": "https://github.com/gHashTag/t27/issues/8788",
+      "description": "Part of the network MVP epic (see #8613). Follows the closed v2 lane (see #8685, #8729, #8730) and does not redo it. Related: see #8606 (more than one signer).\n\n## Problem\nThe acceptance brief of 2026-10-10 found these gaps in specs/network/mvp.t27 and mvp_v2.t27:\n- Signature validity is modelled as an input bool or a keyed stand-in. No test signs and verifies a receipt with specs/tri/crypto/ed25519.t27 on real bytes.\n- N, F and M sit as constants inside mvp_v2.t27, and there is no validator set. A vote is counted per signer slot, so two keys of one operator count as two votes. The two real labs (a05db80f53c317f6, fed03daa6459a7fa) are one operator.\n- The mutant \"n/2 + 1 in place of 2M > N + F\" survived in #8685, because at N 4, F 1 both give 3.\n- There is no adversarial run on one chain covering a tampered signature, a tampered result, a receipt replay, a treasurer restart mid-settlement, an event re-delivery and a challenge inside the window.\n- The pool's source and limit are implicit. In an honest network the VERIFIER_FEE, which is paid only from burned stake, is 0.\n\n## Plan\n- specs/network/quorum.t27 (no crypto, importable): the trusted N, F and M, and the validator set as (key",
+      "skills": [],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:29:31Z"
+    },
+    {
+      "id": 5602503136,
+      "title": "Build complete source-to-Legacy feature and route acceptance matrix",
+      "url": "https://github.com/MALIEV-Co-Ltd/Legacy.Maliev.Workflows/issues/98",
+      "description": "The source-commit ledger tracks commit disposition but does not prove every migrated service feature and Web/Intranet route works against production-derived local Aspire data. This is an explicit migration completion gate, not a deployment request.\n\nAcceptance:\n- Inventory each Legacy service feature, API, role, entity, background operation, and every Web/Intranet route against the latest committed original source; retain full source SHA, owning Legacy repo, main SHA, status, and exact evidence links.\n- Mark unverified items pending; distinguish source retirement approvals from migrations. Do not infer feature parity from a code mapping, route alias, smoke test, or green unit suite.\n- Record automated customer/employee authentication, permission, CRUD/lifecycle, validation, rollback/retry, cross-service effects, localization, responsive/browser/accessibility, and persisted-data checks as appropriate. Include safe failure/partial-failure evidence and suppress real notifications/payments/analytics in local review.\n- Verify the matrix against live source and each protected Legacy main, with a check that rejects missing routes/features or unsupported completion claims. Link per-service",
+      "skills": [
+        "api"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:29:28Z"
+    },
+    {
+      "id": 5794068339,
+      "title": "OWNER-PRIORITY ROOT INTAKE — Permanent Commercial Manager + Capability Continuity Role / Reaper Final-Mile",
+      "url": "https://github.com/amillimatrix-eng/CARBON-Creation-Hub/issues/32",
+      "description": "## CURRENT CONTROLLING STATE — OWNER CONFIRMATION / GOVERNANCE BINDING — 2026-10-10\n\n**The Owner has superseded the earlier temporary appointment wording below. The Commercial Manager is PERMANENTLY APPOINTED.** The Capability Continuity & Workflow Architect is also permanently appointed, with its reporting/functional design recorded in the existing [role continuity Intake record](https://app.notion.com/p/3f58f8b56cd7816c9dc3c1e3d1189442?pvs=204) and [canonical Intake Index](https://github.com/amillimatrix-eng/CARBON-Creation-Hub/blob/main/AMX/ROOT/INTAKE/INTAKE_INDEX.md).\n\n**Current reporting decisions:** Commercial Manager → ROOT; Capability Continuity & Workflow Architect → ROOT, functionally embedded in FORX capability continuity/forensics. Commercial Manager coordinates the commercial segment but does not take over specialist execution or independent truth. iSCOPE qualifies; PRI remains sole general-commercial external writer; Banker retains independent settlement truth; Bounty Reaper retains crypto/bounty execution end-to-end; CARBON° product truth, T-COD technical delivery and T-MED media/brand remain separate.\n\nThe Owner's later instruction also supersedes the earlier 2026-",
+      "skills": [],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:29:27Z"
+    },
+    {
+      "id": 4815390805,
+      "title": "[channels] Epic: Multi-Channel Hub - providers, BYO contract, sync engine",
+      "url": "https://github.com/chase-sets/chase-sets/issues/4388",
+      "description": "## Goal\n\nPhase 3 of the enterprise-seller program: chase-sets as the multi-channel HUB — project listing/inventory/pricing truth onto external marketplaces, absorb their sales, and operate everything from one place. First-party providers (eBay, Cardmarket; TCGplayer access-gated), a published BYO channel contract (anything can be a channel, including an agent), and the compounding differentiator: m113's market-truth repricing pushed to every channel.\n\n## Design pillars\n\n1. **The hub posture**: chase-sets computes (prices via m113 from m111/m112 market truth), owns (inventory via m116/m117), and pushes; channels receive. Channel prices are DERIVED leaves — never anchors (the m113 stratified-anchoring DAG property extends: no channel-side dynamics can feed back into pricing).\n2. **Two allocation modes, seller-chosen per item** (#4381): `partitioned` (explicit per-channel units, zero oversell) vs `shared-pool` (capital-efficient, safety-buffer holdback, oversell window = sync latency — made trustworthy by #4382's reconciliation).\n3. **Deterministic collisions, both sides notified** (#4381): first-committed-wins between channel sales and chase-sets holds; chase-sets loser routes throug",
+      "skills": [
+        "api"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:29:16Z"
+    },
+    {
+      "id": 5675867230,
+      "title": "SN-005: проверить контракт Authentik actor → project authorization для control API",
+      "url": "https://github.com/pupkinson/SymphonyNext/issues/33",
+      "description": "## Цель нового независимого разбора\nПосле подтверждённой активации capacity100/10 продолжить проектирование следующей пользовательской вертикали: вход через Authentik и разрешённое чтение control API. Нужен минимальный реализационный контракт, не повтор прежнего review исходников PR14 и не фактическая настройка Authentik.\n\nИсточник PR14 HEAD21ce4282e7ef8330cc1155bcb7b94fbf132032a8, BASE2bf21950e0725bc9228b262e1495f5af5eeea1d6, TREE29fe41a2873a3db13ac2c0dc74b7f149391c9eeb. Очередь приложит текущие RuntimeIdentity/controller/router/runtime configuration и baseline SPECIFICATION.md. Исходники PR14 уже имеют source acceptance; protected execution и packaged acceptance пока отдельно не завершены.\n\n## Проект контракта для оценки\nСерверная авторизация получает actor только из проверенного локального Authentik login/session, не из query/header с произвольным actor_id и не из task-tracker credentials. Нормализованный Actor имеет issuer+subject и локальный user reference; действительные роли проекта читаются сервером. User, service identity и agent различаются. Read-only endpoint /api/v1/control/identity раскрывает данные только после ровно :ok от authorizer; текущая default-deny ветка сохра",
+      "skills": [
+        "api"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:29:15Z"
+    },
+    {
+      "id": 5788362837,
+      "title": "fix(review): provide a safe pre-merge high-critical reviewer bootstrap for #1411",
+      "url": "https://github.com/heimgewebe/grabowski/issues/1417",
+      "description": "## Verified blocker (2026-10-10)\n\n[PR #1411](https://github.com/heimgewebe/grabowski/pull/1411) is **OPEN / READY**, HEAD `79852028dfa2ba64d6790aa095434f32267fb238`, base/main `a75c1ed62e34d2262aec6e0bccec3693f17c33a8`. The exact-head Codex request and clean completion are authentic and the canonical [Codex settlement](https://github.com/heimgewebe/grabowski/actions/runs/38025828697) is SUCCESS; all historical Codex P2 threads were reconciled without deleting evidence. GitHub Python 3.10/3.12 and CodeQL checks pass. The five-pass, exact-head self-review has `independent_review_required=true`.\n\n**Different and still blocking:** the existing read-only Captain-preflight documented on [#1411](https://github.com/heimgewebe/grabowski/pull/1411#issuecomment-6094047574) reports `independent-review-policy: BLOCK / independent_review_pass_missing`. A Codex clean-result comment is *not* the required provenance-bound independent reviewer-role PASS.\n\nThere is a bootstrap dependency:\n- Deployed, healthy Grabowski runtime is `c6c2ff9fdd40bfb1c5f50e160145384bfe7f9fdb` (203 tools). The **actual installed** `grabowski_agent_role._review_sandbox_argv` handles Codex and Grok specially and passes `clau",
+      "skills": [
+        "python"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:28:45Z"
+    },
+    {
+      "id": 5119142806,
+      "title": "test(release): requalify both Production journeys after biopsy fixes",
+      "url": "https://github.com/relativityE/speaksharp/issues/1258",
+      "description": "<!-- pm-independent-queues:start -->\n## Independent Dev queues during review/CI\n\n[CLI Dev queue](https://github.com/relativityE/speaksharp/issues/1258#issuecomment-6101036097): #1581 repair/freeze → #1560 residual map → technical acquisition/identity/RECEIVED audit → wake acceptance. [App Dev queue](https://github.com/relativityE/speaksharp/issues/1258#issuecomment-6101036266): #1580 repair/freeze → serial rehearsal/cleanup packets → rendered journey closure audit → wake acceptance. No cross-branch writers; CLI PM serializes shared test-host usage and proves actual delivery. PM owns source review/CI/integration; both Devs stay on RWT until closure, then MVP.\n<!-- pm-independent-queues:end -->\n\n<!-- pm-live-checkpoint:start -->\n## Latest PM checkpoint — 10 October 2026\n\n#1258 remains **OPEN** on deployed current `main@1a724990e493fc2925028310d084cebeade24b5c`. #1576 and #1578 are merged. #1578 merged the fully qualified exact pair `2b3f341b7632fb8d877157a2072acf44c63f8bfc` / `3d62b75883690f49031decf9de159f34dbc12bea` under recorded PO authority as merge commit `1a724990e493fc2925028310d084cebeade24b5c`.\n\nProduction Canary 38077196756 attempt 1 failed closed on a transient Supabase M",
+      "skills": [
+        "api"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:28:45Z"
+    },
+    {
+      "id": 5794349943,
+      "title": "RelayWA International SEO — Master Tracker (12 batches)",
+      "url": "https://github.com/Haider-Shakoori/wa/issues/90",
+      "description": "# RelayWA International SEO — Master Tracker\n**Scope:** English-only global SEO on `relaywa.com`; 8 initial research targets (India, Brazil, Indonesia, Mexico, Colombia, Nigeria, UAE, Pakistan) plus 5 expansion research targets (Saudi Arabia, South Africa, Spain, Germany, UK). Accurate QR-linked/session messaging API positioning. Country pages only when evidenced by genuinely distinct English buyer needs.\n\n## Batch checklist (implement in order unless noted)\n- [x] [Batch 01 — Research & positioning](https://github.com/Haider-Shakoori/wa/issues/78)\n- [x] [Batch 02 — Technical SEO](https://github.com/Haider-Shakoori/wa/issues/79)\n- [x] [Batch 03 — Analytics & conversion instrumentation](https://github.com/Haider-Shakoori/wa/issues/80)\n- [x] [Batch 04 — Performance & CWV](https://github.com/Haider-Shakoori/wa/issues/81)\n- [x] [Batch 05 — English-only global architecture and canonical targeting](https://github.com/Haider-Shakoori/wa/issues/82)\n- [ ] [Batch 06 — Commercial feature pages](https://github.com/Haider-Shakoori/wa/issues/83)\n- [ ] [Batch 07 — Integration landing pages](https://github.com/Haider-Shakoori/wa/issues/84)\n- [ ] [Batch 08 — English-only regional keyword content and",
+      "skills": [
+        "api"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:28:32Z"
+    },
+    {
+      "id": 5794348050,
+      "title": "Offline shop continuity: Jobs, cash payments and safe document numbering",
+      "url": "https://github.com/raz744u-beep/briskers-app-public/issues/78",
+      "description": "Owner Oct 10 asks whether Briskers works through complete internet outages: new Job, estimate, invoice, editing existing invoice, taking CASH and marking paid, and automatic numbering. Code audit current main: `OfflineDocumentDraftService` supports standalone estimate, quick invoice with provisional Job, unsynced IDs and NULL invoice/job/document_number, with server assigning unique number after sync. `JobDocumentScreen` routes draft/add/update/delete/copy/move lines and notes to offline caches/services in Force Offline. Standalone `BriskersApi.createJob` is RPC, not confirmed offline. `_enterPayment` calls `_api.paymentOptions` and `_api.addPendingInvoicePayment` directly; `_finalizeEnteredPayments` explicitly blocks Force Offline. Thus OFFLINE CASH FINALIZATION NOT AVAILABLE and no guaranteed permanent number until sync. Need design durable offline cash receipt queue with immutable locally unique idempotency key, signed audit history, reconciliation against paid balance, duplicate prevention on replay, role control, visible 'payment pending sync' vs posted, local PDF status accuracy; no final 'Paid' until posted or clearly distinguish provisional local paid. Consider reserved num",
+      "skills": [
+        "api"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:28:28Z"
+    },
+    {
+      "id": 5760402393,
+      "title": "[P1][TIGERIQ NEWS] Hoàn thiện xuất bản bài/ảnh công khai và tự xác minh tin thật",
+      "url": "https://github.com/newsdayads/tigeriq-ai-lab/issues/4574",
+      "description": "TIGERIQ_JOB_V1\nSOURCE=Owner direct chat 2026-10-08: \"Tôi cần xem kết quả thực tế trên trang chứ không muốn nhìn vào thẻ công việc rồi đoán mò\"\nOWNER_DIRECT=true\nOWNER_POLICY=AUTO\nPRIORITY=P1\nCURRENT_STATE=READY_AUTOMATED_CODING\nTIGERIQ_EXECUTABLE=true\nAUTO_QUEUE=INCLUDED\nCAPABILITY=coding\nEXECUTION_SURFACE=CODING\nAUTONOMOUS_CODE=true\nMUTATION_OWNER=CORE_DYNAMIC_LEASE\nRESOURCE_SCOPE=TIGERIQ_NEWS_PUBLIC_ARTICLE_COVER_LIVE_E2E_V1\nPROJECT_ID=tigeriq-news\nWORK_PACKAGE_ID=news-autonomous-newsroom\nTARGET_REPOSITORY=newsdayads/tigeriq-media\nBASE_BRANCH=main\nRELATED_PARENT=4456\nRELATED_TRACKER=3899\nRELATED_SOAK=3904\nRESULT_INBOX=4426\nONE_RESOURCE_SCOPE_ONE_WRITER=true\nZERO_COST=true\nNO_PAID_COST=true\nNO_CREDENTIAL_CHANGE=true\nNO_SECURITY_BOUNDARY_CHANGE=true\nNO_DESTRUCTIVE=true\nNO_DIRECT_MAIN=true\nNO_PRODUCTION_RELEASE=true\nNO_VERCEL_DEPLOY=true\nNO_APP_CHROME_MUTATION=true\nAPP_CHROME_MUTATION=FORBIDDEN\nNO_CODEX=true\nINDEPENDENT_REVIEW_REQUIRED=true\nKEEP_OPEN_ON_STEP_COMPLETE=true\nLIVE_ACCEPTANCE_REQUIRED=true\nDONE=false\n\n## MỤC TIÊU THỰC TẾ\nTigerIQ News phải tự tìm tin -> xác minh -> viết -> rà soát độc lập -> tạo/đưa ảnh lên nguồn công khai -> xuất bản nội dung tới đúng nguồn website đang ",
+      "skills": [
+        "script"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:28:18Z"
+    },
+    {
+      "id": 5364578522,
+      "title": "Team Room — Standups, engineering chat, retrospectives and learning",
+      "url": "https://github.com/NTinkicht/Tabibi/issues/21",
+      "description": "# Tabibi Team Room\n\nThis is the permanent shared conversation space for Tabibi's five-actor engineering company: `chatgpt`, `codex`, `claude`, `gemini_agent`, and `gemini_chat`. Keep it open.\n\nThe binding collaboration rules are in `coordination/COLLABORATION_PROTOCOL.md`, and the company/team-culture rules are in `coordination/COMPANY_OPERATING_SYSTEM.md`. Read them with `AGENTS.md`, `coordination/AUTONOMY_PROTOCOL.md`, `coordination/ROLE_FAILOVER_PROTOCOL.md`, `coordination/WORK_QUEUE.md`, and current `coordination/STATE.json` before material work.\n\n`gemini_agent` and `gemini_chat` are distinct actors with separate capacity, leases, authorship, findings, review authority, and accountability.\n\n## What belongs here\n\nFormal delivery markers:\n- `HEARTBEAT`, `CHECKPOINT`;\n- role lease / handoff / failover markers;\n- `CAPACITY_DEGRADED`, `CAPACITY_RECOVERED`;\n- `RETRO_OPEN`, `RETRO_ENTRY`;\n- `PROCESS_PROPOSAL`, `CONSENSUS_ACK`, `CONSENSUS_AMEND`, `CONSENSUS_CHALLENGE`;\n- `TEAM_DECISION`, `LESSON_LEARNED`;\n- `TASK_CLAIM`, `TASK_DONE`, `TASK_PROPOSAL`, `AVAILABLE_FOR_WORK`.\n\nHuman-shaped engineering conversation is also welcome:\n- `STANDUP`;\n- `THOUGHT`;\n- `QUESTION` / `ANSWER`;\n- `REFAC",
+      "skills": [
+        "json"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:27:47Z"
+    },
+    {
+      "id": 5361348957,
+      "title": "Agent wake bus: Claude review handoffs (do not close)",
+      "url": "https://github.com/NTinkicht/Tabibi/issues/11",
+      "description": "## Purpose\nPermanent repository-level dispatch channel for Claude review work.\n\nClaude's primary runtime wake mechanism has been PR-activity subscription. Per-PR subscriptions can leave Claude idle when work moves to a new PR. This issue is intentionally permanent and must not be closed while Tabibi uses Claude as an independent reviewer.\n\n## Required Claude behavior\nWhen this channel first reaches Claude, establish the closest persistent subscription/monitoring mechanism available for this issue/repository and treat every new `HANDOFF_TO_CLAUDE` comment here as a dispatch to the named target PR/SHA. If issue-level event subscription is unsupported, use this issue as the canonical queue inspected by the existing recurring repository heartbeat and establish the target PR subscription immediately on each dispatch.\n\nA dispatch here does **not** replace the review evidence on the target PR. Review findings/verdicts remain on the target PR; this channel exists only to guarantee wake/dispatch continuity across PR changes.\n\n## Current dispatch queue\n1. PR #9 — coordination v4 review. Target exact head: `537d93a3226902a757ebc2fc90f37d4d6b8f9869` at time of initial queueing, but inspect PR ",
+      "skills": [
+        "script"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:27:41Z"
+    },
+    {
       "id": 5784134858,
       "title": "CON-01 coordination: saved project conversations (Claude implementation, Codex review and operations)",
       "url": "https://github.com/davidelaverga/Sophia/issues/198",
@@ -444,62 +636,6 @@
       "updated_at": "2026-10-10T20:27:28Z"
     },
     {
-      "id": 5772614232,
-      "title": "Tight / Hermes onboarding: default assignment isolation and PM contract (R1/R3/R4)",
-      "url": "https://github.com/alexkirs/taskq/issues/538",
-      "description": "## Goal\n\nOwner decision 2026-10-09 (intake): collect Tight/Hermes onboarding gaps in one parked task. Planning only; no implementation, adoption, requeue, workers or timers until the owner approves the final scope.\n\n- Main requirement: other managers skip tasks assigned to Tight by default, including managers without a personal filter. Tight takes another user's task only after an explicit owner-approved reassignment. Board assignments, status and claims remain authoritative (R1); no parallel registry or mandatory host/session ownership workaround.\n- Give Tight a separate GitHub identity. Registration and repository membership/API access are separate checks. A shared alexkirs login cannot distinguish Tight; account creation alone does not fix selection.\n- Clarify board assignee versus the task's pm: ownership, controller authority, supervisor runtime, outcome routing and safe transfer. Reconcile R3/R4 and #532 before proposing changes; do not silently remove or duplicate their responsibilities.\n- Target: Tight PM -> native Hermes supervisor -> Codex worker. Reuse the current taskq.md manager contract. Document minimal, reproducible Hermes onboarding in this repository, not a second",
-      "skills": [
-        "api"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:27:23Z"
-    },
-    {
-      "id": 5715165685,
-      "title": "Automatically regenerate retained catalogue observations after bounded processing-source changes",
-      "url": "https://github.com/StatPan/datapan-registry/issues/743",
-      "description": "## Goal\n\nAutomatically reprocess an already admitted, immutable upstream-catalogue observation when a relevant processing contract changes on the trusted default branch. A bounded source-change push wake-up must select the correct retained A input, bind the new processing epoch, preserve existing request and observation accounting, and produce a verified current-contract result or a precise fail-closed outcome.\n\nParent: #659. Goal ancestor: #655. Coordinate interfaces with #722 and #741; keep their completeness and Health acceptance distinct. #726 declaration evidence is an input to the contract, not a source of new acquisition authority.\n\n## Scope\n\nAdd a narrow `push` entry to the existing B processing workflow for relevant source/processing changes on the repository’s default branch. Bind the event to the exact repository, default branch, pushed SHA, workflow, run attempt, and successful job evidence. The push path is additional to existing A `workflow_run`, schedule, and explicitly authorized manual recovery paths. It must not alter how A events are admitted or claim that it ran a collector.\n\nDefine one versioned, deterministic processing-contract identity from an explicit order",
-      "skills": [
-        "script"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:27:22Z"
-    },
-    {
-      "id": 5602503136,
-      "title": "Build complete source-to-Legacy feature and route acceptance matrix",
-      "url": "https://github.com/MALIEV-Co-Ltd/Legacy.Maliev.Workflows/issues/98",
-      "description": "The source-commit ledger tracks commit disposition but does not prove every migrated service feature and Web/Intranet route works against production-derived local Aspire data. This is an explicit migration completion gate, not a deployment request.\n\nAcceptance:\n- Inventory each Legacy service feature, API, role, entity, background operation, and every Web/Intranet route against the latest committed original source; retain full source SHA, owning Legacy repo, main SHA, status, and exact evidence links.\n- Mark unverified items pending; distinguish source retirement approvals from migrations. Do not infer feature parity from a code mapping, route alias, smoke test, or green unit suite.\n- Record automated customer/employee authentication, permission, CRUD/lifecycle, validation, rollback/retry, cross-service effects, localization, responsive/browser/accessibility, and persisted-data checks as appropriate. Include safe failure/partial-failure evidence and suppress real notifications/payments/analytics in local review.\n- Verify the matrix against live source and each protected Legacy main, with a check that rejects missing routes/features or unsupported completion claims. Link per-service",
-      "skills": [
-        "api"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:27:02Z"
-    },
-    {
-      "id": 5435303680,
-      "title": "A green suite published nothing — two workflows derive data/page-lastmod.json and the second one to finish is rebased onto the first",
-      "url": "https://github.com/robhunter/agentdeals/issues/1589",
-      "description": "`reverify.yml` spent 40 minutes on a read pass, recorded 9 changes, went through the holdback, and **its second suite run was green — `fail 0`**. It published nothing. The commit was refused at the replay step and quarantined to `data-quarantine/rolling-reverification-20260912T184309Z-4cc51f4`.\n\nRun [34710032973](https://github.com/robhunter/agentdeals/actions/runs/34710032973), the whole refusal in four lines:\n\n```\n18:43:08  ℹ fail 0\n18:43:08  ── main moved while the suite ran. Replaying this run's commit onto it ──\n18:43:09  Auto-merging data/page-lastmod.json\n18:43:09  CONFLICT (content): Merge conflict in data/page-lastmod.json\n18:43:09  error: could not apply b9d8d4f... data(auto): rolling re-verification — 14 verified, 17 flagged, 9 changes recorded\n```\n\nOne file conflicted. `data/quality_budgets.json` was in the same replay and auto-merged.\n\n## Two workflows derive the same file and neither knows about the other\n\n`data/page-lastmod.json` is written by `update-page-lastmod.js`, which two workflows call:\n\n| workflow | how it writes the file | concurrency group | schedule |\n|---|---|---|---|\n| `page-lastmod.yml` | directly | `page-lastmod` | — |\n| `reverify.yml` | `GATE_UPDATE_",
-      "skills": [
-        "json"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:26:36Z"
-    },
-    {
       "id": 5794991262,
       "title": "GH_BOUNTY_ACTOR_POLICY_FIELD_CREATE_20261010",
       "url": "https://github.com/09sd-org/gh-bounty-org-issue-field-lab-20261008/issues/9",
@@ -510,20 +646,6 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T20:26:29Z"
-    },
-    {
-      "id": 5706437606,
-      "title": "Reduce private CI usage while preserving verification gates",
-      "url": "https://github.com/carloshm91/kuberich/issues/109",
-      "description": "## Outcome\n\nKeep private development checks affordable while retaining honest line/branch/changed-line and critical-module gates, behavioral/install tests and platform qualification.\n\nEpic: E10 #10 · Priority: P1 · Target: v0.0.1. Follow-up to the maintainer's exhausted Actions allowance during preview correction #107 / PR #108. Implementation started after the first-preview delivery; #107 is closed.\n\n## Historical evidence at issue creation\n\nApplication quality runs six full Linux/macOS + Python 3.12–3.14 environments on every PR, then again on main after merging. This repository currently has 30 Application quality workflow runs in October. Failed/repeated runs also consume runner time. GitHub now refuses to start any job because of the account's payment/spending/quota restriction; the maintainer confirmed 2,000/2,000 included minutes used.\n\nOn 2026-10-04 the maintainer authorized temporary private development with measured local checks while hosted CI is unavailable. This does not establish new macOS CI evidence or waive public release qualification.\n\n## Acceptance criteria\n\n- [x] Audit actual run/job durations and account usage when access is available; distinguish execution mi",
-      "skills": [
-        "python"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:25:46Z"
     },
     {
       "id": 5530024379,
@@ -580,18 +702,6 @@
       "updated_at": "2026-10-10T20:11:35Z"
     },
     {
-      "id": 808949107,
-      "title": "[AAVE] Finish aave long/short ETH contract and integrate with shared stake deposit contract",
-      "url": "https://github.com/SharedStake/Contracts/issues/6",
-      "description": "There is a WIP AAVE long/short ETH deposit strategy contract here. \r\n\r\nThis needs some more thought to figure out the best credit delegation strategy. I.e. from contract to user or vice versa? Or both? \r\n\r\nAlso needs to be fixed up, and tested on kovan where AAVE exists but sharedstake doesn't. \r\nNeeds to be able to open a position on AAVE using ETH or stablecoins, on behalf of itself and the user. Needs to be able to credit delegate remaining funds back to the user, or to the contract if the CDP is opened on behalf of the user. \r\n\r\nNeeds to be able to withdraw ETH or stables from the CDP. \r\nExchange to ETH using uniswap if borrowing stables. \r\nAnd finally deposit the ETH to the sharedStake deposit contract and return accumulated vETH2 back to the user. \r\n\r\n[Bounty] This is eligible for a bounty payout",
-      "skills": [],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:10:55Z"
-    },
-    {
       "id": 5720560754,
       "title": "Central message board — Hermes, Claude, Codex and operator coordination",
       "url": "https://github.com/scottonchain/microcredit-agent-testbed/issues/15",
@@ -644,51 +754,24 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T19:30:14Z"
-    },
-    {
-      "id": 5458955395,
-      "title": "Cloud Revenue Command Dashboard",
-      "url": "https://github.com/Nish916/revenue-command-runner/issues/1",
-      "description": "# Cloud Revenue Command Dashboard\n\nUpdated: 2026-10-10 19:24:04 UTC\n\n## Decision\n## Evidence-based revenue execution\n- ROLE: AUTOMATION_ONLY. Cloud discovery is advisory only; authenticated mutations run in the local executor.\n- MODE: AUTOMATION_ONLY_SUPER_INFINITY_AGGRESSIVE\n- TARGET: Discover and rank legitimate machine-executable paid work requiring minimal human attendance; authenticated mutations remain local; never guarantee income.\n- TOKEN BALANCE: RustChain reports 177.1 RTC; this is not verified fiat proceeds or withdrawal readiness.\n- VERIFIED: Cognitive-OS PR #53 state is open.\n- VERIFIED: RustChain #2259 state is unknown.\n- NOW: No cloud-discovered opportunity qualifies as cash-near. Do not confuse screening-required roles, freelance listings, or buyer-intent signals with earnings; local authenticated executor owns real APPLY/CLAIM/START_WORK actions.\n- DISCOVERY ONLY — FREELANCE: [laborx] Robotics Engineer: build and ship a bot — parsed budget 6000.0; application/bid not yet executed.\n- APPLICATION PIPELINE (NOT CASH-NEAR): [nearskill] 3D Slicer Medical Imaging Evaluator — published floor/reference 125.0 USD; screening/application required.\n- DISCOVERY ONLY — INTENT BE",
-      "skills": [
-        "automation"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T19:24:05Z"
-    },
-    {
-      "id": 5794208549,
-      "title": "Source spot check 2026-10: 44 sources for a second reviewer",
-      "url": "https://github.com/here-be-dragons-ai/sovereign-models/issues/29",
-      "description": "A random sample of the scorecard's checked sources, drawn by `scripts/review_sample.py sheet --n 40 --seed 2026` (stratified by issuer and scope). Every source was read once already, partly by AI agents; this is the independent second check by a person. The share of confirmed sources goes into METHODOLOGY as a data-quality figure.\n\n**How:** open the link, check whether the page states the value in bold. Tick the box if it does. If it does not, leave it unticked and edit the line: write what the page says after `--`. When done, comment \"done\"; the result is read back with `review_sample.py apply`.\n\n- [ ] 1. `family/nemotron-3.5/compute` = **unknown** — https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16 (provider; note: location not stated) --\n- [ ] 2. `family/borealis2/recipe` = **weights** — https://huggingface.co/NbAiLab/borealis2-26b-a4b-preview (provider; note: CPT corpus includes internal and licensed material; SFT set not public; no code linked) --\n- [ ] 3. `family/hy4/recipe` = **weights** — https://huggingface.co/tencent/Hy4-preview (provider; note: weights plus fine-tuning example scripts; no pre-training code or data) --\n- [ ] 4. `family/salamandra/te",
-      "skills": [
-        "script"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T18:44:33Z"
     }
   ],
-  "count": 44,
+  "count": 50,
   "warnings": [],
   "execution": {
-    "status": "needs_manual_verification",
-    "timestamp": "2026-10-10T20:29:31+00:00",
-    "issue_url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/1208",
-    "model": "openrouter/free",
-    "summary": "Refactored custom slash command registration from deprecated chatSend interception to official @minecraft/server 2.x API. Uses server.registerCommand() with proper worldInitialize lifecycle event, eliminating the TypeError 'Cannot read properties of undefined (reading \\'registerCommand\\')' and enabling correct permission enums.",
+    "status": "demo_completed",
+    "timestamp": "2026-10-10T20:29:46+00:00",
+    "kind": "csv_cleaning",
+    "result": {
+      "processed_rows": 3,
+      "output_rows": 2,
+      "duplicates_removed": 1,
+      "verified": true
+    },
     "files": [
-      "scripts/commands.ts"
-    ],
-    "tests_passed": false,
-    "test_log": "\nUnable to find image 'python:3.12-slim' locally\n3.12-slim: Pulling from library/python\necc510c1e359: Pulling fs layer\n75b6a36c64a1: Pulling fs layer\n6912e23eb445: Pulling fs layer\nbbc5a1223747: Pulling fs layer\nbbc5a1223747: Waiting\n75b6a36c64a1: Verifying Checksum\n75b6a36c64a1: Download complete\n6912e23eb445: Verifying Checksum\n6912e23eb445: Download complete\necc510c1e359: Verifying Checksum\necc510c1e359: Download complete\nbbc5a1223747: Verifying Checksum\nbbc5a1223747: Download complete\necc510c1e359: Pull complete\n75b6a36c64a1: Pull complete\n6912e23eb445: Pull complete\nbbc5a1223747: Pull complete\nDigest: sha256:a6e34c598f2467ed0e9a8d349809fcd8b5c603269512df273a0bb1784edc11b1\nStatus: Downloaded newer image for python:3.12-slim\nTraceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/usr/local/lib/python3.12/ast.py\", line 52, in parse\n    return compile(source, filename, mode, flags,\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<unknown>\", line 50\n    BINANCE_API_KEY = os.e*******get(\"BINANCE_API_KEY\", \"\") or \"\"\n                            ^^\nSyntaxError: invalid syntax\n",
-    "posted": false,
-    "delivered": false
+      "clientes_limpios.csv",
+      "reporte.json"
+    ]
   },
   "notice": "Candidatos públicos; pago y disponibilidad sin verificar. No se contacta a nadie."
 }
