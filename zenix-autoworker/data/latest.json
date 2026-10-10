@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-10-10T20:34:02+00:00",
+  "generated_at": "2026-10-10T20:34:30+00:00",
   "opportunities": [
     {
       "id": 5387618577,
@@ -202,6 +202,22 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T20:00:24Z"
+    },
+    {
+      "id": 5779937201,
+      "title": "Compute board — shared GPU pods (uor-pod)",
+      "url": "https://github.com/UOR-Foundation/uor-r4/issues/2037",
+      "description": "Automatic mirror of the `uor-pod` ledger (`~/.local/share/uor-r4/compute/ledger.jsonl`). Successor of #1750. **Post only ledger lines and capacity reports here.** Discuss work on the milestone issues of the tracker #2028.\n\n### Owner rules (5–7 October)\n- **Caps**, all labs together: at most 4 running pods and $8/h. No new spending class.\n- **Ladder:** without `--gpu`, `uor-pod up` tries 2×RTX 5090, then 2×4090, then 2×PRO 6000, then one GPU of each.\n  - Datacenters: EUR-NO-1 (canonical volume), EU-RO-1, EUR-IS-1, then allowlisted regions by stock.\n  - Pods outside EUR-NO-1 are non-canonical. They get their data from the private HF store `caseyallard/uor-r4-store` and must archive results before `down`.\n- **Leases:**\n  - Identity is lab + session. Run `uor-pod status` first and share before you create.\n  - Lease with `--hours` covering the whole job plus margin, and renew it. An expiring lease is never a reason to stop a live job.\n  - Only an expired lease may be taken over. Release when done, then `down` if nobody else holds the pod.\n- **Storage:** durable output only on `/workspace`. Don't keep stopped pods as storage. Move downloaded results to iCloud with `cloud-store put`.\n- Fu",
+      "skills": [
+        "json"
+      ],
+      "score": 35,
+      "amount_mentions": [
+        "$8"
+      ],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:34:14Z"
     },
     {
       "id": 5791884291,
@@ -501,6 +517,34 @@
       "updated_at": "2026-10-10T20:19:40Z"
     },
     {
+      "id": 5795047669,
+      "title": "Semantics CLI contracts and cluster read model",
+      "url": "https://github.com/PavloSEO/spiderhead/issues/1298",
+      "description": "One semantics core design: JSON dry-run and preview contract shared by status, import and export, plus a cluster read model with rules-as-data for recommendations. Store and runner change in one branch. Missing signals are null with a reason; the read path makes no paid provider calls.\n\n**Area:** semantics core (CLI, store, cluster, recommendations)\n\n## Checklist\n- [ ] #1208: per-stage state (done, running, failed) and last run time from the runs table in _status\n- [ ] #1208: dry run and request-count estimate for paid stages before confirm_paid; read-only timestamped run journal per project; machine-readable choices for region, engine and query source\n- [ ] #1205: import --dry-run --json (new, already in core, duplicates, group counts, preview rows with applied mapping); XLSX input with sheet selection\n- [ ] #1205: explicit column mapping (query, frequency, group, subgroup, URL, comment); Category / Cluster path parsing; merge policy flag (add, update, replace)\n- [ ] #1205: excel or export --scope all, cluster:<name> or no-landing with --json planned files and row counts; offline tests with a synthetic workbook\n- [ ] #1204: semantics clusters list and cluster show JSON with aggreg",
+      "skills": [
+        "json"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:34:17Z"
+    },
+    {
+      "id": 5602503136,
+      "title": "Build complete source-to-Legacy feature and route acceptance matrix",
+      "url": "https://github.com/MALIEV-Co-Ltd/Legacy.Maliev.Workflows/issues/98",
+      "description": "The source-commit ledger tracks commit disposition but does not prove every migrated service feature and Web/Intranet route works against production-derived local Aspire data. This is an explicit migration completion gate, not a deployment request.\n\nAcceptance:\n- Inventory each Legacy service feature, API, role, entity, background operation, and every Web/Intranet route against the latest committed original source; retain full source SHA, owning Legacy repo, main SHA, status, and exact evidence links.\n- Mark unverified items pending; distinguish source retirement approvals from migrations. Do not infer feature parity from a code mapping, route alias, smoke test, or green unit suite.\n- Record automated customer/employee authentication, permission, CRUD/lifecycle, validation, rollback/retry, cross-service effects, localization, responsive/browser/accessibility, and persisted-data checks as appropriate. Include safe failure/partial-failure evidence and suppress real notifications/payments/analytics in local review.\n- Verify the matrix against live source and each protected Legacy main, with a check that rejects missing routes/features or unsupported completion claims. Link per-service",
+      "skills": [
+        "api"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:34:04Z"
+    },
+    {
       "id": 5795044893,
       "title": "Track paid tool spend during subscription runs before final ledgering",
       "url": "https://github.com/kgforais1/k-dense-byok-mcp/issues/53",
@@ -513,6 +557,20 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T20:33:55Z"
+    },
+    {
+      "id": 5794829645,
+      "title": "Add an iac plugin for inter-agent messaging over GitHub comments",
+      "url": "https://github.com/cjus/cjus-skills/issues/77",
+      "description": "## Goal\n\nLet non-Anthropic models work alongside Claude Code sessions: a ChatGPT dot first, then Codex, local Ollama models and OpenRouter models. Named agents exchange addressed JSON messages as comments on a shared GitHub thread. There is no server to host. `iac` stands for Inter-Agent Communication.\n\n## Transport: one private repo, one issue per channel\n\n```\n<operator>/iac-channels       private; only the operator's account can read it\n├── roster.json               agent names and kinds, plus the channel list\n├── docs/\n│   └── iac-protocol.md       the protocol card: format and rules, readable by any agent\n└── Issues\n    ├── #1  iac:bookcraft     a channel; each comment on it is a message\n    └── #2  iac:pr\n```\n\n- Every agent posts as the operator's account, whether through `gh` or a GitHub connector.\n- A channel is an issue. Closing it tells agents to stop using the channel, though GitHub still accepts comments on a closed issue.\n- Shared documents that change slowly, and that nobody edits at the same moment, live as files in the repo, not as messages.\n\n## Messages are append-only\n\n**Nobody edits or deletes a message.** Each message is one comment holding one JSON object, optio",
+      "skills": [
+        "json"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:33:54Z"
     },
     {
       "id": 5795041838,
@@ -541,20 +599,6 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T20:33:08Z"
-    },
-    {
-      "id": 5602503136,
-      "title": "Build complete source-to-Legacy feature and route acceptance matrix",
-      "url": "https://github.com/MALIEV-Co-Ltd/Legacy.Maliev.Workflows/issues/98",
-      "description": "The source-commit ledger tracks commit disposition but does not prove every migrated service feature and Web/Intranet route works against production-derived local Aspire data. This is an explicit migration completion gate, not a deployment request.\n\nAcceptance:\n- Inventory each Legacy service feature, API, role, entity, background operation, and every Web/Intranet route against the latest committed original source; retain full source SHA, owning Legacy repo, main SHA, status, and exact evidence links.\n- Mark unverified items pending; distinguish source retirement approvals from migrations. Do not infer feature parity from a code mapping, route alias, smoke test, or green unit suite.\n- Record automated customer/employee authentication, permission, CRUD/lifecycle, validation, rollback/retry, cross-service effects, localization, responsive/browser/accessibility, and persisted-data checks as appropriate. Include safe failure/partial-failure evidence and suppress real notifications/payments/analytics in local review.\n- Verify the matrix against live source and each protected Legacy main, with a check that rejects missing routes/features or unsupported completion claims. Link per-service",
-      "skills": [
-        "api"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:31:45Z"
     },
     {
       "id": 5795028506,
@@ -605,34 +649,6 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T20:31:15Z"
-    },
-    {
-      "id": 5119142806,
-      "title": "test(release): requalify both Production journeys after biopsy fixes",
-      "url": "https://github.com/relativityE/speaksharp/issues/1258",
-      "description": "<!-- pm-independent-queues:start -->\n## Independent Dev queues during review/CI\n\n[CLI Dev queue](https://github.com/relativityE/speaksharp/issues/1258#issuecomment-6101036097): #1581 repair/freeze → #1560 residual map → technical acquisition/identity/RECEIVED audit → wake acceptance. [App Dev queue](https://github.com/relativityE/speaksharp/issues/1258#issuecomment-6101036266): #1580 repair/freeze → serial rehearsal/cleanup packets → rendered journey closure audit → wake acceptance. No cross-branch writers; CLI PM serializes shared test-host usage and proves actual delivery. PM owns source review/CI/integration; both Devs stay on RWT until closure, then MVP.\n<!-- pm-independent-queues:end -->\n\n<!-- pm-live-checkpoint:start -->\n## Latest PM checkpoint — 10 October 2026\n\n#1258 remains **OPEN** on deployed current `main@1a724990e493fc2925028310d084cebeade24b5c`. #1576 and #1578 are merged. #1578 merged the fully qualified exact pair `2b3f341b7632fb8d877157a2072acf44c63f8bfc` / `3d62b75883690f49031decf9de159f34dbc12bea` under recorded PO authority as merge commit `1a724990e493fc2925028310d084cebeade24b5c`.\n\nProduction Canary 38077196756 attempt 1 failed closed on a transient Supabase M",
-      "skills": [
-        "api"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:31:09Z"
-    },
-    {
-      "id": 5785375564,
-      "title": "BETTOR RECOVERY GATE — first verified dual-venue AI trading lifecycle",
-      "url": "https://github.com/matthewtaylor141-lab/SportsAssets/issues/6",
-      "description": "## Owner-approved PM recovery contract — 2026-10-09\n\n**Current verdict: NO-GO.** This issue is the single integration/acceptance handoff. Claude owns implementation integration, gates, deploy and production evidence. Codex independently adversarially reviews and signs off on the claims. No new scope until this gate is demonstrated.\n\n### Evidence baseline\n- Production API/workers release `16d234506a0683acc8577465b1beadf5423dc3f7`; market-plane remains `732cc0c696db614cbf63f83c3f843adec00301d6`.\n- PR #5 `c2039f7e4fd0d07c98b78c0e884bfee1934c3752`: draft, unmerged, Day One inactive.\n- Latest 75-min SQL readback (run 37997445112): 49/49 ENTER decisions have order or refusal at 60 seconds, but original historical population not cleared; strategies quarantined; 611 nonpositive-EV and 98 fee-edge refusals; Xavier reviews 0, open PAPER positions 0, live orders 0. Audrey 5 reconciliations, `final=false`.\n- New acceptance workflow 37997539801 completed success as a **workflow**, but its **signed verdict must be read** before treating any category as GREEN.\n- Latest integration backend run 37991350854 failed before tests due Docker Hub anonymous quota; report INFRA BLOCKED and remediate separa",
-      "skills": [
-        "api"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:31:03Z"
     },
     {
       "id": 5794068339,
@@ -739,38 +755,15 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T19:30:14Z"
-    },
-    {
-      "id": 5458955395,
-      "title": "Cloud Revenue Command Dashboard",
-      "url": "https://github.com/Nish916/revenue-command-runner/issues/1",
-      "description": "# Cloud Revenue Command Dashboard\n\nUpdated: 2026-10-10 19:24:04 UTC\n\n## Decision\n## Evidence-based revenue execution\n- ROLE: AUTOMATION_ONLY. Cloud discovery is advisory only; authenticated mutations run in the local executor.\n- MODE: AUTOMATION_ONLY_SUPER_INFINITY_AGGRESSIVE\n- TARGET: Discover and rank legitimate machine-executable paid work requiring minimal human attendance; authenticated mutations remain local; never guarantee income.\n- TOKEN BALANCE: RustChain reports 177.1 RTC; this is not verified fiat proceeds or withdrawal readiness.\n- VERIFIED: Cognitive-OS PR #53 state is open.\n- VERIFIED: RustChain #2259 state is unknown.\n- NOW: No cloud-discovered opportunity qualifies as cash-near. Do not confuse screening-required roles, freelance listings, or buyer-intent signals with earnings; local authenticated executor owns real APPLY/CLAIM/START_WORK actions.\n- DISCOVERY ONLY — FREELANCE: [laborx] Robotics Engineer: build and ship a bot — parsed budget 6000.0; application/bid not yet executed.\n- APPLICATION PIPELINE (NOT CASH-NEAR): [nearskill] 3D Slicer Medical Imaging Evaluator — published floor/reference 125.0 USD; screening/application required.\n- DISCOVERY ONLY — INTENT BE",
-      "skills": [
-        "automation"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T19:24:05Z"
     }
   ],
   "count": 50,
   "warnings": [],
   "execution": {
-    "status": "demo_completed",
-    "timestamp": "2026-10-10T20:34:02+00:00",
-    "kind": "csv_cleaning",
-    "result": {
-      "processed_rows": 3,
-      "output_rows": 2,
-      "duplicates_removed": 1,
-      "verified": true
-    },
-    "files": [
-      "clientes_limpios.csv",
-      "reporte.json"
-    ]
+    "status": "work_failed",
+    "timestamp": "2026-10-10T20:37:04+00:00",
+    "issue_url": "https://github.com/josenunezapps/josenunezapps.github.io/issues/1",
+    "error": "La IA devolvio contenido vacio. Modelo: poolside/laguna-s-2.1:free; finalizacion: length"
   },
   "notice": "Candidatos públicos; pago y disponibilidad sin verificar. No se contacta a nadie."
 }

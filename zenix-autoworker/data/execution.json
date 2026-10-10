@@ -1,15 +1,6 @@
 {
-  "status": "demo_completed",
-  "timestamp": "2026-10-10T20:34:02+00:00",
-  "kind": "csv_cleaning",
-  "result": {
-    "processed_rows": 3,
-    "output_rows": 2,
-    "duplicates_removed": 1,
-    "verified": true
-  },
-  "files": [
-    "clientes_limpios.csv",
-    "reporte.json"
-  ]
+  "status": "work_failed",
+  "timestamp": "2026-10-10T20:37:04+00:00",
+  "issue_url": "https://github.com/josenunezapps/josenunezapps.github.io/issues/1",
+  "error": "La IA devolvio contenido vacio. Modelo: poolside/laguna-s-2.1:free; finalizacion: length"
 }
