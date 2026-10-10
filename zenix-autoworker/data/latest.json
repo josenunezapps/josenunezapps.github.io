@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-10-10T20:25:52+00:00",
+  "generated_at": "2026-10-10T20:27:41+00:00",
   "opportunities": [
     {
       "id": 5387618577,
@@ -152,22 +152,6 @@
       "updated_at": "2026-10-10T20:21:15Z"
     },
     {
-      "id": 5775643739,
-      "title": "[Bounty: $50] Make get_round report no recipient for a round that has not started",
-      "url": "https://github.com/SUSU-LABS/susu-contracts/issues/39",
-      "description": "## Context\n\n`RoundInfo.recipient` is documented as \"`None` for a round that does not exist yet\" (`contracts/group/src/lib.rs:169`), but `get_round` (`:723`) reads `DataKey::MemberAt(round)` for any round `<= member_capacity`, so a round far in the future returns the scheduled recipient while its phase is `WaitingForContributions`. The distinction the doc promises does not hold.\n\n## Proposed Change\n\nReturn `recipient: None` when `round > current_round` (and no payout has executed), or correct the documentation and consumers to the actual semantics.\n\n## Acceptance Criteria\n\n- `get_round(r)` for a not-yet-started `r` returns `recipient: None`\n- A completed/current round still returns its recipient\n- A test covers a future round\n\n**Suggested Label:** correctness\n**ETA:** 24 hours",
-      "skills": [
-        "documentation"
-      ],
-      "score": 45,
-      "amount_mentions": [
-        "$50"
-      ],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:09:56Z"
-    },
-    {
       "id": 5719999132,
       "title": "Build the UseAgent mobile app for iOS and Android",
       "url": "https://github.com/useagenthq/useagent/issues/61",
@@ -200,6 +184,22 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T20:00:24Z"
+    },
+    {
+      "id": 5779937201,
+      "title": "Compute board — shared GPU pods (uor-pod)",
+      "url": "https://github.com/UOR-Foundation/uor-r4/issues/2037",
+      "description": "Automatic mirror of the `uor-pod` ledger (`~/.local/share/uor-r4/compute/ledger.jsonl`). Successor of #1750. **Post only ledger lines and capacity reports here.** Discuss work on the milestone issues of the tracker #2028.\n\n### Owner rules (5–7 October)\n- **Caps**, all labs together: at most 4 running pods and $8/h. No new spending class.\n- **Ladder:** without `--gpu`, `uor-pod up` tries 2×RTX 5090, then 2×4090, then 2×PRO 6000, then one GPU of each.\n  - Datacenters: EUR-NO-1 (canonical volume), EU-RO-1, EUR-IS-1, then allowlisted regions by stock.\n  - Pods outside EUR-NO-1 are non-canonical. They get their data from the private HF store `caseyallard/uor-r4-store` and must archive results before `down`.\n- **Leases:**\n  - Identity is lab + session. Run `uor-pod status` first and share before you create.\n  - Lease with `--hours` covering the whole job plus margin, and renew it. An expiring lease is never a reason to stop a live job.\n  - Only an expired lease may be taken over. Release when done, then `down` if nobody else holds the pod.\n- **Storage:** durable output only on `/workspace`. Don't keep stopped pods as storage. Move downloaded results to iCloud with `cloud-store put`.\n- Fu",
+      "skills": [
+        "json"
+      ],
+      "score": 35,
+      "amount_mentions": [
+        "$8"
+      ],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:27:16Z"
     },
     {
       "id": 4754366017,
@@ -266,6 +266,22 @@
       "updated_at": "2026-10-10T20:18:48Z"
     },
     {
+      "id": 5734515632,
+      "title": "COORD BOARD (controllers)",
+      "url": "https://github.com/chetan-anand-hub/Lazytopper-Production/issues/973",
+      "description": "Mirror of Desktop/diff/COORD/BOARD.md (every board line is also a comment here). This description is the **STATUS SNAPSHOT**, rewritten by CI-1 (coordinator). Rules: LANE_RULES v1.1 · DISPATCH_PACK v1.3 · DECISIONs 1–26 (mirrored in BOARD.md).\n\n## STATUS SNAPSHOT — 2026-10-10T19:20Z\n**Trunk** `543177db` — fix(worksheet): PENDING-UPLOAD-1 PR-2 - a downloaded worksheet gets a pending record + sav\n**Production** version.json `543177db` · /api/health HTTP 200\n**Sessions:** live = CI-1, A, B, C1 · parked = C3 · C2 starts after MERGE #1034 · Sub-agent models OK? ✅ (verifiers Opus; mechanical Sonnet low)\n\n### Controllers (pack v1.3 §2; DECISION 19/23/25/26)\n| Role | State | Lane · branch/PR | State of lane | Next (in order) |\n|---|---|---|---|---|\n| **CI-1** (coordinator) | LIVE (eebaebbd) | Merge queue DONE: #1036 88333796 · #1038 20a534c0 · #1034 3be3e3da (all LIVE PASS) | queue complete; now coordinating (board 15-20 min, §3 collisions) | sweep #2 Mon 12 Oct · hourly summary + OWNER-BATCH |\n| **A** | FRESH A TAKEN OVER 17:0xZ | #1061 PENDING-UPLOAD-1 PR-1 open (lane-overlap re-run) · PR-2 option B (D50a) | #1037/#1046/#1013 temp-closed | PR-2 → TOPIC-FIX-1 (D50, before #1037; eval-gate",
+      "skills": [
+        "json",
+        "api",
+        "script"
+      ],
+      "score": 30,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:27:20Z"
+    },
+    {
       "id": 5662643363,
       "title": "refactor(api): remove db/tx handle passing and shrink transactions in billing and IM integrations",
       "url": "https://github.com/okou-ai/okou/issues/37510",
@@ -312,19 +328,33 @@
       "updated_at": "2026-10-10T20:20:55Z"
     },
     {
-      "id": 5518867774,
-      "title": "OneCompany permanent Mistral Vibe cloud wake bus — owner dispatch only",
-      "url": "https://github.com/NTinkicht/OneCompany/issues/130",
-      "description": "Permanent, repository-scoped, GitHub-hosted Mistral wake bus. Do not close or reuse for unrelated providers. OneCompany native Work Units, current lease, exact SHA and dispatch policy are authority, not this issue's free-form comments. Initial `@mistral-vibe` wake is read-only, advisory and non-gating; it may inspect bounded source and report test ideas/failure analysis without writing code. It MUST fail closed when `MISTRAL_API_KEY` or subscription/PAYG-disabled guard is absent. No provider credentials in this issue. Full leased developer, binding reviewer and test-author lanes need separate qualification; no Codespace, laptop or open browser session may be required.",
+      "id": 5597031530,
+      "title": "durability(hosted journal): concurrent appends + unbounded growth need bounds (follow-up to #4240)",
+      "url": "https://github.com/daniel-ospina/tortoise/issues/5612",
+      "description": "## Summary\n\n#4240 turned the hosted lane's JSONL rebuild journal **on** (per-graph files under\n`TORTOISE_EVENT_LOG_BASE_DIR`, written by `event_log.append`). Two properties of\nthat write surface were acceptable while only single-writer CLI lanes used it;\nthe hosted lane makes them live:\n\n1. **Concurrent appends are not serialized.** `EventLog.append` is a bare\n   `open(path, \"a\")` + one `write()`. The hosted API runs its graph writes on a\n   bounded threadpool (`_graph_offload` / `asyncio.to_thread`), so two requests\n   can append to the same per-graph file concurrently. `read_all` tolerates a\n   *torn trailing* line but **raises on mid-file corruption** — an interleave is\n   not a torn tail, and a raised parse kills the recovery tool the journal\n   exists for (`rebuild_all` / `recover_from_log`).\n2. **Growth is unbounded.** Every write appends a full snapshot line (a\n   `PointAdded` payload now carries the embedding, #5004) with no rotation,\n   compaction, or retention. On the per-machine `/data` volume this grows with\n   every capture, turn, and entity write.\n\nBoth are pre-existing properties of the #548 journal family\n(`docs/plans/2026-09-05-2194-*.md` already records *\"no rotat",
       "skills": [
-        "api",
+        "json",
+        "api"
+      ],
+      "score": 20,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:27:29Z"
+    },
+    {
+      "id": 5767603643,
+      "title": "Claim Scout Persistent Memory",
+      "url": "https://github.com/close2ground1-debug/agent-market-x402/issues/1",
+      "description": "<!-- CLAIM_SCOUT_MEMORY_V1\n{\"schema\":1,\"opportunities\":{\"BountyBoard::cmmcal7st000r7owtmh29kmpe\":{\"externalId\":\"cmmcal7st000r7owtmh29kmpe\",\"title\":\"Excelente iOS UGC Campaign — Vienna — Add 20 Local Gems (95 EUR)\",\"description\":\"Help us make Excelente the go-to local discovery app in Vienna.\\n\\nMission: add 20 genuinely interesting local items/places in Vienna inside the Excelente iOS app.\\n\\nWhat wins:\\n- underrated local favorites with real utility\\n- neighborhood diversity (not all in one zone)\\n- practical, clear details that help users decide fast\\n- zero duplicates and no low-value filler entries\\n\\nSubmission requirements:\\n- complete all 20 entries in-app\\n- include a short recap of your top 5 additions and why they matter\\n\\nReward: 95 EUR equivalent bounty on acceptance.\\n\\nQuality over quantity. We reward useful discovery work.\",\"url\":\"https://www.bountyboard.work/bounties/cmmcal7st000r7owtmh29kmpe\",\"rewardUsd\":null,\"deadline\":null,\"explicitlyOpen\":true,\"eligible\":false,\"rulesVerified\":false,\"fundingVerified\":false,\"issuerVerified\":null,\"requiresUpfrontSpend\":null,\"successProbability\":null,\"feesUsd\":0,\"whyUnclaimed\":\"Needs per-bounty verification of rules, eligibility, f",
+      "skills": [
         "script"
       ],
       "score": 20,
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:25:20Z"
+      "updated_at": "2026-10-10T20:27:21Z"
     },
     {
       "id": 5788942587,
@@ -339,7 +369,22 @@
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:25:00Z"
+      "updated_at": "2026-10-10T20:27:21Z"
+    },
+    {
+      "id": 5518867774,
+      "title": "OneCompany permanent Mistral Vibe cloud wake bus — owner dispatch only",
+      "url": "https://github.com/NTinkicht/OneCompany/issues/130",
+      "description": "Permanent, repository-scoped, GitHub-hosted Mistral wake bus. Do not close or reuse for unrelated providers. OneCompany native Work Units, current lease, exact SHA and dispatch policy are authority, not this issue's free-form comments. Initial `@mistral-vibe` wake is read-only, advisory and non-gating; it may inspect bounded source and report test ideas/failure analysis without writing code. It MUST fail closed when `MISTRAL_API_KEY` or subscription/PAYG-disabled guard is absent. No provider credentials in this issue. Full leased developer, binding reviewer and test-author lanes need separate qualification; no Codespace, laptop or open browser session may be required.",
+      "skills": [
+        "api",
+        "script"
+      ],
+      "score": 20,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:27:15Z"
     },
     {
       "id": 3825637122,
@@ -371,32 +416,32 @@
       "updated_at": "2026-10-10T20:19:40Z"
     },
     {
-      "id": 5767603643,
-      "title": "Claim Scout Persistent Memory",
-      "url": "https://github.com/close2ground1-debug/agent-market-x402/issues/1",
-      "description": "<!-- CLAIM_SCOUT_MEMORY_V1\n{\"schema\":1,\"opportunities\":{\"BountyBoard::cmmcal7st000r7owtmh29kmpe\":{\"externalId\":\"cmmcal7st000r7owtmh29kmpe\",\"title\":\"Excelente iOS UGC Campaign — Vienna — Add 20 Local Gems (95 EUR)\",\"description\":\"Help us make Excelente the go-to local discovery app in Vienna.\\n\\nMission: add 20 genuinely interesting local items/places in Vienna inside the Excelente iOS app.\\n\\nWhat wins:\\n- underrated local favorites with real utility\\n- neighborhood diversity (not all in one zone)\\n- practical, clear details that help users decide fast\\n- zero duplicates and no low-value filler entries\\n\\nSubmission requirements:\\n- complete all 20 entries in-app\\n- include a short recap of your top 5 additions and why they matter\\n\\nReward: 95 EUR equivalent bounty on acceptance.\\n\\nQuality over quantity. We reward useful discovery work.\",\"url\":\"https://www.bountyboard.work/bounties/cmmcal7st000r7owtmh29kmpe\",\"rewardUsd\":null,\"deadline\":null,\"explicitlyOpen\":true,\"eligible\":false,\"rulesVerified\":false,\"fundingVerified\":false,\"issuerVerified\":null,\"requiresUpfrontSpend\":null,\"successProbability\":null,\"feesUsd\":0,\"whyUnclaimed\":\"Needs per-bounty verification of rules, eligibility, f",
+      "id": 5784134858,
+      "title": "CON-01 coordination: saved project conversations (Claude implementation, Codex review and operations)",
+      "url": "https://github.com/davidelaverga/Sophia/issues/198",
+      "description": "The single coordination thread for **CON-01, saved project conversations** (mission pack v0.1, 2026-10-09, installed at `docs/missions/2026-10-09-con01-conversations/`). Records: [`docs/coordination/CON-01/`](https://github.com/davidelaverga/Sophia/tree/claude/con01-project-conversations/docs/coordination/CON-01) and [`docs/progress/CON-01.md`](https://github.com/davidelaverga/Sophia/blob/claude/con01-project-conversations/docs/progress/CON-01.md).\n\n| Item | Value |\n|---|---|\n| Implementer | Claude Code, session `session_01KUDtFK9gWthsXSrepcLQz3` (CON-01 attempt 1). It is the only writer of the feature source |\n| Reviewer and operator | Codex, session `01a1224a-32b4-7222-a017-50a277572d95` (`codex/con01-review-attempt-1`). It writes only review, evidence and runbook records |\n| Owner | Davide: product, the saved-text policy, spend, merge and release. Luis: the Studio's design and shared shell |\n| Branch | `claude/con01-project-conversations`, based on `main` `4f7470c` |\n| Message ids | `CON-01-CC-####` (Claude), `CON-01-CX-####` (Codex) |\n\n**Reservations (proposed in the G0 binding):**\n- contract amendment **A16** (`A16-project-conversations.json`);\n- migrations **0048–0050**;\n- ru",
       "skills": [
-        "script"
-      ],
-      "score": 20,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:09:31Z"
-    },
-    {
-      "id": 5663327333,
-      "title": "[LANE_4 / Workspace] Independent Workspace server foundation and read-only surface",
-      "url": "https://github.com/pcvantol/forge/issues/208",
-      "description": "# LANE_4 / ARCHITECT_4 — Workspace\n\nOwner request, 2026-10-01: four separate product lanes and start building Workspace alongside completing the installer. This register is the new Workspace lane; LANE_1/#141 keeps Forge Platform, LANE_2/#142 keeps EP and its active r30 qualification, and LANE_3/#207 keeps Forge. Old LANE_2 Workspace fallback allocation is superseded only for future source selection after the canonical transition; no active r30 resource or shared host is transferred.\n\n## Revision 1 — first bounded Workspace slice issued\n\n```\nASSIGNMENT_ID = L4-WORKSPACE-SERVER-READONLY-V1-20261001\nREGISTRATION_REVISION = 1\nPLAN_REVISION = 1\nASSIGNMENT_STATE = ISSUED\nLIFECYCLE_PHASE = CANONICAL_ENTRY_RECONCILIATION_AND_SINGLE_EXECUTOR_PICKUP\nEXECUTION_MODE = DIRECT_CODEX\nREPOSITORY = pcvantol/workspace\nSOURCE_BASE = 5ecd418bc9cdc983791bf35c07457ffdb2ad1166\nWORK_RUN_STARTED_BY_REGISTRATION = FALSE\nHOST_OR_SIGNER_HOLDS = NONE\nFIRST_INSTALLER_RELEASE_DEPENDENCY = FALSE\n```\n\nThe existing repository README declares foundation only, BOOTSTRAP records implementation parked, and BACKLOG requires an explicit capability decision. This owner decision selects only the bounded slice below, not e",
-      "skills": [
-        "documentation"
+        "json"
       ],
       "score": 10,
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:24:21Z"
+      "updated_at": "2026-10-10T20:27:29Z"
+    },
+    {
+      "id": 5791699186,
+      "title": "Intake and document reads: the root email is parsed twice and whole files are copied with ToArray",
+      "url": "https://github.com/collisionengineers/pegasus/issues/1188",
+      "description": "## What happens\n\nEvery root `.eml` read runs `MimeMessage.LoadAsync` twice (display reader, then source reader) and copies the message bytes, and the Sent evidence poll parses each new MIME twice. Whole-file `ToArray()` copies sit on the intake source download (then again in the Source and Image pages and the MCP streaming endpoint, so a file is held three times), on retained asset bytes at eight sites, on blob upload payloads, on the OCR buffer, on the original report and estimate import reads, on the export archive, on the Principal API body (3-5 times the body size near the 42 MB cap), and on MSG and CFB extraction. The dominant full-page raster is extracted twice in PDF classification and the asset loop.\n\n## Expected\n\nOne parse and one buffer per read: pre-sized buffers exposed through `GetBuffer`, `Results.Bytes(ReadOnlyMemory<byte>)` on the MCP endpoint with range processing kept, `MemoryMarshal.TryGetArray` where `PageModel.File` needs `byte[]`, and the shared `ContentStream` helper. Opus rates each as a few ms and one LOH allocation per file; aggregate volume is low (17 Source/Image downloads, 5 uploads, about 107 UnifiedWork runs in 14 days), so this is CPU and memory hygi",
+      "skills": [
+        "api"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:27:28Z"
     },
     {
       "id": 5772614232,
@@ -410,13 +455,13 @@
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:24:16Z"
+      "updated_at": "2026-10-10T20:27:23Z"
     },
     {
-      "id": 5760402393,
-      "title": "[P1][TIGERIQ NEWS] Hoàn thiện xuất bản bài/ảnh công khai và tự xác minh tin thật",
-      "url": "https://github.com/newsdayads/tigeriq-ai-lab/issues/4574",
-      "description": "TIGERIQ_JOB_V1\nSOURCE=Owner direct chat 2026-10-08: \"Tôi cần xem kết quả thực tế trên trang chứ không muốn nhìn vào thẻ công việc rồi đoán mò\"\nOWNER_DIRECT=true\nOWNER_POLICY=AUTO\nPRIORITY=P1\nCURRENT_STATE=READY_AUTOMATED_CODING\nTIGERIQ_EXECUTABLE=true\nAUTO_QUEUE=INCLUDED\nCAPABILITY=coding\nEXECUTION_SURFACE=CODING\nAUTONOMOUS_CODE=true\nMUTATION_OWNER=CORE_DYNAMIC_LEASE\nRESOURCE_SCOPE=TIGERIQ_NEWS_PUBLIC_ARTICLE_COVER_LIVE_E2E_V1\nPROJECT_ID=tigeriq-news\nWORK_PACKAGE_ID=news-autonomous-newsroom\nTARGET_REPOSITORY=newsdayads/tigeriq-media\nBASE_BRANCH=main\nRELATED_PARENT=4456\nRELATED_TRACKER=3899\nRELATED_SOAK=3904\nRESULT_INBOX=4426\nONE_RESOURCE_SCOPE_ONE_WRITER=true\nZERO_COST=true\nNO_PAID_COST=true\nNO_CREDENTIAL_CHANGE=true\nNO_SECURITY_BOUNDARY_CHANGE=true\nNO_DESTRUCTIVE=true\nNO_DIRECT_MAIN=true\nNO_PRODUCTION_RELEASE=true\nNO_VERCEL_DEPLOY=true\nNO_APP_CHROME_MUTATION=true\nAPP_CHROME_MUTATION=FORBIDDEN\nNO_CODEX=true\nINDEPENDENT_REVIEW_REQUIRED=true\nKEEP_OPEN_ON_STEP_COMPLETE=true\nLIVE_ACCEPTANCE_REQUIRED=true\nDONE=false\n\n## MỤC TIÊU THỰC TẾ\nTigerIQ News phải tự tìm tin -> xác minh -> viết -> rà soát độc lập -> tạo/đưa ảnh lên nguồn công khai -> xuất bản nội dung tới đúng nguồn website đang ",
+      "id": 5715165685,
+      "title": "Automatically regenerate retained catalogue observations after bounded processing-source changes",
+      "url": "https://github.com/StatPan/datapan-registry/issues/743",
+      "description": "## Goal\n\nAutomatically reprocess an already admitted, immutable upstream-catalogue observation when a relevant processing contract changes on the trusted default branch. A bounded source-change push wake-up must select the correct retained A input, bind the new processing epoch, preserve existing request and observation accounting, and produce a verified current-contract result or a precise fail-closed outcome.\n\nParent: #659. Goal ancestor: #655. Coordinate interfaces with #722 and #741; keep their completeness and Health acceptance distinct. #726 declaration evidence is an input to the contract, not a source of new acquisition authority.\n\n## Scope\n\nAdd a narrow `push` entry to the existing B processing workflow for relevant source/processing changes on the repository’s default branch. Bind the event to the exact repository, default branch, pushed SHA, workflow, run attempt, and successful job evidence. The push path is additional to existing A `workflow_run`, schedule, and explicitly authorized manual recovery paths. It must not alter how A events are admitted or claim that it ran a collector.\n\nDefine one versioned, deterministic processing-contract identity from an explicit order",
       "skills": [
         "script"
       ],
@@ -424,13 +469,27 @@
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:24:11Z"
+      "updated_at": "2026-10-10T20:27:22Z"
     },
     {
-      "id": 4840997996,
-      "title": "📊 SMAG pilot ledger (auto-capture sink)",
-      "url": "https://github.com/humanaios-ui/operations/issues/103",
-      "description": "Append-only ledger for the SMAG pilot study. The `smag-capture` workflow posts one comment per merged PR — **predicted** (acceptance) vs **measured** (gate/merge outcome) vs **substrate** vs **gap**. Rows are consolidated into `audits/smag_pilot_ledger.jsonl` via periodic PR.\n\nDo not close — this is the live capture sink. Mechanical tier (no LLM); the gap field is enriched by the optional LLM-review layer.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+      "id": 5602503136,
+      "title": "Build complete source-to-Legacy feature and route acceptance matrix",
+      "url": "https://github.com/MALIEV-Co-Ltd/Legacy.Maliev.Workflows/issues/98",
+      "description": "The source-commit ledger tracks commit disposition but does not prove every migrated service feature and Web/Intranet route works against production-derived local Aspire data. This is an explicit migration completion gate, not a deployment request.\n\nAcceptance:\n- Inventory each Legacy service feature, API, role, entity, background operation, and every Web/Intranet route against the latest committed original source; retain full source SHA, owning Legacy repo, main SHA, status, and exact evidence links.\n- Mark unverified items pending; distinguish source retirement approvals from migrations. Do not infer feature parity from a code mapping, route alias, smoke test, or green unit suite.\n- Record automated customer/employee authentication, permission, CRUD/lifecycle, validation, rollback/retry, cross-service effects, localization, responsive/browser/accessibility, and persisted-data checks as appropriate. Include safe failure/partial-failure evidence and suppress real notifications/payments/analytics in local review.\n- Verify the matrix against live source and each protected Legacy main, with a check that rejects missing routes/features or unsupported completion claims. Link per-service",
+      "skills": [
+        "api"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:27:02Z"
+    },
+    {
+      "id": 5435303680,
+      "title": "A green suite published nothing — two workflows derive data/page-lastmod.json and the second one to finish is rebased onto the first",
+      "url": "https://github.com/robhunter/agentdeals/issues/1589",
+      "description": "`reverify.yml` spent 40 minutes on a read pass, recorded 9 changes, went through the holdback, and **its second suite run was green — `fail 0`**. It published nothing. The commit was refused at the replay step and quarantined to `data-quarantine/rolling-reverification-20260912T184309Z-4cc51f4`.\n\nRun [34710032973](https://github.com/robhunter/agentdeals/actions/runs/34710032973), the whole refusal in four lines:\n\n```\n18:43:08  ℹ fail 0\n18:43:08  ── main moved while the suite ran. Replaying this run's commit onto it ──\n18:43:09  Auto-merging data/page-lastmod.json\n18:43:09  CONFLICT (content): Merge conflict in data/page-lastmod.json\n18:43:09  error: could not apply b9d8d4f... data(auto): rolling re-verification — 14 verified, 17 flagged, 9 changes recorded\n```\n\nOne file conflicted. `data/quality_budgets.json` was in the same replay and auto-merged.\n\n## Two workflows derive the same file and neither knows about the other\n\n`data/page-lastmod.json` is written by `update-page-lastmod.js`, which two workflows call:\n\n| workflow | how it writes the file | concurrency group | schedule |\n|---|---|---|---|\n| `page-lastmod.yml` | directly | `page-lastmod` | — |\n| `reverify.yml` | `GATE_UPDATE_",
       "skills": [
         "json"
       ],
@@ -438,63 +497,33 @@
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:23:48Z"
+      "updated_at": "2026-10-10T20:26:36Z"
     },
     {
-      "id": 5754554444,
-      "title": "perf: 알려진 경로 재탐색과 M0 리뷰 도구 왕복 감소",
-      "url": "https://github.com/wotjr1649/devflow/issues/68",
-      "description": "## 문제\n실제 모델 시험에서 일반 저장소에 devflow 자체 verify와 CI 없는 저장소의 PR/통합 커밋 기록 관례를 대상의 필수 정책으로 적용하는 결함이 재현됐다. 알려진 경로 직접 읽기와 독립 읽기 묶음은 개선 신호가 있었지만, 작은 보고 문구 변경은 일관된 비용 개선을 입증하지 못했다.\n## 원하는 결과\n대상에 확립된 정책과 현재 후보 근거만으로 readiness를 판단한다. 정확성 수정과 비용 개선을 분리하고, 품질을 확인한 고정 기준에서 한 번에 한 가지 비용 가설만 검증한다. Codex와 Claude 각각에서 품질을 유지한 비용 절감 및 효율 개선을 반복 비교로 입증한다.\n## 영향받는 사용자·시스템\nClaude Code와 Codex의 pr-review-workflow, devflow 리뷰·통합 절차 및 로컬 비교 시험.\n## 제약\nM0 의미 기준, M1 독립 리뷰, 필수 ignored 입력 직접 읽기, 누락 보고, 현재 HEAD 및 필수 CI·보호·승인·thread·권한 관문을 유지한다. 대상에 없는 기록 위치와 hook 역할을 만들지 않는다. 기존 실패·무효·미완료 결과와 동결 계약은 보존한다. 모델·effort·설치·가드를 바꾸지 않는다.\n## 열린 질문\n고정 비용 절감률 10% 또는 15%를 요구하지 않는다. 작은 절감도 호스트별 반복 방향과 비용 구성 및 실제 도구 효율로 입증되면 채택할 수 있다. 편차와 효과를 구분하지 못하면 미입증으로 보류하며 억지 후보나 자동 유료 확대를 하지 않는다. 캐시 포함 총토큰, 추정 API 비용, 실행 시간은 구분한다.\n## 수용 기준\n- [x] 기존 실제 도구 기록에서 알려진 경로 재탐색 및 M0 추가 왕복의 원인과 기준값을 확인한다.\n- [x] 알려진 경로 직접 읽기와 독립 입력 묶음 읽기를 최소 후보로 구현한다.\n- [x] M0 근거 부족, 필수 입력 누락, M1 리뷰, 최신 상태 및 CI 관문을 보존한다.\n- [x] doctor와 저장소 검증 및 새 문맥 리뷰를 통과하고 후보 커밋을 기록한다.\n- [x] 새 모델 비교의 입력·측정·품질·비용 기준과 명시적 실행 범위를 준비하고 실제 결과 또는 미실행 사유를 기록한다.\n- [x] 검사·상태 주장을 제공 정보와 직접 관찰로 구분하고 읽지 않음·실패·명시적 범위 제한을 혼동하지 않도록 공통 리뷰 절차를 수정한다.\n- [ ] 품질을 통과한 기준과 ship의 metrics 읽기 한 요인 후보를 두 호스",
+      "id": 5794991262,
+      "title": "GH_BOUNTY_ACTOR_POLICY_FIELD_CREATE_20261010",
+      "url": "https://github.com/09sd-org/gh-bounty-org-issue-field-lab-20261008/issues/9",
+      "description": "",
+      "skills": [],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:26:29Z"
+    },
+    {
+      "id": 5706437606,
+      "title": "Reduce private CI usage while preserving verification gates",
+      "url": "https://github.com/carloshm91/kuberich/issues/109",
+      "description": "## Outcome\n\nKeep private development checks affordable while retaining honest line/branch/changed-line and critical-module gates, behavioral/install tests and platform qualification.\n\nEpic: E10 #10 · Priority: P1 · Target: v0.0.1. Follow-up to the maintainer's exhausted Actions allowance during preview correction #107 / PR #108. Implementation started after the first-preview delivery; #107 is closed.\n\n## Historical evidence at issue creation\n\nApplication quality runs six full Linux/macOS + Python 3.12–3.14 environments on every PR, then again on main after merging. This repository currently has 30 Application quality workflow runs in October. Failed/repeated runs also consume runner time. GitHub now refuses to start any job because of the account's payment/spending/quota restriction; the maintainer confirmed 2,000/2,000 included minutes used.\n\nOn 2026-10-04 the maintainer authorized temporary private development with measured local checks while hosted CI is unavailable. This does not establish new macOS CI evidence or waive public release qualification.\n\n## Acceptance criteria\n\n- [x] Audit actual run/job durations and account usage when access is available; distinguish execution mi",
       "skills": [
-        "api"
+        "python"
       ],
       "score": 10,
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:23:35Z"
-    },
-    {
-      "id": 5675867230,
-      "title": "SN-005: проверить контракт Authentik actor → project authorization для control API",
-      "url": "https://github.com/pupkinson/SymphonyNext/issues/33",
-      "description": "## Цель нового независимого разбора\nПосле подтверждённой активации capacity100/10 продолжить проектирование следующей пользовательской вертикали: вход через Authentik и разрешённое чтение control API. Нужен минимальный реализационный контракт, не повтор прежнего review исходников PR14 и не фактическая настройка Authentik.\n\nИсточник PR14 HEAD21ce4282e7ef8330cc1155bcb7b94fbf132032a8, BASE2bf21950e0725bc9228b262e1495f5af5eeea1d6, TREE29fe41a2873a3db13ac2c0dc74b7f149391c9eeb. Очередь приложит текущие RuntimeIdentity/controller/router/runtime configuration и baseline SPECIFICATION.md. Исходники PR14 уже имеют source acceptance; protected execution и packaged acceptance пока отдельно не завершены.\n\n## Проект контракта для оценки\nСерверная авторизация получает actor только из проверенного локального Authentik login/session, не из query/header с произвольным actor_id и не из task-tracker credentials. Нормализованный Actor имеет issuer+subject и локальный user reference; действительные роли проекта читаются сервером. User, service identity и agent различаются. Read-only endpoint /api/v1/control/identity раскрывает данные только после ровно :ok от authorizer; текущая default-deny ветка сохра",
-      "skills": [
-        "api"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:23:20Z"
-    },
-    {
-      "id": 5337179713,
-      "title": "P2: every release parks one request for 12-16s at web-dyno swap — 3/3 migration-free releases, /api/health, reproducible",
-      "url": "https://github.com/alexander-bain/bainluck/issues/2834",
-      "description": "## What a reader hits\n\nEvery Heroku release — **including releases that carry no migration at all** — parks exactly one\nin-flight request for **12–16 seconds** at the web-dyno swap. The probe target is `/api/health`, which\ndoes essentially no work, so this is not compute: it is a request held open across the dyno handover.\nA real reader whose tap lands in that second waits twelve to sixteen seconds for a page.\n\nWe deploy many times a day. This is not a rare tail — it is once per release, deterministically.\n\n## Evidence — 3/3 migration-free releases, unattended\n\nCaptured by `tools/watch-release-window.sh` (armed detached for #2724, fires on release **START**).\nProber: one `GET /api/health` every 6 s, `curl --max-time 60`, so a parked request is recorded as\nparked rather than as a gap.\n\n| release | sha | release duration | slow sample | offset from first probe | all other samples |\n|---|---|---:|---:|---:|---|\n| **v4030** | `2766d0a5` | 23 s | **12.24 s** (HTTP 200) | +25 s | 20/21 at ~0.23 s |\n| **v4031** | `e5c8405f` | 11 s | **12.25 s** (HTTP 200) | +13 s | 18/19 at ~0.22 s |\n| **v4032** | `f73ae233` | 28 s | **16.27 s** (HTTP 200) | +26 s | 20/21 at ~0.24 s |\n\nThree signals that ",
-      "skills": [
-        "api"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:23:16Z"
-    },
-    {
-      "id": 5792443725,
-      "title": "Fence hosted execution against exact PostgreSQL authority-session loss",
-      "url": "https://github.com/KestrelSovereignAI/kestrel-sovereign/issues/3569",
-      "description": "## Task Description\n\nClose the remaining P1 authority-session-loss finding from the independent complete-diff review of Frinz PR [#775](https://github.com/KestrelSovereignAI/frinz/pull/775), parent epic [Frinz #664](https://github.com/KestrelSovereignAI/frinz/issues/664) and rollout [#774](https://github.com/KestrelSovereignAI/frinz/issues/774). Core 0.53.27 is already published and verified; this is a separate canonical native contract extension, not a claim that its completed release failed.\n\nCurrent native `PostgresBackend.advisory_locks()` yields no capability and observes its dedicated session again only on exit. If PostgreSQL terminates that backend, a second host can transfer ownership while cancellation-resistant work from the first host continues through other native storage connections. A cancellation request or another preflight generation SELECT cannot close this race.\n\n## Implementation Notes / Files\n\n- Extend canonical `kestrel_sovereign/storage/db/postgres.py` advisory custody with an exact-session, irrevocably invalidated liveness handle and acquisition-time loss callback. Register before awaited acquisition; handle queued termination, normal retirement, exception a",
-      "skills": [
-        "script"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:23:11Z"
+      "updated_at": "2026-10-10T20:25:46Z"
     },
     {
       "id": 5530024379,
@@ -645,13 +674,21 @@
       "updated_at": "2026-10-10T18:44:33Z"
     }
   ],
-  "count": 42,
+  "count": 44,
   "warnings": [],
   "execution": {
-    "status": "work_failed",
-    "timestamp": "2026-10-10T20:25:53+00:00",
-    "issue_url": "https://github.com/josenunezapps/josenunezapps.github.io/issues/1",
-    "error": "HTTP Error 400: Bad Request"
+    "status": "needs_manual_verification",
+    "timestamp": "2026-10-10T20:29:31+00:00",
+    "issue_url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/1208",
+    "model": "openrouter/free",
+    "summary": "Refactored custom slash command registration from deprecated chatSend interception to official @minecraft/server 2.x API. Uses server.registerCommand() with proper worldInitialize lifecycle event, eliminating the TypeError 'Cannot read properties of undefined (reading \\'registerCommand\\')' and enabling correct permission enums.",
+    "files": [
+      "scripts/commands.ts"
+    ],
+    "tests_passed": false,
+    "test_log": "\nUnable to find image 'python:3.12-slim' locally\n3.12-slim: Pulling from library/python\necc510c1e359: Pulling fs layer\n75b6a36c64a1: Pulling fs layer\n6912e23eb445: Pulling fs layer\nbbc5a1223747: Pulling fs layer\nbbc5a1223747: Waiting\n75b6a36c64a1: Verifying Checksum\n75b6a36c64a1: Download complete\n6912e23eb445: Verifying Checksum\n6912e23eb445: Download complete\necc510c1e359: Verifying Checksum\necc510c1e359: Download complete\nbbc5a1223747: Verifying Checksum\nbbc5a1223747: Download complete\necc510c1e359: Pull complete\n75b6a36c64a1: Pull complete\n6912e23eb445: Pull complete\nbbc5a1223747: Pull complete\nDigest: sha256:a6e34c598f2467ed0e9a8d349809fcd8b5c603269512df273a0bb1784edc11b1\nStatus: Downloaded newer image for python:3.12-slim\nTraceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/usr/local/lib/python3.12/ast.py\", line 52, in parse\n    return compile(source, filename, mode, flags,\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<unknown>\", line 50\n    BINANCE_API_KEY = os.e*******get(\"BINANCE_API_KEY\", \"\") or \"\"\n                            ^^\nSyntaxError: invalid syntax\n",
+    "posted": false,
+    "delivered": false
   },
   "notice": "Candidatos públicos; pago y disponibilidad sin verificar. No se contacta a nadie."
 }
