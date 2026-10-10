@@ -166,9 +166,16 @@ def main():
     p.add_argument("--scan",action="store_true")
     p.add_argument("--demo",action="store_true")
     p.add_argument("--issue-url",default="")
+    p.add_argument("--auto",action="store_true",help="Auto-preparar 1 candidato público si hay IA configurada")
     a=p.parse_args()
     if a.scan:scan()
     if a.demo:demo()
     if a.issue_url:work(a.issue_url)
+    elif a.auto and os.environ.get("OPENROUTER_API_KEY"):
+        latest=read(DATA/"latest.json",{})
+        previous=read(DATA/"execution.json",{})
+        candidates=[x for x in latest.get("opportunities",[]) if x.get("amount_mentions") and x.get("score",0)>=35 and x.get("url")!=previous.get("issue_url")]
+        if candidates:work(candidates[0]["url"])
+        else:print("AUTO: sin candidato nuevo apto para un intento controlado")
     if not (a.scan or a.demo or a.issue_url):p.print_help()
 if __name__=="__main__":main()
