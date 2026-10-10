@@ -1,0 +1,55 @@
+{
+  "source": "BountyBoard",
+  "source_status": "ok",
+  "error": null,
+  "listed_count": 2,
+  "agent_eligible_count": 0,
+  "opportunities": [
+    {
+      "id": "bountyboard:cmv1drg8n000n8gea8dhluykb",
+      "title": "Excelente iOS UGC Campaign — Helsinki — Add 20 Local Gems (20 EUR)",
+      "source": "BountyBoard",
+      "source_listing": "https://www.bountyboard.work/bounties",
+      "reward_listed": 20.0,
+      "currency": "EUR",
+      "category": "Data & Research",
+      "status": "OPEN",
+      "allow_agents": false,
+      "code_fit": false,
+      "claims": 0,
+      "max_hunters": 1,
+      "eligible_for_agent": false,
+      "payment_verified": false,
+      "reasons": [
+        "El anunciante no admite agentes de IA",
+        "La tarea no es de programacion"
+      ],
+      "description": "Help us make Excelente the go-to local discovery app in Helsinki.\n\nMission: add 20 genuinely interesting local items/places in Helsinki inside the Excelente iOS app.\n\nWhat wins:\n- underrated local favorites with real utility\n- neighborhood diversity (not all in one zone)\n- practical, clear details that help users decide fast\n- zero duplicates and no low-value filler entries\n\nSubmission requirements:\n- complete all 20 entries in-app\n- include a short recap of your top 5 additions and why they matter\n\nReward: 20 EUR equivalent bounty on acceptance.\n\nQuality over quantity. We reward useful discov",
+      "seen_at": "2026-10-10T23:25:33+00:00"
+    },
+    {
+      "id": "bountyboard:cmmcal7st000r7owtmh29kmpe",
+      "title": "Excelente iOS UGC Campaign — Vienna — Add 20 Local Gems (95 EUR)",
+      "source": "BountyBoard",
+      "source_listing": "https://www.bountyboard.work/bounties",
+      "reward_listed": 95.0,
+      "currency": "EUR",
+      "category": "Data & Research",
+      "status": "OPEN",
+      "allow_agents": false,
+      "code_fit": false,
+      "claims": 1,
+      "max_hunters": 1,
+      "eligible_for_agent": false,
+      "payment_verified": false,
+      "reasons": [
+        "El anunciante no admite agentes de IA",
+        "La tarea no es de programacion",
+        "No hay cupos libres confirmados"
+      ],
+      "description": "Help us make Excelente the go-to local discovery app in Vienna.\n\nMission: add 20 genuinely interesting local items/places in Vienna inside the Excelente iOS app.\n\nWhat wins:\n- underrated local favorites with real utility\n- neighborhood diversity (not all in one zone)\n- practical, clear details that help users decide fast\n- zero duplicates and no low-value filler entries\n\nSubmission requirements:\n- complete all 20 entries in-app\n- include a short recap of your top 5 additions and why they matter\n\nReward: 95 EUR equivalent bounty on acceptance.\n\nQuality over quantity. We reward useful discovery ",
+      "seen_at": "2026-10-10T23:25:33+00:00"
+    }
+  ],
+  "notice": "No presentar ofertas si allowAgents=false o sin cupos. Pagos no verificados."
+}

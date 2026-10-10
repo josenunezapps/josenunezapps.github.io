@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-10-10T23:25:16+00:00",
+  "generated_at": "2026-10-10T23:25:32+00:00",
   "opportunities": [
     {
       "id": 5752205252,
@@ -148,20 +148,6 @@
       "updated_at": "2026-10-10T23:10:05Z"
     },
     {
-      "id": 5687039740,
-      "title": "実公開完了まで自律実行：既存7工程の続行・Owner公開GO付与済み",
-      "url": "https://github.com/ginisato-hash/zao-rental/issues/47",
-      "description": "> **現行参照先（2026-10-10）**：現在地と残件はコメント [6103023533](https://github.com/ginisato-hash/zao-rental/issues/47#issuecomment-6103023533)（公開完了をゴールにした棚卸し）を正とする。以下の本文中の「現在地」「残件」は履歴として保持する（内容は変更していない）。\n\n# ZAO Rental — 実公開完了までの包括実行指示\n\n## 現行体制 — Owner直接指示による引継ぎ（2026-10-04）\n\n**指揮者／独立統合レビュアー：今回の引継ぎを発行したChatGPTチャット。Primary Implementer／唯一の書込み担当：Claude。** Ownerの直接指示「ここからこのチャットのあなたが指揮者、claudeを実装かかりとして作業を継続する」を適用する。旧Codex／旧指揮タスクの復帰を待たず、既存Mac・同worktree・同branch・PR #49を継承する。\n\n**[Claudeへの現行実行指示・進捗／TODO／前提／ゴールの正本](https://github.com/ginisato-hash/zao-rental/issues/47#issuecomment-5976801764)**。最初の作業は既存Mac final fullの実終了結果回収。新TDレビューとCIはexact066b734でPASS済み。開始再承認、旧タスクへの送信承認待ち、旧Claudeレビュアー制約を再開しない。一般の安全guard・独立レビュー・$5予算・本番前backup等は維持する。\n\n以下の過去記録の「Codex sole writer」「Claude起動不要／reviewer待ち」「旧headのTD FAIL／CI進行中」は、その時点の履歴。本節と最新実行指示が現在の体制・進行状態に優先する。新規課金や本人MFA・鍵custodyを自動承認するものではない。Claudeの実行開始はMacの着手証拠で確認し、Issue更新だけをRUNNINGとしない。\n\n## Owner確定入力・委任方針 — 2026-10-03 14:51:04 UTC\n\nOwner直接回答「開始は12/12で固定しているはずすでに。終了日は3/31、休業日はなし。その他よしなに指示出して」を採用する。**貸出期間2026-12-12〜2027-03-31（両端を含む）、両店舗休業日なし**。価格・Source A/B・共有サイズ・公開GOは再確認しない。以下の合理的な業務/運用判断もOwner委任の範囲で実装担当が確定・適用してよい。受領実数・現物検品・権利・本人の受入完了・鍵別保管・domain所有などの事実は、既存資料/実状態から取得して記録する。\n\n| ",
-      "skills": [],
-      "score": 25,
-      "amount_mentions": [
-        "$5"
-      ],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:23:03Z"
-    },
-    {
       "id": 5438226799,
       "title": "N5: separately authorized subscription task acceptance (M8-G)",
       "url": "https://github.com/sushiHex/constructicon/issues/78",
@@ -236,21 +222,6 @@
       "updated_at": "2026-10-10T23:23:27Z"
     },
     {
-      "id": 5786099311,
-      "title": "Part 2: restore measured credit, price, issuer and dependency evidence for crack tests",
-      "url": "https://github.com/clydigital/alchemy-live-market-desk/issues/697",
-      "description": "## Partition 2 — measured evidence before market-crack alerting\nFollow **PR #696** (Part 1 quantified research tripwires). **Do not duplicate #667** (06:00 Notion AI → canonical handoff), #655 (snapshot provenance tests), or #690/#695 (scheduled research validation fixes).\n\n### Read-only production audit at 10 Oct 2026 ~07:40 MYT\n- `market_series_observations`: 288 rows, 9 series (GLD, QQQ, SPY, TLT, US10Y, US2Y, USDJPY, USO, UUP). **Latest observation date 2026-08-03**. No SMH, XLF, RSP, DXY, HY/IG/CCC OAS, MOVE series in this table. Other market monitor providers may still provide fresher data; map them before changing ingestion.\n- `macro_series_observations`: NFP latest 2026-07; CPI/core CPI/PPI latest 2026-06.\n- `intelligence_evidence` created since 2026-10-08: 41 rows (23 news_report, 9 transcript, 7 market_observation, 2 official_release). **0 observed_value and 0 expected_value** across all 41; 32 non-transcript rows have **no affected_assets**. Some 9 Oct research handoff evidence contains generic website-observation language and old/static MOVE documentation—not a dated MOVE reading.\n- Latest persisted Dossier was as-of 2026-10-07T20:03:56Z; morning/evening scheduled resea",
-      "skills": [
-        "script",
-        "documentation"
-      ],
-      "score": 20,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:22:53Z"
-    },
-    {
       "id": 5767603643,
       "title": "Claim Scout Persistent Memory",
       "url": "https://github.com/close2ground1-debug/agent-market-x402/issues/1",
@@ -277,6 +248,62 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T21:09:38Z"
+    },
+    {
+      "id": 5779178573,
+      "title": "Educational Roadmap — Post-Academy Computer Engineering Schedule Through Graduation",
+      "url": "https://github.com/riley-berg/PASI/issues/49",
+      "description": "# Post-Academy Computer Engineering Schedule Through Graduation\n\n## Purpose and authority\nThis is the **single canonical issue for the post-Academy semester-by-semester schedule**, from Summer 2028 through graduation, with **Computer Engineering (CE) as the active target major**.\n\nUse:\n- [Issue #39 — Academy Common Path](https://github.com/riley-berg/PASI/issues/39) for the shared one-year Academy structure.\n- [Issue #48 — One-Year Academy Exit and Computer Engineering Target](https://github.com/riley-berg/PASI/issues/48) for the Spring 2027 foundation, Summer 2027 calculus plan, Fall 2027–Spring 2028 Academy semesters, and transition target.\n- This issue for **all schedule planning after the Academy**, including Summer 2028 and every subsequent summer/semester.\n\nThe schedule is provisional and will be refined one term at a time. Check each term against the applicable TAMU CE catalog, prerequisites, official transfer equivalencies, and the degree audit.\n\n## Major scope\n- **Active plan:** Computer Engineering.\n- **Placeholder only:** Computer Science (#40), Electrical Engineering (#42), Mechanical Engineering / Robotics (#43), and Mechatronics / Automation (#44). Retain these only a",
+      "skills": [
+        "automation"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:25:22Z"
+    },
+    {
+      "id": 5737002265,
+      "title": "Make image generation discoverable across providers: OpenAI + Gemini / Nano Banana",
+      "url": "https://github.com/microsoft/amplifier-unified/issues/426",
+      "description": "# Make image generation discoverable and support image-output-capable models across providers (OpenAI + Google/Gemini)\n\n## User request\n\nSupport generating and returning images from models that support image output, including OpenAI and Google/Gemini, without requiring the agent to fall back to handwritten direct API calls. Expose a clear distinction between vision/image input and image generation/output.\n\nUse case: authoring a cinematic, scroll-driven explainer with storyboard-specific art, using existing workspace artwork as references and preserving generated outputs for inspection and iteration.\n\n## Existing support — do not duplicate or regress\n\nUpstream `docs/IMAGE-GENERATION.md`, inspected at commit `2a46c6f1704121852aacc8b480a7ed3de2bb09ad`, already documents:\n\n- The optional portable imagegen behavior and `image_generate` tool.\n- An independently selected OpenAI Images API backend, enabled via nested advanced provider configuration.\n- Workspace PNGs, SHA-256 and durable receipts; `outputs.attachImage`, edit-parent lineage, and exact-image inspection.\n- Explicit behavior lists and existing session mounts remaining authoritative.\n- No implicit use of ChatGPT sign-in as ordin",
+      "skills": [
+        "api"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:25:20Z"
+    },
+    {
+      "id": 5602503136,
+      "title": "Build complete source-to-Legacy feature and route acceptance matrix",
+      "url": "https://github.com/MALIEV-Co-Ltd/Legacy.Maliev.Workflows/issues/98",
+      "description": "The source-commit ledger tracks commit disposition but does not prove every migrated service feature and Web/Intranet route works against production-derived local Aspire data. This is an explicit migration completion gate, not a deployment request.\n\nAcceptance:\n- Inventory each Legacy service feature, API, role, entity, background operation, and every Web/Intranet route against the latest committed original source; retain full source SHA, owning Legacy repo, main SHA, status, and exact evidence links.\n- Mark unverified items pending; distinguish source retirement approvals from migrations. Do not infer feature parity from a code mapping, route alias, smoke test, or green unit suite.\n- Record automated customer/employee authentication, permission, CRUD/lifecycle, validation, rollback/retry, cross-service effects, localization, responsive/browser/accessibility, and persisted-data checks as appropriate. Include safe failure/partial-failure evidence and suppress real notifications/payments/analytics in local review.\n- Verify the matrix against live source and each protected Legacy main, with a check that rejects missing routes/features or unsupported completion claims. Link per-service",
+      "skills": [
+        "api"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:25:19Z"
+    },
+    {
+      "id": 3764222711,
+      "title": "[Bug] CoreTrust signed MachO's may not resign properly",
+      "url": "https://github.com/claration/impactor/issues/60",
+      "description": "### Report\n\nThe codesigner has specific rules to follow and this is one of them:\n```\n// Rules:\n//\n// 1. If there is an existing signature, there must be no data in\n//    the binary after it. (We don't know how to update references to\n//    other data to reflect offset changes.)\n// 2. If there isn't an existing signature, there must be \"room\" between\n//    the last load command and the first section to write a new load\n//    command for the signature.\n```\nSome coretrust signed machos dont follow these rules and have data after them after the existing signature, causing the codesigner to fail and deem it as a malformed macho, @iosdecrypt telegram bot produces apps that evidently cause this error: \n\n`Err(AppleCodesignError::DataAfterSignature) \"__LINKEDIT segment contains data after signature\"` \nhttps://github.com/indygreg/apple-platform-rs/blob/main/apple-codesign/src/macho.rs#L298-L358\n\n\n### Contributor Checks\n\n- [x] I am willing to attempt to make a pull request to fix this bug\n\n### Additional Information\n\n- [ ] Developer mode enabled\n- [ ] Using paid developer account\n- [x] I will send an ipa of the app I'm having trouble installing if any\n- [x] I'm willing to provide crash logs o",
+      "skills": [
+        "bug"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T23:25:12Z"
     },
     {
       "id": 5779878641,
@@ -389,32 +416,6 @@
       "updated_at": "2026-10-10T23:23:34Z"
     },
     {
-      "id": 5785210240,
-      "title": "Epic: Enforce precise type safety and test fidelity across Keiko",
-      "url": "https://github.com/oscharko-dev/Keiko/issues/3914",
-      "description": "## Summary\n\nImplement precise anti-slop quality enforcement and complete its production migration across Keiko, without weakening hostile-input validation, canonical evidence, test fidelity or existing quality gates. Owner direction: package the audit into an implementation-ready epic; exclude additional naming and spacing rules.\n\nPlanning baseline: `origin/dev@3d46ff9aca669c349bf0528a2a356ba95991099a` (fresh fetch, equal to audited checkout). Profile: keiko-web; current target AGENTS/CONTRIBUTING and amended ADRs override stale profile recipes. Upstream: [anti-slop c44ef22](https://github.com/dmmulroy/anti-slop/tree/c44ef22ca116d0ba62a3ff663a0bd13a3f3fa40b), version 0.1.2; audited Oxlint/@oxlint/plugins 1.78.0. Current source corpus: 7,854 tracked files / 6,166 JS/TS / all 27 packages, plus all 27 HTML documents’ embedded JS. Documentation review indexed 1,283 files, 821 text files and all 164 ADRs.\n\nThere are 341 navigation-classified production double-cast matches and 2,876 missing assertion-marker matches across 739 candidate files; 731 module-interception matches across 337 test files. These are overlapping diagnostics, not defect counts. The authoritative implementation censu",
-      "skills": [
-        "documentation"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:23:13Z"
-    },
-    {
-      "id": 5696973063,
-      "title": "Roadmap: define and implement cross-node agreement for consumed OTS identities",
-      "url": "https://github.com/rickyjreyes/Wavelock/issues/28",
-      "description": "[The Merkle roadmap](https://github.com/rickyjreyes/Wavelock/blob/master/docs/WAVELOCK_MERKLE_ROADMAP.md) explicitly leaves cross-node replay-ledger replication open. Current locks and reconstruction enforce consistency on a shared host/filesystem; independently operated nodes do not obtain global agreement from those locks.\n\n- [ ] Specify the public network threat model, authoritative chain/finality rules, and replay-state derivation.\n- [ ] Define behavior for competing blocks, partitions, reconnects, restart, and reorganization.\n- [ ] Implement the approved agreement mechanism without treating ledger copying alone as consensus.\n- [ ] Add multi-node tests showing the same identity cannot be finalized twice under the declared assumptions, with partition and restart scenarios.\n- [ ] Document compatibility and deployment requirements.\n\nThis is future scope and is not a failure of Public Bounty v1's same-host AR-6 promise.\n\nThis ticket tracks outstanding work; it does not report a newly reproduced vulnerability. Preserve existing protocol versions, reference vectors, and the `v0.2.0` tag. Any new protocol behavior requires explicit versioning and review.",
-      "skills": [],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:23:04Z"
-    },
-    {
       "id": 5532873490,
       "title": "[Wallet Rewards] Latest eligibility",
       "url": "https://github.com/oguzpoyrazyasin/poyraz/issues/5",
@@ -497,11 +498,11 @@
       "updated_at": "2026-10-10T21:35:22Z"
     }
   ],
-  "count": 34,
+  "count": 33,
   "warnings": [],
   "execution": {
     "status": "demo_completed",
-    "timestamp": "2026-10-10T23:23:06+00:00",
+    "timestamp": "2026-10-10T23:25:33+00:00",
     "kind": "csv_cleaning",
     "result": {
       "processed_rows": 3,
