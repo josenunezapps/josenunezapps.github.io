@@ -14,7 +14,7 @@ permissions:
   contents: write
 concurrency:
   group: zenix-autoworker-runner
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   run-agent:
     runs-on: ubuntu-latest
