@@ -1,24 +1,65 @@
-name: Zenix AutoWorker
+name: Zenix AutoWorker Agent
 on:
   workflow_dispatch:
+    inputs:
+      issue_url:
+        description: "Public GitHub issue URL (optional)"
+        required: false
+        type: string
+  push:
+    paths:
+      - "zenix-autoworker/engine/**"
+      - ".github/workflows/zenix-autoworker.yml"
   schedule:
-    - cron: '17 */8 * * *'
+    - cron: "17 */8 * * *"
 permissions:
   contents: write
+concurrency:
+  group: zenix-autoworker-runner
+  cancel-in-progress: false
 jobs:
-  agent:
+  run-agent:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 16
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
-      - name: Run agent
+          python-version: "3.12"
+      - name: Search real public GitHub issues
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python zenix-autoworker/engine/agent.py --scan
-      - name: Update dashboard data
+      - name: Complete and verify real CSV processing task
+        run: python zenix-autoworker/engine/agent.py --demo
+      - name: Optional AI coding attempt in isolated Docker
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          AUTO_WORKER_MODEL: ${{ vars.AUTO_WORKER_MODEL }}
+          ISSUE_URL: ${{ inputs.issue_url }}
         run: |
-          git config user.name 'zenix-autoworker[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          if [ -n "$ISSUE_URL" ]; then
+            python zenix-autoworker/engine/agent.py --issue-url "$ISSUE_URL"
+          else
+            python zenix-autoworker/engine/agent.py --auto
+          fi
+      - name: Update public metadata only
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add zenix-autoworker/data/
-          git diff --cached --quiet || (git commit -m 'chore(autoworker): update opportunities' && git push)
+          if ! git diff --cached --quiet; then
+            git commit -m "data(autoworker): update public status [skip ci]"
+            git push
+          fi
+      - name: Upload work for human review only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: zenix-autoworker-deliverables
+          path: zenix-autoworker/output/
+          if-no-files-found: warn
+          retention-days: 7
