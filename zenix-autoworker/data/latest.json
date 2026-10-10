@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-10-10T20:29:46+00:00",
+  "generated_at": "2026-10-10T20:30:28+00:00",
   "opportunities": [
     {
       "id": 5387618577,
@@ -136,6 +136,24 @@
       "updated_at": "2026-10-10T20:00:07Z"
     },
     {
+      "id": 4086864561,
+      "title": "[BOUNTY $150] Backup & DR — 自动备份 + 灾难恢复",
+      "url": "https://github.com/illbnm/homelab-stack/issues/12",
+      "description": "---\nname: 💰 Bounty - Backup & Recovery\nabout: 实现完整的备份与灾难恢复方案\ntitle: '[BOUNTY $150] Backup & Recovery — 备份与恢复'\nlabels: bounty, medium\nassignees: ''\n---\n\n## 赏金金额\n\n**$150 USDT**\n\n## 任务描述\n\n实现 3-2-1 备份策略：3 份数据，2 种介质，1 份异地。\n\n## 服务清单\n\n| 服务 | 镜像 | 用途 |\n|------|------|------|\n| Duplicati | `lscr.io/linuxserver/duplicati:2.0.8` | 加密云备份 |\n| Restic REST Server | `restic/rest-server:0.13.0` | 本地备份仓库 |\n\n## 核心要求\n\n### 1. 备份脚本 `scripts/backup.sh`\n\n```\n用法:\n  backup.sh --target <stack|all> [选项]\n\n选项:\n  --target all          备份所有 stack 数据卷\n  --target media        仅备份媒体栈\n  --dry-run             显示将备份的内容，不实际执行\n  --restore <backup_id> 从指定备份恢复\n  --list                列出所有备份\n  --verify              验证备份完整性\n```\n\n### 2. 备份目标支持\n\n- 本地目录\n- MinIO (S3 兼容)\n- Backblaze B2\n- SFTP\n- Cloudflare R2\n\n通过 `.env` 中 `BACKUP_TARGET=s3|b2|sftp|local` 切换。\n\n### 3. 定时备份\n\n通过 crontab 或 systemd timer 每日 2:00 AM 自动执行。\n\n### 4. 恢复演练文档\n\n`docs/disaster-recovery.md`：\n- 完整恢复流程（全新主机从零恢复）\n- 各服务恢复顺序（Base → DB → SSO → 其他）\n- 预计恢复时间（RTO）\n- 验证恢复完整性的检查清单\n\n### 5. 备份通知\n\n备份完成/失败后通过 ntfy 推送通知。\n\n## 验收标准\n\n- [ ] `backup.sh",
+      "skills": [
+        "script"
+      ],
+      "score": 45,
+      "amount_mentions": [
+        "$150",
+        "$150",
+        "$150"
+      ],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:30:09Z"
+    },
+    {
       "id": 5533799153,
       "title": "[Bounty proposal] security: eight plugins — unauthenticated GET /disconnect?uid= deletes any user's stored OAuth tokens ($150 proposed)",
       "url": "https://github.com/BasedHardware/omi/issues/15589",
@@ -186,6 +204,51 @@
       "updated_at": "2026-10-10T20:00:24Z"
     },
     {
+      "id": 5794935195,
+      "title": "Brain E2E production closure: historical first-proof failure, daily budget and autonomous canary",
+      "url": "https://github.com/RafaLopezCode/Axignal/issues/199",
+      "description": "## CTO validation of Claude Brain E2E simulation — 2026-10-10\n\n**Source:** local non-tracked `docs/research/brain-e2e-baseline-2026-10-10/INFORME_SIMULACION_E2E_BRAIN.md` and JSON benchmarks. Experimental results are NOT observations from a live production portfolio. No paid model calls in the benchmark.\n\n### Simulated baseline (controlled network)\n- First proof: 4/7 profiles READY without semantic enrichment, 5/7 in an explicitly enabled semantic variant (2 simulated provider calls, ~1,664 estimated tokens, modeled USD 0.00007). Denied robots correctly fails closed.\n- Forty-day tick with one organization: 760 vs 125 HTTP requests (-84%); 280 vs 6 semantic calls (-98%); 4/4 demand candidates recovered, with one-day detection lag.\n- Global default constraints modeled: 60 HTTP/day, 40 actions/day, 900 seconds per run, paid daily budget zero; observed cost of all deterministic simulations zero. Modeled sustained capacity ~20 organizations/day and ~2 complete new admissions/day. THESE ARE scenario-specific average estimates and not throughput/SLA guarantees; peak actions can saturate earlier.\n- Large 2,000,000 run-token semantic cap represents theoretical USD 0.084 at 0.042/M tokens in",
+      "skills": [
+        "json"
+      ],
+      "score": 35,
+      "amount_mentions": [
+        "usd 0",
+        "usd 0"
+      ],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:30:26Z"
+    },
+    {
+      "id": 5690041095,
+      "title": "[BOUNTY] Medium: submitted private swap is marked successful before confirmation, disabling recovery if the tx drops",
+      "url": "https://github.com/paraloom-labs/paraloom-core/issues/856",
+      "description": "> **Severity:** Medium · **Component:** paraloom-wallet · **Reward tier:** up to $150 USDC\n> **Tested:** wallet main @ 1e79eec8fbe99cd7e1381f6971c855bdce883d41 · local mocks only · no live chain touched\n\n## Summary\n\nBoth privateSwap() and privateSwapFromToken() persist a non-empty swapSignature and the router-reported outAmount immediately after sendRawTransaction(), before waitForSwapConfirmation() succeeds.\n\nThat early persistence is useful for preserving the fresh key, but swapSignature is also used everywhere else as a completion flag.\n\nIf Solana accepts the serialized transaction and returns a signature but the transaction is then dropped / never confirms:\n\n- waitForSwapConfirmation() correctly times out and throws;\n- the durable SwapOutput row still contains swapSignature and outAmount;\n- the Activity UI considers the row done and shows Status: Succeeded;\n- reconcileSwapOutputs() immediately skips every row with a non-empty swapSignature without checking signature status, balances, or the actual output asset.\n\nThe fresh address can therefore still hold the unswapped input funds, while normal wallet recovery has been permanently disabled for that row.\n\n## Reachable sequence\n\nT",
+      "skills": [],
+      "score": 35,
+      "amount_mentions": [
+        "$150"
+      ],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:29:47Z"
+    },
+    {
+      "id": 5689978987,
+      "title": "[BOUNTY] Medium: token-input swap recovery mistakes leftover gas SOL for completion and strands the withdrawn token",
+      "url": "https://github.com/paraloom-labs/paraloom-core/issues/855",
+      "description": "> **Severity:** Medium · **Component:** paraloom-wallet · **Reward tier:** up to $150 USDC\n> **Tested:** wallet main @ 1e79eec8fbe99cd7e1381f6971c855bdce883d41 · local mocks only · no live chain touched\n\n## Summary\n\nprivateSwapFromToken() can leave a token-input swap in a recoverable intermediate state after both withdrawals have settled but before the actual swap leg is submitted:\n\n- the fresh address still has the withdrawn input token in its input-mint ATA;\n- it also still has leftover gas SOL from the 0.009 SOL self-funding withdrawal;\n- swapSignature is still empty.\n\nThe persisted SwapOutput records outputMint but does not record inputMint or that this is a token-input flow.\n\nreconcileSwapOutputs() therefore cannot distinguish that state from a stranded native-SOL-input swap. Because it checks the fresh SOL balance first, leftover gas can make the reconciler either:\n\n1. mark a failed token -> SOL swap as landed/completed using leftover gas SOL, while the actual input token remains untouched; or\n2. for token -> token, invoke the SOL-only resumeSwapAtFreshAddress() and swap leftover gas SOL into the output token, while leaving the withdrawn input token at the fresh address.\n\nOnc",
+      "skills": [],
+      "score": 35,
+      "amount_mentions": [
+        "$150"
+      ],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:29:41Z"
+    },
+    {
       "id": 5689074478,
       "title": "[BOUNTY] Medium: dismissing a stuck private-swap row deletes the only key to funds still at the fresh address (paraloom-wallet)",
       "url": "https://github.com/paraloom-labs/paraloom-core/issues/854",
@@ -212,22 +275,6 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T20:29:26Z"
-    },
-    {
-      "id": 5785352669,
-      "title": "MASTER: owner screenshots, 207 approved PDP descriptions recovery, contact/collections/cart visual previews",
-      "url": "https://github.com/THEFEYA/feya-commerce/issues/108",
-      "description": "**2026-10-10 OWNER RULE CONFIRMED (EUR, NO ambiguity):** €5 fee is charged ONCE per each additional DISTINCT canonical product listing above the first. ONE listing with several sizes, colors, options or quantities = €0 and the row is COMPLETELY HIDDEN (not “Additional listings €0”). Two different listings: €5; three: €10. Buyer-friendly label should be `Additional packaging for multiple items` (or `Extra packaging for a larger order`), not `additional listings` and not a made-up charge per parcel. This remains server-authoritative; no ability to change prices from a client UI. Owner-approved source-of-truth rate €5, never $5. Payment OFF until live Seller Online KYC/tax/provider truth.\n\n**Stage B ACTIVE:** [PR #109](https://github.com/THEFEYA/feya-commerce/pull/109) implements protected five-product exact pinned approved four-block SEO copy before/after review. Production PDP, source pins, SEO v12, prices/right PDP unchanged. Explicit owner YES required before public 207-page rollout. PR #106 remains separate.\n\n---\n\nTheFEYA MASTER checkpoint (2026-10-10): PLAN ONLY. Four owner screenshots and long voice notes, previous approved drafts. Do NOT change live storefront, shipping rates,",
-      "skills": [
-        "script"
-      ],
-      "score": 35,
-      "amount_mentions": [
-        "$5."
-      ],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:27:51Z"
     },
     {
       "id": 4754366017,
@@ -278,38 +325,6 @@
       "updated_at": "2026-10-10T20:19:37Z"
     },
     {
-      "id": 5788509699,
-      "title": "Resolve the $1,295 advertised-bounty claim for 16 merged contributions",
-      "url": "https://github.com/Movalabs-crew/mova-store/issues/970",
-      "description": "I contributed the following 16 merged Mova Store PRs under @iprasen. Their linked issue titles advertised a combined **US$1,295** in bounties. All 16 deliverables were reviewed, approved, and merged into `main` in September 2026, yet payment remains completely unresolved.\n\n### Itemized Audit Record\n\n| Merged contribution | Advertised bounty issue | Merge Date (UTC) | Advertised USD |\n| :--- | :--- | :--- | ---: |\n| [PR #356](https://github.com/Movalabs-crew/mova-store/pull/356) | [Issue #80](https://github.com/Movalabs-crew/mova-store/issues/80) | 2026-09-09 | $80 |\n| [PR #357](https://github.com/Movalabs-crew/mova-store/pull/357) | [Issue #94](https://github.com/Movalabs-crew/mova-store/issues/94) | 2026-09-12 | $95 |\n| [PR #358](https://github.com/Movalabs-crew/mova-store/pull/358) | [Issue #86](https://github.com/Movalabs-crew/mova-store/issues/86) | 2026-09-12 | $90 |\n| [PR #360](https://github.com/Movalabs-crew/mova-store/pull/360) | [Issue #85](https://github.com/Movalabs-crew/mova-store/issues/85) | 2026-09-12 | $95 |\n| [PR #367](https://github.com/Movalabs-crew/mova-store/pull/367) | [Issue #67](https://github.com/Movalabs-crew/mova-store/issues/67) | 2026-09-09 | $100 |\n| ",
-      "skills": [],
-      "score": 35,
-      "amount_mentions": [
-        "$1,295",
-        "$1,295",
-        "$80"
-      ],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:18:48Z"
-    },
-    {
-      "id": 5786867292,
-      "title": "[Bug][P1] OpenCode V2: Olympus project install fails across Git worktrees; initial prompt cancelled",
-      "url": "https://github.com/Edulynch/OpenCode-OlympusAgents/issues/27",
-      "description": "## Incident / impact\n\n**Priority: P1 — user-reported blocking defect, NOT a proposed enhancement.** On Windows/OpenCode V2, operating with multiple Git worktrees currently causes OlympusAgents to become unusable and **cancels the user's prompt**. The failure affects real use of stable **v0.4.4** and must be diagnosed and corrected before recommending Olympus + multi-worktree workflows. User report is the observation; the exact runtime abort event/log is **not yet captured**.\n\n**Expected:** one user prompt in any valid Git worktree under an Olympus-enabled project starts with Kael as the primary Olympus orchestrator, and safe native delegation/maintenance boundaries remain intact. Multiple independent worktrees can host distinct sessions without silent fallback to `build`, discarded prompts, cross-worktree edits, or session confusion.\n\n**Observed/reported:** multi-worktree use makes Olympus ineffective and the prompt is cancelled. No reproducible local trace, cancellation timing, UI vs TUI, or exact installed OpenCode version accompanied the initial report; do **not** label the cause confirmed.\n\n## Evidence and competing hypotheses (2026-10-09 read-only audit)\n\n1. **Confirmed struct",
-      "skills": [
-        "json",
-        "bug",
-        "script"
-      ],
-      "score": 30,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:28:21Z"
-    },
-    {
       "id": 5662643363,
       "title": "refactor(api): remove db/tx handle passing and shrink transactions in billing and IM integrations",
       "url": "https://github.com/okou-ai/okou/issues/37510",
@@ -323,7 +338,22 @@
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:24:49Z"
+      "updated_at": "2026-10-10T20:30:17Z"
+    },
+    {
+      "id": 5795016381,
+      "title": "the Devin subreddit is for peope named Devin, not for the Devin agent. (This is on the bounty page for freebuff.)",
+      "url": "https://github.com/CodebuffAI/freebuff/issues/1500",
+      "description": "### What happened\n\nI have no idea where to report this bug. I believe it to be a documentation bug but when i click that type, it brings me to the documentation and won't let me report a bug. (I guess that should be a bug as well.) Like the title says, when I go the bounties program (https://freebuff.com/?settings=earn&earn=bounties) in the account, it says to search `devin` on reddit. I believe it should be `DeviAI` instead.\n\n### Steps to reproduce\n\ngo to https://freebuff.com/?settings=earn&earn=bounties.\n\n<img width=\"939\" height=\"570\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ca0e2178-ef21-424b-8348-066778b09efe\" />\n\n### Where does this happen?\n\nDocs\n\n### Operating system\n\nLinux\n\n### Version\n\n0.2.26\n\n### Model\n\n_No response_\n\n### Logs or screenshots\n\n```shell\n\n```",
+      "skills": [
+        "bug",
+        "documentation"
+      ],
+      "score": 30,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:30:00Z"
     },
     {
       "id": 5627292444,
@@ -356,6 +386,64 @@
       "updated_at": "2026-10-10T20:20:55Z"
     },
     {
+      "id": 5784554447,
+      "title": "[Hamilton H03][P0] Admin hold, correct and publish fees with durable audit history",
+      "url": "https://github.com/Gilmore3088/FeeInsight.com/issues/978",
+      "description": "Parent tracker: #975. Original complaint: #6.\n\n**Status:** Queued; acceptance not verified. **Implementation owner:** Unassigned. **Product/release approver:** James, approval pending. **Dependencies:** H06-T02 evidence contract and current source/publication contracts; integrate refresh behavior with H01/H02/H04. H03 design can start independently. External registry identity corrections remain in #54.\n\n## Required outcome\nAn authorized operator can identify, hold, correct, publish and verify an incorrect fee inside Fee Insight without SQL, a code release or an external coding assistant. An automated re-extraction cannot silently undo a human-reviewed correction; a genuinely newer source can propose a visible, reviewable change.\n\n## P0 data-integrity defect — distinct same-priced fees incorrectly flagged by rules recheck\n\n**Status: OPEN / NOT FIXED OR RELEASED.** This is a specific verified production safeguard failure related to H03's hold/correction and reprocessing requirements, especially H03-T07/T11. It is recorded here in the existing canonical issue; it does **not** assert ownership of new H03 implementation work, create another PR, or complete H03 acceptance. Preserve PR #9",
+      "skills": [],
+      "score": 25,
+      "amount_mentions": [
+        "$30,"
+      ],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:29:58Z"
+    },
+    {
+      "id": 5664544302,
+      "title": "[Bounty Proposal] fix(imports): prevent zip upload path traversal, shield storage exceptions, and validate job IDs (- proposed)",
+      "url": "https://github.com/BasedHardware/omi/issues/20187",
+      "description": "## Summary\nIn `backend/routers/imports.py` and `backend/database/import_jobs.py`, the data import pipeline contained critical security and error disclosure vulnerabilities:\n\n1. **Path Traversal on File Upload (`import_limitless_data`)**:\n   - The user-provided `file.filename` was directly joined with `TEMP_DIR`:\n     ```python\n     zip_path = os.path.join(TEMP_DIR, f\"{job.id}_{file.filename}\")\n     ```\n   - Filenames with path traversal sequences (`../../../../tmp/malicious.zip`) escaped the temp directory, allowing arbitrary file writes across the host filesystem.\n\n2. **Raw Internal Exception & Path Disclosure**:\n   - On write or disk failures during chunk streaming, the exception string (`str(e)`) was directly formatted into the client's HTTP 500 error response and persisted into the database (`f\"Failed to save uploaded file: {str(e)}\"`), leaking internal absolute filesystem paths and OS error details to clients.\n\n3. **Unvalidated Job IDs in Firestore Queries**:\n   - `get_import_job_status`, `cancel_import_job`, and `delete_import_job` did not validate `job_id`, allowing slashes or directory traversal sequences into Firestore document references.\n   - `get_import_jobs` lacked que",
+      "skills": [
+        "python"
+      ],
+      "score": 20,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:30:13Z"
+    },
+    {
+      "id": 5746485816,
+      "title": "Internet Alpha Harvest → Economic Survivor Pipeline V1",
+      "url": "https://github.com/leegkssk2000-commits/vultr-z/issues/1388",
+      "description": "# INTERNET_ALPHA_HARVEST_ECONOMIC_PIPELINE_V1\n\n## 목적\nZEL을 연구 프로젝트가 아니라 **비용 후 수익형 트레이딩 프로그램**으로 빠르게 완성한다. 사용자가 후보/세부 절차를 매번 지정하지 않아도 총괄이 외부 공개 전략을 직접 선별하고 경제성 기준으로 탈락/승격시킨다.\n\n이번 scope는 기존 25개를 또 미세튜닝하는 작업이 아니다. 현재 살아 있는 Keltner/HG, Trend Rider, Squeeze/MR/Micro 및 기존 실패/재료 기록은 보존하되, **외부에서 이미 공개된 실행 가능한 전략/코드/논문 규칙을 대량 intake -> cheap economic screen -> 소수 survivor full test**로 처리한다.\n\n## 운영 원칙\n1. 완료 단위는 문서/PR/CI가 아니라 **경제판정**이다.\n2. 한 후보가 막혀도 전체 총괄은 멈추지 않는다. 해당 후보만 BLOCKED/REJECT하고 다음 적격 후보로 이동한다.\n3. 이미 승인된 research-only 개발/백테스트에 사용자 재승인을 반복 요구하지 않는다. 실주문/Live/Paper/배포/새 유료 API/secret/권한 변경만 별도 권한으로 유지한다.\n4. strategy마다 새 프레임워크/approval chain을 만들지 않는다. 공통 runner, 공통 cost model, 공통 result schema를 재사용한다.\n5. 미래정보/lookahead, 불가능 체결, 비용 누락, 동일 데이터 재튜닝은 fail-closed.\n6. 인터넷 수익 주장/커뮤니티 후기는 후보 생성 근거일 뿐 PASS 증거가 아니다. 실제 ZEL replay 결과만 경제판정에 사용한다.\n7. 공개 코드의 license/attribution을 확인한다. 코드 재사용이 허용되지 않으면 복사하지 말고 공개 규칙/메커니즘만 독립 구현한다.\n\n## 외부 소스 우선순위\n### Tier E — executable/open-source 우선\n- Freqtrade 공식/free strategy repository와 명시적으로 오픈소스인 crypto strategy repos.\n- Hummingbot 공식 V1/V2 strategies/scripts: directional, PMM, XEMM, spot/perp/funding/arbitrage 등.\n- QuantConnect/LEAN의 공개 crypto algorithm exa",
+      "skills": [
+        "api",
+        "script"
+      ],
+      "score": 20,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:30:05Z"
+    },
+    {
+      "id": 3825637122,
+      "title": "When using multiline examples the docs generator breaks",
+      "url": "https://github.com/SkriptLang/Skript/issues/8383",
+      "description": "### Skript/Server Version\n\n```markdown\nN/A\n```\n\n### Bug Description\n\nWhen using multiline java strings in examples on functions the docs generator seems to mess up and loses indentions leading to syntax joining together on a single line (see image)\n\n### Expected Behavior\n\nSkript to properly handle newlines & indentions when using multiline string in function examples\n\n### Steps to Reproduce\n\nhttps://docs.skriptlang.org/docs.html?search=#fromBase\n\n### Errors or Screenshots\n\n<img width=\"1546\" height=\"548\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4dd1aa2a-56d2-44db-b5de-2ac4d1f31f05\" />\n\n### Other\n\nThis issue is currently persistent on `location` and `fromBase` function no other functions seem to use `\"\"\"`\n\n### Agreement\n\n- [x] I have read the guidelines above and affirm I am following them with this report.",
+      "skills": [
+        "bug",
+        "script"
+      ],
+      "score": 20,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:29:58Z"
+    },
+    {
       "id": 5785823459,
       "title": "[Astra] Full repository review: architecture, security, runtime wiring, and integration behavior",
       "url": "https://github.com/FlossWare/claude-ensemble/issues/349",
@@ -369,36 +457,6 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T20:29:32Z"
-    },
-    {
-      "id": 5739350912,
-      "title": "[P1][TIGERIQ NEWS] Chuyển Writer/Reviewer sang Core NV API + tự publish LIVE",
-      "url": "https://github.com/newsdayads/tigeriq-ai-lab/issues/4456",
-      "description": "## LỆNH OWNER — TỰ NHẬN KIỂM TRA TIN THẬT — 2026-10-08\nSOURCE=Owner direct chat 2026-10-08: \"đưa việc này lên hệ thống tự nhận và làm ... phải tự vào kiểm tra có lên tin tự động được không\"\nOWNER_DIRECT=true\nOWNER_POLICY=AUTO\nPRIORITY=P1\nTIGERIQ_EXECUTABLE=true\nAUTO_QUEUE=INCLUDED\nCURRENT_STATE=READY_AUTOMATED_PC01_READONLY_PREFLIGHT\nRESOURCE_SCOPE=TIGERIQ_NEWS_CORE_NV_API_INTEGRATION_V1\nMUTATION_OWNER=CORE_DYNAMIC_LEASE\nCAPABILITY=pc_operator\nEXECUTION_SURFACE=PC_OPERATOR_DIRECT_LOCAL\nASSIGNED_EXECUTOR=NV06\nONE_RESOURCE_SCOPE_ONE_WRITER=true\nNO_CODE_CHANGE=true\nNO_PC01_SHELL=true\nNO_DIRECT_MAIN=true\nNO_PRODUCTION_RELEASE=true\nNO_PAID_COST=true\nNO_CREDENTIAL_CHANGE=true\nNO_SECURITY_BOUNDARY_CHANGE=true\nNO_DESTRUCTIVE=true\nNO_RDC=true\nNO_CODEX=true\nNO_VERCEL_DEPLOY=true\nNO_MUTATION=true\nZERO_COST=true\nAPP_CHROME_MUTATION=FORBIDDEN\nKEEP_OPEN_ON_STEP_COMPLETE=true\nLIVE_ACCEPTANCE_REQUIRED=true\nFINAL_LIVE_REVIEW_REQUIRED=true\nPUBLIC_EVIDENCE_DIAGNOSTIC=true\nPUBLIC_EVIDENCE_KEYS=ok,lastCycleAt,error\nPC_OPERATOR_DIRECT_ACTION_JSON={\"action\":\"file_read\",\"path\":\"D:\\\\TigerIQ\\\\Workspace\\\\TigerIQMedia\\\\runtime\\\\news-engine-state.json\"}\nDONE=false\nREAL_BLOCKER=PC01_PRIVATE_REPOSITORY_GIT_AUTH_",
-      "skills": [
-        "json",
-        "api"
-      ],
-      "score": 20,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:28:21Z"
-    },
-    {
-      "id": 5597031530,
-      "title": "durability(hosted journal): concurrent appends + unbounded growth need bounds (follow-up to #4240)",
-      "url": "https://github.com/daniel-ospina/tortoise/issues/5612",
-      "description": "## Summary\n\n#4240 turned the hosted lane's JSONL rebuild journal **on** (per-graph files under\n`TORTOISE_EVENT_LOG_BASE_DIR`, written by `event_log.append`). Two properties of\nthat write surface were acceptable while only single-writer CLI lanes used it;\nthe hosted lane makes them live:\n\n1. **Concurrent appends are not serialized.** `EventLog.append` is a bare\n   `open(path, \"a\")` + one `write()`. The hosted API runs its graph writes on a\n   bounded threadpool (`_graph_offload` / `asyncio.to_thread`), so two requests\n   can append to the same per-graph file concurrently. `read_all` tolerates a\n   *torn trailing* line but **raises on mid-file corruption** — an interleave is\n   not a torn tail, and a raised parse kills the recovery tool the journal\n   exists for (`rebuild_all` / `recover_from_log`).\n2. **Growth is unbounded.** Every write appends a full snapshot line (a\n   `PointAdded` payload now carries the embedding, #5004) with no rotation,\n   compaction, or retention. On the per-machine `/data` volume this grows with\n   every capture, turn, and entity write.\n\nBoth are pre-existing properties of the #548 journal family\n(`docs/plans/2026-09-05-2194-*.md` already records *\"no rotat",
-      "skills": [
-        "json",
-        "api"
-      ],
-      "score": 20,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:27:29Z"
     },
     {
       "id": 5767603643,
@@ -415,21 +473,6 @@
       "updated_at": "2026-10-10T20:27:21Z"
     },
     {
-      "id": 3825637122,
-      "title": "When using multiline examples the docs generator breaks",
-      "url": "https://github.com/SkriptLang/Skript/issues/8383",
-      "description": "### Skript/Server Version\n\n```markdown\nN/A\n```\n\n### Bug Description\n\nWhen using multiline java strings in examples on functions the docs generator seems to mess up and loses indentions leading to syntax joining together on a single line (see image)\n\n### Expected Behavior\n\nSkript to properly handle newlines & indentions when using multiline string in function examples\n\n### Steps to Reproduce\n\nhttps://docs.skriptlang.org/docs.html?search=#fromBase\n\n### Errors or Screenshots\n\n<img width=\"1546\" height=\"548\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4dd1aa2a-56d2-44db-b5de-2ac4d1f31f05\" />\n\n### Other\n\nThis issue is currently persistent on `location` and `fromBase` function no other functions seem to use `\"\"\"`\n\n### Agreement\n\n- [x] I have read the guidelines above and affirm I am following them with this report.",
-      "skills": [
-        "bug",
-        "script"
-      ],
-      "score": 20,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:19:58Z"
-    },
-    {
       "id": 5678048194,
       "title": "[GOOD FIRST ISSUE · PROPOSED REWARD] Add empty/error states to Paid Bounties UI",
       "url": "https://github.com/MyZubster-Ecosystem/myzubster/issues/1443",
@@ -442,6 +485,62 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T20:19:40Z"
+    },
+    {
+      "id": 5793438750,
+      "title": "Separate user documentation from configuration and developer references",
+      "url": "https://github.com/IamK77/Lattice/issues/82",
+      "description": "**Current reading checkpoint:** The maintainer rejected the earlier Chinese first-use prose as obscure and defensive. Rework #91 is now merged into `develop` (`60f9e4a`), with 39 focused checks and all six applicable CI checks passing. Start the next reading review with only `docs/getting-started.zh-CN.md`; the broader route criteria below remain pending.\n\n## Problem\n\nThe documentation has named categories, but ordinary users still encounter implementation, audit, storage, and maintenance details in their main reading path. Recent work has added technically accurate caveats without consistently deciding which audience needs them. More detail alone does not resolve the product/developer boundary.\n\nThis issue tracks a documentation reorganization, not a product redesign. The maintainer has approved the three reader-task routes and representative first-use scope in the audit proposal. Implementation has been delivered through bounded child issues and protected PRs; overall reader-path acceptance remains outstanding.\n\n## Desired outcome\n\nReaders can find the information needed for their task without learning unrelated internals:\n\n- Ordinary users can install, connect a model, start and",
+      "skills": [
+        "documentation"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:30:22Z"
+    },
+    {
+      "id": 5793723116,
+      "title": "95. Frontend: Administración book catalogue, metadata search and statuses",
+      "url": "https://github.com/rferper/small-bookclub/issues/95",
+      "description": "## Goal\nThe admin can create and correct the club catalogue from Administración, using a fictional metadata search or entering everything manually. Statuses and reading dates remain manual, with at most one book marked «Leyendo».\n\n## Acceptance criteria\n- [ ] Administración links to «Libros» at `/administracion/libros`. The admin list shows every catalogue book with title and status, links to create and edit, and Spanish loading, retryable error and empty states. Create and edit routes are covered by the existing `AdminGuard`; an unknown edit id shows a Spanish not-found state.\n- [ ] Create and edit forms allow title, multiple authors, plain-text description, publication date, publisher, ISBN, page count, cover, status, planned start/end dates, actual start/end dates and «Fechas aproximadas». A historical book can be saved with only a title and chosen status, without dates, cover, authors, meetings or a reading plan. Saving is one atomic operation; editing preserves the book id and existing related records.\n- [ ] «Buscar metadatos» searches through the central client and returns deterministic fictional results without any external request. Selecting a result pre-fills available met",
+      "skills": [
+        "script"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:30:10Z"
+    },
+    {
+      "id": 5626094407,
+      "title": "hermes update stalls about 11 minutes after \"Update complete!\" on hosts with many checkpoint projects",
+      "url": "https://github.com/NousResearch/hermes-agent/issues/127450",
+      "description": "## Symptom\n\nOn a host with many checkpoint projects, `hermes update` prints \"Update complete!\" and then sits for about 11 minutes before returning. The same slowdown hits anything that calls the checkpoint footprint notice or store status (for example `hermes doctor`), and it scales with the number of projects in `~/.hermes/checkpoints`.\n\nEnvironment: headless Linux VPS, Python 3.14 managed runtime.\n\n## Evidence\n\n- A py-spy dump during the stall placed the process in `checkpoint_footprint_notice()` -> `store_status()` (tools/checkpoint_maintenance.py).\n- The checkpoint store held 666 projects and was only about 4.9 MB on disk, so the time was not spent on data volume.\n- Each git call went through `selected_git_env()` (hermes_cli/_subprocess_compat.py), which started a PM helper process roughly once per second. 666 projects at about one second each is about 11 minutes.\n- Secondary finding on the same host: the store had lost its `objects/` and `refs/` directories. Every git call failed with \"not a git repository\", yet each failing call still paid the env resolution, and `hermes checkpoints prune` reported \"Scanned 1, Errors 1\".\n\n## Root cause\n\n`_git_env()` in tools/checkpoint_manage",
+      "skills": [
+        "python"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:30:00Z"
+    },
+    {
+      "id": 5785375564,
+      "title": "BETTOR RECOVERY GATE — first verified dual-venue AI trading lifecycle",
+      "url": "https://github.com/matthewtaylor141-lab/SportsAssets/issues/6",
+      "description": "## Owner-approved PM recovery contract — 2026-10-09\n\n**Current verdict: NO-GO.** This issue is the single integration/acceptance handoff. Claude owns implementation integration, gates, deploy and production evidence. Codex independently adversarially reviews and signs off on the claims. No new scope until this gate is demonstrated.\n\n### Evidence baseline\n- Production API/workers release `16d234506a0683acc8577465b1beadf5423dc3f7`; market-plane remains `732cc0c696db614cbf63f83c3f843adec00301d6`.\n- PR #5 `c2039f7e4fd0d07c98b78c0e884bfee1934c3752`: draft, unmerged, Day One inactive.\n- Latest 75-min SQL readback (run 37997445112): 49/49 ENTER decisions have order or refusal at 60 seconds, but original historical population not cleared; strategies quarantined; 611 nonpositive-EV and 98 fee-edge refusals; Xavier reviews 0, open PAPER positions 0, live orders 0. Audrey 5 reconciliations, `final=false`.\n- New acceptance workflow 37997539801 completed success as a **workflow**, but its **signed verdict must be read** before treating any category as GREEN.\n- Latest integration backend run 37991350854 failed before tests due Docker Hub anonymous quota; report INFRA BLOCKED and remediate separa",
+      "skills": [
+        "api"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:29:59Z"
     },
     {
       "id": 5795012971,
@@ -524,118 +623,6 @@
       "updated_at": "2026-10-10T20:28:45Z"
     },
     {
-      "id": 5119142806,
-      "title": "test(release): requalify both Production journeys after biopsy fixes",
-      "url": "https://github.com/relativityE/speaksharp/issues/1258",
-      "description": "<!-- pm-independent-queues:start -->\n## Independent Dev queues during review/CI\n\n[CLI Dev queue](https://github.com/relativityE/speaksharp/issues/1258#issuecomment-6101036097): #1581 repair/freeze → #1560 residual map → technical acquisition/identity/RECEIVED audit → wake acceptance. [App Dev queue](https://github.com/relativityE/speaksharp/issues/1258#issuecomment-6101036266): #1580 repair/freeze → serial rehearsal/cleanup packets → rendered journey closure audit → wake acceptance. No cross-branch writers; CLI PM serializes shared test-host usage and proves actual delivery. PM owns source review/CI/integration; both Devs stay on RWT until closure, then MVP.\n<!-- pm-independent-queues:end -->\n\n<!-- pm-live-checkpoint:start -->\n## Latest PM checkpoint — 10 October 2026\n\n#1258 remains **OPEN** on deployed current `main@1a724990e493fc2925028310d084cebeade24b5c`. #1576 and #1578 are merged. #1578 merged the fully qualified exact pair `2b3f341b7632fb8d877157a2072acf44c63f8bfc` / `3d62b75883690f49031decf9de159f34dbc12bea` under recorded PO authority as merge commit `1a724990e493fc2925028310d084cebeade24b5c`.\n\nProduction Canary 38077196756 attempt 1 failed closed on a transient Supabase M",
-      "skills": [
-        "api"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:28:45Z"
-    },
-    {
-      "id": 5794349943,
-      "title": "RelayWA International SEO — Master Tracker (12 batches)",
-      "url": "https://github.com/Haider-Shakoori/wa/issues/90",
-      "description": "# RelayWA International SEO — Master Tracker\n**Scope:** English-only global SEO on `relaywa.com`; 8 initial research targets (India, Brazil, Indonesia, Mexico, Colombia, Nigeria, UAE, Pakistan) plus 5 expansion research targets (Saudi Arabia, South Africa, Spain, Germany, UK). Accurate QR-linked/session messaging API positioning. Country pages only when evidenced by genuinely distinct English buyer needs.\n\n## Batch checklist (implement in order unless noted)\n- [x] [Batch 01 — Research & positioning](https://github.com/Haider-Shakoori/wa/issues/78)\n- [x] [Batch 02 — Technical SEO](https://github.com/Haider-Shakoori/wa/issues/79)\n- [x] [Batch 03 — Analytics & conversion instrumentation](https://github.com/Haider-Shakoori/wa/issues/80)\n- [x] [Batch 04 — Performance & CWV](https://github.com/Haider-Shakoori/wa/issues/81)\n- [x] [Batch 05 — English-only global architecture and canonical targeting](https://github.com/Haider-Shakoori/wa/issues/82)\n- [ ] [Batch 06 — Commercial feature pages](https://github.com/Haider-Shakoori/wa/issues/83)\n- [ ] [Batch 07 — Integration landing pages](https://github.com/Haider-Shakoori/wa/issues/84)\n- [ ] [Batch 08 — English-only regional keyword content and",
-      "skills": [
-        "api"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:28:32Z"
-    },
-    {
-      "id": 5794348050,
-      "title": "Offline shop continuity: Jobs, cash payments and safe document numbering",
-      "url": "https://github.com/raz744u-beep/briskers-app-public/issues/78",
-      "description": "Owner Oct 10 asks whether Briskers works through complete internet outages: new Job, estimate, invoice, editing existing invoice, taking CASH and marking paid, and automatic numbering. Code audit current main: `OfflineDocumentDraftService` supports standalone estimate, quick invoice with provisional Job, unsynced IDs and NULL invoice/job/document_number, with server assigning unique number after sync. `JobDocumentScreen` routes draft/add/update/delete/copy/move lines and notes to offline caches/services in Force Offline. Standalone `BriskersApi.createJob` is RPC, not confirmed offline. `_enterPayment` calls `_api.paymentOptions` and `_api.addPendingInvoicePayment` directly; `_finalizeEnteredPayments` explicitly blocks Force Offline. Thus OFFLINE CASH FINALIZATION NOT AVAILABLE and no guaranteed permanent number until sync. Need design durable offline cash receipt queue with immutable locally unique idempotency key, signed audit history, reconciliation against paid balance, duplicate prevention on replay, role control, visible 'payment pending sync' vs posted, local PDF status accuracy; no final 'Paid' until posted or clearly distinguish provisional local paid. Consider reserved num",
-      "skills": [
-        "api"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:28:28Z"
-    },
-    {
-      "id": 5760402393,
-      "title": "[P1][TIGERIQ NEWS] Hoàn thiện xuất bản bài/ảnh công khai và tự xác minh tin thật",
-      "url": "https://github.com/newsdayads/tigeriq-ai-lab/issues/4574",
-      "description": "TIGERIQ_JOB_V1\nSOURCE=Owner direct chat 2026-10-08: \"Tôi cần xem kết quả thực tế trên trang chứ không muốn nhìn vào thẻ công việc rồi đoán mò\"\nOWNER_DIRECT=true\nOWNER_POLICY=AUTO\nPRIORITY=P1\nCURRENT_STATE=READY_AUTOMATED_CODING\nTIGERIQ_EXECUTABLE=true\nAUTO_QUEUE=INCLUDED\nCAPABILITY=coding\nEXECUTION_SURFACE=CODING\nAUTONOMOUS_CODE=true\nMUTATION_OWNER=CORE_DYNAMIC_LEASE\nRESOURCE_SCOPE=TIGERIQ_NEWS_PUBLIC_ARTICLE_COVER_LIVE_E2E_V1\nPROJECT_ID=tigeriq-news\nWORK_PACKAGE_ID=news-autonomous-newsroom\nTARGET_REPOSITORY=newsdayads/tigeriq-media\nBASE_BRANCH=main\nRELATED_PARENT=4456\nRELATED_TRACKER=3899\nRELATED_SOAK=3904\nRESULT_INBOX=4426\nONE_RESOURCE_SCOPE_ONE_WRITER=true\nZERO_COST=true\nNO_PAID_COST=true\nNO_CREDENTIAL_CHANGE=true\nNO_SECURITY_BOUNDARY_CHANGE=true\nNO_DESTRUCTIVE=true\nNO_DIRECT_MAIN=true\nNO_PRODUCTION_RELEASE=true\nNO_VERCEL_DEPLOY=true\nNO_APP_CHROME_MUTATION=true\nAPP_CHROME_MUTATION=FORBIDDEN\nNO_CODEX=true\nINDEPENDENT_REVIEW_REQUIRED=true\nKEEP_OPEN_ON_STEP_COMPLETE=true\nLIVE_ACCEPTANCE_REQUIRED=true\nDONE=false\n\n## MỤC TIÊU THỰC TẾ\nTigerIQ News phải tự tìm tin -> xác minh -> viết -> rà soát độc lập -> tạo/đưa ảnh lên nguồn công khai -> xuất bản nội dung tới đúng nguồn website đang ",
-      "skills": [
-        "script"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:28:18Z"
-    },
-    {
-      "id": 5364578522,
-      "title": "Team Room — Standups, engineering chat, retrospectives and learning",
-      "url": "https://github.com/NTinkicht/Tabibi/issues/21",
-      "description": "# Tabibi Team Room\n\nThis is the permanent shared conversation space for Tabibi's five-actor engineering company: `chatgpt`, `codex`, `claude`, `gemini_agent`, and `gemini_chat`. Keep it open.\n\nThe binding collaboration rules are in `coordination/COLLABORATION_PROTOCOL.md`, and the company/team-culture rules are in `coordination/COMPANY_OPERATING_SYSTEM.md`. Read them with `AGENTS.md`, `coordination/AUTONOMY_PROTOCOL.md`, `coordination/ROLE_FAILOVER_PROTOCOL.md`, `coordination/WORK_QUEUE.md`, and current `coordination/STATE.json` before material work.\n\n`gemini_agent` and `gemini_chat` are distinct actors with separate capacity, leases, authorship, findings, review authority, and accountability.\n\n## What belongs here\n\nFormal delivery markers:\n- `HEARTBEAT`, `CHECKPOINT`;\n- role lease / handoff / failover markers;\n- `CAPACITY_DEGRADED`, `CAPACITY_RECOVERED`;\n- `RETRO_OPEN`, `RETRO_ENTRY`;\n- `PROCESS_PROPOSAL`, `CONSENSUS_ACK`, `CONSENSUS_AMEND`, `CONSENSUS_CHALLENGE`;\n- `TEAM_DECISION`, `LESSON_LEARNED`;\n- `TASK_CLAIM`, `TASK_DONE`, `TASK_PROPOSAL`, `AVAILABLE_FOR_WORK`.\n\nHuman-shaped engineering conversation is also welcome:\n- `STANDUP`;\n- `THOUGHT`;\n- `QUESTION` / `ANSWER`;\n- `REFAC",
-      "skills": [
-        "json"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:27:47Z"
-    },
-    {
-      "id": 5361348957,
-      "title": "Agent wake bus: Claude review handoffs (do not close)",
-      "url": "https://github.com/NTinkicht/Tabibi/issues/11",
-      "description": "## Purpose\nPermanent repository-level dispatch channel for Claude review work.\n\nClaude's primary runtime wake mechanism has been PR-activity subscription. Per-PR subscriptions can leave Claude idle when work moves to a new PR. This issue is intentionally permanent and must not be closed while Tabibi uses Claude as an independent reviewer.\n\n## Required Claude behavior\nWhen this channel first reaches Claude, establish the closest persistent subscription/monitoring mechanism available for this issue/repository and treat every new `HANDOFF_TO_CLAUDE` comment here as a dispatch to the named target PR/SHA. If issue-level event subscription is unsupported, use this issue as the canonical queue inspected by the existing recurring repository heartbeat and establish the target PR subscription immediately on each dispatch.\n\nA dispatch here does **not** replace the review evidence on the target PR. Review findings/verdicts remain on the target PR; this channel exists only to guarantee wake/dispatch continuity across PR changes.\n\n## Current dispatch queue\n1. PR #9 — coordination v4 review. Target exact head: `537d93a3226902a757ebc2fc90f37d4d6b8f9869` at time of initial queueing, but inspect PR ",
-      "skills": [
-        "script"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:27:41Z"
-    },
-    {
-      "id": 5784134858,
-      "title": "CON-01 coordination: saved project conversations (Claude implementation, Codex review and operations)",
-      "url": "https://github.com/davidelaverga/Sophia/issues/198",
-      "description": "The single coordination thread for **CON-01, saved project conversations** (mission pack v0.1, 2026-10-09, installed at `docs/missions/2026-10-09-con01-conversations/`). Records: [`docs/coordination/CON-01/`](https://github.com/davidelaverga/Sophia/tree/claude/con01-project-conversations/docs/coordination/CON-01) and [`docs/progress/CON-01.md`](https://github.com/davidelaverga/Sophia/blob/claude/con01-project-conversations/docs/progress/CON-01.md).\n\n| Item | Value |\n|---|---|\n| Implementer | Claude Code, session `session_01KUDtFK9gWthsXSrepcLQz3` (CON-01 attempt 1). It is the only writer of the feature source |\n| Reviewer and operator | Codex, session `01a1224a-32b4-7222-a017-50a277572d95` (`codex/con01-review-attempt-1`). It writes only review, evidence and runbook records |\n| Owner | Davide: product, the saved-text policy, spend, merge and release. Luis: the Studio's design and shared shell |\n| Branch | `claude/con01-project-conversations`, based on `main` `4f7470c` |\n| Message ids | `CON-01-CC-####` (Claude), `CON-01-CX-####` (Codex) |\n\n**Reservations (proposed in the G0 binding):**\n- contract amendment **A16** (`A16-project-conversations.json`);\n- migrations **0048–0050**;\n- ru",
-      "skills": [
-        "json"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:27:29Z"
-    },
-    {
-      "id": 5791699186,
-      "title": "Intake and document reads: the root email is parsed twice and whole files are copied with ToArray",
-      "url": "https://github.com/collisionengineers/pegasus/issues/1188",
-      "description": "## What happens\n\nEvery root `.eml` read runs `MimeMessage.LoadAsync` twice (display reader, then source reader) and copies the message bytes, and the Sent evidence poll parses each new MIME twice. Whole-file `ToArray()` copies sit on the intake source download (then again in the Source and Image pages and the MCP streaming endpoint, so a file is held three times), on retained asset bytes at eight sites, on blob upload payloads, on the OCR buffer, on the original report and estimate import reads, on the export archive, on the Principal API body (3-5 times the body size near the 42 MB cap), and on MSG and CFB extraction. The dominant full-page raster is extracted twice in PDF classification and the asset loop.\n\n## Expected\n\nOne parse and one buffer per read: pre-sized buffers exposed through `GetBuffer`, `Results.Bytes(ReadOnlyMemory<byte>)` on the MCP endpoint with range processing kept, `MemoryMarshal.TryGetArray` where `PageModel.File` needs `byte[]`, and the shared `ContentStream` helper. Opus rates each as a few ms and one LOH allocation per file; aggregate volume is low (17 Source/Image downloads, 5 uploads, about 107 UnifiedWork runs in 14 days), so this is CPU and memory hygi",
-      "skills": [
-        "api"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:27:28Z"
-    },
-    {
       "id": 5794991262,
       "title": "GH_BOUNTY_ACTOR_POLICY_FIELD_CREATE_20261010",
       "url": "https://github.com/09sd-org/gh-bounty-org-issue-field-lab-20261008/issues/9",
@@ -662,18 +649,6 @@
       "updated_at": "2026-10-10T20:19:46Z"
     },
     {
-      "id": 3077762326,
-      "title": "Build Listing Discovery Engine (PWA or React UI)",
-      "url": "https://github.com/Nobayprotocol/Nobay-Protocol/issues/2",
-      "description": "Create a simple web interface that pulls verified listings from ListingRegistry events.\n\nFeatures:\n- Connect via wallet (MetaMask, WalletConnect)\n- Read ListingVerified events and metadata\n- Show seller trust tier from StakingModule\n- Filter by keyword, trust tier, or timestamp\n\nType: Frontend / UI  \nLabels: help wanted, frontend, bounty",
-      "skills": [],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:18:15Z"
-    },
-    {
       "id": 5515702753,
       "title": "Jarvis publications — replies and Daily Board",
       "url": "https://github.com/braydenparker999/jarvis/issues/2",
@@ -686,20 +661,6 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T20:14:41Z"
-    },
-    {
-      "id": 5738922794,
-      "title": "Qualify owner-scoped semantic memory retrieval and reranking",
-      "url": "https://github.com/AstralDeep/AstralDeep/issues/348",
-      "description": "## Problem or idea\n\nCurrent memory_search filters live owner/project rows, constructs literal-token seeds and optionally scores/expands them with recency, importance and PPR. With no lexical seeds it returns empty before graph expansion. Existing LLM Factory embeddings do not mean memory recall consumes vectors. A reranker alone cannot recover a missing candidate. HF TEI, BAAI/BGE and newer Qwen text retrieval models motivate a bounded comparison, not a predicted accuracy gain.\n\n## Expected outcome\n\nDeliver a runnable, read-only qualification pilot for bounded semantic candidate generation and optional reranking of synthetic non-PHI personalization memory. Compare actual baseline, semantic candidates and ordering separately; export candidate-bound evidence supporting an explicit adoption/rejection decision. Keep production retrieval defaults unchanged until ordinary qualified adoption.\n\n## Environment\n\nMVP mode; owning repository: AstralDeep; production Python 3.11. Reviewed current remote main: `8d82a0b48493e5018bdf81a4f59c189a8b045f6b` (2026-10-06). Relevant source seams were rechecked against the earlier research baseline. Upstream commits are investigation snapshots, not approv",
-      "skills": [
-        "python"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:11:35Z"
     },
     {
       "id": 5720560754,
@@ -754,24 +715,43 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T19:30:14Z"
+    },
+    {
+      "id": 5458955395,
+      "title": "Cloud Revenue Command Dashboard",
+      "url": "https://github.com/Nish916/revenue-command-runner/issues/1",
+      "description": "# Cloud Revenue Command Dashboard\n\nUpdated: 2026-10-10 19:24:04 UTC\n\n## Decision\n## Evidence-based revenue execution\n- ROLE: AUTOMATION_ONLY. Cloud discovery is advisory only; authenticated mutations run in the local executor.\n- MODE: AUTOMATION_ONLY_SUPER_INFINITY_AGGRESSIVE\n- TARGET: Discover and rank legitimate machine-executable paid work requiring minimal human attendance; authenticated mutations remain local; never guarantee income.\n- TOKEN BALANCE: RustChain reports 177.1 RTC; this is not verified fiat proceeds or withdrawal readiness.\n- VERIFIED: Cognitive-OS PR #53 state is open.\n- VERIFIED: RustChain #2259 state is unknown.\n- NOW: No cloud-discovered opportunity qualifies as cash-near. Do not confuse screening-required roles, freelance listings, or buyer-intent signals with earnings; local authenticated executor owns real APPLY/CLAIM/START_WORK actions.\n- DISCOVERY ONLY — FREELANCE: [laborx] Robotics Engineer: build and ship a bot — parsed budget 6000.0; application/bid not yet executed.\n- APPLICATION PIPELINE (NOT CASH-NEAR): [nearskill] 3D Slicer Medical Imaging Evaluator — published floor/reference 125.0 USD; screening/application required.\n- DISCOVERY ONLY — INTENT BE",
+      "skills": [
+        "automation"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T19:24:05Z"
+    },
+    {
+      "id": 5794208549,
+      "title": "Source spot check 2026-10: 44 sources for a second reviewer",
+      "url": "https://github.com/here-be-dragons-ai/sovereign-models/issues/29",
+      "description": "A random sample of the scorecard's checked sources, drawn by `scripts/review_sample.py sheet --n 40 --seed 2026` (stratified by issuer and scope). Every source was read once already, partly by AI agents; this is the independent second check by a person. The share of confirmed sources goes into METHODOLOGY as a data-quality figure.\n\n**How:** open the link, check whether the page states the value in bold. Tick the box if it does. If it does not, leave it unticked and edit the line: write what the page says after `--`. When done, comment \"done\"; the result is read back with `review_sample.py apply`.\n\n- [ ] 1. `family/nemotron-3.5/compute` = **unknown** — https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16 (provider; note: location not stated) --\n- [ ] 2. `family/borealis2/recipe` = **weights** — https://huggingface.co/NbAiLab/borealis2-26b-a4b-preview (provider; note: CPT corpus includes internal and licensed material; SFT set not public; no code linked) --\n- [ ] 3. `family/hy4/recipe` = **weights** — https://huggingface.co/tencent/Hy4-preview (provider; note: weights plus fine-tuning example scripts; no pre-training code or data) --\n- [ ] 4. `family/salamandra/te",
+      "skills": [
+        "script"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T18:44:33Z"
     }
   ],
-  "count": 50,
+  "count": 49,
   "warnings": [],
   "execution": {
-    "status": "demo_completed",
-    "timestamp": "2026-10-10T20:29:46+00:00",
-    "kind": "csv_cleaning",
-    "result": {
-      "processed_rows": 3,
-      "output_rows": 2,
-      "duplicates_removed": 1,
-      "verified": true
-    },
-    "files": [
-      "clientes_limpios.csv",
-      "reporte.json"
-    ]
+    "status": "work_failed",
+    "timestamp": "2026-10-10T20:32:10+00:00",
+    "issue_url": "https://github.com/josenunezapps/josenunezapps.github.io/issues/1",
+    "error": "Expecting value: line 1 column 1 (char 0)"
   },
   "notice": "Candidatos públicos; pago y disponibilidad sin verificar. No se contacta a nadie."
 }
