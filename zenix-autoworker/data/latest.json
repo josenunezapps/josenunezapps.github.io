@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-10-10T20:43:08+00:00",
+  "generated_at": "2026-10-10T20:43:32+00:00",
   "opportunities": [
     {
       "id": 5387618577,
@@ -189,6 +189,22 @@
       "updated_at": "2026-10-10T20:00:24Z"
     },
     {
+      "id": 5779937201,
+      "title": "Compute board — shared GPU pods (uor-pod)",
+      "url": "https://github.com/UOR-Foundation/uor-r4/issues/2037",
+      "description": "Automatic mirror of the `uor-pod` ledger (`~/.local/share/uor-r4/compute/ledger.jsonl`). Successor of #1750. **Post only ledger lines and capacity reports here.** Discuss work on the milestone issues of the tracker #2028.\n\n### Owner rules (5–7 October)\n- **Caps**, all labs together: at most 4 running pods and $8/h. No new spending class.\n- **Ladder:** without `--gpu`, `uor-pod up` tries 2×RTX 5090, then 2×4090, then 2×PRO 6000, then one GPU of each.\n  - Datacenters: EUR-NO-1 (canonical volume), EU-RO-1, EUR-IS-1, then allowlisted regions by stock.\n  - Pods outside EUR-NO-1 are non-canonical. They get their data from the private HF store `caseyallard/uor-r4-store` and must archive results before `down`.\n- **Leases:**\n  - Identity is lab + session. Run `uor-pod status` first and share before you create.\n  - Lease with `--hours` covering the whole job plus margin, and renew it. An expiring lease is never a reason to stop a live job.\n  - Only an expired lease may be taken over. Release when done, then `down` if nobody else holds the pod.\n- **Storage:** durable output only on `/workspace`. Don't keep stopped pods as storage. Move downloaded results to iCloud with `cloud-store put`.\n- Fu",
+      "skills": [
+        "json"
+      ],
+      "score": 35,
+      "amount_mentions": [
+        "$8"
+      ],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:43:02Z"
+    },
+    {
       "id": 5659096903,
       "title": "[Bounty] Test the 2.40.0 browser half in your own DSH host (6 seats, screenshot + probe evidence)",
       "url": "https://github.com/Ikalus1988/MisakaNet/issues/2593",
@@ -354,20 +370,6 @@
       "updated_at": "2026-10-10T20:30:29Z"
     },
     {
-      "id": 5664544302,
-      "title": "[Bounty Proposal] fix(imports): prevent zip upload path traversal, shield storage exceptions, and validate job IDs (- proposed)",
-      "url": "https://github.com/BasedHardware/omi/issues/20187",
-      "description": "## Summary\nIn `backend/routers/imports.py` and `backend/database/import_jobs.py`, the data import pipeline contained critical security and error disclosure vulnerabilities:\n\n1. **Path Traversal on File Upload (`import_limitless_data`)**:\n   - The user-provided `file.filename` was directly joined with `TEMP_DIR`:\n     ```python\n     zip_path = os.path.join(TEMP_DIR, f\"{job.id}_{file.filename}\")\n     ```\n   - Filenames with path traversal sequences (`../../../../tmp/malicious.zip`) escaped the temp directory, allowing arbitrary file writes across the host filesystem.\n\n2. **Raw Internal Exception & Path Disclosure**:\n   - On write or disk failures during chunk streaming, the exception string (`str(e)`) was directly formatted into the client's HTTP 500 error response and persisted into the database (`f\"Failed to save uploaded file: {str(e)}\"`), leaking internal absolute filesystem paths and OS error details to clients.\n\n3. **Unvalidated Job IDs in Firestore Queries**:\n   - `get_import_job_status`, `cancel_import_job`, and `delete_import_job` did not validate `job_id`, allowing slashes or directory traversal sequences into Firestore document references.\n   - `get_import_jobs` lacked que",
-      "skills": [
-        "python"
-      ],
-      "score": 20,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:30:13Z"
-    },
-    {
       "id": 5767603643,
       "title": "Claim Scout Persistent Memory",
       "url": "https://github.com/close2ground1-debug/agent-market-x402/issues/1",
@@ -394,6 +396,46 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T20:19:40Z"
+    },
+    {
+      "id": 5602503136,
+      "title": "Build complete source-to-Legacy feature and route acceptance matrix",
+      "url": "https://github.com/MALIEV-Co-Ltd/Legacy.Maliev.Workflows/issues/98",
+      "description": "The source-commit ledger tracks commit disposition but does not prove every migrated service feature and Web/Intranet route works against production-derived local Aspire data. This is an explicit migration completion gate, not a deployment request.\n\nAcceptance:\n- Inventory each Legacy service feature, API, role, entity, background operation, and every Web/Intranet route against the latest committed original source; retain full source SHA, owning Legacy repo, main SHA, status, and exact evidence links.\n- Mark unverified items pending; distinguish source retirement approvals from migrations. Do not infer feature parity from a code mapping, route alias, smoke test, or green unit suite.\n- Record automated customer/employee authentication, permission, CRUD/lifecycle, validation, rollback/retry, cross-service effects, localization, responsive/browser/accessibility, and persisted-data checks as appropriate. Include safe failure/partial-failure evidence and suppress real notifications/payments/analytics in local review.\n- Verify the matrix against live source and each protected Legacy main, with a check that rejects missing routes/features or unsupported completion claims. Link per-service",
+      "skills": [
+        "api"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:43:20Z"
+    },
+    {
+      "id": 5793831021,
+      "title": "Map: acces-accessibility plugin",
+      "url": "https://github.com/jamon8888/Holo-RGAA/issues/310",
+      "description": "## Destination\n\nA working Claude Code plugin **`acces-accessibility`** at `rgaa-rs/plugins/acces-accessibility/`, declared as a second plugin in the root `.claude-plugin/marketplace.json`. Four skills — `setup`, `usage`, `audit-loop`, `generate-instructions` — that drive **our own `rgaa-mcp`** server. It is the *MCP-discipline* layer (install, field-mapping discipline, closed remediation loop, baking the workflow into a user's repo), complementary to the existing `rgaa-accessibility` plugin, which keeps the *domain* layer (106 criteria, triage, reports).\n\nThe map is done when every skill's contract and content shape is decided; implementation then follows (see Notes).\n\n## Notes\n\n**Domain**: RGAA 4.1.2 accessibility auditing. Tooling layer only — this map does not touch the 106-criteria catalogue or report generation.\n\n**Execution is in scope for this map** (overriding Wayfinder's plan-only default): the user asked for a built plugin. Decision tickets come first; implementation tickets graduate from the fog once the contracts are settled.\n\n**Skills every session should consult**: `mattpocock-skills:grilling` and `mattpocock-skills:domain-modeling` by default; `mattpocock-skills:rese",
+      "skills": [
+        "json"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:43:14Z"
+    },
+    {
+      "id": 5597928087,
+      "title": "[radar] SN open bounty 2026-09-26T22:41",
+      "url": "https://github.com/relayhop/sn-monetization-runtime/issues/1205",
+      "description": "New SN OPEN_BOUNTY detected:\n\n```\n1581934\tConstruction_and_Engineering\t2\t56\t5000\t1\t27.8\t9274\t27878\trecent@Construction_and_Engineering\tOPEN_BOUNTY,LOW_COMP\tShow Your Build Friday #3: Real-World Proof-of-Work [5,000 Sat Bounty] ⚡🔨\n```",
+      "skills": [],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:43:09Z"
     },
     {
       "id": 5317560534,
@@ -434,6 +476,20 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T20:42:54Z"
+    },
+    {
+      "id": 5119142806,
+      "title": "test(release): requalify both Production journeys after biopsy fixes",
+      "url": "https://github.com/relativityE/speaksharp/issues/1258",
+      "description": "<!-- pm-independent-queues:start -->\n## Independent Dev queues during review/CI\n\n[CLI Dev queue](https://github.com/relativityE/speaksharp/issues/1258#issuecomment-6101036097): #1581 repair/freeze → #1560 residual map → technical acquisition/identity/RECEIVED audit → wake acceptance. [App Dev queue](https://github.com/relativityE/speaksharp/issues/1258#issuecomment-6101036266): #1580 repair/freeze → serial rehearsal/cleanup packets → rendered journey closure audit → wake acceptance. No cross-branch writers; CLI PM serializes shared test-host usage and proves actual delivery. PM owns source review/CI/integration; both Devs stay on RWT until closure, then MVP.\n<!-- pm-independent-queues:end -->\n\n<!-- pm-live-checkpoint:start -->\n## Latest PM checkpoint — 10 October 2026\n\n#1258 remains **OPEN** on deployed current `main@1a724990e493fc2925028310d084cebeade24b5c`. #1576 and #1578 are merged. #1578 merged the fully qualified exact pair `2b3f341b7632fb8d877157a2072acf44c63f8bfc` / `3d62b75883690f49031decf9de159f34dbc12bea` under recorded PO authority as merge commit `1a724990e493fc2925028310d084cebeade24b5c`.\n\nProduction Canary 38077196756 attempt 1 failed closed on a transient Supabase M",
+      "skills": [
+        "api"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:42:51Z"
     },
     {
       "id": 5760402393,
@@ -478,20 +534,6 @@
       "updated_at": "2026-10-10T20:42:09Z"
     },
     {
-      "id": 5602503136,
-      "title": "Build complete source-to-Legacy feature and route acceptance matrix",
-      "url": "https://github.com/MALIEV-Co-Ltd/Legacy.Maliev.Workflows/issues/98",
-      "description": "The source-commit ledger tracks commit disposition but does not prove every migrated service feature and Web/Intranet route works against production-derived local Aspire data. This is an explicit migration completion gate, not a deployment request.\n\nAcceptance:\n- Inventory each Legacy service feature, API, role, entity, background operation, and every Web/Intranet route against the latest committed original source; retain full source SHA, owning Legacy repo, main SHA, status, and exact evidence links.\n- Mark unverified items pending; distinguish source retirement approvals from migrations. Do not infer feature parity from a code mapping, route alias, smoke test, or green unit suite.\n- Record automated customer/employee authentication, permission, CRUD/lifecycle, validation, rollback/retry, cross-service effects, localization, responsive/browser/accessibility, and persisted-data checks as appropriate. Include safe failure/partial-failure evidence and suppress real notifications/payments/analytics in local review.\n- Verify the matrix against live source and each protected Legacy main, with a check that rejects missing routes/features or unsupported completion claims. Link per-service",
-      "skills": [
-        "api"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:41:51Z"
-    },
-    {
       "id": 5595753081,
       "title": "[radar] SN open bounty 2026-09-26T17:05",
       "url": "https://github.com/relayhop/sn-monetization-runtime/issues/1203",
@@ -528,20 +570,6 @@
       "updated_at": "2026-10-10T20:41:07Z"
     },
     {
-      "id": 5369286954,
-      "title": "Research: evaluate requirement assessment workflows for useful ASVS alignment from prose",
-      "url": "https://github.com/mstarks01/work-agent/issues/661",
-      "description": "## Research question\n\nWhat architecture most reliably turns a prose system description into useful, evidence-backed ASVS alignment: the existing chapter-based finding pipeline, an assessment-planning workflow, or a requirement assessment workflow?\n\nThis is a research issue, not authorization for a production rewrite. The proposal is a hypothesis to test, not a demonstrated quality improvement.\n\n## Why investigate\n\nThe audit in #659 found a faithful ASVS catalog and useful structural/provenance controls, but weaknesses in requirement interpretation, reference answers, applicability exclusions, evidence routing, and review. Fixing those defects is necessary regardless of architectural direction.\n\nThe broader question is whether ASVS benefits from a different reasoning contract than STRIDE. ASVS specifies security requirements for design and verification; useful alignment does not require turning every unresolved requirement into a finding. Sharing execution infrastructure need not mean sharing verdict semantics.\n\nOfficial basis: [OWASP ASVS](https://owasp.org/www-project-application-security-verification-standard/) and [ASVS 5.0.0](https://github.com/OWASP/ASVS/tree/v5.0.0). Ground e",
-      "skills": [
-        "script"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:41:06Z"
-    },
-    {
       "id": 5615564640,
       "title": "[radar] SN open bounty 2026-09-28T13:43",
       "url": "https://github.com/relayhop/sn-monetization-runtime/issues/1216",
@@ -552,34 +580,6 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T20:41:01Z"
-    },
-    {
-      "id": 5789991986,
-      "title": "Customer business draft creation, private preview and revision pipeline",
-      "url": "https://github.com/christianza1989/nisiniai-puslapiai-monetizavimui/issues/77",
-      "description": "## Human objective\n\n2026-10-10 owner in core chat asks a real test-customer UI journey: registration, idea conversation, AI prepares a business/site for exact mokyai-ai.lt, delivers its work, receives critique and makes revisions. Owner later explicitly requests autonomous work until a usable test-customer platform today by evening. Domain inventory catalogue is separately implemented under issue76. Existing read-only owner consultation cannot build artifacts.\n\n## Core scope\n\nSeparate branch/worktree from accepted P3 checkpoint4db56be. New creation module over the same core identity/session/organization/portfolio and PostgreSQL; migration0013; durable private creation/job/events/revisions/artifacts; current tenant/session source/lease admission and completion; pinned bounded Codex generation adapter with no browser-selected tools/paths/models; typed safe draft renderer; canonical creation.v1 customer/v2 read/write wire; domain catalogue authenticated read mounts. Minimal shared config/API/migration metadata and reusable CLI transport changes with prior consultation regressions. Focused PostgreSQL/security/worker/persistence/cancel/idempotency/output/race checks and a portable runbo",
-      "skills": [
-        "api"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:40:57Z"
-    },
-    {
-      "id": 5781994659,
-      "title": "Temporary coordination: local Gitea/GSD repairs and two cloud dots",
-      "url": "https://github.com/HouMinXi/forge/issues/43",
-      "description": "# Temporary Forge coordination: local repairs and two cloud dots\n\nVersion 2, 2026-10-09. Scope: HouMinXi/forge only. The user authorized temporary publication of this coordination record on GitHub. It does not grant new credentials, resource budgets or execution permissions. Keep it open until the participating tasks finish or the user replaces it.\n\n## Sources and visibility\n\nGitHub is the shared coordination surface. The local agent can also inspect Gitea, the Yinhe tunnel and private GSD evidence; the cloud dots must not assume those resources are visible to them. Local ownership therefore includes Gitea triage, GSD architecture/checkpoints, cross-host acceptance and synchronization.\n\nVerified GitHub snapshot: draft PR [#26](https://github.com/HouMinXi/forge/pull/26) has head `7056f4ec4f2b93bc2a7377cc49e118eec4a7d80b`, base `d153329b9045107e79651894852a79fc9c87785e`, and 91 changed files. The supplied cloud handoff identifies diagnostic branch `ci/baseline-b-4dd7214cf1a24483a42c7e19cfc8ec28` and published diagnostic commit `443870dfb221e89d2d6b1fae172a815f7c0f2e47`. These are different candidates. Read their current tips before acting; a handoff timestamp is not a live status or ",
-      "skills": [
-        "python"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:40:54Z"
     },
     {
       "id": 5621730631,
@@ -741,19 +741,18 @@
   "count": 50,
   "warnings": [],
   "execution": {
-    "status": "demo_completed",
-    "timestamp": "2026-10-10T20:43:08+00:00",
-    "kind": "csv_cleaning",
-    "result": {
-      "processed_rows": 3,
-      "output_rows": 2,
-      "duplicates_removed": 1,
-      "verified": true
-    },
+    "status": "ready_for_review",
+    "timestamp": "2026-10-10T20:44:43+00:00",
+    "issue_url": "https://github.com/josenunezapps/josenunezapps.github.io/issues/1",
+    "model": "nvidia/nemotron-3.5-lightning:free",
+    "summary": "Programa Python generado por IA; se comprobo sintaxis (no funcionalidad)",
     "files": [
-      "clientes_limpios.csv",
-      "reporte.json"
-    ]
+      "zenix-autoworker/examples/clean_csv.py"
+    ],
+    "tests_passed": true,
+    "test_log": "Syntax OK\n\nUnable to find image 'python:3.12-slim' locally\n3.12-slim: Pulling from library/python\necc510c1e359: Pulling fs layer\n75b6a36c64a1: Pulling fs layer\n6912e23eb445: Pulling fs layer\nbbc5a1223747: Pulling fs layer\nbbc5a1223747: Waiting\n75b6a36c64a1: Verifying Checksum\n75b6a36c64a1: Download complete\n6912e23eb445: Verifying Checksum\n6912e23eb445: Download complete\necc510c1e359: Verifying Checksum\necc510c1e359: Download complete\nbbc5a1223747: Verifying Checksum\nbbc5a1223747: Download complete\necc510c1e359: Pull complete\n75b6a36c64a1: Pull complete\n6912e23eb445: Pull complete\nbbc5a1223747: Pull complete\nDigest: sha256:a6e34c598f2467ed0e9a8d349809fcd8b5c603269512df273a0bb1784edc11b1\nStatus: Downloaded newer image for python:3.12-slim\n",
+    "posted": false,
+    "delivered": false
   },
   "notice": "Candidatos públicos; pago y disponibilidad sin verificar. No se contacta a nadie."
 }
