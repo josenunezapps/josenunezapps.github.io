@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-10-10T18:58:02+00:00",
+  "generated_at": "2026-10-10T19:01:58+00:00",
   "opportunities": [
     {
       "id": 3975221665,
@@ -20,42 +20,6 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T17:56:57Z"
-    },
-    {
-      "id": 5794006692,
-      "title": "🎯 Bounty Alert: 13 New Opportunityies found",
-      "url": "https://github.com/dev-kp-eloper/BountyScout/issues/1566",
-      "description": "### Active Bounty Scan Results\n\n**Scan Time:** 2026-10-10 18:17 UTC\n\n#### 1. [check_contrast.py: add --json output and a CI action that fails on contrast regressions](https://github.com/codeswithroh/tastemaker/issues/85)\n- **Repository:** [codeswithroh/tastemaker](https://github.com/codeswithroh/tastemaker)\n- **Comments:** 17\n- **Last Updated:** 2026-10-10T18:17:01Z\n\n#### 2. [fix(auth): enforce admin role authorization on /api/admin/metrics endpoint](https://github.com/SecureBananaLabs/bug-bounty/issues/12784)\n- **Repository:** [SecureBananaLabs/bug-bounty](https://github.com/SecureBananaLabs/bug-bounty)\n- **Comments:** 2\n- **Last Updated:** 2026-10-10T18:16:20Z\n\n#### 3. [[Bounty: $60] Surface a chain-tip regression instead of reporting skipped](https://github.com/SUSU-LABS/susu-indexer/issues/47)\n- **Repository:** [SUSU-LABS/susu-indexer](https://github.com/SUSU-LABS/susu-indexer)\n- **Comments:** 4\n- **Last Updated:** 2026-10-10T18:14:57Z\n\n#### 4. [transformers-4.19.2-py3-none-any.whl: 37 vulnerabilities (highest severity is: 9.4) reachable](https://github.com/hughcdemocorp-mend/UniControl/issues/15)\n- **Repository:** [hughcdemocorp-mend/UniControl](https://github.com/hughcdemocor",
-      "skills": [
-        "json",
-        "api",
-        "bug"
-      ],
-      "score": 65,
-      "amount_mentions": [
-        "$60",
-        "$70"
-      ],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T18:26:29Z"
-    },
-    {
-      "id": 5775622341,
-      "title": "[Bounty: $40] Use/validate STELLAR_NETWORK_PASSPHRASE or remove it",
-      "url": "https://github.com/SUSU-LABS/susu-indexer/issues/46",
-      "description": "## Context\n\n`STELLAR_NETWORK_PASSPHRASE` is required and parsed into `config.networkPassphrase` (`supabase/functions/_shared/config.ts:25,81,126-132,156`) but no code ever reads it, and it is never validated against `STELLAR_NETWORK`. Worse, `scripts/deploy-indexer.sh:139-140` writes it with literal quotes (unlike the other values), so the stored value may contain quote characters. This is dead, misleading configuration.\n\n## Proposed Change\n\nEither remove `STELLAR_NETWORK_PASSPHRASE` from required config/docs/deploy, or keep it and add a network-to-passphrase consistency check in `loadConfig` and fix the deploy script to emit it unquoted.\n\n## Acceptance Criteria\n\n- No configured variable is unused, or its use is implemented and tested\n- A mismatched network/passphrase is rejected by `loadConfig` if kept\n- `deploy-indexer.sh` writes the passphrase without literal quotes\n\n**Suggested Label:** bug\n**ETA:** 24 hours",
-      "skills": [
-        "bug",
-        "script"
-      ],
-      "score": 55,
-      "amount_mentions": [
-        "$40"
-      ],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T18:28:19Z"
     },
     {
       "id": 4148310244,
@@ -143,6 +107,20 @@
       "updated_at": "2026-10-10T17:32:42Z"
     },
     {
+      "id": 5775609371,
+      "title": "[Bounty: $70] Replace per-round correlated subqueries in getGroup with a grouped aggregate",
+      "url": "https://github.com/SUSU-LABS/susu-api/issues/62",
+      "description": "## Context\n\n`src/db/groups.ts:409-429` runs four correlated scalar subqueries over `contributions`, `payouts` and `protocol_fees` for every round produced by the `rounds` CTE (`:417-426`). A group with R rounds and C contributions costs O(R) probes; a single `group by round` with filtered aggregates would be O(C+R).\n\n## Proposed Change\n\nRewrite as one aggregate over contributions joined to pre-grouped payouts/fees (or `LEFT JOIN LATERAL` with filtered aggregates).\n\n## Acceptance Criteria\n\n- `getGroup` returns identical rounds/member data for the same fixtures\n- `EXPLAIN` shows no per-round correlated subplan\n- Existing read-model tests continue to pass\n\n**Suggested Label:** performance\n**ETA:** 48 hours",
+      "skills": [],
+      "score": 35,
+      "amount_mentions": [
+        "$70"
+      ],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T18:59:02Z"
+    },
+    {
       "id": 5437130793,
       "title": "[RADAR] High-value blockchain bounty discovery",
       "url": "https://github.com/markabramov1993/arbitr/issues/8",
@@ -157,39 +135,6 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T18:57:29Z"
-    },
-    {
-      "id": 5794307468,
-      "title": "Spec: the Registry panel works on a real gateway — my cards first, no silent accesses, real identities, guided keys",
-      "url": "https://github.com/sofianbll/bifrost-plugin-registry/issues/65",
-      "description": "## Problem Statement\n\nSofian opened the Registry panel against a test copy of his real gateway (Bifrost 2.2.6): 771 discovered accesses (509 OpenRouter, 205 Vertex, 38 opencode-go, 15 Codex, 9 Google, 4 Claude, 4 deepseek, 3 typesafe), **59 saved model cards** (fiches modèles) built only from his subscriptions (Claude, Codex, Google, opencode-go, deepseek, typesafe), 0 groups, and 11 virtual keys, none managed yet. An Impeccable critique (two isolated reviews, live data) scored the journey **18/40 (\"Poor\")**. From his side:\n\n- **\"My models\" is not his models.** The page mixes his 59 cards with 731 reference models, alphabetical, 60 at a time. The first screen shows anonymous OpenRouter entries. He cannot filter to the cards saved in Registry, and a saved card looks the same as a model he never chose.\n- **Opening one of his cards adds an access he never chose.** Opening `claude-opus-5-5` merges the OpenRouter access that shares its Models.dev reference into the draft and preselects it in the Access tab (priced $4 / $20 per million tokens). The merged access has no exposed operations, so Review is blocked until he finds and removes it. Saving would route his subscription model throug",
-      "skills": [
-        "script"
-      ],
-      "score": 35,
-      "amount_mentions": [
-        "$4",
-        "$20"
-      ],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T18:57:24Z"
-    },
-    {
-      "id": 5779937201,
-      "title": "Compute board — shared GPU pods (uor-pod)",
-      "url": "https://github.com/UOR-Foundation/uor-r4/issues/2037",
-      "description": "Automatic mirror of the `uor-pod` ledger (`~/.local/share/uor-r4/compute/ledger.jsonl`). Successor of #1750. **Post only ledger lines and capacity reports here.** Discuss work on the milestone issues of the tracker #2028.\n\n### Owner rules (5–7 October)\n- **Caps**, all labs together: at most 4 running pods and $8/h. No new spending class.\n- **Ladder:** without `--gpu`, `uor-pod up` tries 2×RTX 5090, then 2×4090, then 2×PRO 6000, then one GPU of each.\n  - Datacenters: EUR-NO-1 (canonical volume), EU-RO-1, EUR-IS-1, then allowlisted regions by stock.\n  - Pods outside EUR-NO-1 are non-canonical. They get their data from the private HF store `caseyallard/uor-r4-store` and must archive results before `down`.\n- **Leases:**\n  - Identity is lab + session. Run `uor-pod status` first and share before you create.\n  - Lease with `--hours` covering the whole job plus margin, and renew it. An expiring lease is never a reason to stop a live job.\n  - Only an expired lease may be taken over. Release when done, then `down` if nobody else holds the pod.\n- **Storage:** durable output only on `/workspace`. Don't keep stopped pods as storage. Move downloaded results to iCloud with `cloud-store put`.\n- Fu",
-      "skills": [
-        "json"
-      ],
-      "score": 35,
-      "amount_mentions": [
-        "$8"
-      ],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T18:56:35Z"
     },
     {
       "id": 2303645423,
@@ -271,20 +216,20 @@
       "updated_at": "2026-10-10T17:07:32Z"
     },
     {
-      "id": 5734515632,
-      "title": "COORD BOARD (controllers)",
-      "url": "https://github.com/chetan-anand-hub/Lazytopper-Production/issues/973",
-      "description": "Mirror of Desktop/diff/COORD/BOARD.md (every board line is also a comment here). This description is the **STATUS SNAPSHOT**, rewritten by CI-1 (coordinator). Rules: LANE_RULES v1.1 · DISPATCH_PACK v1.3 · DECISIONs 1–26 (mirrored in BOARD.md).\n\n## STATUS SNAPSHOT — 2026-10-10T18:57Z\n**Trunk** `543177db` — fix(worksheet): PENDING-UPLOAD-1 PR-2 - a downloaded worksheet gets a pending record + sav\n**Production** version.json `543177db` · /api/health HTTP 200\n**Sessions:** live = CI-1, A, B, C1 · parked = C3 · C2 starts after MERGE #1034 · Sub-agent models OK? ✅ (verifiers Opus; mechanical Sonnet low)\n\n### Controllers (pack v1.3 §2; DECISION 19/23/25/26)\n| Role | State | Lane · branch/PR | State of lane | Next (in order) |\n|---|---|---|---|---|\n| **CI-1** (coordinator) | LIVE (eebaebbd) | Merge queue DONE: #1036 88333796 · #1038 20a534c0 · #1034 3be3e3da (all LIVE PASS) | queue complete; now coordinating (board 15-20 min, §3 collisions) | sweep #2 Mon 12 Oct · hourly summary + OWNER-BATCH |\n| **A** | FRESH A TAKEN OVER 17:0xZ | #1061 PENDING-UPLOAD-1 PR-1 open (lane-overlap re-run) · PR-2 option B (D50a) | #1037/#1046/#1013 temp-closed | PR-2 → TOPIC-FIX-1 (D50, before #1037; eval-gate",
+      "id": 5662643363,
+      "title": "refactor(api): remove db/tx handle passing and shrink transactions in billing and IM integrations",
+      "url": "https://github.com/okou-ai/okou/issues/37510",
+      "description": "Owner: @hulh122. Areas: billing, subscriptions, usage packs, and credits; IM integrations (Slack, Discord, Feishu, Telegram, Teams, AgentPhone).\n\n## Why\n\nThis is part of the API transaction reduction effort. The goal is fewer transactions, no `db` or `tx` handles passed between functions, and in the end only a few small transactions, each inside one command that does not pass `tx` on. At main `22f4f73d85f180ad2555f5178b5f5ddf403c943f`, production `signals/services` and `signals/routes` contain 418 transaction call sites. About 82% of them (341) pass `tx` to other functions, and about 1,900 parameters are typed as database handles. The scope is split by maintainer, using `git blame` on each transaction line and July–September commit activity. Sibling issues: #37510 (Linghan: billing, IM), #37511 (Lancy: workflow automation, Pi memory, storage), #37512 (Qiqi: connectors, remote access), #37513 (Ethan: chat runs, user/org lifecycle).\n\n## Scope (121 transaction call sites in 51 files)\n\nShape breakdown (heuristic scan of each callback body): passes tx 96, inline multi-statement 15, single statement 6, needs manual check 4. Line numbers are from `22f4f73`.\n\n### Billing, subscriptions, us",
       "skills": [
-        "json",
         "api",
+        "automation",
         "script"
       ],
       "score": 30,
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T18:57:05Z"
+      "updated_at": "2026-10-10T18:58:37Z"
     },
     {
       "id": 5627292444,
@@ -299,29 +244,13 @@
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T18:56:14Z"
+      "updated_at": "2026-10-10T18:58:01Z"
     },
     {
-      "id": 5662643363,
-      "title": "refactor(api): remove db/tx handle passing and shrink transactions in billing and IM integrations",
-      "url": "https://github.com/okou-ai/okou/issues/37510",
-      "description": "Owner: @hulh122. Areas: billing, subscriptions, usage packs, and credits; IM integrations (Slack, Discord, Feishu, Telegram, Teams, AgentPhone).\n\n## Why\n\nThis is part of the API transaction reduction effort. The goal is fewer transactions, no `db` or `tx` handles passed between functions, and in the end only a few small transactions, each inside one command that does not pass `tx` on. At main `22f4f73d85f180ad2555f5178b5f5ddf403c943f`, production `signals/services` and `signals/routes` contain 418 transaction call sites. About 82% of them (341) pass `tx` to other functions, and about 1,900 parameters are typed as database handles. The scope is split by maintainer, using `git blame` on each transaction line and July–September commit activity. Sibling issues: #37510 (Linghan: billing, IM), #37511 (Lancy: workflow automation, Pi memory, storage), #37512 (Qiqi: connectors, remote access), #37513 (Ethan: chat runs, user/org lifecycle).\n\n## Scope (121 transaction call sites in 51 files)\n\nShape breakdown (heuristic scan of each callback body): passes tx 96, inline multi-statement 15, single statement 6, needs manual check 4. Line numbers are from `22f4f73`.\n\n### Billing, subscriptions, us",
-      "skills": [
-        "api",
-        "automation",
-        "script"
-      ],
-      "score": 30,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T18:52:16Z"
-    },
-    {
-      "id": 5518867774,
-      "title": "OneCompany permanent Mistral Vibe cloud wake bus — owner dispatch only",
-      "url": "https://github.com/NTinkicht/OneCompany/issues/130",
-      "description": "Permanent, repository-scoped, GitHub-hosted Mistral wake bus. Do not close or reuse for unrelated providers. OneCompany native Work Units, current lease, exact SHA and dispatch policy are authority, not this issue's free-form comments. Initial `@mistral-vibe` wake is read-only, advisory and non-gating; it may inspect bounded source and report test ideas/failure analysis without writing code. It MUST fail closed when `MISTRAL_API_KEY` or subscription/PAYG-disabled guard is absent. No provider credentials in this issue. Full leased developer, binding reviewer and test-author lanes need separate qualification; no Codespace, laptop or open browser session may be required.",
+      "id": 5789461316,
+      "title": "Session foundation: retire Viewer compatibility, Encrypted Relay and Canonical Trace Store",
+      "url": "https://github.com/onsager-ai/semon/issues/380",
+      "description": "## Overview\n\nConsolidate Semon around harness-native session evidence and Session Intelligence. Retire full-workspace Viewer compatibility, Encrypted Relay, and the Canonical Trace Store in dependency-safe stages. The user explicitly requested this architecture and reviewable implementation PRs; merges, deployments, live infrastructure changes and user-data deletion are excluded.\n\n## Verified baseline\n\nAudited Semon main `02a9ac17d525eb134b5952f7e55d30b47b16b8ec` and Hub main `9623986977ec69869276fa4224a939e0c9fa4312` on October 10, 2026. At that original baseline Hub pinned Semon `8d38fbbf254d52a9b9bac123d47df8b9c593800d`. Latest resolved mains are Semon `263a02da278716ab2309b8e34a463419e5c781e5` and Hub `f2889d056c24cc4d5e6eaf10fbbd0108b12c34d0`; Hub main now pins that Semon commit. Unmerged retirement stack revisions remain distinct from main.\n\n- Focused Catalog, Transcript, Entry, identity, capabilities and source inventory APIs exist. Completed #319/#320 are foundations to reuse.\n- `MachineView::refresh_model_locked` and catalog demand still construct a native full-machine model; Hub startup/push warms build models. Returning small focused responses does not remove these prepa",
       "skills": [
         "api",
         "script"
@@ -330,21 +259,7 @@
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T18:57:31Z"
-    },
-    {
-      "id": 5767603643,
-      "title": "Claim Scout Persistent Memory",
-      "url": "https://github.com/close2ground1-debug/agent-market-x402/issues/1",
-      "description": "<!-- CLAIM_SCOUT_MEMORY_V1\n{\"schema\":1,\"opportunities\":{\"BountyBoard::cmmcal7st000r7owtmh29kmpe\":{\"externalId\":\"cmmcal7st000r7owtmh29kmpe\",\"title\":\"Excelente iOS UGC Campaign — Vienna — Add 20 Local Gems (95 EUR)\",\"description\":\"Help us make Excelente the go-to local discovery app in Vienna.\\n\\nMission: add 20 genuinely interesting local items/places in Vienna inside the Excelente iOS app.\\n\\nWhat wins:\\n- underrated local favorites with real utility\\n- neighborhood diversity (not all in one zone)\\n- practical, clear details that help users decide fast\\n- zero duplicates and no low-value filler entries\\n\\nSubmission requirements:\\n- complete all 20 entries in-app\\n- include a short recap of your top 5 additions and why they matter\\n\\nReward: 95 EUR equivalent bounty on acceptance.\\n\\nQuality over quantity. We reward useful discovery work.\",\"url\":\"https://www.bountyboard.work/bounties/cmmcal7st000r7owtmh29kmpe\",\"rewardUsd\":null,\"deadline\":null,\"explicitlyOpen\":true,\"eligible\":false,\"rulesVerified\":false,\"fundingVerified\":false,\"issuerVerified\":null,\"requiresUpfrontSpend\":null,\"successProbability\":null,\"feesUsd\":0,\"whyUnclaimed\":\"Needs per-bounty verification of rules, eligibility, f",
-      "skills": [
-        "script"
-      ],
-      "score": 20,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T18:56:45Z"
+      "updated_at": "2026-10-10T19:01:35Z"
     },
     {
       "id": 3825637122,
@@ -359,7 +274,21 @@
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T18:49:57Z"
+      "updated_at": "2026-10-10T18:59:59Z"
+    },
+    {
+      "id": 5767603643,
+      "title": "Claim Scout Persistent Memory",
+      "url": "https://github.com/close2ground1-debug/agent-market-x402/issues/1",
+      "description": "<!-- CLAIM_SCOUT_MEMORY_V1\n{\"schema\":1,\"opportunities\":{\"BountyBoard::cmmcal7st000r7owtmh29kmpe\":{\"externalId\":\"cmmcal7st000r7owtmh29kmpe\",\"title\":\"Excelente iOS UGC Campaign — Vienna — Add 20 Local Gems (95 EUR)\",\"description\":\"Help us make Excelente the go-to local discovery app in Vienna.\\n\\nMission: add 20 genuinely interesting local items/places in Vienna inside the Excelente iOS app.\\n\\nWhat wins:\\n- underrated local favorites with real utility\\n- neighborhood diversity (not all in one zone)\\n- practical, clear details that help users decide fast\\n- zero duplicates and no low-value filler entries\\n\\nSubmission requirements:\\n- complete all 20 entries in-app\\n- include a short recap of your top 5 additions and why they matter\\n\\nReward: 95 EUR equivalent bounty on acceptance.\\n\\nQuality over quantity. We reward useful discovery work.\",\"url\":\"https://www.bountyboard.work/bounties/cmmcal7st000r7owtmh29kmpe\",\"rewardUsd\":null,\"deadline\":null,\"explicitlyOpen\":true,\"eligible\":false,\"rulesVerified\":false,\"fundingVerified\":false,\"issuerVerified\":null,\"requiresUpfrontSpend\":null,\"successProbability\":null,\"feesUsd\":0,\"whyUnclaimed\":\"Needs per-bounty verification of rules, eligibility, f",
+      "skills": [
+        "script"
+      ],
+      "score": 20,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T18:56:45Z"
     },
     {
       "id": 5248733899,
@@ -421,10 +350,122 @@
       "updated_at": "2026-10-10T17:44:46Z"
     },
     {
-      "id": 5793749160,
-      "title": "Standardise on OpenCode v2 and retire the optional Arke harness",
-      "url": "https://github.com/michaeljosiah/ArkeStudio/issues/1698",
-      "description": "## Revised implementation scope · 2026-10-10\r\n\r\nThe author has deferred the replacement proposal below and explicitly requested retirement\r\nof the optional Arke engine. Implementation is in ArkeStudio PR #1699.\r\n\r\n- Keep OpenCode as the bundled default, pinned exactly to stable **2.0.26**. Qualify the\r\n  adapter and native binary together; do not support older v2 releases or unqualified future builds.\r\n- Remove the optional `arke` engine, its Local selector/availability, package and launch path.\r\n  Retain the existing Claude Code and Codex alternatives and Studio's application orchestration.\r\n- Remove Studio's Ollama-to-OpenCode discovery/publishing shim, model-map writer and reload\r\n  reconciliation. OpenCode owns native Ollama completion-model inventory and configured providers.\r\n  Studio refreshes the authoritative harness catalogue for open pickers. Discovery does not download models.\r\n- Remove the retired 256k catalogue floor. Preserve deliberate disablement, hardware eligibility,\r\n  explicit-choice-only policy, image requirements, confirmed tools for automatic local choices,\r\n  credential precedence, cancellation, recovery and shutdown tracking.\r\n- Keep Ollama runtime install",
+      "id": 5763134769,
+      "title": "Plan: remove repository Python tooling and complete the Zig/native cutover",
+      "url": "https://github.com/cataggar/debz/issues/420",
+      "description": "## Scope and current status\n\nPlanning snapshot: **2026-10-08**, main [`bf80d64444b01f23ccb02a7324687b1255077e92`](https://github.com/cataggar/debz/commit/bf80d64444b01f23ccb02a7324687b1255077e92). This issue owns the missing **repository-controlled Python-to-Zig tooling** scope and links it to the complete open-backlog plan below. **#86 and #274 remain the native transaction/cutover umbrellas.**\n\nThree contracts must not be conflated:\n\n| Contract | Current state | Completion condition |\n| --- | --- | --- |\n| Product runtime | `debz` is already Zig and has a fully static Linux release contract; production defaults remain legacy/dpkg-capable. | #86/#274: prove native/reference parity, remove production dpkg execution, and switch defaults coherently. |\n| Repository tooling | 41 tracked Python files at this snapshot: 28 helpers/implementations and 13 unittest modules. Zig-owned tests and build targets still launch Python. | PY1–PY6 below: port actual implementations and consumers, then qualify supported lanes without host Python. |\n| Reference oracles and target package contents | Repository Python drives genuine dpkg references; authenticated Debian/Ubuntu packages can legitimately co",
+      "skills": [
+        "python"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T19:01:48Z"
+    },
+    {
+      "id": 5794330910,
+      "title": "design(persistence): gate SQLite delivery and assess when Khepri adds value",
+      "url": "https://github.com/genagent/gen_agent/issues/482",
+      "description": "# Decision to make\n\nChoose storage by its ownership, history, search and recovery needs before introducing a suite-wide persistence abstraction. Start with a bounded SQLite feasibility gate for proposed shared memory and [Recall #476](https://github.com/genagent/gen_agent/issues/476); record when Khepri would justify a separate experiment.\n\nCurrent state: core does not persist conversations; provider CLIs own them. The local unreleased Delegate spike retains locked JSON task/profile records and marks interrupted work without paid replay. Server Invocations and Control.Ledger are process-lifetime; Peers optionally uses JSON. There is no existing suite-wide SQLite database to replace.\n\n## Proposed direction\n\n- Evaluate SQLite for same-host authoritative memory records/history and separate derived archive search. [WAL](https://www.sqlite.org/wal.html) supports readers and one writer, so contention and bounded busy/retry behavior must be tested. Keep short domain transactions and source/index updates atomic where they share one database.\n- Preserve existing stores until an actual requirement warrants migration. Durable task/evidence records need their own attempt identity, uncertain-ou",
+      "skills": [
+        "json"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T19:01:46Z"
+    },
+    {
+      "id": 5289746300,
+      "title": "PMCvitan UX/Auth implementation coordination",
+      "url": "https://github.com/JagPat/PMCvitan/issues/482",
+      "description": "## Purpose\n\nSingle coordination channel for the PMCvitan UX, authentication and role-validation work identified from the live application review.\n\nClaude Code should use this issue for **questions, assumptions, blockers and completion reports**. Do not store automation cursor/state here.\n\n## Current implementation priority\n\n1. Finish and preserve the currently active job/PR.\n2. Implement a working non-SMS onboarding route:\n   - admin-provisioned users and project roles;\n   - single-use activation links that can be copied/shared manually;\n   - email/password for Client, PMC, Architect and Consultant;\n   - approved-device + private PIN for Engineer, Contractor and Mistri;\n   - device revocation, expiry and rate limiting;\n   - hide or clearly disable SMS OTP while no provider is configured.\n3. Fix authority-aware Decision guidance/actions.\n4. Resolve contradictory progress-photo counts.\n5. Add project-scoped worker enrollment and attendance safeguards.\n6. Add automated role, authentication, revocation and project-isolation tests.\n7. Build, deploy and post the live URL/commit for independent validation.\n\n## Communication protocol\n\n### Blocking questions\nPost a comment beginning with `B",
+      "skills": [
+        "automation"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T19:01:43Z"
+    },
+    {
+      "id": 5779878641,
+      "title": "Tested flow ledger for #7536: which flows are tested, how and by whom",
+      "url": "https://github.com/langwatch/langwatch/issues/8553",
+      "description": "<!-- ledger:summary:start -->\n## Progress summary\n\n**1,016 rows: 812 pass, 164 have problems, 1 being walked, 39 not started.**\n<sub>Counted 2026-10-10 18:59 UTC by `ledger-count.py` from the body and 2400 comments; a later result, claim or release comment overrides the body.</sub>\n\n| | rows | ✅ | 🟡 | ❌ | ⚠️ | ⏳ | ⬜ |\n|---|---:|---:|---:|---:|---:|---:|---:|\n| Upgrade | 48 | 3 | 2 | 3 |  | 1 | 39 |\n| Custom flows | 12 | 8 |  |  | 4 |  |  |\n| Product flows | 30 | 25 | 3 |  | 2 |  |  |\n| Beyond the UI | 9 | 7 |  |  | 2 |  |  |\n| Areas | 917 | 769 | 54 |  | 94 |  |  |\n| **Total** | 1,016 | 812 | 59 | 3 | 102 | 1 | 39 |\n\n<details><summary>Per area</summary>\n\n| | rows | ✅ | 🟡 | ❌ | ⚠️ | ⏳ | ⬜ |\n|---|---:|---:|---:|---:|---:|---:|---:|\n| ANA · Analytics, dashboards and LWQL | 17 | 15 | 2 |  |  |  |  |\n| ANN · Annotations and queues | 10 | 10 |  |  |  |  |  |\n| AUD · Audit log | 8 | 7 |  |  | 1 |  |  |\n| AUTH · Sign-in and identity | 53 | 30 | 3 |  | 20 |  |  |\n| AUTO · Automations, triggers, alerts and reports | 26 | 25 |  |  | 1 |  |  |\n| AZ · Authorization: grants and roles | 22 | 22 |  |  |  |  |  |\n| BIL · Billing, usage metering and limits (Cloud) | 22 | 18 | 3 |  | 1 |  |  |\n| CA ·",
+      "skills": [
+        "automation"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T19:01:39Z"
+    },
+    {
+      "id": 5760402393,
+      "title": "[P1][TIGERIQ NEWS] Hoàn thiện xuất bản bài/ảnh công khai và tự xác minh tin thật",
+      "url": "https://github.com/newsdayads/tigeriq-ai-lab/issues/4574",
+      "description": "TIGERIQ_JOB_V1\nSOURCE=Owner direct chat 2026-10-08: \"Tôi cần xem kết quả thực tế trên trang chứ không muốn nhìn vào thẻ công việc rồi đoán mò\"\nOWNER_DIRECT=true\nOWNER_POLICY=AUTO\nPRIORITY=P1\nCURRENT_STATE=READY_AUTOMATED_CODING\nTIGERIQ_EXECUTABLE=true\nAUTO_QUEUE=INCLUDED\nCAPABILITY=coding\nEXECUTION_SURFACE=CODING\nAUTONOMOUS_CODE=true\nMUTATION_OWNER=CORE_DYNAMIC_LEASE\nRESOURCE_SCOPE=TIGERIQ_NEWS_PUBLIC_ARTICLE_COVER_LIVE_E2E_V1\nPROJECT_ID=tigeriq-news\nWORK_PACKAGE_ID=news-autonomous-newsroom\nTARGET_REPOSITORY=newsdayads/tigeriq-media\nBASE_BRANCH=main\nRELATED_PARENT=4456\nRELATED_TRACKER=3899\nRELATED_SOAK=3904\nRESULT_INBOX=4426\nONE_RESOURCE_SCOPE_ONE_WRITER=true\nZERO_COST=true\nNO_PAID_COST=true\nNO_CREDENTIAL_CHANGE=true\nNO_SECURITY_BOUNDARY_CHANGE=true\nNO_DESTRUCTIVE=true\nNO_DIRECT_MAIN=true\nNO_PRODUCTION_RELEASE=true\nNO_VERCEL_DEPLOY=true\nNO_APP_CHROME_MUTATION=true\nAPP_CHROME_MUTATION=FORBIDDEN\nNO_CODEX=true\nINDEPENDENT_REVIEW_REQUIRED=true\nKEEP_OPEN_ON_STEP_COMPLETE=true\nLIVE_ACCEPTANCE_REQUIRED=true\nDONE=false\n\n## MỤC TIÊU THỰC TẾ\nTigerIQ News phải tự tìm tin -> xác minh -> viết -> rà soát độc lập -> tạo/đưa ảnh lên nguồn công khai -> xuất bản nội dung tới đúng nguồn website đang ",
+      "skills": [
+        "script"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T19:01:38Z"
+    },
+    {
+      "id": 5669021751,
+      "title": "Epic: use classification and deterministic code where generic prompting is wasteful",
+      "url": "https://github.com/schlessera/brain-kit/issues/838",
+      "description": "## Outcome\n\nBrain-kit uses deterministic code for mechanical operations, a bounded classifier (Jev) for suitable semantic decisions, and LLM generation only where it adds value. Each candidate gets a recorded go/no-go. Accepted changes are implemented through scoped follow-up tasks attached here.\n\n## The question every candidate answers\n\n**Can code and/or a bounded classifier match or beat the current LLM/agent path on quality and reliability for this task?**\n\nCost is not measured. A bounded judgment or deterministic code is assumed cheaper than a generative call, so a candidate whose quality and reliability are on par or better is a go. The evaluation exists to establish feasibility, reliability and quality. Shipped product cost tracking is unaffected.\n\n## Lean evaluation protocol (maintainer ruling, 2026-10-10)\n\n1. **Arms, all on identical inputs:**\n   - **Current path:** the shipped skill, prompt or command, run against the real model it uses today (`claude-sonnet-5-5` unless the product path uses another).\n   - **Candidate:** code plus Jev (`jev-1.13.0`) Choice, Noul or Score judgments.\n   - **Deterministic baseline:** any existing code-only baseline.\n2. **Cases:** fictional Od",
+      "skills": [
+        "json"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T19:01:36Z"
+    },
+    {
+      "id": 5794268366,
+      "title": "Track safe installation, release provenance, recovery, and provider drift",
+      "url": "https://github.com/drewt5/cursor-plugins/issues/2",
+      "description": "## Outcome\n\nA user can install, update, diagnose, roll back, and uninstall this portable pstack fork without losing unrelated skills or learning receipt internals. A maintainer can identify the exact installed release and detect provider drift without managing the user's whole coding environment.\n\nThis is the execution plan, not a claim that the features already exist. The 21 child issues below are deliberately bounded implementation or acceptance tasks. Each includes starting files, concrete work, behavioral acceptance criteria, explicit non-goals, and completion evidence. Native sub-issue and blocked-by relationships mirror the links in the issue bodies.\n\n## Baseline and evidence\n\nThe plan was grounded against [main at 6fc8c895](https://github.com/drewt5/cursor-plugins/tree/6fc8c8956bfdbd52194204876155be0d9f9d497d), including merged PR #1.\n\n- [install.mjs](https://github.com/drewt5/cursor-plugins/blob/6fc8c8956bfdbd52194204876155be0d9f9d497d/pstack/scripts/install.mjs) copies one shared package and generates host files. It defaults to all three CLI hosts, tracks hashes, and can adopt identical unowned files.\n- [lifecycle.test.mjs](https://github.com/drewt5/cursor-plugins/blob/6fc",
+      "skills": [
+        "script"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T19:01:14Z"
+    },
+    {
+      "id": 5669022101,
+      "title": "core: evaluate JEV routing and deterministic writes for smart capture",
+      "url": "https://github.com/schlessera/brain-kit/issues/839",
+      "description": "## Context\n\nPart of #838. Follow the epic's shared discovery/evaluation protocol and binding constraints. Source inspected on 2026-10-01 at main 0a6389cf3f30341db7093e195637cf08a0f27e6a.\n\n`brain add --smart` delegates to a coding-agent skill rather than performing a bounded classification (`flags.smart`, [`packages/core/src/cli/commands/add.ts:25-38`](https://github.com/schlessera/brain-kit/blob/0a6389cf3f30341db7093e195637cf08a0f27e6a/packages/core/src/cli/commands/add.ts#L25-L38)). Ordinary ingestion already has deterministic title matching and writes (`classifyContent`, [`packages/core/src/lib/ingestion.ts:79-139`](https://github.com/schlessera/brain-kit/blob/0a6389cf3f30341db7093e195637cf08a0f27e6a/packages/core/src/lib/ingestion.ts#L79-L139)). Runtime taxonomy supports custom strings but has no semantic type description (`typeSpecSchema`, [`packages/core/src/lib/config.ts:50-82`](https://github.com/schlessera/brain-kit/blob/0a6389cf3f30341db7093e195637cf08a0f27e6a/packages/core/src/lib/config.ts#L50-L82)).\n\n## Question\n\nCan deterministic matching plus Jev Choice pick the note type, the append target (or none) and tags as reliably as today's `/add --smart` agent skill?\n\nFollow ",
+      "skills": [
+        "script"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T19:01:02Z"
+    },
+    {
+      "id": 5602503136,
+      "title": "Build complete source-to-Legacy feature and route acceptance matrix",
+      "url": "https://github.com/MALIEV-Co-Ltd/Legacy.Maliev.Workflows/issues/98",
+      "description": "The source-commit ledger tracks commit disposition but does not prove every migrated service feature and Web/Intranet route works against production-derived local Aspire data. This is an explicit migration completion gate, not a deployment request.\n\nAcceptance:\n- Inventory each Legacy service feature, API, role, entity, background operation, and every Web/Intranet route against the latest committed original source; retain full source SHA, owning Legacy repo, main SHA, status, and exact evidence links.\n- Mark unverified items pending; distinguish source retirement approvals from migrations. Do not infer feature parity from a code mapping, route alias, smoke test, or green unit suite.\n- Record automated customer/employee authentication, permission, CRUD/lifecycle, validation, rollback/retry, cross-service effects, localization, responsive/browser/accessibility, and persisted-data checks as appropriate. Include safe failure/partial-failure evidence and suppress real notifications/payments/analytics in local review.\n- Verify the matrix against live source and each protected Legacy main, with a check that rejects missing routes/features or unsupported completion claims. Link per-service",
       "skills": [
         "api"
       ],
@@ -432,7 +473,19 @@
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T18:57:54Z"
+      "updated_at": "2026-10-10T19:00:55Z"
+    },
+    {
+      "id": 5794068339,
+      "title": "ROOT INTAKE — Acting Commercial Manager commissioning + Bounty Reaper final-mile resolution",
+      "url": "https://github.com/amillimatrix-eng/CARBON-Creation-Hub/issues/32",
+      "description": "# ROOT INTAKE — Acting Commercial Manager commissioning + Bounty Reaper final-mile resolution\n\n**Date:** 2026-10-10  \n**Submitting role:** Owner-appointed Acting Commercial Manager (temporary; governance finalization pending)  \n**Reporting route:** Direct to ROOT / Route Intake, as instructed by the Owner, until ROOT/T-GOV changes that flow  \n**Classification:** GOVERNANCE-READY ROLE-BOUNDARY + EXISTING P0 REAPER-COMPLETION RECONCILIATION  \n**Priority:** Link to existing P0 primary Matrix recovery / Bounty Reaper execution regression. Do not displace ROOT's existing P0 intake-clearance order.  \n**Lifecycle:** PROPOSAL FOR ROOT DISPOSITION — no Blue State registry, mandate hash, worker, tracker, schedule, commercial writer, or external bounty state changed by this issue.\n\n## 1. Exact issue found\n\nThe current canonical `AMX/ROOT/INTAKE/INTAKE_INDEX.md` still lists **OCC-04 — Reaper Final-Mile Completion Semantics** as **PENDING GOVERNANCE / GOVERNANCE-READY**. It preserves the Owner's 2026-10-04 chain:\n\n`analysis → validated fix → package/finalize → authorized submission/handoff → external receipt → terminal result`\n\nThe same index explicitly states that Bounty Reaper must remain its",
+      "skills": [],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T18:58:07Z"
     },
     {
       "id": 5261240491,
@@ -447,76 +500,6 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T18:57:50Z"
-    },
-    {
-      "id": 5779878641,
-      "title": "Tested flow ledger for #7536: which flows are tested, how and by whom",
-      "url": "https://github.com/langwatch/langwatch/issues/8553",
-      "description": "<!-- ledger:summary:start -->\n## Progress summary\n\n**1,016 rows: 810 pass, 166 have problems, 1 being walked, 39 not started.**\n<sub>Counted 2026-10-10 18:56 UTC by `ledger-count.py` from the body and 2397 comments; a later result, claim or release comment overrides the body.</sub>\n\n| | rows | ✅ | 🟡 | ❌ | ⚠️ | ⏳ | ⬜ |\n|---|---:|---:|---:|---:|---:|---:|---:|\n| Upgrade | 48 | 3 | 2 | 3 |  | 1 | 39 |\n| Custom flows | 12 | 8 |  |  | 4 |  |  |\n| Product flows | 30 | 25 | 3 |  | 2 |  |  |\n| Beyond the UI | 9 | 7 |  |  | 2 |  |  |\n| Areas | 917 | 767 | 56 |  | 94 |  |  |\n| **Total** | 1,016 | 810 | 61 | 3 | 102 | 1 | 39 |\n\n<details><summary>Per area</summary>\n\n| | rows | ✅ | 🟡 | ❌ | ⚠️ | ⏳ | ⬜ |\n|---|---:|---:|---:|---:|---:|---:|---:|\n| ANA · Analytics, dashboards and LWQL | 17 | 15 | 2 |  |  |  |  |\n| ANN · Annotations and queues | 10 | 10 |  |  |  |  |  |\n| AUD · Audit log | 8 | 7 |  |  | 1 |  |  |\n| AUTH · Sign-in and identity | 53 | 30 | 3 |  | 20 |  |  |\n| AUTO · Automations, triggers, alerts and reports | 26 | 25 |  |  | 1 |  |  |\n| AZ · Authorization: grants and roles | 22 | 22 |  |  |  |  |  |\n| BIL · Billing, usage metering and limits (Cloud) | 22 | 18 | 3 |  | 1 |  |  |\n| CA ·",
-      "skills": [
-        "automation"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T18:57:42Z"
-    },
-    {
-      "id": 5364578522,
-      "title": "Team Room — Standups, engineering chat, retrospectives and learning",
-      "url": "https://github.com/NTinkicht/Tabibi/issues/21",
-      "description": "# Tabibi Team Room\n\nThis is the permanent shared conversation space for Tabibi's five-actor engineering company: `chatgpt`, `codex`, `claude`, `gemini_agent`, and `gemini_chat`. Keep it open.\n\nThe binding collaboration rules are in `coordination/COLLABORATION_PROTOCOL.md`, and the company/team-culture rules are in `coordination/COMPANY_OPERATING_SYSTEM.md`. Read them with `AGENTS.md`, `coordination/AUTONOMY_PROTOCOL.md`, `coordination/ROLE_FAILOVER_PROTOCOL.md`, `coordination/WORK_QUEUE.md`, and current `coordination/STATE.json` before material work.\n\n`gemini_agent` and `gemini_chat` are distinct actors with separate capacity, leases, authorship, findings, review authority, and accountability.\n\n## What belongs here\n\nFormal delivery markers:\n- `HEARTBEAT`, `CHECKPOINT`;\n- role lease / handoff / failover markers;\n- `CAPACITY_DEGRADED`, `CAPACITY_RECOVERED`;\n- `RETRO_OPEN`, `RETRO_ENTRY`;\n- `PROCESS_PROPOSAL`, `CONSENSUS_ACK`, `CONSENSUS_AMEND`, `CONSENSUS_CHALLENGE`;\n- `TEAM_DECISION`, `LESSON_LEARNED`;\n- `TASK_CLAIM`, `TASK_DONE`, `TASK_PROPOSAL`, `AVAILABLE_FOR_WORK`.\n\nHuman-shaped engineering conversation is also welcome:\n- `STANDUP`;\n- `THOUGHT`;\n- `QUESTION` / `ANSWER`;\n- `REFAC",
-      "skills": [
-        "json"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T18:57:18Z"
-    },
-    {
-      "id": 5361348957,
-      "title": "Agent wake bus: Claude review handoffs (do not close)",
-      "url": "https://github.com/NTinkicht/Tabibi/issues/11",
-      "description": "## Purpose\nPermanent repository-level dispatch channel for Claude review work.\n\nClaude's primary runtime wake mechanism has been PR-activity subscription. Per-PR subscriptions can leave Claude idle when work moves to a new PR. This issue is intentionally permanent and must not be closed while Tabibi uses Claude as an independent reviewer.\n\n## Required Claude behavior\nWhen this channel first reaches Claude, establish the closest persistent subscription/monitoring mechanism available for this issue/repository and treat every new `HANDOFF_TO_CLAUDE` comment here as a dispatch to the named target PR/SHA. If issue-level event subscription is unsupported, use this issue as the canonical queue inspected by the existing recurring repository heartbeat and establish the target PR subscription immediately on each dispatch.\n\nA dispatch here does **not** replace the review evidence on the target PR. Review findings/verdicts remain on the target PR; this channel exists only to guarantee wake/dispatch continuity across PR changes.\n\n## Current dispatch queue\n1. PR #9 — coordination v4 review. Target exact head: `537d93a3226902a757ebc2fc90f37d4d6b8f9869` at time of initial queueing, but inspect PR ",
-      "skills": [
-        "script"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T18:57:09Z"
-    },
-    {
-      "id": 5782981294,
-      "title": "[CI][P1] Reduce PR workflow fanout and eliminate indefinite Pending checks",
-      "url": "https://github.com/skerishKang/ai-revenue-lab/issues/3989",
-      "description": "<!-- CENTRAL_20261010_3989_LOCAL2_MERGED_CURRENT -->\n## CURRENT #3989 COMPONENTS · 2026-10-10\n\n**전체 이슈 OPEN / B66·B62 브라우저 QA 정밀 선택 단계 LOCAL2 완료.** [PR #4046](https://github.com/skerishKang/ai-revenue-lab/pull/4046) **SQUASH MERGED** `aaf44a785490a14545f840006582a5c4bc393875` (source HEAD `a4220263f2da7560d8f6ede5e0d2369d3b6d7814`, **25 SUCCESS / 0 FAILURE / 0 PENDING**).\n\n- `apps/padiem-chat/app/b66_*`, `static/b66-quote-runtime.js` 단독 수정 → B62 일반 화면 QA planner **15 → 0 lane**; 공유 `app_factory.py`, 인증/세션/공유 static/mixed 등 → 기존 적절한 lane 집합 유지. 불확실한 변경·초대형 PR·파일목록 API 실패·planner/manifest 변경 → **16 lane 모두 실행(fail-open)**.\n- 원래 B66 PR에서 B62 브라우저 QA **15 lane 실제 작업시간 합계 984초**였고, 새 분류기의 B66 단독 실행은 **약 6초 계획 작업**으로 평가됨. **이 둘은 동일 코드 PR을 양쪽에서 실재 실행한 통제된 전후 비교가 아니므로** 984→6을 B66 전체 PR critical path 또는 실제 사용료 절감으로 단정하지 않는다. source matrix상 전체 워크플로 **11→9** 예상, 3개 static 감사 워크플로는 **1 workflow/3 job**으로 통합; 16개 lane/보안 스크립트/56개 B66 JS 테스트 보존.\n- 기존 [#4051](https://github.com/skerishKang/ai-revenue-lab/pull/4051) Engine/Living Learning 중복 트리거 감소도 병합 및 실제 무해한 LL-only before/after Draft 검증 완료. 신규 B14 append-only fast CI 및 B66 #4028 테스트 구조 정리도 이미 완료; 중복 구현 금지.\n- **잔여 #3989:** B62 Padiem Chat CI (",
-      "skills": [
-        "api"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T18:56:55Z"
-    },
-    {
-      "id": 5603480693,
-      "title": "Rust release: simplify fresh installation and delete remaining production Python",
-      "url": "https://github.com/craigbalding/safeyolo/issues/822",
-      "description": "Parent: [Rust product phase](https://github.com/craigbalding/safeyolo/issues/815). Final integration consumes the policy, host, guest/coordination, credential, workflow and operator-UX results. Start the minimal native install path with the first usable CLI; final release acceptance remains here.\n\n## Preparation update — 3 October 2026\n\nPrepared against master [`f1e16b4f`](https://github.com/craigbalding/safeyolo/commit/f1e16b4f94f1a829da92bef4d875c720dce03cfd) and tracked in [Rust product phase, Project 2](https://github.com/users/craigbalding/projects/2). Craig’s 4 October direction overrides the Project 1 completion gate: start actual #816 P1/P4/P6 coding with minimal #822 installation support no later than 22:07 UTC on 4 October 2026. Preserve unfinished Project 1 work at a safe checkpoint. Refresh the accepted master and relevant issue/PR results at that handoff; this revision is an analysis baseline, not a frozen implementation candidate. Existing acceptance labels and operator decisions remain in force. This preparation marks no case passed.\n\n[#880](https://github.com/craigbalding/safeyolo/pull/880) completed the proxy cutover, [#893](https://github.com/craigbalding/safeyolo",
-      "skills": [
-        "python"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T18:56:39Z"
     },
     {
       "id": 5515702753,
@@ -543,18 +526,6 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T18:49:18Z"
-    },
-    {
-      "id": 5794068339,
-      "title": "ROOT INTAKE — Acting Commercial Manager commissioning + Bounty Reaper final-mile resolution",
-      "url": "https://github.com/amillimatrix-eng/CARBON-Creation-Hub/issues/32",
-      "description": "# ROOT INTAKE — Acting Commercial Manager commissioning + Bounty Reaper final-mile resolution\n\n**Date:** 2026-10-10  \n**Submitting role:** Owner-appointed Acting Commercial Manager (temporary; governance finalization pending)  \n**Reporting route:** Direct to ROOT / Route Intake, as instructed by the Owner, until ROOT/T-GOV changes that flow  \n**Classification:** GOVERNANCE-READY ROLE-BOUNDARY + EXISTING P0 REAPER-COMPLETION RECONCILIATION  \n**Priority:** Link to existing P0 primary Matrix recovery / Bounty Reaper execution regression. Do not displace ROOT's existing P0 intake-clearance order.  \n**Lifecycle:** PROPOSAL FOR ROOT DISPOSITION — no Blue State registry, mandate hash, worker, tracker, schedule, commercial writer, or external bounty state changed by this issue.\n\n## 1. Exact issue found\n\nThe current canonical `AMX/ROOT/INTAKE/INTAKE_INDEX.md` still lists **OCC-04 — Reaper Final-Mile Completion Semantics** as **PENDING GOVERNANCE / GOVERNANCE-READY**. It preserves the Owner's 2026-10-04 chain:\n\n`analysis → validated fix → package/finalize → authorized submission/handoff → external receipt → terminal result`\n\nThe same index explicitly states that Bounty Reaper must remain its",
-      "skills": [],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T18:44:54Z"
     },
     {
       "id": 5794208549,
@@ -623,18 +594,6 @@
       "updated_at": "2026-10-10T18:27:32Z"
     },
     {
-      "id": 5793767970,
-      "title": "[Interop Pilot] Pastebin → GitHub → Zorgax evidence ingestion (MYZ-265)",
-      "url": "https://github.com/MyZubster-Ecosystem/myzubster/issues/1591",
-      "description": "## Context\nTracking: [Linear MYZ-265](https://linear.app/myzubster/issue/MYZ-265/pilot-interoperabilita-pastebin-github-zorgax-read-only-antispam)\n\nPastebin currently hosts public MyZubster-related texts, but **no technical integration has been demonstrated**. Five recent comments were reviewed manually and all contained the same suspicious cryptocurrency exploit promotion. Comments are not evidence of contributors.\n\n## Scope (proposed; no additional VPS costs)\n- Evaluate a compliant read-only ingestion method for **explicitly approved public pastes**.\n- Record source URL, declared author, timestamp, content digest, provenance, rights/consent and review status.\n- Apply allowlisting, deduplication, secret/PII detection, suspicious-link and spam filtering; treat external text as untrusted data and never execute instructions/code from it.\n- Link to a GitHub identity/repository only after explicit ownership verification.\n- Send sanitized material to Zorgax as a **Knowledge candidate**, requiring human review before inclusion in Knowledge Graph or Contributor Passport.\n- Document a harmless test paste → verified GitHub reference → Zorgax candidate, including reproducible evidence and op",
-      "skills": [],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T18:24:30Z"
-    },
-    {
       "id": 5530024379,
       "title": "eval: tool-calling SLM tournament and Agent0-style self-evolution track",
       "url": "https://github.com/kvnloo/evolution-lab/issues/23",
@@ -691,11 +650,11 @@
       "updated_at": "2026-10-10T17:19:32Z"
     }
   ],
-  "count": 46,
+  "count": 44,
   "warnings": [],
   "execution": {
     "status": "demo_completed",
-    "timestamp": "2026-10-10T18:58:02+00:00",
+    "timestamp": "2026-10-10T19:01:58+00:00",
     "kind": "csv_cleaning",
     "result": {
       "processed_rows": 3,
