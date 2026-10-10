@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-10-10T19:02:55+00:00",
+  "generated_at": "2026-10-10T19:03:51+00:00",
   "opportunities": [
     {
       "id": 3975221665,
@@ -38,24 +38,6 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T18:16:19Z"
-    },
-    {
-      "id": 4148310577,
-      "title": "[BOUNTY $100] HOOK: Pre-tool-use hook that blocks destructive bash commands",
-      "url": "https://github.com/claude-builders-bounty/claude-builders-bounty/issues/3",
-      "description": "## 💰 Bounty: $100 — powered by [Opire](https://opire.dev)\n\n## Description\nCreate a Claude Code `pre-tool-use` hook in Python or bash that intercepts\ndangerous bash commands before they are executed.\n\n## Acceptance Criteria\n- [ ] Hook follows Claude Code hooks format (`~/.claude/hooks/`)\n- [ ] Blocks these patterns: `rm -rf`, `DROP TABLE`, `git push --force`,\n      `TRUNCATE`, `DELETE FROM` without a WHERE clause\n- [ ] Logs every blocked attempt to `~/.claude/hooks/blocked.log`\n      with: timestamp, attempted command, project path\n- [ ] Displays a clear message to Claude explaining why the command was blocked\n- [ ] Does not interfere with normal bash commands\n- [ ] README with installation in 2 commands or fewer\n\n## How to Claim\n1. Comment `/opire try` in this issue\n2. Submit a PR with the hook + README\n3. Payment is released automatically on merge ✅\n\n## Resources\n- Claude Code hooks docs: https://docs.anthropic.com/claude-code/hooks",
-      "skills": [
-        "python",
-        "script"
-      ],
-      "score": 55,
-      "amount_mentions": [
-        "$100",
-        "$100"
-      ],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T17:00:14Z"
     },
     {
       "id": 5775623463,
@@ -122,6 +104,22 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T19:02:35Z"
+    },
+    {
+      "id": 5779937201,
+      "title": "Compute board — shared GPU pods (uor-pod)",
+      "url": "https://github.com/UOR-Foundation/uor-r4/issues/2037",
+      "description": "Automatic mirror of the `uor-pod` ledger (`~/.local/share/uor-r4/compute/ledger.jsonl`). Successor of #1750. **Post only ledger lines and capacity reports here.** Discuss work on the milestone issues of the tracker #2028.\n\n### Owner rules (5–7 October)\n- **Caps**, all labs together: at most 4 running pods and $8/h. No new spending class.\n- **Ladder:** without `--gpu`, `uor-pod up` tries 2×RTX 5090, then 2×4090, then 2×PRO 6000, then one GPU of each.\n  - Datacenters: EUR-NO-1 (canonical volume), EU-RO-1, EUR-IS-1, then allowlisted regions by stock.\n  - Pods outside EUR-NO-1 are non-canonical. They get their data from the private HF store `caseyallard/uor-r4-store` and must archive results before `down`.\n- **Leases:**\n  - Identity is lab + session. Run `uor-pod status` first and share before you create.\n  - Lease with `--hours` covering the whole job plus margin, and renew it. An expiring lease is never a reason to stop a live job.\n  - Only an expired lease may be taken over. Release when done, then `down` if nobody else holds the pod.\n- **Storage:** durable output only on `/workspace`. Don't keep stopped pods as storage. Move downloaded results to iCloud with `cloud-store put`.\n- Fu",
+      "skills": [
+        "json"
+      ],
+      "score": 35,
+      "amount_mentions": [
+        "$8"
+      ],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T19:03:07Z"
     },
     {
       "id": 5775609371,
@@ -218,22 +216,6 @@
       "updated_at": "2026-10-10T17:07:32Z"
     },
     {
-      "id": 5421407279,
-      "title": "v6.3.10 Feedback & Bug Reports",
-      "url": "https://github.com/woopstar/hsem/issues/978",
-      "description": "## v6.3.x Feedback & Bug Reports\n\nThis issue is the central place for feedback, questions, and bug reports related to the **HSEM v6.3.x** release.\n\n> The previous feedback thread ([#732](https://github.com/woopstar/hsem/issues/732)) covered v6.2.x and is now closed. Please post all new feedback here.\n\n### Before posting\n\n1. **Read the [release notes](https://github.com/woopstar/hsem/releases/tag/v6.3.0)** — especially the new opt-in features and upgrade notes.\n2. **Upgrading from v5.x?** Read the [v6.0.1 release notes](https://github.com/woopstar/hsem/releases/tag/v6.0.1) first — v6 was a complete rewrite with breaking changes (entity unique IDs, config migration, EDS step removal).\n3. **Search existing comments** in this issue to avoid duplicates.\n\n### When reporting a bug, please include:\n\n- **Home Assistant version** (e.g., 2026.9.1)\n- **Python version** (e.g., 3.14.x)\n- **HSEM version** (e.g., v6.3.0)\n- **Description** of what happened vs. what you expected\n- **Steps to reproduce**\n- **Relevant log output** (check Home Assistant logs for `custom_components.hsem`)\n- **Diagnostics dump** if available (Settings → Devices & Services → HSEM → Download Diagnostics)\n\n### Known upgrade",
-      "skills": [
-        "python",
-        "bug",
-        "script"
-      ],
-      "score": 30,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T19:02:33Z"
-    },
-    {
       "id": 5662643363,
       "title": "refactor(api): remove db/tx handle passing and shrink transactions in billing and IM integrations",
       "url": "https://github.com/okou-ai/okou/issues/37510",
@@ -247,7 +229,23 @@
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T18:58:37Z"
+      "updated_at": "2026-10-10T19:03:33Z"
+    },
+    {
+      "id": 5421407279,
+      "title": "v6.3.10 Feedback & Bug Reports",
+      "url": "https://github.com/woopstar/hsem/issues/978",
+      "description": "## v6.3.x Feedback & Bug Reports\n\nThis issue is the central place for feedback, questions, and bug reports related to the **HSEM v6.3.x** release.\n\n> The previous feedback thread ([#732](https://github.com/woopstar/hsem/issues/732)) covered v6.2.x and is now closed. Please post all new feedback here.\n\n### Before posting\n\n1. **Read the [release notes](https://github.com/woopstar/hsem/releases/tag/v6.3.0)** — especially the new opt-in features and upgrade notes.\n2. **Upgrading from v5.x?** Read the [v6.0.1 release notes](https://github.com/woopstar/hsem/releases/tag/v6.0.1) first — v6 was a complete rewrite with breaking changes (entity unique IDs, config migration, EDS step removal).\n3. **Search existing comments** in this issue to avoid duplicates.\n\n### When reporting a bug, please include:\n\n- **Home Assistant version** (e.g., 2026.9.1)\n- **Python version** (e.g., 3.14.x)\n- **HSEM version** (e.g., v6.3.0)\n- **Description** of what happened vs. what you expected\n- **Steps to reproduce**\n- **Relevant log output** (check Home Assistant logs for `custom_components.hsem`)\n- **Diagnostics dump** if available (Settings → Devices & Services → HSEM → Download Diagnostics)\n\n### Known upgrade",
+      "skills": [
+        "python",
+        "bug",
+        "script"
+      ],
+      "score": 30,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T19:03:24Z"
     },
     {
       "id": 5627292444,
@@ -277,21 +275,6 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T19:01:53Z"
-    },
-    {
-      "id": 5789461316,
-      "title": "Session foundation: retire Viewer compatibility, Encrypted Relay and Canonical Trace Store",
-      "url": "https://github.com/onsager-ai/semon/issues/380",
-      "description": "## Overview\n\nConsolidate Semon around harness-native session evidence and Session Intelligence. Retire full-workspace Viewer compatibility, Encrypted Relay, and the Canonical Trace Store in dependency-safe stages. The user explicitly requested this architecture and reviewable implementation PRs; merges, deployments, live infrastructure changes and user-data deletion are excluded.\n\n## Verified baseline\n\nAudited Semon main `02a9ac17d525eb134b5952f7e55d30b47b16b8ec` and Hub main `9623986977ec69869276fa4224a939e0c9fa4312` on October 10, 2026. At that original baseline Hub pinned Semon `8d38fbbf254d52a9b9bac123d47df8b9c593800d`. Latest resolved mains are Semon `263a02da278716ab2309b8e34a463419e5c781e5` and Hub `f2889d056c24cc4d5e6eaf10fbbd0108b12c34d0`; Hub main now pins that Semon commit. Unmerged retirement stack revisions remain distinct from main.\n\n- Focused Catalog, Transcript, Entry, identity, capabilities and source inventory APIs exist. Completed #319/#320 are foundations to reuse.\n- `MachineView::refresh_model_locked` and catalog demand still construct a native full-machine model; Hub startup/push warms build models. Returning small focused responses does not remove these prepa",
-      "skills": [
-        "api",
-        "script"
-      ],
-      "score": 20,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T19:01:35Z"
     },
     {
       "id": 3825637122,
@@ -382,10 +365,24 @@
       "updated_at": "2026-10-10T17:44:46Z"
     },
     {
-      "id": 5602503136,
-      "title": "Build complete source-to-Legacy feature and route acceptance matrix",
-      "url": "https://github.com/MALIEV-Co-Ltd/Legacy.Maliev.Workflows/issues/98",
-      "description": "The source-commit ledger tracks commit disposition but does not prove every migrated service feature and Web/Intranet route works against production-derived local Aspire data. This is an explicit migration completion gate, not a deployment request.\n\nAcceptance:\n- Inventory each Legacy service feature, API, role, entity, background operation, and every Web/Intranet route against the latest committed original source; retain full source SHA, owning Legacy repo, main SHA, status, and exact evidence links.\n- Mark unverified items pending; distinguish source retirement approvals from migrations. Do not infer feature parity from a code mapping, route alias, smoke test, or green unit suite.\n- Record automated customer/employee authentication, permission, CRUD/lifecycle, validation, rollback/retry, cross-service effects, localization, responsive/browser/accessibility, and persisted-data checks as appropriate. Include safe failure/partial-failure evidence and suppress real notifications/payments/analytics in local review.\n- Verify the matrix against live source and each protected Legacy main, with a check that rejects missing routes/features or unsupported completion claims. Link per-service",
+      "id": 5794120060,
+      "title": "Runner inputs: an explicit upload switch and a repo flag, so a scan outside Actions keys its cache and its join on the right repository",
+      "url": "https://github.com/carrick-tools/carrick/issues/2207",
+      "description": "Part of #2202 (cloud scan, phase 1, plan row M1.3). Scoped 2026-10-10 on origin/main `449a4be9`; nothing built.\n\n## Why\n\nA scan the cloud runs in a container is neither a GitHub Actions run nor a laptop checkout, and two things the scan decides for itself go wrong there.\n\n1. **Whether it uploads.** `should_upload_data` (`src/engine/mod.rs:131-171`, read once at `:663`) infers the answer from `CARRICK_OUTPUT_JSON`, `CARRICK_LOCAL_STORAGE_DIR`, `GITHUB_EVENT_NAME` and `GITHUB_REF`, and uploads when none of them is set. A runner sets no `GITHUB_*`. Neither does any CI other than GitHub Actions, where every branch and merge-request scan uploads today.\n2. **Which repository it is.** The name a scan compares its own stored blobs against is `get_repository_name` (`src/utils.rs:17`): the basename of `GITHUB_REPOSITORY`, else the scanned directory's name. It is read once at `src/engine/mod.rs:795` and decides:\n   - `:852` and `:871`: which stored generation the scan reuses (`previous_generation`), so whether unchanged files replay their answers or are sent to the model again;\n   - `:1147` and `:1177`: whether a service already has an index, and the generation served in place of a held-back ",
+      "skills": [
+        "json"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T19:03:45Z"
+    },
+    {
+      "id": 5786703400,
+      "title": "Prepare beta.15 final candidate and exact-source release evidence",
+      "url": "https://github.com/redact-secret/redact-secret/issues/1320",
+      "description": "Prepare and qualify `0.1.0-beta.15` in the user-requested dependency order. No release, tag, accepted cost tradeoff or package publication has occurred. Explicit owner approval after tests/API/changelog review remains required.\n\n## Current frozen candidate\n\nCore main `2aea4ee95ccf9a5b891ad77f30e2edd8213622fd`, tree `0a1393da28c17d468ee0612f47404382460ddfdf`, version `0.1.0-beta.15`. [Node digest optimization #1324](https://github.com/redact-secret/redact-secret/pull/1324) is merged after 32 PASS / 15 intentional SKIP and [independent review](https://github.com/redact-secret/redact-secret/pull/1324#issuecomment-6097108553). Fresh exact-source qualification workflows passed; the formal performance assessment retains its measured rejection at the unchanged browser 30 ms gate, and the owner has now explicitly accepted that exact-source browser exceedance. The 32 separate cost-budget regressions and release approval remain pending. Previous measurements stay source-specific historical evidence. Preparation #1321, source-provenance #1322 and [rehearsal wiring/Linux libc correction #1323](https://github.com/redact-secret/redact-secret/pull/1323) are merged. #1323 passed all 32 executed ch",
       "skills": [
         "api"
       ],
@@ -393,21 +390,21 @@
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T19:02:25Z"
+      "updated_at": "2026-10-10T19:03:40Z"
     },
     {
-      "id": 5777386844,
-      "title": "website: HTML image sharing produces no download during publication proof",
-      "url": "https://github.com/schlessera/brain-kit/issues/1331",
-      "description": "## Context\n\nThe public website publication run after PR #1178 fails its real HTML image download proof. The package CI for the exact main squash passes; the separate website artifact job fails and deploy is skipped.\n\nEvidence: [workflow 37922937326](https://github.com/schlessera/brain-kit/actions/runs/37922937326), artifact job 113794978583, attempt 1, website source `97021a46dbed7d8818f33d3d6704ee689a85221a`. Publication selects the independently pinned released library `@schlessera/brain@0.40.0`, commit `1d1fcc72a7e06352e8b5ee020b3910864babc5db`; it is not executing the newly merged package implementation. [Diagnostic artifact 11613165839](https://github.com/schlessera/brain-kit/actions/runs/37922937326/artifacts/11613165839) preserves the browser trace, failure output and source/build/share provenance.\n\nVerified source: `download`, `website/scripts/rich-demo-check.ts:76-84`; HTML sequence, `website/scripts/rich-demo-check.ts:128-131`; offline browser harness, `website/scripts/browser-check.ts:25-36`.\n\nThe trace establishes this precise boundary: the HTML source-file download completes, then clicking the actual Share as image menu item for `voyage/ogygia/departure-brief.html` com",
+      "id": 5793831021,
+      "title": "Map: acces-accessibility plugin",
+      "url": "https://github.com/jamon8888/Holo-RGAA/issues/310",
+      "description": "## Destination\n\nA working Claude Code plugin **`acces-accessibility`** at `rgaa-rs/plugins/acces-accessibility/`, declared as a second plugin in the root `.claude-plugin/marketplace.json`. Four skills — `setup`, `usage`, `audit-loop`, `generate-instructions` — that drive **our own `rgaa-mcp`** server. It is the *MCP-discipline* layer (install, field-mapping discipline, closed remediation loop, baking the workflow into a user's repo), complementary to the existing `rgaa-accessibility` plugin, which keeps the *domain* layer (106 criteria, triage, reports).\n\nThe map is done when every skill's contract and content shape is decided; implementation then follows (see Notes).\n\n## Notes\n\n**Domain**: RGAA 4.1.2 accessibility auditing. Tooling layer only — this map does not touch the 106-criteria catalogue or report generation.\n\n**Execution is in scope for this map** (overriding Wayfinder's plan-only default): the user asked for a built plugin. Decision tickets come first; implementation tickets graduate from the fog once the contracts are settled.\n\n**Skills every session should consult**: `mattpocock-skills:grilling` and `mattpocock-skills:domain-modeling` by default; `mattpocock-skills:rese",
       "skills": [
-        "script"
+        "json"
       ],
       "score": 10,
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T19:02:06Z"
+      "updated_at": "2026-10-10T19:03:33Z"
     },
     {
       "id": 5728509886,
@@ -421,55 +418,27 @@
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T19:02:06Z"
+      "updated_at": "2026-10-10T19:03:12Z"
     },
     {
-      "id": 5779878641,
-      "title": "Tested flow ledger for #7536: which flows are tested, how and by whom",
-      "url": "https://github.com/langwatch/langwatch/issues/8553",
-      "description": "<!-- ledger:summary:start -->\n## Progress summary\n\n**1,016 rows: 812 pass, 164 have problems, 1 being walked, 39 not started.**\n<sub>Counted 2026-10-10 19:02 UTC by `ledger-count.py` from the body and 2401 comments; a later result, claim or release comment overrides the body.</sub>\n\n| | rows | ✅ | 🟡 | ❌ | ⚠️ | ⏳ | ⬜ |\n|---|---:|---:|---:|---:|---:|---:|---:|\n| Upgrade | 48 | 3 | 2 | 3 |  | 1 | 39 |\n| Custom flows | 12 | 8 |  |  | 4 |  |  |\n| Product flows | 30 | 25 | 3 |  | 2 |  |  |\n| Beyond the UI | 9 | 7 |  |  | 2 |  |  |\n| Areas | 917 | 769 | 54 |  | 94 |  |  |\n| **Total** | 1,016 | 812 | 59 | 3 | 102 | 1 | 39 |\n\n<details><summary>Per area</summary>\n\n| | rows | ✅ | 🟡 | ❌ | ⚠️ | ⏳ | ⬜ |\n|---|---:|---:|---:|---:|---:|---:|---:|\n| ANA · Analytics, dashboards and LWQL | 17 | 15 | 2 |  |  |  |  |\n| ANN · Annotations and queues | 10 | 10 |  |  |  |  |  |\n| AUD · Audit log | 8 | 7 |  |  | 1 |  |  |\n| AUTH · Sign-in and identity | 53 | 30 | 3 |  | 20 |  |  |\n| AUTO · Automations, triggers, alerts and reports | 26 | 25 |  |  | 1 |  |  |\n| AZ · Authorization: grants and roles | 22 | 22 |  |  |  |  |  |\n| BIL · Billing, usage metering and limits (Cloud) | 22 | 18 | 3 |  | 1 |  |  |\n| CA ·",
+      "id": 5720560754,
+      "title": "Central message board — Hermes, Claude, Codex and operator coordination",
+      "url": "https://github.com/scottonchain/microcredit-agent-testbed/issues/15",
+      "description": "AI disclosure: the operator's Codex / ChatGPT lane. This is the central board for the three lanes: Hermes, Claude Code and Codex / ChatGPT.\n\n## Current structure\n\nTEAM-STRUCTURE-001 supersedes the original role split and BOARD-001 instructions. Read the [published team policy](https://github.com/scottonchain/microcredit-agent-testbed/blob/main/coordination/team-structure.md) and the [current canonical world model](https://github.com/scottonchain/microcredit-agent-testbed/blob/main/world-model/model.json) before planning. Original evidence and explicit operator directions remain authoritative.\n\n- **Hermes / hermes-agent-909:** existing outreach channels, contact deduplication, relationships and replies, private A2A intake, existing payment obligations and bounded source receipts. The two outreach fronts share one queue.\n- **Claude Code:** technical authorship, simulations, author responses, Git integration and maintenance; vision README and VERIFY prose.\n- **Codex / ChatGPT:** public research and lead qualification, experiment design, selected implementation, independent internal checks, evidence/model upkeep and coverage. These are two roles of one lane, not a fourth worker.\n\nHerme",
       "skills": [
-        "automation"
+        "json"
       ],
       "score": 10,
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T19:02:05Z"
+      "updated_at": "2026-10-10T19:03:11Z"
     },
     {
-      "id": 5783214445,
-      "title": "ADS-006 operational closeout: verified paid collectors, spend evidence and staging proof",
-      "url": "https://github.com/yali-code/noctella-web/issues/335",
-      "description": "## Context\nPhase 6 code PRs #330 (paid metrics evidence), #331 (advisory optimization), #332 (read-only Analytics snapshots report), #333 (Admin paid report view) are merged. PR #334 adds **real in-memory SQLite integration tests and provenance hardening**. These are review-only foundations, **not** proof that actual paid advertisements have been connected or that true eBay/Etsy sales have been attributed.\n\n## Operational acceptance checklist — all required before claiming Phase 6 fully closed\n- [ ] Verify actual paid account ownership and ad API scopes **separately** for Meta, Google Ads, Pinterest Ads; owner approves all accounts/permissions. Never reuse organic Instagram/Pinterest analytics credentials without authorization.\n- [ ] Implement vetted paid-provider analytics collectors using only documented provider API endpoints and explicit app permissions; no scraping. Reuse the existing `analytics_runs` and `analytics_metric_snapshots` store. Strict campaign/account IDs, per-provider currency and window provenance; no new competing analytics warehouse.\n- [ ] Collect in staging with dedicated sandbox/test-account access; verify token handling, idempotency, source audit and data q",
-      "skills": [
-        "api"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T19:01:57Z"
-    },
-    {
-      "id": 5764679899,
-      "title": "Work list: run Control Tower and BashArena with glovebox on the Flamingo cluster",
-      "url": "https://github.com/AlexanderMattTurner/agent-glovebox/issues/8055",
-      "description": "This is a **work list** (CLAUDE.md § What gets an issue, type 6). It is the one tracker for this milestone. Add a row by editing this body, and tick a row in the PR that lands it.\n\n## What cannot be done today\n\nThe Control Tower (LinuxArena) eval runs only on a GitHub runner that has `/dev/kvm` and a Docker daemon. The driver boots each cell's microVM from that host, builds the env's images with the host's Docker, and judges an attack by reading the host's egress decision log. A Flamingo pod has none of that. It gets a microVM from the node through `runtimeClassName: glovebox`, but it cannot run Docker, and its outgoing traffic is not filtered yet.\n\n```text\ntoday:  GitHub runner -> glovebox sandbox -> Kata microVM, host egress log judges the attack\nwanted: Inspect runner -> pod with runtimeClassName: glovebox on a Flamingo node,\n        node-side egress log judges the attack\n```\n\nThis matters because a guarded cell on Flamingo today has no egress allowlist. Its attack-success number would measure an open network, not glovebox.\n\nBashArena has no harness or setting pin in this tree.\n\n## Done when\n\n- [ ] A free provisioning run (`ct_e2e_agent_model: ctscript/submit`) over every pinned",
-      "skills": [
-        "script"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T19:01:55Z"
-    },
-    {
-      "id": 5763134769,
-      "title": "Plan: remove repository Python tooling and complete the Zig/native cutover",
-      "url": "https://github.com/cataggar/debz/issues/420",
-      "description": "## Scope and current status\n\nPlanning snapshot: **2026-10-08**, main [`bf80d64444b01f23ccb02a7324687b1255077e92`](https://github.com/cataggar/debz/commit/bf80d64444b01f23ccb02a7324687b1255077e92). This issue owns the missing **repository-controlled Python-to-Zig tooling** scope and links it to the complete open-backlog plan below. **#86 and #274 remain the native transaction/cutover umbrellas.**\n\nThree contracts must not be conflated:\n\n| Contract | Current state | Completion condition |\n| --- | --- | --- |\n| Product runtime | `debz` is already Zig and has a fully static Linux release contract; production defaults remain legacy/dpkg-capable. | #86/#274: prove native/reference parity, remove production dpkg execution, and switch defaults coherently. |\n| Repository tooling | 41 tracked Python files at this snapshot: 28 helpers/implementations and 13 unittest modules. Zig-owned tests and build targets still launch Python. | PY1–PY6 below: port actual implementations and consumers, then qualify supported lanes without host Python. |\n| Reference oracles and target package contents | Repository Python drives genuine dpkg references; authenticated Debian/Ubuntu packages can legitimately co",
+      "id": 5763234474,
+      "title": "Stabilize strict product performance qualification without relaxing thresholds",
+      "url": "https://github.com/yongkyuns/noon/issues/1933",
+      "description": "## Current qualification status — October 9, 2026\n\n**Disposition: BLOCKED on strict performance measurement precision.** This is not a demonstrated performance regression, and it is not an acceptance pass. **No owned physical GPU and no paid larger runner.** The existing untouched original acceptance policy remains binding; do not merge original draft [#1875](https://github.com/yongkyuns/noon/pull/1875) or the current-master functional integration [#1956](https://github.com/yongkyuns/noon/pull/1956) until its actual scored candidate-versus-baseline strict gate qualifies.\n\n**Original complete preregistered identical-code A/A evidence (every source build compared against itself; no scored result dropped or rerun):**\n\n| Pinned hosted renderer (diagnostic only) | Strict *product* full cohorts passing | Strict *Python host-cost* metrics passing | Interpretation |\n| --- | ---: | ---: | --- |\n| Ubuntu/SwiftShader | **3/20** | **6/27** | Severe CPU/software-GPU false blocking |\n| Ubuntu/Mesa LLVMpipe | **4/20** | **12/27** | Improved but still insufficient |\n| Standard Apple Silicon/ANGLE Apple Paravirtual Metal WebGL2 | **8/20** | **0/27** | FPS repeatable, cost still far too noisy |\n\n- *",
       "skills": [
         "python"
       ],
@@ -477,63 +446,21 @@
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T19:01:48Z"
+      "updated_at": "2026-10-10T19:02:55Z"
     },
     {
-      "id": 5794330910,
-      "title": "design(persistence): gate SQLite delivery and assess when Khepri adds value",
-      "url": "https://github.com/genagent/gen_agent/issues/482",
-      "description": "# Decision to make\n\nChoose storage by its ownership, history, search and recovery needs before introducing a suite-wide persistence abstraction. Start with a bounded SQLite feasibility gate for proposed shared memory and [Recall #476](https://github.com/genagent/gen_agent/issues/476); record when Khepri would justify a separate experiment.\n\nCurrent state: core does not persist conversations; provider CLIs own them. The local unreleased Delegate spike retains locked JSON task/profile records and marks interrupted work without paid replay. Server Invocations and Control.Ledger are process-lifetime; Peers optionally uses JSON. There is no existing suite-wide SQLite database to replace.\n\n## Proposed direction\n\n- Evaluate SQLite for same-host authoritative memory records/history and separate derived archive search. [WAL](https://www.sqlite.org/wal.html) supports readers and one writer, so contention and bounded busy/retry behavior must be tested. Keep short domain transactions and source/index updates atomic where they share one database.\n- Preserve existing stores until an actual requirement warrants migration. Durable task/evidence records need their own attempt identity, uncertain-ou",
+      "id": 5602503136,
+      "title": "Build complete source-to-Legacy feature and route acceptance matrix",
+      "url": "https://github.com/MALIEV-Co-Ltd/Legacy.Maliev.Workflows/issues/98",
+      "description": "The source-commit ledger tracks commit disposition but does not prove every migrated service feature and Web/Intranet route works against production-derived local Aspire data. This is an explicit migration completion gate, not a deployment request.\n\nAcceptance:\n- Inventory each Legacy service feature, API, role, entity, background operation, and every Web/Intranet route against the latest committed original source; retain full source SHA, owning Legacy repo, main SHA, status, and exact evidence links.\n- Mark unverified items pending; distinguish source retirement approvals from migrations. Do not infer feature parity from a code mapping, route alias, smoke test, or green unit suite.\n- Record automated customer/employee authentication, permission, CRUD/lifecycle, validation, rollback/retry, cross-service effects, localization, responsive/browser/accessibility, and persisted-data checks as appropriate. Include safe failure/partial-failure evidence and suppress real notifications/payments/analytics in local review.\n- Verify the matrix against live source and each protected Legacy main, with a check that rejects missing routes/features or unsupported completion claims. Link per-service",
       "skills": [
-        "json"
+        "api"
       ],
       "score": 10,
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T19:01:46Z"
-    },
-    {
-      "id": 5289746300,
-      "title": "PMCvitan UX/Auth implementation coordination",
-      "url": "https://github.com/JagPat/PMCvitan/issues/482",
-      "description": "## Purpose\n\nSingle coordination channel for the PMCvitan UX, authentication and role-validation work identified from the live application review.\n\nClaude Code should use this issue for **questions, assumptions, blockers and completion reports**. Do not store automation cursor/state here.\n\n## Current implementation priority\n\n1. Finish and preserve the currently active job/PR.\n2. Implement a working non-SMS onboarding route:\n   - admin-provisioned users and project roles;\n   - single-use activation links that can be copied/shared manually;\n   - email/password for Client, PMC, Architect and Consultant;\n   - approved-device + private PIN for Engineer, Contractor and Mistri;\n   - device revocation, expiry and rate limiting;\n   - hide or clearly disable SMS OTP while no provider is configured.\n3. Fix authority-aware Decision guidance/actions.\n4. Resolve contradictory progress-photo counts.\n5. Add project-scoped worker enrollment and attendance safeguards.\n6. Add automated role, authentication, revocation and project-isolation tests.\n7. Build, deploy and post the live URL/commit for independent validation.\n\n## Communication protocol\n\n### Blocking questions\nPost a comment beginning with `B",
-      "skills": [
-        "automation"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T19:01:43Z"
-    },
-    {
-      "id": 5760402393,
-      "title": "[P1][TIGERIQ NEWS] Hoàn thiện xuất bản bài/ảnh công khai và tự xác minh tin thật",
-      "url": "https://github.com/newsdayads/tigeriq-ai-lab/issues/4574",
-      "description": "TIGERIQ_JOB_V1\nSOURCE=Owner direct chat 2026-10-08: \"Tôi cần xem kết quả thực tế trên trang chứ không muốn nhìn vào thẻ công việc rồi đoán mò\"\nOWNER_DIRECT=true\nOWNER_POLICY=AUTO\nPRIORITY=P1\nCURRENT_STATE=READY_AUTOMATED_CODING\nTIGERIQ_EXECUTABLE=true\nAUTO_QUEUE=INCLUDED\nCAPABILITY=coding\nEXECUTION_SURFACE=CODING\nAUTONOMOUS_CODE=true\nMUTATION_OWNER=CORE_DYNAMIC_LEASE\nRESOURCE_SCOPE=TIGERIQ_NEWS_PUBLIC_ARTICLE_COVER_LIVE_E2E_V1\nPROJECT_ID=tigeriq-news\nWORK_PACKAGE_ID=news-autonomous-newsroom\nTARGET_REPOSITORY=newsdayads/tigeriq-media\nBASE_BRANCH=main\nRELATED_PARENT=4456\nRELATED_TRACKER=3899\nRELATED_SOAK=3904\nRESULT_INBOX=4426\nONE_RESOURCE_SCOPE_ONE_WRITER=true\nZERO_COST=true\nNO_PAID_COST=true\nNO_CREDENTIAL_CHANGE=true\nNO_SECURITY_BOUNDARY_CHANGE=true\nNO_DESTRUCTIVE=true\nNO_DIRECT_MAIN=true\nNO_PRODUCTION_RELEASE=true\nNO_VERCEL_DEPLOY=true\nNO_APP_CHROME_MUTATION=true\nAPP_CHROME_MUTATION=FORBIDDEN\nNO_CODEX=true\nINDEPENDENT_REVIEW_REQUIRED=true\nKEEP_OPEN_ON_STEP_COMPLETE=true\nLIVE_ACCEPTANCE_REQUIRED=true\nDONE=false\n\n## MỤC TIÊU THỰC TẾ\nTigerIQ News phải tự tìm tin -> xác minh -> viết -> rà soát độc lập -> tạo/đưa ảnh lên nguồn công khai -> xuất bản nội dung tới đúng nguồn website đang ",
-      "skills": [
-        "script"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T19:01:38Z"
-    },
-    {
-      "id": 5669021751,
-      "title": "Epic: use classification and deterministic code where generic prompting is wasteful",
-      "url": "https://github.com/schlessera/brain-kit/issues/838",
-      "description": "## Outcome\n\nBrain-kit uses deterministic code for mechanical operations, a bounded classifier (Jev) for suitable semantic decisions, and LLM generation only where it adds value. Each candidate gets a recorded go/no-go. Accepted changes are implemented through scoped follow-up tasks attached here.\n\n## The question every candidate answers\n\n**Can code and/or a bounded classifier match or beat the current LLM/agent path on quality and reliability for this task?**\n\nCost is not measured. A bounded judgment or deterministic code is assumed cheaper than a generative call, so a candidate whose quality and reliability are on par or better is a go. The evaluation exists to establish feasibility, reliability and quality. Shipped product cost tracking is unaffected.\n\n## Lean evaluation protocol (maintainer ruling, 2026-10-10)\n\n1. **Arms, all on identical inputs:**\n   - **Current path:** the shipped skill, prompt or command, run against the real model it uses today (`claude-sonnet-5-5` unless the product path uses another).\n   - **Candidate:** code plus Jev (`jev-1.13.0`) Choice, Noul or Score judgments.\n   - **Deterministic baseline:** any existing code-only baseline.\n2. **Cases:** fictional Od",
-      "skills": [
-        "json"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T19:01:36Z"
+      "updated_at": "2026-10-10T19:02:25Z"
     },
     {
       "id": 5794068339,
@@ -626,20 +553,6 @@
       "updated_at": "2026-10-10T18:36:45Z"
     },
     {
-      "id": 4460640190,
-      "title": "[Bug]: Isolated cron agentTurn fails with 'setup timed out before runner start' — all fallback models exhausted on 2026.5.12",
-      "url": "https://github.com/openclaw/openclaw/issues/82662",
-      "description": "## Bug type\nRegression (worked before, now fails)\n\n## Summary\nIsolated `agentTurn` cron job (auto-created by `memory-core` plugin) fails with `\"cron: isolated agent setup timed out before runner start\"`. The failure occurs **before the LLM is even invoked** — all 6 fallback candidates hit the same setup-phase timeout. The gateway is healthy and interactive sessions work fine concurrently.\n\n## Environment\n- **OpenClaw version:** 2026.5.12 (`f066dd2`)\n- **OS:** macOS 15.7.5 (x64), Node 24.15.0\n- **Gateway:** LaunchAgent, pid 61734, loopback (127.0.0.1:18789)\n- **Model config:** primary `deepseek/deepseek-v4-flash`, fallback chain: `xiaomi-coding/mimo-v2.5` → `mimo-v2.5-pro` → `mimo-v2-omni` → `mimo-v2-pro` → `deepseek/deepseek-v4-pro`\n\n## Cron Job Details\n```\nName:           Memory Dreaming Promotion\nID:             8633cd15-5bd6-48ab-9e8d-91d8e530741b\nSchedule:       cron 0 */8 * * * (stagger 5m)\nSession target: isolated\nPayload kind:   agentTurn\nLight context:  true\nManaged by:     memory-core plugin (short-term-promotion)\n```\n\n## Steps to Reproduce\n1. Allow a memory-core managed cron job with `sessionTarget: \"isolated\"` to fire on schedule\n2. Observe failure in `openclaw cron list",
-      "skills": [
-        "bug"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T18:36:18Z"
-    },
-    {
       "id": 5611457487,
       "title": "Split sw-loop.sh into focused lib modules under scripts/lib/",
       "url": "https://github.com/sethdford/shipwright/issues/7098",
@@ -710,11 +623,11 @@
       "updated_at": "2026-10-10T17:19:32Z"
     }
   ],
-  "count": 48,
+  "count": 42,
   "warnings": [],
   "execution": {
     "status": "demo_completed",
-    "timestamp": "2026-10-10T19:02:55+00:00",
+    "timestamp": "2026-10-10T19:03:51+00:00",
     "kind": "csv_cleaning",
     "result": {
       "processed_rows": 3,
