@@ -17,6 +17,7 @@
     <p class="muted">Para cobrar hay que comprobar el alta del agente, requisitos del anuncio y elegibilidad de cobro con Stripe Connect.</p>
   </div>
   <div style="border-top:1px solid #344763;margin-top:18px;padding-top:15px">
+    <p id="autoQueue" class="muted">Verificando la cola automática…</p>
     <div class="toolbar"><div><h2>Revisión y autorizaciones</h2><p id="reviewSummary">Consultando decisiones de prueba…</p></div>
       <a class="button" href="https://github.com/josenunezapps/josenunezapps.github.io/actions/workflows/zenix-autoworker-review.yml" target="_blank" rel="noopener noreferrer">Abrir aprobaciones ↗</a></div>
     <div id="reviewList" class="list"></div>
@@ -146,6 +147,19 @@ async function loadBountyBoard(){
  }
 }
 loadBountyBoard();
+
+async function loadAutoQueue(){
+ try {
+  const r=await fetch("https://raw.githubusercontent.com/josenunezapps/josenunezapps.github.io/main/zenix-autoworker/data/agent_queue.json?v="+Date.now(),{cache:"no-store"});
+  if(!r.ok)throw Error("No data");
+  const data=await r.json();
+  set("autoQueue","Cola automática: "+(data.count||0)+" candidatos preparados. 0 postulaciones enviadas.");
+ } catch(e) {
+  set("autoQueue","La cola automática todavía no se publicó. Podés probar el motor desde GitHub Actions.");
+ }
+}
+loadAutoQueue();
+
 
 
 </script></body></html>
