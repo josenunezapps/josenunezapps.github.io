@@ -3,12 +3,13 @@
   "timestamp": "2026-10-10T20:48:34+00:00",
   "issue_url": "https://github.com/josenunezapps/josenunezapps.github.io/issues/1",
   "model": "nvidia/nemotron-3.5-lightning:free",
-  "summary": "Programa Python generado por IA; se comprobo sintaxis (no funcionalidad)",
+  "summary": "Programa Python generado con IA gratuita: sintaxis correcta y prueba funcional de limpieza CSV superada en Docker.",
   "files": [
     "zenix-autoworker/examples/clean_csv.py"
   ],
   "tests_passed": true,
   "test_log": "Syntax OK\n\nUnable to find image 'python:3.12-slim' locally\n3.12-slim: Pulling from library/python\necc510c1e359: Pulling fs layer\n75b6a36c64a1: Pulling fs layer\n6912e23eb445: Pulling fs layer\nbbc5a1223747: Pulling fs layer\nbbc5a1223747: Waiting\n75b6a36c64a1: Verifying Checksum\n75b6a36c64a1: Download complete\n6912e23eb445: Verifying Checksum\n6912e23eb445: Download complete\necc510c1e359: Verifying Checksum\necc510c1e359: Download complete\nbbc5a1223747: Verifying Checksum\nbbc5a1223747: Download complete\necc510c1e359: Pull complete\n75b6a36c64a1: Pull complete\n6912e23eb445: Pull complete\nbbc5a1223747: Pull complete\nDigest: sha256:a6e34c598f2467ed0e9a8d349809fcd8b5c603269512df273a0bb1784edc11b1\nStatus: Downloaded newer image for python:3.12-slim\n\nPrueba funcional: CSV QA FUNCIONAL OK\n\n",
   "posted": false,
-  "delivered": false
+  "delivered": false,
+  "functional_test_passed": true
 }
