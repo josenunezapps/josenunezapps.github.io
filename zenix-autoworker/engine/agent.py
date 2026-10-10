@@ -138,7 +138,7 @@ def work(url):
     if issue.get("state")!="open" or "pull_request" in issue:raise ValueError("Issue cerrado o no valido")
     if not os.environ.get("OPENROUTER_API_KEY"):
         execution("needs_ai_key",issue_url=url,note="Configurar OPENROUTER_API_KEY para codigo autonomo")
-        return
+        raise RuntimeError("Clave OPENROUTER_API_KEY no configurada")
     OUT.mkdir(exist_ok=True)
     with tempfile.TemporaryDirectory(prefix="zenix-") as tmp:
         base=pathlib.Path(tmp)/"repo"
@@ -176,6 +176,7 @@ def work(url):
         except Exception as exc:
             execution("work_failed",issue_url=url,error=str(exc)[:380])
             print("ISSUE WORK ERROR:",exc)
+            raise
 def main():
     p=argparse.ArgumentParser()
     p.add_argument("--scan",action="store_true")
