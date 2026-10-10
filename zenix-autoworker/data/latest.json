@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-10-10T20:12:02+00:00",
+  "generated_at": "2026-10-10T20:25:52+00:00",
   "opportunities": [
     {
       "id": 5387618577,
@@ -24,6 +24,25 @@
       "updated_at": "2026-10-10T20:00:58Z"
     },
     {
+      "id": 4148310877,
+      "title": "[BOUNTY $200] WORKFLOW: n8n + Claude Code — automated weekly dev summary",
+      "url": "https://github.com/claude-builders-bounty/claude-builders-bounty/issues/5",
+      "description": "## 💰 Bounty: $200 — powered by [Opire](https://opire.dev)\n\n## Description\nCreate a complete n8n workflow that automatically generates a weekly narrative\nsummary of a GitHub repo's activity, using the Claude API.\n\n## Acceptance Criteria\n- [ ] Exportable n8n workflow (importable `.json` file)\n- [ ] Trigger: weekly cron (e.g., Friday at 5pm)\n- [ ] Fetches from GitHub API: commits, closed issues, merged PRs for the week\n- [ ] Calls Claude API (`claude-sonnet-4-20250514`) to generate a narrative summary\n- [ ] Delivers the summary via: email OR Discord/Slack webhook (your choice, documented)\n- [ ] Configurable variables: GitHub repo, destination channel, language (EN/FR)\n- [ ] Tested on a real n8n instance (include a screenshot of successful execution)\n- [ ] README with setup instructions in 5 steps or fewer\n\n## How to Claim\n1. Comment `/opire try` in this issue\n2. Submit a PR with the `.json` workflow + README\n3. Payment is released automatically on merge ✅\n\n## Resources\n- n8n docs: https://docs.n8n.io\n- Claude API docs: https://docs.anthropic.com",
+      "skills": [
+        "json",
+        "api",
+        "script"
+      ],
+      "score": 65,
+      "amount_mentions": [
+        "$200",
+        "$200"
+      ],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:21:11Z"
+    },
+    {
       "id": 5387619436,
       "title": "[Bounty] [Bounty: $500] Memory Leak in CSS Flexbox Centering Subsystem",
       "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/1216",
@@ -44,42 +63,40 @@
       "updated_at": "2026-10-10T20:00:12Z"
     },
     {
-      "id": 4148310877,
-      "title": "[BOUNTY $200] WORKFLOW: n8n + Claude Code — automated weekly dev summary",
-      "url": "https://github.com/claude-builders-bounty/claude-builders-bounty/issues/5",
-      "description": "## 💰 Bounty: $200 — powered by [Opire](https://opire.dev)\n\n## Description\nCreate a complete n8n workflow that automatically generates a weekly narrative\nsummary of a GitHub repo's activity, using the Claude API.\n\n## Acceptance Criteria\n- [ ] Exportable n8n workflow (importable `.json` file)\n- [ ] Trigger: weekly cron (e.g., Friday at 5pm)\n- [ ] Fetches from GitHub API: commits, closed issues, merged PRs for the week\n- [ ] Calls Claude API (`claude-sonnet-4-20250514`) to generate a narrative summary\n- [ ] Delivers the summary via: email OR Discord/Slack webhook (your choice, documented)\n- [ ] Configurable variables: GitHub repo, destination channel, language (EN/FR)\n- [ ] Tested on a real n8n instance (include a screenshot of successful execution)\n- [ ] README with setup instructions in 5 steps or fewer\n\n## How to Claim\n1. Comment `/opire try` in this issue\n2. Submit a PR with the `.json` workflow + README\n3. Payment is released automatically on merge ✅\n\n## Resources\n- n8n docs: https://docs.n8n.io\n- Claude API docs: https://docs.anthropic.com",
+      "id": 4543756397,
+      "title": "[PAID BOUNTY - $660] Enhanced Image Preview",
+      "url": "https://github.com/warpspeedopen-source/warpspeed-bounties/issues/6",
+      "description": "## Bounty Overview\n\nBuild an enhanced full-screen image preview experience for the warpSpeed app.\n\nThis bounty upgrades how users view images across the app. When a user taps an image, it should open in a fast, smooth, full-screen modal/lightbox with zoom, pan, swipe navigation, and optional actions such as download, share, and delete where permissions allow.\n\nThe goal is to make image viewing feel modern, responsive, and consistent across the app.\n\nThis bounty is part of the warpSpeed OPEN developer bounty programme.\n\n## Reward\n\n$660\n\n## Difficulty\n\nMedium\n\n## Main Skills\n\n* React Native\n* TypeScript\n* Gesture Handling\n* Image Preview UI\n* Mobile Interaction Design\n* Reusable Component Architecture\n\n## Design Reference\n\nhttps://xd.adobe.com/view/1ed5f38b-2e22-4086-b041-6922a0313bf6-4b86/\n\n## High-Level Scope\n\nThe selected developer will build a reusable enhanced image preview feature.\n\nThe implementation should include:\n\n* Full-screen image preview modal or lightbox\n* Open preview when a user taps an image\n* Pinch-to-zoom support\n* Panning support\n* Swipe navigation between multiple images\n* Smooth transitions and responsive gestures\n* Reliable scaling without freezing or pixelati",
       "skills": [
-        "json",
-        "api",
-        "script"
-      ],
-      "score": 65,
-      "amount_mentions": [
-        "$200",
-        "$200"
-      ],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T19:20:01Z"
-    },
-    {
-      "id": 4872518962,
-      "title": "[claude-builders-bounty/claude-builders-bounty] [BOUNTY $50] SKILL: Generate a structured CHANGELOG from git",
-      "url": "https://github.com/Vikingr2023/awesome-agent-bounties/issues/296",
-      "description": "## 外部 Bounty 任务镜像\n\n| 字段 | 值 |\n|---|---|\n| 源仓库 | claude-builders-bounty/claude-builders-bounty |\n| 原 issue | #1 |\n| 作者 | claudebounty |\n| 创建时间 | 2026-03-27T00:55:36 |\n| 标签 | bounty,skill,good first issue |\n| 评论 | 1817 条 |\n| 赏金 | $50 |\n| 原 URL | https://github.com/claude-builders-bounty/claude-builders-bounty/issues/1 |\n\n---\n\n### 任务描述\n\n## 💰 Bounty: $50 — powered by [Opire](https://opire.dev)\n\n## Description\nCreate a Claude Code skill (`SKILL.md`) or a bash script that automatically generates\na structured `CHANGELOG.md` from a project's git history.\n\n## Acceptance Criteria\n- [ ] Works via `/generate-changelog` command or `bash changelog.sh`\n- [ ] Fetches commits since the last git tag\n- [ ] Auto-categorizes into: `Added` / `Fixed` / `Changed` / `Removed`\n- [ ] Outputs a properly formatted `CHANGELOG.md`\n- [ ] Tested on a real GitHub repo (include a sample output in the PR)\n- [ ] README with setup instructions in 3 steps or fewer\n\n## How to Claim\n1. Comment `/opire try` in this issue\n2. Submit a PR with your solution\n3. Payment is released automatically on merge ✅\n\n## Accepted Stack\nBash, Python, or native Claude Code `SKILL.md`.\n\n\n---\n\nThis bounty is now mirrored on **31day.cloud** - ",
-      "skills": [
-        "python",
+        "typescript",
         "script"
       ],
       "score": 55,
       "amount_mentions": [
-        "$50",
-        "$50",
-        "$50"
+        "$660",
+        "$660"
       ],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:09:37Z"
+      "updated_at": "2026-10-10T20:19:21Z"
+    },
+    {
+      "id": 4543282894,
+      "title": "[PAID BOUNTY - $660] Inline Image Editing",
+      "url": "https://github.com/warpspeedopen-source/warpspeed-bounties/issues/5",
+      "description": "## Bounty Overview\n\nBuild an inline image editing feature for the warpSpeed app.\n\nThis bounty allows users to make quick, lightweight image edits directly inside the app without exporting images to another tool. From the image preview, users should be able to open an editor, crop, rotate, adjust basic image settings, and add simple annotations.\n\nEdited images must be saved as a new version while keeping the original image intact.\n\nThis bounty is part of the warpSpeed OPEN developer bounty programme.\n\n## Reward\n\n$660\n\n## Difficulty\n\nMedium\n\n## Main Skills\n\n* React Native\n* TypeScript\n* Image Editing UI\n* Mobile Interaction Design\n* Notes / Messenger UI Flow\n* Reusable Component Architecture\n\n## Design Reference\n\nhttps://xd.adobe.com/view/1ed5f38b-2e22-4086-b041-6922a0313bf6-4b86/\n\n## High-Level Scope\n\nThe selected developer will build an inline image editor that supports quick image modifications inside the app.\n\nThe implementation should include:\n\n* Edit button from image preview\n* Inline image editor screen or modal\n* Crop and rotate tools\n* Brightness, contrast, and saturation adjustments\n* Simple annotations such as pen, text, arrows, and highlights\n* Undo and redo functionality",
+      "skills": [
+        "typescript",
+        "script"
+      ],
+      "score": 55,
+      "amount_mentions": [
+        "$660",
+        "$660"
+      ],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:19:16Z"
     },
     {
       "id": 5406530812,
@@ -117,6 +134,22 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T20:00:07Z"
+    },
+    {
+      "id": 5533799153,
+      "title": "[Bounty proposal] security: eight plugins — unauthenticated GET /disconnect?uid= deletes any user's stored OAuth tokens ($150 proposed)",
+      "url": "https://github.com/BasedHardware/omi/issues/15589",
+      "description": "### Summary\n\n`GET /disconnect?uid=<victim>` deletes a user's stored OAuth tokens with **no authentication of any kind** in eight plugins. Anyone who knows or guesses a uid can unplug that user's integration, and because it is a side-effecting `GET`, it also fires from a plain `<img src=\"...\">` on any page the victim (or anyone) loads.\n\nThis is the same defect class as #14505, which covered `omi-twitter-chat-tools-app` only. The remaining plugins have not been filed.\n\n### Affected routes\n\n| Plugin | Line | Handler | Deletes |\n|---|---|---|---|\n| `omi-dropbox-app` | 498 | `disconnect` | `delete_dropbox_tokens(uid)` |\n| `omi-google-calendar-app` | 1253 | `disconnect` | `delete_google_tokens(uid)` |\n| `omi-hive-app` | 644 | `disconnect_hive` | `delete_hive_credentials(uid)` |\n| `omi-linear-app` | 536 | `disconnect_linear` | `delete_linear_tokens(uid)` |\n| `omi-ms365-app` | 135 | `disconnect` | `await auth.disconnect(uid)` (POST) |\n| `omi-notion-app` | 1299 | `disconnect` | `delete_notion_tokens(clean_uid)` |\n| `omi-shipbob-app` | 595 | `disconnect_shipbob` | `delete_shipbob_tokens(uid)` |\n| `omi-shopify-app` | 468 | `disconnect_shopify` | `delete_shopify_tokens(uid)` |\n\nRepresentative ",
+      "skills": [
+        "python"
+      ],
+      "score": 45,
+      "amount_mentions": [
+        "$150"
+      ],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:21:15Z"
     },
     {
       "id": 5775643739,
@@ -169,20 +202,68 @@
       "updated_at": "2026-10-10T20:00:24Z"
     },
     {
-      "id": 5794678340,
-      "title": "🎯 Bounty Alert: 14 New Opportunityies found",
-      "url": "https://github.com/freedom-winds/BountyScout/issues/1228",
-      "description": "### Active Bounty Scan Results\n\n**Scan Time:** 2026-10-10 19:45 UTC\n\n#### 1. [[Bounty: $70] Return a length matching member_count from get_payout_order, or error](https://github.com/SUSU-LABS/susu-contracts/issues/41)\n- **Repository:** [SUSU-LABS/susu-contracts](https://github.com/SUSU-LABS/susu-contracts)\n- **Comments:** 4\n- **Last Updated:** 2026-10-10T19:44:01Z\n\n#### 2. [[Bounty: $50] Make get_round report no recipient for a round that has not started](https://github.com/SUSU-LABS/susu-contracts/issues/39)\n- **Repository:** [SUSU-LABS/susu-contracts](https://github.com/SUSU-LABS/susu-contracts)\n- **Comments:** 4\n- **Last Updated:** 2026-10-10T19:43:42Z\n\n#### 3. [[Bounty: $80] Test that a re-entrant token cannot double-pay across two rounds](https://github.com/SUSU-LABS/susu-contracts/issues/44)\n- **Repository:** [SUSU-LABS/susu-contracts](https://github.com/SUSU-LABS/susu-contracts)\n- **Comments:** 3\n- **Last Updated:** 2026-10-10T19:41:55Z\n\n#### 4. [Shops: implement approved field-driven stock and material supply](https://github.com/kion-dgl/psz-godot/issues/44)\n- **Repository:** [kion-dgl/psz-godot](https://github.com/kion-dgl/psz-godot)\n- **Comments:** 2\n- **Last Updated:** 2",
+      "id": 4754366017,
+      "title": "[Due for payment 2026-10-05] [$250] [Exploratory] Expense-Error is shown when vacation delegate clicks \"Download as PDF\" on rejected expense",
+      "url": "https://github.com/Expensify/App/issues/94728",
+      "description": "If you haven’t already, check out our [contributing guidelines](https://github.com/Expensify/ReactNativeChat/blob/main/contributingGuides/CONTRIBUTING.md) for onboarding and email contributors@expensify.com to request to join our Slack channel!\n___\n\n**Version Number:** 9.4.20-1\n**Reproducible in staging?:** Yes\n**Reproducible in production?:** Yes\n**If this was caught during regression testing, add the test name, ID and link from BrowserStack:** https://github.com/Expensify/App/pull/92885\n**Email or phone of affected tester (no customers):** N/A\n**Issue reported by:** Applause Internal Team\n**Bug source:** Exploratory - Significant User Experience Deterioration\n**Device used:** MacBook Air 26.5 Chrome\n**App Component:** Money Requests\n\n## Action Performed:\nPreconditions:\nAccount A: workspace owner\nAccount B: workspace approver\nAccount C: vacation delegate\nAccount D: workspace submitter\nAs Account A, create a workspace and invite Account B (approver), Account C, and Account D (submitter) as members. As Account B, set Account C as B's vacation delegate via Account > Profile > Status > Vacation delegate. \n\n1. As Account D (submitter), submit an expense to the workspace chat\n2. Log in ",
+      "skills": [
+        "bug"
+      ],
+      "score": 35,
+      "amount_mentions": [
+        "$250"
+      ],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:20:59Z"
+    },
+    {
+      "id": 3746059973,
+      "title": "[Due for payment 2026-09-22] [$250] Android - Split - Percentage input has to be focused twice to be able to edit it.",
+      "url": "https://github.com/Expensify/App/issues/78089",
+      "description": "If you haven’t already, check out our [contributing guidelines](https://github.com/Expensify/ReactNativeChat/blob/main/contributingGuides/CONTRIBUTING.md) for onboarding and email contributors@expensify.com to request to join our Slack channel!\n___\n\n**Version Number:** 9.2.82-0\n**Reproducible in staging?:** Yes\n**Reproducible in production?:** N/A - new feature, doesn't exist in prod\n**If this was caught during regression testing, add the test name, ID and link from BrowserStack:** https://github.com/Expensify/App/pull/74652\n**Email or phone of affected tester (no customers):** ibellicotest+2230@gmail.com\n**Issue reported by:** Applause Internal Team\n**Bug source:** Exploratory - Significant User Experience Deterioration\n**Device used:** Motorola MotoG60 / Android 12 (Hybrid app)\n**App Component:** Money Requests\n\n## Action Performed:\nPrerequisite: Account has at least one workspace.\n1. Open the Expensify app.\n2. Open any workspace chat.\n3. Create a manual expense.\n4. Open the just created expense.\n5. Tap on \"More\" > \"Split\"\n6. Switch to \"Percentage\" tab.\n7. Tap on the percentage input of any split to edit it.\n8. Note that keyboard opens but input is automatically unfocused.\n9. Tap",
+      "skills": [
+        "bug"
+      ],
+      "score": 35,
+      "amount_mentions": [
+        "$250"
+      ],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:20:25Z"
+    },
+    {
+      "id": 5404683219,
+      "title": "T-09: Platform Engineering Report, the decision register from PT1 to the 2026 dev kit",
+      "url": "https://github.com/Arrow-air/project-quiver/issues/256",
+      "description": "**Task board row T-09**\n\n| | |\n|---|---|\n| Price | $500 in two paid milestones after an unpaid gate: M0 the sample (unpaid, it is the application), M1 the decision register $300, M2 the narrative, images, weight breakdown, and review revisions $200 |\n| Funding line | QGB-01, Platform Engineering Report, reserved since May |\n| Owner | OPEN. Applicants submit milestone 0 in this issue. Assignment follows an accepted sample, never precedes it. |\n| Reviewers | Erick (electrical, configuration), Alperen (structure, CAD) |\n| Deadline | M0 whenever you apply, M1 2026-11-07, M2 2026-11-30 |\n| Done when | `docs/Engineering-Reports/Platform-Engineering-Report.md` is merged with every entry in the decision register verified by a reviewer against its citation. |\n\n**What this report is**\n\nThe Quiver has three engineering reports (PT1, PT2, PT3) and a Dev Kit report, plus about thirty information notes under `task-grant-bounty/` across pt1, pt2, pt3, Dev-Kit, equipment, and general. Nobody can read that stack and come away knowing why the aircraft is the way it is. This report is the answer to that question: every design decision from the PT1 concept to the 2026 dev kit, what was chosen, what it",
       "skills": [],
       "score": 35,
       "amount_mentions": [
-        "$70",
-        "$50",
+        "$500",
+        "$300,",
+        "$200"
+      ],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:19:37Z"
+    },
+    {
+      "id": 5788509699,
+      "title": "Resolve the $1,295 advertised-bounty claim for 16 merged contributions",
+      "url": "https://github.com/Movalabs-crew/mova-store/issues/970",
+      "description": "I contributed the following 16 merged Mova Store PRs under @iprasen. Their linked issue titles advertised a combined **US$1,295** in bounties. All 16 deliverables were reviewed, approved, and merged into `main` in September 2026, yet payment remains completely unresolved.\n\n### Itemized Audit Record\n\n| Merged contribution | Advertised bounty issue | Merge Date (UTC) | Advertised USD |\n| :--- | :--- | :--- | ---: |\n| [PR #356](https://github.com/Movalabs-crew/mova-store/pull/356) | [Issue #80](https://github.com/Movalabs-crew/mova-store/issues/80) | 2026-09-09 | $80 |\n| [PR #357](https://github.com/Movalabs-crew/mova-store/pull/357) | [Issue #94](https://github.com/Movalabs-crew/mova-store/issues/94) | 2026-09-12 | $95 |\n| [PR #358](https://github.com/Movalabs-crew/mova-store/pull/358) | [Issue #86](https://github.com/Movalabs-crew/mova-store/issues/86) | 2026-09-12 | $90 |\n| [PR #360](https://github.com/Movalabs-crew/mova-store/pull/360) | [Issue #85](https://github.com/Movalabs-crew/mova-store/issues/85) | 2026-09-12 | $95 |\n| [PR #367](https://github.com/Movalabs-crew/mova-store/pull/367) | [Issue #67](https://github.com/Movalabs-crew/mova-store/issues/67) | 2026-09-09 | $100 |\n| ",
+      "skills": [],
+      "score": 35,
+      "amount_mentions": [
+        "$1,295",
+        "$1,295",
         "$80"
       ],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:09:32Z"
+      "updated_at": "2026-10-10T20:18:48Z"
     },
     {
       "id": 5662643363,
@@ -198,7 +279,67 @@
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:11:57Z"
+      "updated_at": "2026-10-10T20:24:49Z"
+    },
+    {
+      "id": 5627292444,
+      "title": "check_contrast.py: add --json output and a CI action that fails on contrast regressions",
+      "url": "https://github.com/codeswithroh/tastemaker/issues/85",
+      "description": "## Problem\n`check_contrast.py --matrix` is the one part of tastemaker that is a computation rather than judgment, but its output is human-readable text only. That means nothing downstream can consume it: a project can't fail CI when a palette change breaks a text-safe pairing, and the agent has to re-parse prose to update the style lock.\n\n## Proposal\n1. Add a `--json` flag to `skills/tastemaker/scripts/check_contrast.py` (all three modes: pair, `--palette`, `--matrix`). For `--matrix`, emit every pair with its ratio and class (`text-safe` / `ui-safe` / `decorative`), plus the grouped legal pairings.\n2. Exit non-zero when a pairing that the style lock marks as text-safe drops below 4.5:1.\n3. Ship a small composite GitHub Action (e.g. `.github/actions/contrast-check`) that reads the palette from `.tastemaker/style-lock.md` and runs the check on PRs.\n\n## Acceptance\n- `--json` output is stable and documented in the script's docstring.\n- Existing text output is unchanged without the flag.\n- A PR that lowers a text-safe pair below 4.5:1 fails the action with the offending pair named.\n\n---\n💰 This issue has a **MergePay** bounty in USDC on Arc. See it on https://mergepay.fun/app#bounties",
+      "skills": [
+        "json",
+        "script"
+      ],
+      "score": 30,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:23:39Z"
+    },
+    {
+      "id": 5491358901,
+      "title": "[bounty] 真机对照测量：装了 MisakaNet 的 agent 是否真的更少重复犯错（要原始日志）",
+      "url": "https://github.com/Ikalus1988/MisakaNet/issues/1819",
+      "description": "> 这是本轮评估（`docs/maintainer/strategic-assessment-2026-09-18.md`）得出的**唯一一个**能改变结论的缺口：\n> 仓库里所有\"装了 MisakaNet 的 agent 会更少重复犯错\"的说法，目前**没有任何一项测量**支持。\n> 现有的两个 benchmark 是占位符（`bench/self-healing/run_benchmark.py:137-140` 里\n> `success = with_misakanet  # Placeholder — real implementation needed`；`scripts/lesson_reuse_bench.py:4`\n> import 一个不存在的 `agents.YourAgent`），README 的 21%→43% 量的是\"课程修复命令关键词有没有出现在**模型回复文本**里\"\n> （`scripts/benchmark_workers_ai.py:129-152` 的 `score_response()`），而维护者自己的评估写着\n> 「我们对遵循率**没有任何测量**」（`docs/maintainer/setup-value-assessment-2026-09-16.md:73-74`）。\n\n## 要收集什么\n\n**任务级的对照数据**：同一个 agent、同一套任务，装 MisakaNet 与不装各跑一遍，按**任务是否成功**评分。\n\n## 硬性验收条件（不降标准；缺任意一条即不接受）\n\n1. **先写规则再跑**：任务集、每题的\"成功判据\"（测试通过 / 文件状态 / 退出码）、跑法，**先在 issue 里贴出来**，\n   跑完不许改。改过的提交另起一条。\n2. **环境写全**：OS 与版本、助手（Claude Code / Codex / …）与版本、Node 与 Python 版本、模型名与版本、\n   任务集里每条任务的来源。缺任何一项即不接受。\n3. **两臂对称**：同一模型、同一任务集、同一机器；\"装\"这一臂必须由 `npx @misaka-net/misakanet-setup`\n   真实安装（附 `--report` 输出），\"不装\"这一臂必须是干净家目录（附同一份 `--report` 输出以证明没装）。\n4. **评分对象是任务结果**，不是回复文本：不允许用\"回复里出现了课程关键词\"当成功判据\n   （那正是现有 benchmark 的问题）。\n5. **提交原始日志**，不接受人工摘要：两臂每一题的完整 transcript 与完整 stderr（可以脱敏密钥/路径，\n   但要保留工具调用的时间线）。日志里必须能看出**哪一次工具调用**是 `misakanet_search`（或它缺席）。",
+      "skills": [
+        "python",
+        "script"
+      ],
+      "score": 30,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:20:55Z"
+    },
+    {
+      "id": 5518867774,
+      "title": "OneCompany permanent Mistral Vibe cloud wake bus — owner dispatch only",
+      "url": "https://github.com/NTinkicht/OneCompany/issues/130",
+      "description": "Permanent, repository-scoped, GitHub-hosted Mistral wake bus. Do not close or reuse for unrelated providers. OneCompany native Work Units, current lease, exact SHA and dispatch policy are authority, not this issue's free-form comments. Initial `@mistral-vibe` wake is read-only, advisory and non-gating; it may inspect bounded source and report test ideas/failure analysis without writing code. It MUST fail closed when `MISTRAL_API_KEY` or subscription/PAYG-disabled guard is absent. No provider credentials in this issue. Full leased developer, binding reviewer and test-author lanes need separate qualification; no Codespace, laptop or open browser session may be required.",
+      "skills": [
+        "api",
+        "script"
+      ],
+      "score": 20,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:25:20Z"
+    },
+    {
+      "id": 5788942587,
+      "title": "[P0 WP06 / PP-EPIC] Production implementation epic and requirement coverage",
+      "url": "https://github.com/Jevelopers-neatHack-2026/print-production/issues/1",
+      "description": "**Stable key:** WP06 / PP-EPIC (reuses the original issue; no replacement epic).\n**Owner role:** Creative and fulfillment — production technical lead; accountable implementer/reviewer names remain kickoff decisions.\n**Priority:** P0 — This subsystem converts approved creative output into deterministic customer and supplier artifacts.\n**Required for v1:** Yes for the explicit ticket baseline and all required leaves. CSV and additional product formats are P1 extensions unless the approved launch roster promotes them. **Implementation state:** Planned.\n\n## Current evidence\nLive inspection 2026-10-10: main is [24fb18a](https://github.com/Jevelopers-neatHack-2026/print-production/tree/24fb18a1fc54d34ce71e99a2162d62ebca3a52cd). The complete tracked tree is [README](https://github.com/Jevelopers-neatHack-2026/print-production/blob/24fb18a1fc54d34ce71e99a2162d62ebca3a52cd/README.md), [OWNERSHIP](https://github.com/Jevelopers-neatHack-2026/print-production/blob/24fb18a1fc54d34ce71e99a2162d62ebca3a52cd/docs/architecture/OWNERSHIP.md), and [ACCEPTANCE](https://github.com/Jevelopers-neatHack-2026/print-production/blob/24fb18a1fc54d34ce71e99a2162d62ebca3a52cd/docs/architecture/ACCEPTANCE.md). N",
+      "skills": [
+        "csv",
+        "documentation"
+      ],
+      "score": 20,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:25:00Z"
     },
     {
       "id": 3825637122,
@@ -213,22 +354,21 @@
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:09:58Z"
+      "updated_at": "2026-10-10T20:19:58Z"
     },
     {
-      "id": 5738923348,
-      "title": "Add a bounded offline prompt-optimization pilot with held-out evaluation",
-      "url": "https://github.com/AstralDeep/AstralDeep/issues/349",
-      "description": "## Problem or idea\n\nAstral already conditions drafts on successful examples and scores tool trajectories. Selected current source reads did not establish a metric-driven task-prompt workbench with disjoint search, selection and final evaluation sets. Stanford-origin DSPy and newer GEPA motivate one measured development-time experiment. Their paper results do not demonstrate gains or clinical safety for Astral.\n\n## Expected outcome\n\nImplement one bounded offline workbench that proposes/tests allowlisted task-instruction text and exports an inert reviewed candidate/report. Required CI uses deterministic scripted proposals and provider doubles; optional real-model qualification uses existing authorized provider controls. No automatic production prompt adoption.\n\n## Environment\n\nMVP mode; owning repository: AstralDeep; production Python 3.11. Reviewed current remote main: `8d82a0b48493e5018bdf81a4f59c189a8b045f6b` (2026-10-06). Relevant source seams were rechecked against the earlier research baseline. Upstream commits are investigation snapshots, not approved dependency releases. No implementation, measured benefit or live qualification is claimed.\n\n## Acceptance checks\n\n- [ ] Choose ",
+      "id": 5678048194,
+      "title": "[GOOD FIRST ISSUE · PROPOSED REWARD] Add empty/error states to Paid Bounties UI",
+      "url": "https://github.com/MyZubster-Ecosystem/myzubster/issues/1443",
+      "description": "## Goal\nPolish the public Paid Bounties page when the registry is empty, unavailable or filtered to zero results.\n\n## Scope\n- Friendly empty state for each filter.\n- Clear API-unavailable message.\n- Keep the trust boundary visible: PROPOSED/UNFUNDED are not payment promises.\n- No treasury, wallet or settlement changes.\n\n## Acceptance criteria\n- Empty filters display a useful message.\n- API failure does not render misleading zero balances or fake paid states.\n- Existing bounty data renders unchanged when available.\n- CI remains green.\n\n## Proposed reward\n**15 USD equivalent — PROPOSED / NOT RESERVED.**\n\nThis is not yet a payment promise. Compensation work should start only after explicit reservation/funding and agreed terms.",
       "skills": [
-        "python",
-        "script"
+        "api"
       ],
       "score": 20,
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:09:31Z"
+      "updated_at": "2026-10-10T20:19:40Z"
     },
     {
       "id": 5767603643,
@@ -245,24 +385,24 @@
       "updated_at": "2026-10-10T20:09:31Z"
     },
     {
-      "id": 5664544302,
-      "title": "[Bounty Proposal] fix(imports): prevent zip upload path traversal, shield storage exceptions, and validate job IDs (- proposed)",
-      "url": "https://github.com/BasedHardware/omi/issues/20187",
-      "description": "## Summary\nIn `backend/routers/imports.py` and `backend/database/import_jobs.py`, the data import pipeline contained critical security and error disclosure vulnerabilities:\n\n1. **Path Traversal on File Upload (`import_limitless_data`)**:\n   - The user-provided `file.filename` was directly joined with `TEMP_DIR`:\n     ```python\n     zip_path = os.path.join(TEMP_DIR, f\"{job.id}_{file.filename}\")\n     ```\n   - Filenames with path traversal sequences (`../../../../tmp/malicious.zip`) escaped the temp directory, allowing arbitrary file writes across the host filesystem.\n\n2. **Raw Internal Exception & Path Disclosure**:\n   - On write or disk failures during chunk streaming, the exception string (`str(e)`) was directly formatted into the client's HTTP 500 error response and persisted into the database (`f\"Failed to save uploaded file: {str(e)}\"`), leaking internal absolute filesystem paths and OS error details to clients.\n\n3. **Unvalidated Job IDs in Firestore Queries**:\n   - `get_import_job_status`, `cancel_import_job`, and `delete_import_job` did not validate `job_id`, allowing slashes or directory traversal sequences into Firestore document references.\n   - `get_import_jobs` lacked que",
+      "id": 5663327333,
+      "title": "[LANE_4 / Workspace] Independent Workspace server foundation and read-only surface",
+      "url": "https://github.com/pcvantol/forge/issues/208",
+      "description": "# LANE_4 / ARCHITECT_4 — Workspace\n\nOwner request, 2026-10-01: four separate product lanes and start building Workspace alongside completing the installer. This register is the new Workspace lane; LANE_1/#141 keeps Forge Platform, LANE_2/#142 keeps EP and its active r30 qualification, and LANE_3/#207 keeps Forge. Old LANE_2 Workspace fallback allocation is superseded only for future source selection after the canonical transition; no active r30 resource or shared host is transferred.\n\n## Revision 1 — first bounded Workspace slice issued\n\n```\nASSIGNMENT_ID = L4-WORKSPACE-SERVER-READONLY-V1-20261001\nREGISTRATION_REVISION = 1\nPLAN_REVISION = 1\nASSIGNMENT_STATE = ISSUED\nLIFECYCLE_PHASE = CANONICAL_ENTRY_RECONCILIATION_AND_SINGLE_EXECUTOR_PICKUP\nEXECUTION_MODE = DIRECT_CODEX\nREPOSITORY = pcvantol/workspace\nSOURCE_BASE = 5ecd418bc9cdc983791bf35c07457ffdb2ad1166\nWORK_RUN_STARTED_BY_REGISTRATION = FALSE\nHOST_OR_SIGNER_HOLDS = NONE\nFIRST_INSTALLER_RELEASE_DEPENDENCY = FALSE\n```\n\nThe existing repository README declares foundation only, BOOTSTRAP records implementation parked, and BACKLOG requires an explicit capability decision. This owner decision selects only the bounded slice below, not e",
       "skills": [
-        "python"
+        "documentation"
       ],
-      "score": 20,
+      "score": 10,
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:06:30Z"
+      "updated_at": "2026-10-10T20:24:21Z"
     },
     {
-      "id": 5602503136,
-      "title": "Build complete source-to-Legacy feature and route acceptance matrix",
-      "url": "https://github.com/MALIEV-Co-Ltd/Legacy.Maliev.Workflows/issues/98",
-      "description": "The source-commit ledger tracks commit disposition but does not prove every migrated service feature and Web/Intranet route works against production-derived local Aspire data. This is an explicit migration completion gate, not a deployment request.\n\nAcceptance:\n- Inventory each Legacy service feature, API, role, entity, background operation, and every Web/Intranet route against the latest committed original source; retain full source SHA, owning Legacy repo, main SHA, status, and exact evidence links.\n- Mark unverified items pending; distinguish source retirement approvals from migrations. Do not infer feature parity from a code mapping, route alias, smoke test, or green unit suite.\n- Record automated customer/employee authentication, permission, CRUD/lifecycle, validation, rollback/retry, cross-service effects, localization, responsive/browser/accessibility, and persisted-data checks as appropriate. Include safe failure/partial-failure evidence and suppress real notifications/payments/analytics in local review.\n- Verify the matrix against live source and each protected Legacy main, with a check that rejects missing routes/features or unsupported completion claims. Link per-service",
+      "id": 5772614232,
+      "title": "Tight / Hermes onboarding: default assignment isolation and PM contract (R1/R3/R4)",
+      "url": "https://github.com/alexkirs/taskq/issues/538",
+      "description": "## Goal\n\nOwner decision 2026-10-09 (intake): collect Tight/Hermes onboarding gaps in one parked task. Planning only; no implementation, adoption, requeue, workers or timers until the owner approves the final scope.\n\n- Main requirement: other managers skip tasks assigned to Tight by default, including managers without a personal filter. Tight takes another user's task only after an explicit owner-approved reassignment. Board assignments, status and claims remain authoritative (R1); no parallel registry or mandatory host/session ownership workaround.\n- Give Tight a separate GitHub identity. Registration and repository membership/API access are separate checks. A shared alexkirs login cannot distinguish Tight; account creation alone does not fix selection.\n- Clarify board assignee versus the task's pm: ownership, controller authority, supervisor runtime, outcome routing and safe transfer. Reconcile R3/R4 and #532 before proposing changes; do not silently remove or duplicate their responsibilities.\n- Target: Tight PM -> native Hermes supervisor -> Codex worker. Reuse the current taskq.md manager contract. Document minimal, reproducible Hermes onboarding in this repository, not a second",
       "skills": [
         "api"
       ],
@@ -270,7 +410,131 @@
       "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:11:49Z"
+      "updated_at": "2026-10-10T20:24:16Z"
+    },
+    {
+      "id": 5760402393,
+      "title": "[P1][TIGERIQ NEWS] Hoàn thiện xuất bản bài/ảnh công khai và tự xác minh tin thật",
+      "url": "https://github.com/newsdayads/tigeriq-ai-lab/issues/4574",
+      "description": "TIGERIQ_JOB_V1\nSOURCE=Owner direct chat 2026-10-08: \"Tôi cần xem kết quả thực tế trên trang chứ không muốn nhìn vào thẻ công việc rồi đoán mò\"\nOWNER_DIRECT=true\nOWNER_POLICY=AUTO\nPRIORITY=P1\nCURRENT_STATE=READY_AUTOMATED_CODING\nTIGERIQ_EXECUTABLE=true\nAUTO_QUEUE=INCLUDED\nCAPABILITY=coding\nEXECUTION_SURFACE=CODING\nAUTONOMOUS_CODE=true\nMUTATION_OWNER=CORE_DYNAMIC_LEASE\nRESOURCE_SCOPE=TIGERIQ_NEWS_PUBLIC_ARTICLE_COVER_LIVE_E2E_V1\nPROJECT_ID=tigeriq-news\nWORK_PACKAGE_ID=news-autonomous-newsroom\nTARGET_REPOSITORY=newsdayads/tigeriq-media\nBASE_BRANCH=main\nRELATED_PARENT=4456\nRELATED_TRACKER=3899\nRELATED_SOAK=3904\nRESULT_INBOX=4426\nONE_RESOURCE_SCOPE_ONE_WRITER=true\nZERO_COST=true\nNO_PAID_COST=true\nNO_CREDENTIAL_CHANGE=true\nNO_SECURITY_BOUNDARY_CHANGE=true\nNO_DESTRUCTIVE=true\nNO_DIRECT_MAIN=true\nNO_PRODUCTION_RELEASE=true\nNO_VERCEL_DEPLOY=true\nNO_APP_CHROME_MUTATION=true\nAPP_CHROME_MUTATION=FORBIDDEN\nNO_CODEX=true\nINDEPENDENT_REVIEW_REQUIRED=true\nKEEP_OPEN_ON_STEP_COMPLETE=true\nLIVE_ACCEPTANCE_REQUIRED=true\nDONE=false\n\n## MỤC TIÊU THỰC TẾ\nTigerIQ News phải tự tìm tin -> xác minh -> viết -> rà soát độc lập -> tạo/đưa ảnh lên nguồn công khai -> xuất bản nội dung tới đúng nguồn website đang ",
+      "skills": [
+        "script"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:24:11Z"
+    },
+    {
+      "id": 4840997996,
+      "title": "📊 SMAG pilot ledger (auto-capture sink)",
+      "url": "https://github.com/humanaios-ui/operations/issues/103",
+      "description": "Append-only ledger for the SMAG pilot study. The `smag-capture` workflow posts one comment per merged PR — **predicted** (acceptance) vs **measured** (gate/merge outcome) vs **substrate** vs **gap**. Rows are consolidated into `audits/smag_pilot_ledger.jsonl` via periodic PR.\n\nDo not close — this is the live capture sink. Mechanical tier (no LLM); the gap field is enriched by the optional LLM-review layer.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+      "skills": [
+        "json"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:23:48Z"
+    },
+    {
+      "id": 5754554444,
+      "title": "perf: 알려진 경로 재탐색과 M0 리뷰 도구 왕복 감소",
+      "url": "https://github.com/wotjr1649/devflow/issues/68",
+      "description": "## 문제\n실제 모델 시험에서 일반 저장소에 devflow 자체 verify와 CI 없는 저장소의 PR/통합 커밋 기록 관례를 대상의 필수 정책으로 적용하는 결함이 재현됐다. 알려진 경로 직접 읽기와 독립 읽기 묶음은 개선 신호가 있었지만, 작은 보고 문구 변경은 일관된 비용 개선을 입증하지 못했다.\n## 원하는 결과\n대상에 확립된 정책과 현재 후보 근거만으로 readiness를 판단한다. 정확성 수정과 비용 개선을 분리하고, 품질을 확인한 고정 기준에서 한 번에 한 가지 비용 가설만 검증한다. Codex와 Claude 각각에서 품질을 유지한 비용 절감 및 효율 개선을 반복 비교로 입증한다.\n## 영향받는 사용자·시스템\nClaude Code와 Codex의 pr-review-workflow, devflow 리뷰·통합 절차 및 로컬 비교 시험.\n## 제약\nM0 의미 기준, M1 독립 리뷰, 필수 ignored 입력 직접 읽기, 누락 보고, 현재 HEAD 및 필수 CI·보호·승인·thread·권한 관문을 유지한다. 대상에 없는 기록 위치와 hook 역할을 만들지 않는다. 기존 실패·무효·미완료 결과와 동결 계약은 보존한다. 모델·effort·설치·가드를 바꾸지 않는다.\n## 열린 질문\n고정 비용 절감률 10% 또는 15%를 요구하지 않는다. 작은 절감도 호스트별 반복 방향과 비용 구성 및 실제 도구 효율로 입증되면 채택할 수 있다. 편차와 효과를 구분하지 못하면 미입증으로 보류하며 억지 후보나 자동 유료 확대를 하지 않는다. 캐시 포함 총토큰, 추정 API 비용, 실행 시간은 구분한다.\n## 수용 기준\n- [x] 기존 실제 도구 기록에서 알려진 경로 재탐색 및 M0 추가 왕복의 원인과 기준값을 확인한다.\n- [x] 알려진 경로 직접 읽기와 독립 입력 묶음 읽기를 최소 후보로 구현한다.\n- [x] M0 근거 부족, 필수 입력 누락, M1 리뷰, 최신 상태 및 CI 관문을 보존한다.\n- [x] doctor와 저장소 검증 및 새 문맥 리뷰를 통과하고 후보 커밋을 기록한다.\n- [x] 새 모델 비교의 입력·측정·품질·비용 기준과 명시적 실행 범위를 준비하고 실제 결과 또는 미실행 사유를 기록한다.\n- [x] 검사·상태 주장을 제공 정보와 직접 관찰로 구분하고 읽지 않음·실패·명시적 범위 제한을 혼동하지 않도록 공통 리뷰 절차를 수정한다.\n- [ ] 품질을 통과한 기준과 ship의 metrics 읽기 한 요인 후보를 두 호스",
+      "skills": [
+        "api"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:23:35Z"
+    },
+    {
+      "id": 5675867230,
+      "title": "SN-005: проверить контракт Authentik actor → project authorization для control API",
+      "url": "https://github.com/pupkinson/SymphonyNext/issues/33",
+      "description": "## Цель нового независимого разбора\nПосле подтверждённой активации capacity100/10 продолжить проектирование следующей пользовательской вертикали: вход через Authentik и разрешённое чтение control API. Нужен минимальный реализационный контракт, не повтор прежнего review исходников PR14 и не фактическая настройка Authentik.\n\nИсточник PR14 HEAD21ce4282e7ef8330cc1155bcb7b94fbf132032a8, BASE2bf21950e0725bc9228b262e1495f5af5eeea1d6, TREE29fe41a2873a3db13ac2c0dc74b7f149391c9eeb. Очередь приложит текущие RuntimeIdentity/controller/router/runtime configuration и baseline SPECIFICATION.md. Исходники PR14 уже имеют source acceptance; protected execution и packaged acceptance пока отдельно не завершены.\n\n## Проект контракта для оценки\nСерверная авторизация получает actor только из проверенного локального Authentik login/session, не из query/header с произвольным actor_id и не из task-tracker credentials. Нормализованный Actor имеет issuer+subject и локальный user reference; действительные роли проекта читаются сервером. User, service identity и agent различаются. Read-only endpoint /api/v1/control/identity раскрывает данные только после ровно :ok от authorizer; текущая default-deny ветка сохра",
+      "skills": [
+        "api"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:23:20Z"
+    },
+    {
+      "id": 5337179713,
+      "title": "P2: every release parks one request for 12-16s at web-dyno swap — 3/3 migration-free releases, /api/health, reproducible",
+      "url": "https://github.com/alexander-bain/bainluck/issues/2834",
+      "description": "## What a reader hits\n\nEvery Heroku release — **including releases that carry no migration at all** — parks exactly one\nin-flight request for **12–16 seconds** at the web-dyno swap. The probe target is `/api/health`, which\ndoes essentially no work, so this is not compute: it is a request held open across the dyno handover.\nA real reader whose tap lands in that second waits twelve to sixteen seconds for a page.\n\nWe deploy many times a day. This is not a rare tail — it is once per release, deterministically.\n\n## Evidence — 3/3 migration-free releases, unattended\n\nCaptured by `tools/watch-release-window.sh` (armed detached for #2724, fires on release **START**).\nProber: one `GET /api/health` every 6 s, `curl --max-time 60`, so a parked request is recorded as\nparked rather than as a gap.\n\n| release | sha | release duration | slow sample | offset from first probe | all other samples |\n|---|---|---:|---:|---:|---|\n| **v4030** | `2766d0a5` | 23 s | **12.24 s** (HTTP 200) | +25 s | 20/21 at ~0.23 s |\n| **v4031** | `e5c8405f` | 11 s | **12.25 s** (HTTP 200) | +13 s | 18/19 at ~0.22 s |\n| **v4032** | `f73ae233` | 28 s | **16.27 s** (HTTP 200) | +26 s | 20/21 at ~0.24 s |\n\nThree signals that ",
+      "skills": [
+        "api"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:23:16Z"
+    },
+    {
+      "id": 5792443725,
+      "title": "Fence hosted execution against exact PostgreSQL authority-session loss",
+      "url": "https://github.com/KestrelSovereignAI/kestrel-sovereign/issues/3569",
+      "description": "## Task Description\n\nClose the remaining P1 authority-session-loss finding from the independent complete-diff review of Frinz PR [#775](https://github.com/KestrelSovereignAI/frinz/pull/775), parent epic [Frinz #664](https://github.com/KestrelSovereignAI/frinz/issues/664) and rollout [#774](https://github.com/KestrelSovereignAI/frinz/issues/774). Core 0.53.27 is already published and verified; this is a separate canonical native contract extension, not a claim that its completed release failed.\n\nCurrent native `PostgresBackend.advisory_locks()` yields no capability and observes its dedicated session again only on exit. If PostgreSQL terminates that backend, a second host can transfer ownership while cancellation-resistant work from the first host continues through other native storage connections. A cancellation request or another preflight generation SELECT cannot close this race.\n\n## Implementation Notes / Files\n\n- Extend canonical `kestrel_sovereign/storage/db/postgres.py` advisory custody with an exact-session, irrevocably invalidated liveness handle and acquisition-time loss callback. Register before awaited acquisition; handle queued termination, normal retirement, exception a",
+      "skills": [
+        "script"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:23:11Z"
+    },
+    {
+      "id": 5530024379,
+      "title": "eval: tool-calling SLM tournament and Agent0-style self-evolution track",
+      "url": "https://github.com/kvnloo/evolution-lab/issues/23",
+      "description": "## Goal\n\nExtend the existing observer-first evaluation work in #20 into a reproducible tournament for local tool-calling/orchestration policies, then test whether Agent0-style self-evolution can improve the winning local policy on our own traces.\n\nRuntime inventory/control belongs in https://github.com/kvnloo/z0intelligence/issues/20. Evolution Lab owns grouped experiments, frozen evaluation, training/search, and promotion evidence.\n\n## Candidates\n\nEvaluate at least:\n\n- Nemotron-Orchestrator-8B\n- Qwen3.5-9B\n- Qwen3.5-4B\n- Hammer2.1-3B\n- Hammer2.1-7B where useful\n- FunctionGemma-270M after task-specific fine-tuning\n- JEV/OpenJev bounded scorer\n- deterministic/rules/logistic controls\n\nAgent0 is a separate **training methodology arm**, not just another checkpoint.\n\n## Benchmark the actual control problem\n\nDo not reduce this to JSON validity or one function-calling leaderboard.\n\nFor frozen work-item groups, measure:\n\n```text\nverified task success\ncorrect tool/model selection\ninvalid call rate\nunnecessary call rate\ndependency/order violations\ntool irrelevance rejection\nparallelization quality\nretry count\nrecovery success\nescalation precision/recall\nstop/continue quality\nwall-clock laten",
+      "skills": [
+        "json"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:19:46Z"
+    },
+    {
+      "id": 3077762326,
+      "title": "Build Listing Discovery Engine (PWA or React UI)",
+      "url": "https://github.com/Nobayprotocol/Nobay-Protocol/issues/2",
+      "description": "Create a simple web interface that pulls verified listings from ListingRegistry events.\n\nFeatures:\n- Connect via wallet (MetaMask, WalletConnect)\n- Read ListingVerified events and metadata\n- Show seller trust tier from StakingModule\n- Filter by keyword, trust tier, or timestamp\n\nType: Frontend / UI  \nLabels: help wanted, frontend, bounty",
+      "skills": [],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:18:15Z"
+    },
+    {
+      "id": 5515702753,
+      "title": "Jarvis publications — replies and Daily Board",
+      "url": "https://github.com/braydenparker999/jarvis/issues/2",
+      "description": "This thread carries public Jarvis replies and Daily Board publications. Posting here does not deploy the website or Worker.\n\nThe Worker imports only validated publication JSON posted by the repository owner (GitHub user ID 183016859). Other comments are ignored. Ordinary messages are sent through the Jarvis website.\n\nSchema: jarvis-publication-v1. Each publication has a UUID id and type reply or briefing. Replies include replyTo and body. Briefings include date (YYYY-MM-DD), title and body.\n\n[Authoritative format and scheduling handoff](https://github.com/braydenparker999/jarvis/blob/main/JARVIS-HANDOFF.md)\n\nLive Worker v6 import was verified on 2026-09-20: both the test reply and briefing are present in the shared inbox reader, publisher healthy, no pending/conflicting imports. Routine imports run at most once every five minutes when the inbox is read. Scheduled assistant execution will be configured separately.",
+      "skills": [
+        "json"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:14:41Z"
     },
     {
       "id": 5738922794,
@@ -287,34 +551,6 @@
       "updated_at": "2026-10-10T20:11:35Z"
     },
     {
-      "id": 5364578522,
-      "title": "Team Room — Standups, engineering chat, retrospectives and learning",
-      "url": "https://github.com/NTinkicht/Tabibi/issues/21",
-      "description": "# Tabibi Team Room\n\nThis is the permanent shared conversation space for Tabibi's five-actor engineering company: `chatgpt`, `codex`, `claude`, `gemini_agent`, and `gemini_chat`. Keep it open.\n\nThe binding collaboration rules are in `coordination/COLLABORATION_PROTOCOL.md`, and the company/team-culture rules are in `coordination/COMPANY_OPERATING_SYSTEM.md`. Read them with `AGENTS.md`, `coordination/AUTONOMY_PROTOCOL.md`, `coordination/ROLE_FAILOVER_PROTOCOL.md`, `coordination/WORK_QUEUE.md`, and current `coordination/STATE.json` before material work.\n\n`gemini_agent` and `gemini_chat` are distinct actors with separate capacity, leases, authorship, findings, review authority, and accountability.\n\n## What belongs here\n\nFormal delivery markers:\n- `HEARTBEAT`, `CHECKPOINT`;\n- role lease / handoff / failover markers;\n- `CAPACITY_DEGRADED`, `CAPACITY_RECOVERED`;\n- `RETRO_OPEN`, `RETRO_ENTRY`;\n- `PROCESS_PROPOSAL`, `CONSENSUS_ACK`, `CONSENSUS_AMEND`, `CONSENSUS_CHALLENGE`;\n- `TEAM_DECISION`, `LESSON_LEARNED`;\n- `TASK_CLAIM`, `TASK_DONE`, `TASK_PROPOSAL`, `AVAILABLE_FOR_WORK`.\n\nHuman-shaped engineering conversation is also welcome:\n- `STANDUP`;\n- `THOUGHT`;\n- `QUESTION` / `ANSWER`;\n- `REFAC",
-      "skills": [
-        "json"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:10:58Z"
-    },
-    {
-      "id": 5361348957,
-      "title": "Agent wake bus: Claude review handoffs (do not close)",
-      "url": "https://github.com/NTinkicht/Tabibi/issues/11",
-      "description": "## Purpose\nPermanent repository-level dispatch channel for Claude review work.\n\nClaude's primary runtime wake mechanism has been PR-activity subscription. Per-PR subscriptions can leave Claude idle when work moves to a new PR. This issue is intentionally permanent and must not be closed while Tabibi uses Claude as an independent reviewer.\n\n## Required Claude behavior\nWhen this channel first reaches Claude, establish the closest persistent subscription/monitoring mechanism available for this issue/repository and treat every new `HANDOFF_TO_CLAUDE` comment here as a dispatch to the named target PR/SHA. If issue-level event subscription is unsupported, use this issue as the canonical queue inspected by the existing recurring repository heartbeat and establish the target PR subscription immediately on each dispatch.\n\nA dispatch here does **not** replace the review evidence on the target PR. Review findings/verdicts remain on the target PR; this channel exists only to guarantee wake/dispatch continuity across PR changes.\n\n## Current dispatch queue\n1. PR #9 — coordination v4 review. Target exact head: `537d93a3226902a757ebc2fc90f37d4d6b8f9869` at time of initial queueing, but inspect PR ",
-      "skills": [
-        "script"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:10:56Z"
-    },
-    {
       "id": 808949107,
       "title": "[AAVE] Finish aave long/short ETH contract and integrate with shared stake deposit contract",
       "url": "https://github.com/SharedStake/Contracts/issues/6",
@@ -325,126 +561,6 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T20:10:55Z"
-    },
-    {
-      "id": 5663327333,
-      "title": "[LANE_4 / Workspace] Independent Workspace server foundation and read-only surface",
-      "url": "https://github.com/pcvantol/forge/issues/208",
-      "description": "# LANE_4 / ARCHITECT_4 — Workspace\n\nOwner request, 2026-10-01: four separate product lanes and start building Workspace alongside completing the installer. This register is the new Workspace lane; LANE_1/#141 keeps Forge Platform, LANE_2/#142 keeps EP and its active r30 qualification, and LANE_3/#207 keeps Forge. Old LANE_2 Workspace fallback allocation is superseded only for future source selection after the canonical transition; no active r30 resource or shared host is transferred.\n\n## Revision 1 — first bounded Workspace slice issued\n\n```\nASSIGNMENT_ID = L4-WORKSPACE-SERVER-READONLY-V1-20261001\nREGISTRATION_REVISION = 1\nPLAN_REVISION = 1\nASSIGNMENT_STATE = ISSUED\nLIFECYCLE_PHASE = CANONICAL_ENTRY_RECONCILIATION_AND_SINGLE_EXECUTOR_PICKUP\nEXECUTION_MODE = DIRECT_CODEX\nREPOSITORY = pcvantol/workspace\nSOURCE_BASE = 5ecd418bc9cdc983791bf35c07457ffdb2ad1166\nWORK_RUN_STARTED_BY_REGISTRATION = FALSE\nHOST_OR_SIGNER_HOLDS = NONE\nFIRST_INSTALLER_RELEASE_DEPENDENCY = FALSE\n```\n\nThe existing repository README declares foundation only, BOOTSTRAP records implementation parked, and BACKLOG requires an explicit capability decision. This owner decision selects only the bounded slice below, not e",
-      "skills": [
-        "documentation"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:10:44Z"
-    },
-    {
-      "id": 5087942150,
-      "title": "DAG fleet escalations — standing projection target for unbound NEEDS_HUMAN nodes",
-      "url": "https://github.com/ray-manaloto/dotfiles/issues/623",
-      "description": "**This issue is a standing target, not a task. Do not close it.**\n\nIt is the projection target defined by\n[`docs/specs/dag-needs-human-projection.md`](https://github.com/ray-manaloto/dotfiles/blob/main/docs/specs/dag-needs-human-projection.md)\n§2.2 (#602), and it exists because of one measurement: **nothing binds a\nbackground node to an issue.** There is no `issue`/`ticket` field in the union of\nevery `state.json` key set on this host, and a job dir holds only `state.json`,\n`timeline.jsonl` and `tmp/`.\n\nSo an escalated node — `state == \"blocked\"` with a non-empty `needs` payload and\nno `queuedPrompt`, which `dag_tick.py` classifies `NodeClass.NEEDS_HUMAN` — has\nnowhere to be projected *to* unless the scheduler dispatched it and wrote a\n`dag-binding.json`. Without this issue, an **unbound** escalation would stay\nvisible in a launchd log only, which is exactly the silence #602 exists to end.\n\n## The contract\n\n| | |\n|---|---|\n| **Receives** | one append-only comment per (node, question) for any NEEDS_HUMAN node with **no** `dag-binding.json` |\n| **Never receives** | anything for a **bound** node — that projects to its own issue |\n| **Never** | has its body machine-written (`docs/recei",
-      "skills": [
-        "json"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:10:34Z"
-    },
-    {
-      "id": 5656023211,
-      "title": "Epic: Keyless verification completes deterministically and isolates host state",
-      "url": "https://github.com/schlessera/brain-kit/issues/736",
-      "description": "## Outcome\n\nKeyless verification runs use controlled host state and calendars, produce valid reports, clean up browser resources and terminate with observable results.\n\n## Why now\n\n#633, #639, #658, #660, #718, #719, #725, #752, #756, #788, #800, #806, #852, #853, #865, #867, #878, #879, #885, #888, #894, #900 and #940 expose related verification-boundary failures: hangs/native crashes, invalid JUnit names, ambient host discovery, calendar mismatch, browser cleanup under suite load, intermittent child parser diagnostics, ambient Git signing, drag-capture boundary targeting and browser connectivity-state inheritance. Grouping gives those harness defects one closure standard without claiming their causes are already known.\n\n## Shared context\n\nThe native child list is the current implementation record. #995 (combined-suite hook-timeout investigation), #1229 (whole-test timing diagnosis), #1310 (missing helper PID), #1322 (original recovered-rendering exception) remain open. Native #1335 is closed by #1336 (`c7250baf`): the delivered fixture waits for actual recovery completion before cold transcript staging, with a controlled native regression and exact-squash completion receipt. Its ",
-      "skills": [
-        "script"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:10:30Z"
-    },
-    {
-      "id": 3077762326,
-      "title": "Build Listing Discovery Engine (PWA or React UI)",
-      "url": "https://github.com/Nobayprotocol/Nobay-Protocol/issues/2",
-      "description": "Create a simple web interface that pulls verified listings from ListingRegistry events.\n\nFeatures:\n- Connect via wallet (MetaMask, WalletConnect)\n- Read ListingVerified events and metadata\n- Show seller trust tier from StakingModule\n- Filter by keyword, trust tier, or timestamp\n\nType: Frontend / UI  \nLabels: help wanted, frontend, bounty",
-      "skills": [],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:10:21Z"
-    },
-    {
-      "id": 5779878641,
-      "title": "Tested flow ledger for #7536: which flows are tested, how and by whom",
-      "url": "https://github.com/langwatch/langwatch/issues/8553",
-      "description": "<!-- ledger:summary:start -->\n## Progress summary\n\n**1,016 rows: 832 pass, 147 have problems, 1 being walked, 36 not started.**\n<sub>Counted 2026-10-10 20:10 UTC by `ledger-count.py` from the body and 2425 comments; a later result, claim or release comment overrides the body.</sub>\n\n| | rows | ✅ | 🟡 | ❌ | ⚠️ | ⏳ | ⬜ |\n|---|---:|---:|---:|---:|---:|---:|---:|\n| Upgrade | 48 | 3 | 4 | 4 |  | 1 | 36 |\n| Custom flows | 12 | 8 |  |  | 4 |  |  |\n| Product flows | 30 | 25 | 3 |  | 2 |  |  |\n| Beyond the UI | 9 | 7 |  |  | 2 |  |  |\n| Areas | 917 | 789 | 45 |  | 83 |  |  |\n| **Total** | 1,016 | 832 | 52 | 4 | 91 | 1 | 36 |\n\n<details><summary>Per area</summary>\n\n| | rows | ✅ | 🟡 | ❌ | ⚠️ | ⏳ | ⬜ |\n|---|---:|---:|---:|---:|---:|---:|---:|\n| ANA · Analytics, dashboards and LWQL | 17 | 15 | 2 |  |  |  |  |\n| ANN · Annotations and queues | 10 | 10 |  |  |  |  |  |\n| AUD · Audit log | 8 | 7 |  |  | 1 |  |  |\n| AUTH · Sign-in and identity | 53 | 30 | 3 |  | 20 |  |  |\n| AUTO · Automations, triggers, alerts and reports | 26 | 25 |  |  | 1 |  |  |\n| AZ · Authorization: grants and roles | 22 | 22 |  |  |  |  |  |\n| BIL · Billing, usage metering and limits (Cloud) | 22 | 18 | 3 |  | 1 |  |  |\n| CA · ",
-      "skills": [
-        "automation"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:10:04Z"
-    },
-    {
-      "id": 5600228436,
-      "title": "P0 launch blocker: confirm commercial rights for Bing RSS retrieval and persisted search-result evidence",
-      "url": "https://github.com/injamhaqq/foremention/issues/346",
-      "description": "## 27 September 2026 — material third-party data-rights finding\n\nCurrent free-only production path `lib/free-web-retrieval.ts` fetches ordinary Bing search results using **public `www.bing.com/search?format=rss`**, parses result titles, links and snippets, transmits them as grounding context to Cloudflare Workers AI, and persists returned reference links in Foremention Recommendation Records/Source Map. This is **not** an authenticated or contracted Bing Search/grounding API integration. A read-only live sample of this public RSS response displayed an explicit Microsoft restriction on use beyond personal, non-commercial RSS presentation absent express permission. This creates a material **commercial use and output retention/licensing question**, not proof of an adjudicated breach.\n\nMicrosoft publishes [Grounding with Bing Search Terms](https://www.microsoft.com/en-us/bing/apis/grounding-legal) and separate [enterprise integration terms](https://www.microsoft.com/en-us/bing/apis/grounding-legal-enterprise); these are **not licenses automatically granted to our current unauthenticated RSS URL**. Even licensed offerings impose specific restrictions on output storage, alteration, attri",
-      "skills": [
-        "api"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:09:58Z"
-    },
-    {
-      "id": 5341355626,
-      "title": "Release Train handoff — الحالة الحالية والمهام المتبقية — 2026-09-03",
-      "url": "https://github.com/AMASI-SA/AMASI-SA/issues/1006",
-      "description": "# Release Train Handoff — 2026-09-03\n\nهذا الـIssue هو نقطة الاستئناف الرسمية للمحادثات القادمة. الهدف: معرفة ما تم تنفيذه، ما بقي، وما هي بوابات النشر دون إعادة التشخيص من الصفر.\n\n## الحالة العامة\n\n- المستودع: `AMASI-SA/AMASI-SA`\n- Production branch: `hotfix/prod-snap-meta-final`\n- Git Production SHA المعروف: `1de6118484ac4fe1d0981e230618dbb573d8c58c`\n- Live Production حاليًا ما زال على rollback القديم: `c320c293d1359060ae48931f091046a3e274b309`\n- لا يوجد Merge/Publish/Republish معتمد للـRelease Train الحالي.\n- Emergent gate يبقى مغلقًا حتى يصل تأكيد صريح أن `build-repair automation` تم تعطيله فعليًا لتطبيق `salla-analytics`.\n- عند فتح gate لا ننشر المهام منفردة؛ الهدف النهائي: عدة PRs مستقلة → Final Production Source واحد → Release Intent v5 واحد جديد → Fresh Release Guard lease → **Republish واحد فقط** → verify.\n\n---\n\n# المهام المكتملة\n\n## TASK 1 — Qoyod unsent-orders memory bounds\n\n- PR: #1001\n- الحالة: Draft / technically ready\n- الهدف: منع heavy scans والضغط الذاكري في unsent-orders.\n- تم: bounded cursors، single-flight، cache، concurrency ceiling، frontend polling/coalescing.\n- لا تعيد تنفيذ نطاق #1001 في مهام أخرى.\n- Release Intent الموجود داخل #1001 قديم خاص بهذه المهمة فقط",
-      "skills": [
-        "automation"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:09:58Z"
-    },
-    {
-      "id": 5779459949,
-      "title": "[BOUNTY] Suggestion #1268",
-      "url": "https://github.com/SPLURT-Station/S.P.L.U.R.T-tg/issues/1291",
-      "description": "### About the Bounty\n\n## Original issue text:\n\n**Suggestion:**\nMake the gas analyzer function like the plant analyzer does. Open a UI window that is dynamically updated so we don't have to spam the dumb canister we are working on constantly while drowning out every other message in chat.\n\n**Reason:**\n[BOUNTY] okye\n\n**Results:**\n6x <:In_help:1056296636348899408>\n1x <:In_harm:1056296637909192794>\n\n\n### Suggestion Reference\n\n**Suggested by:** megamiana\nhttps://discord.com/channels/908082639704064051/1404686278351655055/1558118728170733710\n\n### Contact Information\n\nContact `mos_ley` in discord for payment information.\n\nContact `megamiana` in discord for information about the requirements.\n\n### Payment Details\n\nPayment methods:\n- PayPal\n- Cryptocurrency\n\n",
-      "skills": [],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:09:51Z"
-    },
-    {
-      "id": 5779463051,
-      "title": "[BOUNTY] Suggestion #1259",
-      "url": "https://github.com/SPLURT-Station/S.P.L.U.R.T-tg/issues/1292",
-      "description": "### About the Bounty\n\n## Original issue text:\n\n**Suggestion:**\nAllow Borgs to turn off all comms. Sometimes the traffic gets very annoying. Especially during RP/ERP, bleeding out the text in short order when shit is going down. If we're having a conversation or in active play, it makes it extremely hard to keep track of the ongoing RP.\n\n**Reason:**\n[BOUNTY] okye\n\n**Results:**\n17x <:In_help:1056296636348899408>\n7x <:In_harm:1056296637909192794>\n\n\n### Suggestion Reference\n\n**Suggested by:** thomastonotter\nhttps://discord.com/channels/908082639704064051/1404686278351655055/1558118785595211903\n\n### Contact Information\n\nContact `mos_ley` in discord for payment information.\n\nContact `thomastonotter` in discord for information about the requirements.\n\n### Payment Details\n\nPayment methods:\n- PayPal\n- Cryptocurrency\n\n",
-      "skills": [],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:09:07Z"
     },
     {
       "id": 5720560754,
@@ -461,20 +577,6 @@
       "updated_at": "2026-10-10T20:08:29Z"
     },
     {
-      "id": 5794851966,
-      "title": "Security Policy",
-      "url": "https://github.com/andexor/andexor-net-website/issues/33",
-      "description": "### Description\n\nAs a Product Manager,\nI want to publish a vulnerability disclosure policy on the website\nSo that security researchers and customers know how to report a security problem with andexor.net or a hosted service privately, and know what to expect from us in return.\n\nThe repository's SECURITY.md covers vulnerabilities in this repository's code and points at GitHub Security Advisories. The website needs a separate policy for the company's site and services, written for a visitor who is not a GitHub user.\n\n### Acceptance Criteria\n\n- The site publishes a Security page at /security, authored as Markdown in content/ with the cards layout, like the Privacy and Terms pages.\n- The page states what is in scope (andexor.net and services we host), what is out of scope (denial of service, social engineering, physical attacks, third-party sites such as LinkedIn, X, and GitHub), how to report (a private email address, optionally a PGP key), what to include in a report, how quickly we acknowledge a report, our coordinated disclosure window, and whether we pay bounties.\n- The page includes a safe-harbor clause: good-faith research that follows the policy is not treated as a violation of",
-      "skills": [
-        "script"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:07:52Z"
-    },
-    {
       "id": 5261240491,
       "title": "Workflow Immune System — OpenAmer's self-healing UI automation",
       "url": "https://github.com/openamer/openamer/issues/18",
@@ -489,18 +591,6 @@
       "updated_at": "2026-10-10T20:07:41Z"
     },
     {
-      "id": 5421716421,
-      "title": "[UI 4.0.2] Finish the icon system for the shared concepts — 1,099 emoji across 174 files",
-      "url": "https://github.com/Jarvichi/jarvs-amazing-web-game/issues/2321",
-      "description": "Narrows #2172 to the part that actually causes cross-screen inconsistency. Second of the two Phase 4 (#2319) foundations.\n\n## Problem\n\n#2172 built the icon system — `ui/icons/Icon.tsx`, `ui/icons/IconSprite.tsx`, 24 names in `ICON_NAMES` — and it never propagated past the title screen.\n\nProduction `.tsx` files (excluding stories and tests) contain **1,099 emoji glyphs across 174 files**.\n\nThe clearest case is the game's primary currency. `<Icon name=\"crystal\">` has **exactly one call site** — `title/titlescreen/TitleIdentityFooter.tsx`. `💎` appears in **25 other files**, including Shop, Collection, Merchant node, Mini-games menu, Home shelf, Hall of Achievements, Bounty board, Daily login and four mini-games.\n\nWorst offenders overall:\n\n| File | Emoji |\n|---|---:|\n| `minigames/FruitMachine.tsx` | 89 |\n| `minigames/CityBuilder.tsx` | 62 |\n| `hub/HubWorld.tsx` | 52 |\n| `mapEditor/EntityInspector.tsx` | 44 |\n| `minigames/TowerDefence.tsx` | 27 |\n| `app/AppOverlays.tsx` | 25 |\n| `screens/MiniGamesMenu.tsx` | 23 |\n| `minigames/HigherOrLower.tsx` | 19 |\n| `screens/ShopScreen.tsx` | 19 |\n\nThis is why screens that are individually fine still don't look like each other: the same concept is d",
-      "skills": [],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:06:46Z"
-    },
-    {
       "id": 3885310528,
       "title": "Launch Another DoraHacks Bounty Post",
       "url": "https://github.com/devpool-directory/devpool-directory/issues/5924",
@@ -511,20 +601,6 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T19:57:44Z"
-    },
-    {
-      "id": 5530024379,
-      "title": "eval: tool-calling SLM tournament and Agent0-style self-evolution track",
-      "url": "https://github.com/kvnloo/evolution-lab/issues/23",
-      "description": "## Goal\n\nExtend the existing observer-first evaluation work in #20 into a reproducible tournament for local tool-calling/orchestration policies, then test whether Agent0-style self-evolution can improve the winning local policy on our own traces.\n\nRuntime inventory/control belongs in https://github.com/kvnloo/z0intelligence/issues/20. Evolution Lab owns grouped experiments, frozen evaluation, training/search, and promotion evidence.\n\n## Candidates\n\nEvaluate at least:\n\n- Nemotron-Orchestrator-8B\n- Qwen3.5-9B\n- Qwen3.5-4B\n- Hammer2.1-3B\n- Hammer2.1-7B where useful\n- FunctionGemma-270M after task-specific fine-tuning\n- JEV/OpenJev bounded scorer\n- deterministic/rules/logistic controls\n\nAgent0 is a separate **training methodology arm**, not just another checkpoint.\n\n## Benchmark the actual control problem\n\nDo not reduce this to JSON validity or one function-calling leaderboard.\n\nFor frozen work-item groups, measure:\n\n```text\nverified task success\ncorrect tool/model selection\ninvalid call rate\nunnecessary call rate\ndependency/order violations\ntool irrelevance rejection\nparallelization quality\nretry count\nrecovery success\nescalation precision/recall\nstop/continue quality\nwall-clock laten",
-      "skills": [
-        "json"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T19:41:12Z"
     },
     {
       "id": 5532873490,
@@ -555,20 +631,6 @@
       "updated_at": "2026-10-10T19:24:05Z"
     },
     {
-      "id": 5515702753,
-      "title": "Jarvis publications — replies and Daily Board",
-      "url": "https://github.com/braydenparker999/jarvis/issues/2",
-      "description": "This thread carries public Jarvis replies and Daily Board publications. Posting here does not deploy the website or Worker.\n\nThe Worker imports only validated publication JSON posted by the repository owner (GitHub user ID 183016859). Other comments are ignored. Ordinary messages are sent through the Jarvis website.\n\nSchema: jarvis-publication-v1. Each publication has a UUID id and type reply or briefing. Replies include replyTo and body. Briefings include date (YYYY-MM-DD), title and body.\n\n[Authoritative format and scheduling handoff](https://github.com/braydenparker999/jarvis/blob/main/JARVIS-HANDOFF.md)\n\nLive Worker v6 import was verified on 2026-09-20: both the test reply and briefing are present in the shared inbox reader, publisher healthy, no pending/conflicting imports. Routine imports run at most once every five minutes when the inbox is read. Scheduled assistant execution will be configured separately.",
-      "skills": [
-        "json"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T18:52:21Z"
-    },
-    {
       "id": 5794208549,
       "title": "Source spot check 2026-10: 44 sources for a second reviewer",
       "url": "https://github.com/here-be-dragons-ai/sovereign-models/issues/29",
@@ -581,38 +643,15 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T18:44:33Z"
-    },
-    {
-      "id": 5611457487,
-      "title": "Split sw-loop.sh into focused lib modules under scripts/lib/",
-      "url": "https://github.com/sethdford/shipwright/issues/7098",
-      "description": "## Strategic Improvement\n\nsw-loop.sh is the largest script in the repo at 2713 lines, mixing iteration control, session-continuity, progress persistence, error-summary generation, and restart logic in one file. Decompose it into scripts/lib/loop-{iteration,session,progress,restart}.sh modules following the same monolith-decomposition pattern already underway per docs/AGI-PLATFORM-PLAN.md Phase 4 (3.1/3.3), improving testability and reducing the risk of regressions when touching loop behavior.\n\n### Acceptance Criteria\n- - sw-loop.sh reduced to a thin orchestrator that sources new lib modules\n- - Each extracted module has its own unit test file (sw-lib-loop-*-test.sh) with parity coverage of existing sw-loop-test.sh assertions\n- - No change in CLI behavior or flags; full existing sw-loop-test.sh suite passes unmodified\n- - CLAUDE.md core-scripts/test-suites AUTO sections updated to reflect new files\n\n### Context\n- **Priority**: P6\n- **Complexity**: full\n- **Generated by**: Strategic Intelligence Agent\n- **Strategy alignment**: P6: Platform Self-Improvement (AGI-Level Readiness)\n\n<!-- STRATEGIC-CYCLE: 2026-09-28T08:14:04Z -->",
-      "skills": [
-        "script"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T18:27:32Z"
     }
   ],
-  "count": 40,
+  "count": 42,
   "warnings": [],
   "execution": {
-    "status": "demo_completed",
-    "timestamp": "2026-10-10T20:12:02+00:00",
-    "kind": "csv_cleaning",
-    "result": {
-      "processed_rows": 3,
-      "output_rows": 2,
-      "duplicates_removed": 1,
-      "verified": true
-    },
-    "files": [
-      "clientes_limpios.csv",
-      "reporte.json"
-    ]
+    "status": "work_failed",
+    "timestamp": "2026-10-10T20:25:53+00:00",
+    "issue_url": "https://github.com/josenunezapps/josenunezapps.github.io/issues/1",
+    "error": "HTTP Error 400: Bad Request"
   },
   "notice": "Candidatos públicos; pago y disponibilidad sin verificar. No se contacta a nadie."
 }
