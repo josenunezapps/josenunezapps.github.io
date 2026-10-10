@@ -34,6 +34,18 @@ class AgentTests(unittest.TestCase):
             with self.assertRaises(RuntimeError):
                 agent.model({"title":"Fix","body":"text"},"README context")
 
+    def test_free_model_used_when_variable_empty(self):
+        with patch.dict(os.environ,{"OPENROUTER_API_KEY":"test-dummy","AUTO_WORKER_MODEL":""}):
+            with patch.object(agent,"api",return_value={"choices":[{"message":{"content":'{"summary":"ok","files":[]}'}}]}) as mocked:
+                result=agent.model({"title":"QA","body":"Test"},"")
+                self.assertEqual(result["summary"],"ok")
+                self.assertEqual(mocked.call_args.args[2]["model"],"openrouter/free")
+
+    def test_paid_model_rejected(self):
+        with patch.dict(os.environ,{"OPENROUTER_API_KEY":"test-dummy","AUTO_WORKER_MODEL":"openai/gpt-4"}):
+            with self.assertRaises(ValueError):
+                agent.model({"title":"QA","body":"Test"},"")
+
     def test_money_signal_not_equivalent_to_verified_payment(self):
         self.assertEqual(agent.MONEY.findall("Bounty $200; payment not guaranteed"),["$200"])
         self.assertIsNone(agent.ISSUE.fullmatch("https://github.com/owner/repo"))
