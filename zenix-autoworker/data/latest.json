@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-10-10T20:41:19+00:00",
+  "generated_at": "2026-10-10T20:43:08+00:00",
   "opportunities": [
     {
       "id": 5387618577,
@@ -155,24 +155,6 @@
       "updated_at": "2026-10-10T20:30:40Z"
     },
     {
-      "id": 4086864561,
-      "title": "[BOUNTY $150] Backup & DR — 自动备份 + 灾难恢复",
-      "url": "https://github.com/illbnm/homelab-stack/issues/12",
-      "description": "---\nname: 💰 Bounty - Backup & Recovery\nabout: 实现完整的备份与灾难恢复方案\ntitle: '[BOUNTY $150] Backup & Recovery — 备份与恢复'\nlabels: bounty, medium\nassignees: ''\n---\n\n## 赏金金额\n\n**$150 USDT**\n\n## 任务描述\n\n实现 3-2-1 备份策略：3 份数据，2 种介质，1 份异地。\n\n## 服务清单\n\n| 服务 | 镜像 | 用途 |\n|------|------|------|\n| Duplicati | `lscr.io/linuxserver/duplicati:2.0.8` | 加密云备份 |\n| Restic REST Server | `restic/rest-server:0.13.0` | 本地备份仓库 |\n\n## 核心要求\n\n### 1. 备份脚本 `scripts/backup.sh`\n\n```\n用法:\n  backup.sh --target <stack|all> [选项]\n\n选项:\n  --target all          备份所有 stack 数据卷\n  --target media        仅备份媒体栈\n  --dry-run             显示将备份的内容，不实际执行\n  --restore <backup_id> 从指定备份恢复\n  --list                列出所有备份\n  --verify              验证备份完整性\n```\n\n### 2. 备份目标支持\n\n- 本地目录\n- MinIO (S3 兼容)\n- Backblaze B2\n- SFTP\n- Cloudflare R2\n\n通过 `.env` 中 `BACKUP_TARGET=s3|b2|sftp|local` 切换。\n\n### 3. 定时备份\n\n通过 crontab 或 systemd timer 每日 2:00 AM 自动执行。\n\n### 4. 恢复演练文档\n\n`docs/disaster-recovery.md`：\n- 完整恢复流程（全新主机从零恢复）\n- 各服务恢复顺序（Base → DB → SSO → 其他）\n- 预计恢复时间（RTO）\n- 验证恢复完整性的检查清单\n\n### 5. 备份通知\n\n备份完成/失败后通过 ntfy 推送通知。\n\n## 验收标准\n\n- [ ] `backup.sh",
-      "skills": [
-        "script"
-      ],
-      "score": 45,
-      "amount_mentions": [
-        "$150",
-        "$150",
-        "$150"
-      ],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:30:09Z"
-    },
-    {
       "id": 5719999132,
       "title": "Build the UseAgent mobile app for iOS and Android",
       "url": "https://github.com/useagenthq/useagent/issues/61",
@@ -221,22 +203,6 @@
       "updated_at": "2026-10-10T20:40:36Z"
     },
     {
-      "id": 5779937201,
-      "title": "Compute board — shared GPU pods (uor-pod)",
-      "url": "https://github.com/UOR-Foundation/uor-r4/issues/2037",
-      "description": "Automatic mirror of the `uor-pod` ledger (`~/.local/share/uor-r4/compute/ledger.jsonl`). Successor of #1750. **Post only ledger lines and capacity reports here.** Discuss work on the milestone issues of the tracker #2028.\n\n### Owner rules (5–7 October)\n- **Caps**, all labs together: at most 4 running pods and $8/h. No new spending class.\n- **Ladder:** without `--gpu`, `uor-pod up` tries 2×RTX 5090, then 2×4090, then 2×PRO 6000, then one GPU of each.\n  - Datacenters: EUR-NO-1 (canonical volume), EU-RO-1, EUR-IS-1, then allowlisted regions by stock.\n  - Pods outside EUR-NO-1 are non-canonical. They get their data from the private HF store `caseyallard/uor-r4-store` and must archive results before `down`.\n- **Leases:**\n  - Identity is lab + session. Run `uor-pod status` first and share before you create.\n  - Lease with `--hours` covering the whole job plus margin, and renew it. An expiring lease is never a reason to stop a live job.\n  - Only an expired lease may be taken over. Release when done, then `down` if nobody else holds the pod.\n- **Storage:** durable output only on `/workspace`. Don't keep stopped pods as storage. Move downloaded results to iCloud with `cloud-store put`.\n- Fu",
-      "skills": [
-        "json"
-      ],
-      "score": 35,
-      "amount_mentions": [
-        "$8"
-      ],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:39:43Z"
-    },
-    {
       "id": 5534274466,
       "title": "[demand] high-priority 2026-09-22T01:33",
       "url": "https://github.com/relayhop/ClaudeEarnSelf-runtime/issues/1017",
@@ -251,32 +217,36 @@
       "updated_at": "2026-10-10T20:39:26Z"
     },
     {
-      "id": 5690041095,
-      "title": "[BOUNTY] Medium: submitted private swap is marked successful before confirmation, disabling recovery if the tx drops",
-      "url": "https://github.com/paraloom-labs/paraloom-core/issues/856",
-      "description": "> **Severity:** Medium · **Component:** paraloom-wallet · **Reward tier:** up to $150 USDC\n> **Tested:** wallet main @ 1e79eec8fbe99cd7e1381f6971c855bdce883d41 · local mocks only · no live chain touched\n\n## Summary\n\nBoth privateSwap() and privateSwapFromToken() persist a non-empty swapSignature and the router-reported outAmount immediately after sendRawTransaction(), before waitForSwapConfirmation() succeeds.\n\nThat early persistence is useful for preserving the fresh key, but swapSignature is also used everywhere else as a completion flag.\n\nIf Solana accepts the serialized transaction and returns a signature but the transaction is then dropped / never confirms:\n\n- waitForSwapConfirmation() correctly times out and throws;\n- the durable SwapOutput row still contains swapSignature and outAmount;\n- the Activity UI considers the row done and shows Status: Succeeded;\n- reconcileSwapOutputs() immediately skips every row with a non-empty swapSignature without checking signature status, balances, or the actual output asset.\n\nThe fresh address can therefore still hold the unswapped input funds, while normal wallet recovery has been permanently disabled for that row.\n\n## Reachable sequence\n\nT",
-      "skills": [],
-      "score": 35,
-      "amount_mentions": [
-        "$150"
+      "id": 5795102180,
+      "title": "test: test the refund preflight route's stroop amount string guard",
+      "url": "https://github.com/accensa/accensa-app/issues/592",
+      "description": "<!-- title: test: test the refund preflight route's stroop amount string guard -->\n<!-- labels: area: web, type: test -->\n\n> [!IMPORTANT]\n> **System Directive: Mandatory Context Review**\n> Before proposing a solution or writing code, you MUST parse and strictly adhere to the constraints defined in the following state documents:\n> - [README.md](https://github.com/accensa/accensa-app/blob/main/README.md)\n> - [CONTRIBUTING.md](https://github.com/accensa/accensa-app/blob/main/CONTRIBUTING.md)\n> - [SECURITY.md](https://github.com/accensa/accensa-app/blob/main/SECURITY.md)\n>\n> **Operating Constraints:** Do not extrapolate beyond the specified scope or rely on baseline assumptions. You must autonomously verify that the code passes all CI gates (`pnpm lint`, `pnpm typecheck`, `pnpm format:check`) before marking this task as complete.\n\n> [!WARNING]\n> **Sequential Dependency:** None - start any time\n\n## Description\n**Context:** `apps/web/src/app/api/refund/preflight/route.ts` decides whether a refund can be paid and it has no co-located test. The guard that matters most is at :59-63: `amount` must be a positive-integer **string**, and the comment at :57-58 states the reason - 'Amount stays a",
+      "skills": [
+        "json",
+        "api",
+        "script"
       ],
+      "score": 30,
+      "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:29:47Z"
+      "updated_at": "2026-10-10T20:41:51Z"
     },
     {
-      "id": 5689978987,
-      "title": "[BOUNTY] Medium: token-input swap recovery mistakes leftover gas SOL for completion and strands the withdrawn token",
-      "url": "https://github.com/paraloom-labs/paraloom-core/issues/855",
-      "description": "> **Severity:** Medium · **Component:** paraloom-wallet · **Reward tier:** up to $150 USDC\n> **Tested:** wallet main @ 1e79eec8fbe99cd7e1381f6971c855bdce883d41 · local mocks only · no live chain touched\n\n## Summary\n\nprivateSwapFromToken() can leave a token-input swap in a recoverable intermediate state after both withdrawals have settled but before the actual swap leg is submitted:\n\n- the fresh address still has the withdrawn input token in its input-mint ATA;\n- it also still has leftover gas SOL from the 0.009 SOL self-funding withdrawal;\n- swapSignature is still empty.\n\nThe persisted SwapOutput records outputMint but does not record inputMint or that this is a token-input flow.\n\nreconcileSwapOutputs() therefore cannot distinguish that state from a stranded native-SOL-input swap. Because it checks the fresh SOL balance first, leftover gas can make the reconciler either:\n\n1. mark a failed token -> SOL swap as landed/completed using leftover gas SOL, while the actual input token remains untouched; or\n2. for token -> token, invoke the SOL-only resumeSwapAtFreshAddress() and swap leftover gas SOL into the output token, while leaving the withdrawn input token at the fresh address.\n\nOnc",
-      "skills": [],
-      "score": 35,
-      "amount_mentions": [
-        "$150"
+      "id": 5753667419,
+      "title": "[FREE ENERGY] First playable project catalog with source, build, rights, and remix provenance",
+      "url": "https://github.com/Distributed-Minds/Fleet-Control-Public/issues/60",
+      "description": "Phase0 spec version: 5\n\n> **Current implementation contract:** Rust-only, compiled, typed, no npm; see the final **\"Phase B implementation correction — specification v5\"** section. Earlier v3/v4 prescriptions for Python, `jsonschema` as a Python dependency, `Catalog/tools/*.py`, and `python3` CLI/CI examples are historical and **not authorized for new implementation**. Existing v4 PLAN and ADVERSARIAL readiness refer only to v4 and must be re-evaluated for v5. This update does not cancel the source-pinned Luanti/OpenRA/Veloren rights research.\n\n## Parent direction and separation\n\nFREE ENERGY's public identity is defined in `BRANDING.md` on `phase0/public-v0`: people should be able to *find, repair, remaster, port, extend, remix, and ultimately combine games*. The current release provides the **Fleet-Control Phase0 orchestrator**, not yet a playable discovery surface.\n\nThis package owns a **project/artifact catalog and its evidence contract**, not the fleet control protocol, website marketing/branding (#57), or Signet 2 adapter semantics (current research PRs #53–#55). It must not represent pending interoperability research as a working runtime feature.\n\n## Problem / observed eviden",
+      "skills": [
+        "python",
+        "json",
+        "script"
       ],
+      "score": 30,
+      "amount_mentions": [],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:29:41Z"
+      "updated_at": "2026-10-10T20:41:24Z"
     },
     {
       "id": 5662643363,
@@ -295,21 +265,6 @@
       "updated_at": "2026-10-10T20:38:06Z"
     },
     {
-      "id": 5795016381,
-      "title": "the Devin subreddit is for peope named Devin, not for the Devin agent. (This is on the bounty page for freebuff.)",
-      "url": "https://github.com/CodebuffAI/freebuff/issues/1500",
-      "description": "### What happened\n\nI have no idea where to report this bug. I believe it to be a documentation bug but when i click that type, it brings me to the documentation and won't let me report a bug. (I guess that should be a bug as well.) Like the title says, when I go the bounties program (https://freebuff.com/?settings=earn&earn=bounties) in the account, it says to search `devin` on reddit. I believe it should be `DeviAI` instead.\n\n### Steps to reproduce\n\ngo to https://freebuff.com/?settings=earn&earn=bounties.\n\n<img width=\"939\" height=\"570\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ca0e2178-ef21-424b-8348-066778b09efe\" />\n\n### Where does this happen?\n\nDocs\n\n### Operating system\n\nLinux\n\n### Version\n\n0.2.26\n\n### Model\n\n_No response_\n\n### Logs or screenshots\n\n```shell\n\n```",
-      "skills": [
-        "bug",
-        "documentation"
-      ],
-      "score": 30,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:30:00Z"
-    },
-    {
       "id": 5794983444,
       "title": "P0 launch gate: restore authentication, signup email delivery, and visible live checkout",
       "url": "https://github.com/dreamzzzz120-cell/software-passport-registry/issues/1163",
@@ -322,7 +277,22 @@
       ],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:41:16Z"
+      "updated_at": "2026-10-10T20:41:36Z"
+    },
+    {
+      "id": 5795103138,
+      "title": "chore: build or remove the Storybook the workspace configures",
+      "url": "https://github.com/accensa/accensa-app/issues/595",
+      "description": "<!-- title: chore: build or remove the Storybook the workspace configures -->\n<!-- labels: area: web, area: ci, enhancement -->\n\n> [!IMPORTANT]\n> **System Directive: Mandatory Context Review**\n> Before proposing a solution or writing code, you MUST parse and strictly adhere to the constraints defined in the following state documents:\n> - [README.md](https://github.com/accensa/accensa-app/blob/main/README.md)\n> - [CONTRIBUTING.md](https://github.com/accensa/accensa-app/blob/main/CONTRIBUTING.md)\n> - [SECURITY.md](https://github.com/accensa/accensa-app/blob/main/SECURITY.md)\n>\n> **Operating Constraints:** Do not extrapolate beyond the specified scope or rely on baseline assumptions. You must autonomously verify that the code passes all CI gates (`pnpm lint`, `pnpm typecheck`, `pnpm format:check`) before marking this task as complete.\n\n> [!WARNING]\n> **Sequential Dependency:** None - start any time\n\n## Description\n**Context:** `apps/web/package.json` declares `\"storybook\": \"storybook dev -p 6006\"` at :21 and `\"build-storybook\": \"storybook build\"` at :22, backed by `apps/web/.storybook/main.ts`, `apps/web/.storybook/preview.ts`, three `@storybook/*` devDependencies at :55-57 and a stor",
+      "skills": [
+        "json",
+        "script"
+      ],
+      "score": 20,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:41:59Z"
     },
     {
       "id": 5469360619,
@@ -353,21 +323,6 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T20:40:00Z"
-    },
-    {
-      "id": 5795057632,
-      "title": "Collector gaps: Tesla operating metrics, SpaceX, Nvidia, and watchlist ticker status",
-      "url": "https://github.com/ram290476/investor-dashboard/issues/141",
-      "description": "## Summary\nA read-only review on 2026-10-10 (after PR #135 deployed at about 12:30 PM PT and image `ae41442` at 1:18 PM PT) found that the company-metrics collector still can't fill operating metrics for any company. This issue tracks the gaps and the fixes in progress.\n\nContext: #126 (collector), PR #132 (initial build), PR #135 (index URL, partial outcome, cash tag), #140 (show collected data in Fundamentals and on the company page).\n\n## 1. Earnings-release files still aren't recognized\nPR #135 fixed the 8-K index 404s by switching to `index.json`, but `exhibits_from_index` still finds **0 exhibits**:\n- EDGAR's `index.json` lists `type: \"text.gif\"`, not `EX-99.1`.\n- Real filenames don't match the `ex[-_]?99\\.?1` regex: Tesla `exhibit991.htm`, `exhibit991111111.htm`, `exhibit99111111.htm`; SpaceX `earningsreleaseq22608042.htm`; Nvidia `q2fy27pr.htm`, with the CFO commentary as EX-99.2 in `q2fy27cfocommentary.htm`.\n\nThese are the **8-K EX-99.1 / EX-99.2 exhibits** (the deliveries release and update deck, or the earnings release), not 10-Q/10-K files. Because of that, Tesla's **deliveries, production, FSD subscriptions, energy storage and Supercharger counts** stay empty, and a week",
-      "skills": [
-        "json",
-        "script"
-      ],
-      "score": 20,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:39:47Z"
     },
     {
       "id": 5795083668,
@@ -441,6 +396,138 @@
       "updated_at": "2026-10-10T20:19:40Z"
     },
     {
+      "id": 5317560534,
+      "title": "Audit — (tracking)",
+      "url": "https://github.com/tvofi/heatpump_optimizer/issues/201",
+      "description": "Tracking issue for the open-issues programme (audit round 2 through leftover/product). Register: `docs/audit-2026-09.md`. Delivery-status: `docs/plan-2026-09-open-issues.md`. Durable handover: `docs/HANDOVER.md`. Leftover-row list is in that plan file; this body is remaining leftover/product work, measured against live GitHub, not a comment.\n\n**Measured** after `git fetch origin main`, `gh issue list --state open --limit 200`, `gh pr list --state open`, `gh pr view 897 --json state,mergeCommit`, `gh issue view 195 --json state`:\n\n| | |\n|---|---|\n| `origin/main` | `8cad9ed256dd4b8adcca8956c97b14abc3a54844` |\n| VERSION | 6.4.2 (manifest 6.4.2) |\n| HANDOVER cap | 1000 on main (`.claude/workflows/policy_budgets.json`) |\n| Open issues | **#201** only |\n| Nightly Tests | last concluded `schedule` is [34680074952](https://github.com/tvofi/heatpump_optimizer/actions/runs/34680074952) on `1768e20` — **red**. Dispatch [34687504611](https://github.com/tvofi/heatpump_optimizer/actions/runs/34687504611) on `ce09947` has both `nightly-ha` arms **success**; the run is still in progress. |\n\nRound-2 finder/verify/judge phases are done. Named leftover/product work that already shipped is in the left",
+      "skills": [
+        "json"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:42:58Z"
+    },
+    {
+      "id": 5770925524,
+      "title": "OWNER DISPATCH: close out Hey Aria physical-test evidence and continue approved ready work",
+      "url": "https://github.com/caosos/CAOSCARE.COM/issues/117",
+      "description": "# Owner-directed CAOSCare coordinator assignment — 2026-10-08\n\n**Owner:** Michael. **Instruction:** \"Beautiful. I like it. Let's give these guys something to do.\"\n\n**For:** The *existing* CAOSCare coordinator on `integration/2026-09-27`. This is issue-based owner intake, not a parallel agent, not an unrestricted merge or deployment instruction.\n\n## Evidence Michael has reported from his live desk / eMeet tests\n- **Wake phrase remains \"Hey Aria\"**, not a renamed wake word. Michael is satisfied with that decision and does **not** authorize more generic wake-word naming/lab exploration right now.\n- One recent physical set was **5 wake detections in 6 spoken attempts**, with one missed attempt. This count is owner-reported; identify detector timestamps and session IDs before labeling the exact detector statistic verified.\n- **No unintended wake-ups observed** during the owner's normal conversation / \"area\" utterances to date (not a formal long-duration false-positive rate).\n- Saying goodbye now allows Aria's closing line to play fully and then ends the session. Earlier endings were abruptly cut off; Michael sees the new behavior as improved.\n- Michael expects always-available room voic",
+      "skills": [
+        "json"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:42:55Z"
+    },
+    {
+      "id": 5596819154,
+      "title": "[radar] SN open bounty 2026-09-26T19:47",
+      "url": "https://github.com/relayhop/sn-monetization-runtime/issues/1204",
+      "description": "New SN OPEN_BOUNTY detected:\n\n```\n1581934\tConstruction_and_Engineering\t2\t56\t5000\t1\t24.9\t9274\t27867\trecent@Construction_and_Engineering\tOPEN_BOUNTY,LOW_COMP\tShow Your Build Friday #3: Real-World Proof-of-Work [5,000 Sat Bounty] ⚡🔨\n```",
+      "skills": [],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:42:54Z"
+    },
+    {
+      "id": 5760402393,
+      "title": "[P1][TIGERIQ NEWS] Hoàn thiện xuất bản bài/ảnh công khai và tự xác minh tin thật",
+      "url": "https://github.com/newsdayads/tigeriq-ai-lab/issues/4574",
+      "description": "TIGERIQ_JOB_V1\nSOURCE=Owner direct chat 2026-10-08: \"Tôi cần xem kết quả thực tế trên trang chứ không muốn nhìn vào thẻ công việc rồi đoán mò\"\nOWNER_DIRECT=true\nOWNER_POLICY=AUTO\nPRIORITY=P1\nCURRENT_STATE=READY_AUTOMATED_CODING\nTIGERIQ_EXECUTABLE=true\nAUTO_QUEUE=INCLUDED\nCAPABILITY=coding\nEXECUTION_SURFACE=CODING\nAUTONOMOUS_CODE=true\nMUTATION_OWNER=CORE_DYNAMIC_LEASE\nRESOURCE_SCOPE=TIGERIQ_NEWS_PUBLIC_ARTICLE_COVER_LIVE_E2E_V1\nPROJECT_ID=tigeriq-news\nWORK_PACKAGE_ID=news-autonomous-newsroom\nTARGET_REPOSITORY=newsdayads/tigeriq-media\nBASE_BRANCH=main\nRELATED_PARENT=4456\nRELATED_TRACKER=3899\nRELATED_SOAK=3904\nRESULT_INBOX=4426\nONE_RESOURCE_SCOPE_ONE_WRITER=true\nZERO_COST=true\nNO_PAID_COST=true\nNO_CREDENTIAL_CHANGE=true\nNO_SECURITY_BOUNDARY_CHANGE=true\nNO_DESTRUCTIVE=true\nNO_DIRECT_MAIN=true\nNO_PRODUCTION_RELEASE=true\nNO_VERCEL_DEPLOY=true\nNO_APP_CHROME_MUTATION=true\nAPP_CHROME_MUTATION=FORBIDDEN\nNO_CODEX=true\nINDEPENDENT_REVIEW_REQUIRED=true\nKEEP_OPEN_ON_STEP_COMPLETE=true\nLIVE_ACCEPTANCE_REQUIRED=true\nDONE=false\n\n## MỤC TIÊU THỰC TẾ\nTigerIQ News phải tự tìm tin -> xác minh -> viết -> rà soát độc lập -> tạo/đưa ảnh lên nguồn công khai -> xuất bản nội dung tới đúng nguồn website đang ",
+      "skills": [
+        "script"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:42:14Z"
+    },
+    {
+      "id": 5795104620,
+      "title": "test: add a functional e2e spec for the POS terminal",
+      "url": "https://github.com/accensa/accensa-app/issues/599",
+      "description": "<!-- title: test: add a functional e2e spec for the POS terminal -->\n<!-- labels: area: web, type: test -->\n\n> [!IMPORTANT]\n> **System Directive: Mandatory Context Review**\n> Before proposing a solution or writing code, you MUST parse and strictly adhere to the constraints defined in the following state documents:\n> - [README.md](https://github.com/accensa/accensa-app/blob/main/README.md)\n> - [CONTRIBUTING.md](https://github.com/accensa/accensa-app/blob/main/CONTRIBUTING.md)\n> - [SECURITY.md](https://github.com/accensa/accensa-app/blob/main/SECURITY.md)\n>\n> **Operating Constraints:** Do not extrapolate beyond the specified scope or rely on baseline assumptions. You must autonomously verify that the code passes all CI gates (`pnpm lint`, `pnpm typecheck`, `pnpm format:check`) before marking this task as complete.\n\n> [!WARNING]\n> **Sequential Dependency:** None - start any time\n\n## Description\n**Context:** The point-of-sale screen is one of the app's headline flows and its only end-to-end coverage is a pixel comparison. `apps/web/e2e/visual.spec.ts:98-101` logs in, navigates to `/merchant/pos` and asserts `toHaveScreenshot('pos-terminal.png')` - nothing about entering an amount or ta",
+      "skills": [
+        "script"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:42:12Z"
+    },
+    {
+      "id": 5771253669,
+      "title": "W21: single Bloom panel server for complete Enthusia AI stack, followed by approved live SFTP",
+      "url": "https://github.com/wsg138/Enthusia-AI/issues/119",
+      "description": "## Goal\n\nDeploy the complete Enthusia AI stack as **one persistent Bloom-hosted Pterodactyl server**, operated through the Bloom panel, instead of relying on the owner's temporary Windows PowerShell launcher. This is the intended owner-preferred packaging target, subject to measured Pterodactyl, node/container and model-resource feasibility. **No production deployment or live SFTP connection is authorized by this issue.**\n\n### Existing implementation versus desired topology\n\n- Existing `deploy/bloom/egg.json`, `startup.sh` and `README.md` (W21) are **prepare-only templates** and currently require **one Pterodactyl server per role** (`gateway|agent|discord|inference|indexer`). The `discord` and `indexer` startup paths still explicitly fail because their entrypoints were not completed in that template.\n- The isolated Windows test already starts the three running Node components together in one launcher; it uses a local Ollama instance for Qwen3 and deliberately does not connect live tools.\n- The production-capable Agent composition root already has optional SFTP typed read tools via `ENTHUSIA_AGENT_SFTP_CONFIG_PATH`. The independent `integrations/sftp/LIVE-SOURCE-SETUP.md` remains th",
+      "skills": [
+        "json"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:42:09Z"
+    },
+    {
+      "id": 5602503136,
+      "title": "Build complete source-to-Legacy feature and route acceptance matrix",
+      "url": "https://github.com/MALIEV-Co-Ltd/Legacy.Maliev.Workflows/issues/98",
+      "description": "The source-commit ledger tracks commit disposition but does not prove every migrated service feature and Web/Intranet route works against production-derived local Aspire data. This is an explicit migration completion gate, not a deployment request.\n\nAcceptance:\n- Inventory each Legacy service feature, API, role, entity, background operation, and every Web/Intranet route against the latest committed original source; retain full source SHA, owning Legacy repo, main SHA, status, and exact evidence links.\n- Mark unverified items pending; distinguish source retirement approvals from migrations. Do not infer feature parity from a code mapping, route alias, smoke test, or green unit suite.\n- Record automated customer/employee authentication, permission, CRUD/lifecycle, validation, rollback/retry, cross-service effects, localization, responsive/browser/accessibility, and persisted-data checks as appropriate. Include safe failure/partial-failure evidence and suppress real notifications/payments/analytics in local review.\n- Verify the matrix against live source and each protected Legacy main, with a check that rejects missing routes/features or unsupported completion claims. Link per-service",
+      "skills": [
+        "api"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:41:51Z"
+    },
+    {
+      "id": 5595753081,
+      "title": "[radar] SN open bounty 2026-09-26T17:05",
+      "url": "https://github.com/relayhop/sn-monetization-runtime/issues/1203",
+      "description": "New SN OPEN_BOUNTY detected:\n\n```\n1581934\tConstruction_and_Engineering\t2\t56\t5000\t1\t22.2\t9274\t27862\trecent@Construction_and_Engineering|top@Construction_and_Engineering\tOPEN_BOUNTY,LOW_COMP\tShow Your Build Friday #3: Real-World Proof-of-Work [5,000 Sat Bounty] ⚡🔨\n```",
+      "skills": [],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:41:24Z"
+    },
+    {
+      "id": 5606652366,
+      "title": "[radar] SN open bounty 2026-09-27T22:01",
+      "url": "https://github.com/relayhop/sn-monetization-runtime/issues/1210",
+      "description": "New SN OPEN_BOUNTY detected:\n\n```\n1582773\tStacker_Stocks\t2\t328\t10000\t13\t11.0\t9274\t27929\trecent@Stacker_Stocks|top@Stacker_Stocks\tOPEN_BOUNTY,SIGNAL,SELF_POST_OPP\tDaily Stock Discussion Sunday’s Weekly Close Contest 🟥 or 🟩? 50k sat award!\n```",
+      "skills": [],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:41:18Z"
+    },
+    {
+      "id": 5616939159,
+      "title": "[radar] SN open bounty 2026-09-28T15:19",
+      "url": "https://github.com/relayhop/sn-monetization-runtime/issues/1217",
+      "description": "New SN OPEN_BOUNTY detected:\n\n```\n1582773\tStacker_Stocks\t2\t328\t10000\t21\t28.2\t9274\t27951\trecent@Stacker_Stocks\tOPEN_BOUNTY\tDaily Stock Discussion Sunday’s Weekly Close Contest 🟥 or 🟩? 50k sat award!\n```",
+      "skills": [],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:41:07Z"
+    },
+    {
       "id": 5369286954,
       "title": "Research: evaluate requirement assessment workflows for useful ASVS alignment from prose",
       "url": "https://github.com/mstarks01/work-agent/issues/661",
@@ -507,62 +594,6 @@
       "updated_at": "2026-10-10T20:40:51Z"
     },
     {
-      "id": 5602503136,
-      "title": "Build complete source-to-Legacy feature and route acceptance matrix",
-      "url": "https://github.com/MALIEV-Co-Ltd/Legacy.Maliev.Workflows/issues/98",
-      "description": "The source-commit ledger tracks commit disposition but does not prove every migrated service feature and Web/Intranet route works against production-derived local Aspire data. This is an explicit migration completion gate, not a deployment request.\n\nAcceptance:\n- Inventory each Legacy service feature, API, role, entity, background operation, and every Web/Intranet route against the latest committed original source; retain full source SHA, owning Legacy repo, main SHA, status, and exact evidence links.\n- Mark unverified items pending; distinguish source retirement approvals from migrations. Do not infer feature parity from a code mapping, route alias, smoke test, or green unit suite.\n- Record automated customer/employee authentication, permission, CRUD/lifecycle, validation, rollback/retry, cross-service effects, localization, responsive/browser/accessibility, and persisted-data checks as appropriate. Include safe failure/partial-failure evidence and suppress real notifications/payments/analytics in local review.\n- Verify the matrix against live source and each protected Legacy main, with a check that rejects missing routes/features or unsupported completion claims. Link per-service",
-      "skills": [
-        "api"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:40:47Z"
-    },
-    {
-      "id": 5119142806,
-      "title": "test(release): requalify both Production journeys after biopsy fixes",
-      "url": "https://github.com/relativityE/speaksharp/issues/1258",
-      "description": "<!-- pm-independent-queues:start -->\n## Independent Dev queues during review/CI\n\n[CLI Dev queue](https://github.com/relativityE/speaksharp/issues/1258#issuecomment-6101036097): #1581 repair/freeze → #1560 residual map → technical acquisition/identity/RECEIVED audit → wake acceptance. [App Dev queue](https://github.com/relativityE/speaksharp/issues/1258#issuecomment-6101036266): #1580 repair/freeze → serial rehearsal/cleanup packets → rendered journey closure audit → wake acceptance. No cross-branch writers; CLI PM serializes shared test-host usage and proves actual delivery. PM owns source review/CI/integration; both Devs stay on RWT until closure, then MVP.\n<!-- pm-independent-queues:end -->\n\n<!-- pm-live-checkpoint:start -->\n## Latest PM checkpoint — 10 October 2026\n\n#1258 remains **OPEN** on deployed current `main@1a724990e493fc2925028310d084cebeade24b5c`. #1576 and #1578 are merged. #1578 merged the fully qualified exact pair `2b3f341b7632fb8d877157a2072acf44c63f8bfc` / `3d62b75883690f49031decf9de159f34dbc12bea` under recorded PO authority as merge commit `1a724990e493fc2925028310d084cebeade24b5c`.\n\nProduction Canary 38077196756 attempt 1 failed closed on a transient Supabase M",
-      "skills": [
-        "api"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:40:46Z"
-    },
-    {
-      "id": 5593257885,
-      "title": "[CODEX][P0] Own today's schedule and roster: reconcile Enrollware sessions into canonical LanderWare",
-      "url": "https://github.com/Brian910cpr/910cpr-class-landers/issues/297",
-      "description": "## Production incident, September 26, 2026\n\nBrian asked for today's schedule and roster. ChatGPT used Google Calendar and Gmail because the owned schedule and participant model did not provide a complete answer. This violates the operational goal that LanderWare own and answer class/roster truth.\n\n### Reproduced evidence\n\n- `docs/data/admin_schedule.json` generated 2026-09-26 05:47 UTC includes:\n  - Enrollware session `14186375`, Heartsaver First Aid CPR AED, 9:00–11:30 AM ET.\n  - `14145607`, Heartsaver CPR AED, 10:00 AM–noon ET.\n  - `14184955`, BLS Initial, 5:00–7:00 PM ET.\n- Each external row has `participant_count: null`, `count_available: false`, `count_source: canonical_session_workspace_required`.\n- `docs/data/schedule_future.json` also has null enrollment fields.\n- Read-only production SQL on LanderWare Supabase at about 6:20 AM ET returned **zero class_sessions rows for September 26**. Thus the canonical workspace cannot join these classes to registrations. Nearby days did contain operational rows (September 28: one session/four active registrations; September 29: three sessions/two active registrations; October 3: one session/zero).\n- Enrollware registration notices show t",
-      "skills": [
-        "json"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:40:40Z"
-    },
-    {
-      "id": 5770925524,
-      "title": "OWNER DISPATCH: close out Hey Aria physical-test evidence and continue approved ready work",
-      "url": "https://github.com/caosos/CAOSCARE.COM/issues/117",
-      "description": "# Owner-directed CAOSCare coordinator assignment — 2026-10-08\n\n**Owner:** Michael. **Instruction:** \"Beautiful. I like it. Let's give these guys something to do.\"\n\n**For:** The *existing* CAOSCare coordinator on `integration/2026-09-27`. This is issue-based owner intake, not a parallel agent, not an unrestricted merge or deployment instruction.\n\n## Evidence Michael has reported from his live desk / eMeet tests\n- **Wake phrase remains \"Hey Aria\"**, not a renamed wake word. Michael is satisfied with that decision and does **not** authorize more generic wake-word naming/lab exploration right now.\n- One recent physical set was **5 wake detections in 6 spoken attempts**, with one missed attempt. This count is owner-reported; identify detector timestamps and session IDs before labeling the exact detector statistic verified.\n- **No unintended wake-ups observed** during the owner's normal conversation / \"area\" utterances to date (not a formal long-duration false-positive rate).\n- Saying goodbye now allows Aria's closing line to play fully and then ends the session. Earlier endings were abruptly cut off; Michael sees the new behavior as improved.\n- Michael expects always-available room voic",
-      "skills": [
-        "json"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:40:13Z"
-    },
-    {
       "id": 5793235147,
       "title": "ROOT INTAKE — ledger truth, capability-loss recovery, and model-to-Root throughput",
       "url": "https://github.com/amillimatrix-eng/CARBON-Creation-Hub/issues/31",
@@ -575,104 +606,6 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T20:40:12Z"
-    },
-    {
-      "id": 5593929116,
-      "title": "Master Control — open items carried forward from #3",
-      "url": "https://github.com/Presidente49/gatorbait-media-redesign/issues/34",
-      "description": "Carried forward from #3, closed September 26, 2026 after the homepage/Magazine restoration (PR #33, merged). This is the new shared coordination thread for these remaining items — read the opening and newest comments before work, same as #3's original contract.\n\n## Canonical reference\n- Repository: **Presidente49/gatorbait-media-redesign**.\n- Production Wix site: **18fb3a4e-d7f6-414a-aeb9-3047db3ea115** at `https://www.gatorbaitmedia.com/`.\n- Approved default: free sports-news homepage; Magazine stays separate. This is now live and verified (see #3's closing summary).\n\n## Open items\n\n### 1. Automatic article emails — UNVERIFIED\nToday's two publication alerts (as of the #3 closure) had no confirmed delivery evidence. An active workflow and a valid custom template are not proof of send. Needs: per-article automation activity/delivery results (sent/delivered/failed counts), intended audience, and matching evidence in the actual send log — not just workflow status.\n\n### 2. Email footer address\nThe active custom email template has a street-address footer. Needs reconciliation with Brenden's privacy preference and an approved compliant business mailing address before the next template ch",
-      "skills": [
-        "automation"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:40:05Z"
-    },
-    {
-      "id": 5082535457,
-      "title": "[PM seat] domain:spec — 🟢 os-project-manager · session_01S3aAf11JjbW1mSGL1EhfFj",
-      "url": "https://github.com/objectstack-ai/objectstack/issues/6017",
-      "description": "## Current PM\n\n🟢 **`os-project-manager`** · session `session_01S3aAf11JjbW1mSGL1EhfFj` · seated 2026-10-10T20:39Z on the maintainer's summons (`/pm-dispatch spec@objectstack seat 1`). Batch 3, `mode:subagent` by default.\n\n- **Charter:** `.claude/skills/pm-dispatch/references/lanes/spec.md`.\n- **Holders:** `os-project-manager` · `session_01S3aAf11JjbW1mSGL1EhfFj`, from 2026-10-10T20:39Z. Before it: `os-tesla` · `session_01VZqqwTj2wsihZEbfT6yyYN`, 2026-10-09T04:08Z → 2026-10-10T11:37Z (stand-down brief `6097111309`; its full ledger is this body's revision last edited before this one). Before that: `os-litant` · `session_01LAi5BVvQNiYzepSAcsoFLK` (ledger in the body revision of 2026-10-09T03:34Z).\n- **Other seats in the lane:** seat 2 #18549, seat 3 #18883. Read their posts' titles for their state.\n\n## Handover ledger\n\n**Landed this tenure:** #22683 (PR #22703, `9f159397fb`); #22698 (PR #22713, `e5899a67d6`). Each landing record is on its card.\n\n**In flight (this seat; claims and records on each card):**\n- #22301 item 1's remaining composition gap — claim `6099249975`, branch `claude/issue-22301-item1-composition-gap`, `Clause-②: yes`. The dev was stopped once by the account's usage l",
-      "skills": [
-        "script"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:40:03Z"
-    },
-    {
-      "id": 5771253669,
-      "title": "W21: single Bloom panel server for complete Enthusia AI stack, followed by approved live SFTP",
-      "url": "https://github.com/wsg138/Enthusia-AI/issues/119",
-      "description": "## Goal\n\nDeploy the complete Enthusia AI stack as **one persistent Bloom-hosted Pterodactyl server**, operated through the Bloom panel, instead of relying on the owner's temporary Windows PowerShell launcher. This is the intended owner-preferred packaging target, subject to measured Pterodactyl, node/container and model-resource feasibility. **No production deployment or live SFTP connection is authorized by this issue.**\n\n### Existing implementation versus desired topology\n\n- Existing `deploy/bloom/egg.json`, `startup.sh` and `README.md` (W21) are **prepare-only templates** and currently require **one Pterodactyl server per role** (`gateway|agent|discord|inference|indexer`). The `discord` and `indexer` startup paths still explicitly fail because their entrypoints were not completed in that template.\n- The isolated Windows test already starts the three running Node components together in one launcher; it uses a local Ollama instance for Qwen3 and deliberately does not connect live tools.\n- The production-capable Agent composition root already has optional SFTP typed read tools via `ENTHUSIA_AGENT_SFTP_CONFIG_PATH`. The independent `integrations/sftp/LIVE-SOURCE-SETUP.md` remains th",
-      "skills": [
-        "json"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:40:01Z"
-    },
-    {
-      "id": 5760881127,
-      "title": "Framework review 2026-10-10 (dev e3857da): typed DI core, but a suppression-green gate and dead shipped features (1.8/5)",
-      "url": "https://github.com/PavelRavvich/graphcompose/issues/177",
-      "description": "## Why\n\nAI agents write most of the code in this repo, not people. A framework built for that has to make two things true. A correct change should be cheap for an agent to make. A wrong change should be caught quickly, by `tsc`, by assembly or by a gate, and not show up as a silent failure in production.\n\nThis epic records a full architecture review (`.claude/skills/framework-review`) of `dev` at **`e3857da`** (2026-10-10). The review comes at the point where the core is considered nearly finished, and every finding has a concrete proposal.\n\n**Verdict.**\n- **What has improved since the first review:**\n  - The build, `tsc` (including tests), prettier and all 720 tests are green.\n  - The DI graph checks catch more at assembly time.\n- **The green gate overstates the code's health:**\n  - Lint passes only because **822 errors are suppressed**, through 326 `eslint-disable` comments and 7 files that disable lint for the whole file.\n  - Several tests pass without exercising the real code path.\n- **Most features added in the last 50 commits ship dead or broken.** They compile, assemble and pass their tests, then do nothing or crash on first real use: judges, `batchParallel`, memory strategi",
-      "skills": [
-        "api"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:39:40Z"
-    },
-    {
-      "id": 5794829645,
-      "title": "Add an iac plugin for inter-agent messaging over GitHub comments",
-      "url": "https://github.com/cjus/cjus-skills/issues/77",
-      "description": "## Goal\n\nLet non-Anthropic models work alongside Claude Code sessions: a ChatGPT dot first, then Codex, local Ollama models and OpenRouter models. Named agents exchange addressed JSON messages as comments on a shared GitHub thread. There is no server to host. `iac` stands for Inter-Agent Communication.\n\n## Transport: one private repo, one issue per channel\n\n```\n<operator>/iac-channels       private; only the operator's account can read it\n├── roster.json               agent names and kinds, plus the channel list\n├── docs/\n│   └── iac-protocol.md       the protocol card: format and rules, readable by any agent\n└── Issues\n    ├── #1  iac:bookcraft     a channel; each comment on it is a message\n    └── #2  iac:pr\n```\n\n- Every agent posts as the operator's account, whether through `gh` or a GitHub connector.\n- A channel is an issue. Closing it tells agents to stop using the channel, though GitHub still accepts comments on a closed issue.\n- Shared documents that change slowly, and that nobody edits at the same moment, live as files in the repo, not as messages.\n\n## Messages are append-only\n\n**Nobody edits or deletes a message.** Each message is one comment holding one JSON object, optio",
-      "skills": [
-        "json"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:39:23Z"
-    },
-    {
-      "id": 5783251271,
-      "title": "Shopify App Store approval readiness: compliance, billing, listing and Bakatá pilot",
-      "url": "https://github.com/donardi-1997/diaglob/issues/148",
-      "description": "## Goal\nComplete and verify DIAGLOB readiness for Shopify App Store review and enable the Bakatá pilot after Shopify allows installation.\n\n## Required work\n- [ ] Integrate/review #147 first; require final-head CI before merge.\n- [ ] Implement Shopify App Pricing/provider selection for Shopify App Store organizations while keeping Paddle for independent DIAGLOB contracts.\n- [ ] Implement compliance webhook behavior for `customers/data_request`, `customers/redact`, and `shop/redact`, including idempotency, approved retention handling, customer data export/redaction coverage, and tests.\n- [ ] Reconcile OAuth/install/reinstall/uninstall and embedded App Bridge/session requirements with the actual app configuration.\n- [ ] Audit scopes and all order/COD/draft-order flows against current Shopify checkout/order policies.\n- [ ] Verify plan limits and features against public pricing; create public plan entries only after approval of any subscription activation.\n- [ ] Finish protected customer data application and privacy/terms copy with evidence-backed retention/security statements.\n- [ ] Complete English listing, icon, real screenshots, screencast, support contact, reviewer credentials, and",
-      "skills": [
-        "script"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:39:04Z"
-    },
-    {
-      "id": 5787262135,
-      "title": "P1 AUTO_TRADING: close cross-strategy proposal-time trial denominator gap",
-      "url": "https://github.com/Donh91/Investering-Framework-Archive-v1/issues/1557",
-      "description": "## Objective\nClose the **verified** AUTO_TRADING global proposal-time trial-denominator gap, using the existing Experiment Lifecycle / Scientific Admission owner, without a parallel experiment engine, ledger authority, scheduler or model-driven search loop.\n\n**Priority:** P1 research-integrity prerequisite, **not** a production outage or CODEX_READY declaration. No code/PR or broad-search start is authorized merely by creation of this issue.\n\n## Verified current-main evidence\n- `06_RESEARCH_LAB/m4_checkpoints/2026-10-05__RL-AUTOTRADING-EVIDENCE-004__FINAL_ADJUDICATION_v1.md` explicitly finds `CENTRALIZATION GAP / BROAD-SEARCH BLOCKER`, `BUILD_NOTHING` for new economic hypotheses and `PARTIALLY_READY` for the evidence machine.\n- `04_RESEARCH_LAB/auto_trading/trials/AT_TRIAL_LEDGER_v2.json` is referenced historically but absent from current main; this is **not** an instruction to recreate that legacy path.\n- #885 is **closed** and demonstrated LOCAL monotonic `AT-HYP-0019` N1-N5 accounting, including failures and a blocked N4; #952/#941 historical reconciliation and persistence repair are closed. Do not reopen these accomplishments.\n- `04_RESEARCH_LAB/auto_trading/experiments/E1X/E1X",
-      "skills": [
-        "json"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T20:38:42Z"
     },
     {
       "id": 5348586257,
@@ -749,15 +682,78 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T20:31:28Z"
+    },
+    {
+      "id": 5795021949,
+      "title": "GH_BOUNTY_REST_CREATE_FIELD_POC_1010",
+      "url": "https://github.com/09sd-org/gh-bounty-org-issue-field-lab-20261008/issues/10",
+      "description": "Owned test only",
+      "skills": [],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:31:15Z"
+    },
+    {
+      "id": 5530024379,
+      "title": "eval: tool-calling SLM tournament and Agent0-style self-evolution track",
+      "url": "https://github.com/kvnloo/evolution-lab/issues/23",
+      "description": "## Goal\n\nExtend the existing observer-first evaluation work in #20 into a reproducible tournament for local tool-calling/orchestration policies, then test whether Agent0-style self-evolution can improve the winning local policy on our own traces.\n\nRuntime inventory/control belongs in https://github.com/kvnloo/z0intelligence/issues/20. Evolution Lab owns grouped experiments, frozen evaluation, training/search, and promotion evidence.\n\n## Candidates\n\nEvaluate at least:\n\n- Nemotron-Orchestrator-8B\n- Qwen3.5-9B\n- Qwen3.5-4B\n- Hammer2.1-3B\n- Hammer2.1-7B where useful\n- FunctionGemma-270M after task-specific fine-tuning\n- JEV/OpenJev bounded scorer\n- deterministic/rules/logistic controls\n\nAgent0 is a separate **training methodology arm**, not just another checkpoint.\n\n## Benchmark the actual control problem\n\nDo not reduce this to JSON validity or one function-calling leaderboard.\n\nFor frozen work-item groups, measure:\n\n```text\nverified task success\ncorrect tool/model selection\ninvalid call rate\nunnecessary call rate\ndependency/order violations\ntool irrelevance rejection\nparallelization quality\nretry count\nrecovery success\nescalation precision/recall\nstop/continue quality\nwall-clock laten",
+      "skills": [
+        "json"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:19:46Z"
+    },
+    {
+      "id": 5720560754,
+      "title": "Central message board — Hermes, Claude, Codex and operator coordination",
+      "url": "https://github.com/scottonchain/microcredit-agent-testbed/issues/15",
+      "description": "AI disclosure: the operator's Codex / ChatGPT lane. This is the central board for the three lanes: Hermes, Claude Code and Codex / ChatGPT.\n\n## Current structure\n\nTEAM-STRUCTURE-001 supersedes the original role split and BOARD-001 instructions. Read the [published team policy](https://github.com/scottonchain/microcredit-agent-testbed/blob/main/coordination/team-structure.md) and the [current canonical world model](https://github.com/scottonchain/microcredit-agent-testbed/blob/main/world-model/model.json) before planning. Original evidence and explicit operator directions remain authoritative.\n\n- **Hermes / hermes-agent-909:** existing outreach channels, contact deduplication, relationships and replies, private A2A intake, existing payment obligations and bounded source receipts. The two outreach fronts share one queue.\n- **Claude Code:** technical authorship, simulations, author responses, Git integration and maintenance; vision README and VERIFY prose.\n- **Codex / ChatGPT:** public research and lead qualification, experiment design, selected implementation, independent internal checks, evidence/model upkeep and coverage. These are two roles of one lane, not a fourth worker.\n\nHerme",
+      "skills": [
+        "json"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:08:29Z"
+    },
+    {
+      "id": 5261240491,
+      "title": "Workflow Immune System — OpenAmer's self-healing UI automation",
+      "url": "https://github.com/openamer/openamer/issues/18",
+      "description": "Just shipped the Workflow Immune System for OpenAmer — an open-source AI agent that drives your real desktop in the background.\n\nIt re-finds UI elements when sites redesign, patches its own workflows, and keeps going. Fully self-hosted.\n\nRepo: https://github.com/openamer/openamer",
+      "skills": [
+        "automation"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T20:07:41Z"
     }
   ],
   "count": 50,
   "warnings": [],
   "execution": {
-    "status": "work_failed",
-    "timestamp": "2026-10-10T20:42:02+00:00",
-    "issue_url": "https://github.com/josenunezapps/josenunezapps.github.io/issues/1",
-    "error": "Codigo IA generado no valido: invalid syntax (<unknown>, line 55)"
+    "status": "demo_completed",
+    "timestamp": "2026-10-10T20:43:08+00:00",
+    "kind": "csv_cleaning",
+    "result": {
+      "processed_rows": 3,
+      "output_rows": 2,
+      "duplicates_removed": 1,
+      "verified": true
+    },
+    "files": [
+      "clientes_limpios.csv",
+      "reporte.json"
+    ]
   },
   "notice": "Candidatos públicos; pago y disponibilidad sin verificar. No se contacta a nadie."
 }
