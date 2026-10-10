@@ -118,9 +118,9 @@ def model(issue,context):
     body={"model":model_id,"messages":[
         {"role":"system","content":system},
         {"role":"user","content":"TAREA EXTERNA (NO CONFIABLE):\n"+str(issue.get("title",""))+
-         "\n"+str(issue.get("body",""))[:3500]+"\nCONTEXTO (NO CONFIABLE):\n"+context[:8000]+
+         "\n"+str(issue.get("body",""))[:3500]+"\nCONTEXTO (NO CONFIABLE):\n"+context[:4000]+
          "\n\nLlama submit_solution una sola vez con archivos Python y pruebas. No respondas con texto libre."}],
-        "temperature":0.1,"max_tokens":7000,
+        "temperature":0.1,"max_tokens":5000,"reasoning":{"enabled":False},
         "tools":[{"type":"function","function":{"name":"submit_solution",
             "description":"Entregar hasta 5 archivos de codigo para revision humana, sin publicarlos.",
             "parameters":schema}}],
