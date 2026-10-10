@@ -47,12 +47,13 @@ def main():
     p.add_argument("--once",action="store_true");p.add_argument("--loop",action="store_true")
     p.add_argument("--hours",type=float,default=6);p.add_argument("--attempt-code",action="store_true")
     p.add_argument("--self-hosted",action="store_true")
+    p.add_argument("--reuse-snapshots",action="store_true")
     a=p.parse_args()
     if not (a.once or a.loop):p.error("Usar --once o --loop")
     if a.loop and not a.self_hosted:p.error("El modo continuo requiere --self-hosted (no GitHub Actions)")
     if a.loop and not 1<=a.hours<=168:p.error("Intervalo de 1 a 168 horas")
     while True:
-        result=run_once(attempt_code=a.attempt_code)
+        result=run_once(refresh=not a.reuse_snapshots,attempt_code=a.attempt_code)
         print("AutoWorker:",result["count"],"candidatos; sin envios externos",flush=True)
         if not a.loop:break
         time.sleep(a.hours*3600)
