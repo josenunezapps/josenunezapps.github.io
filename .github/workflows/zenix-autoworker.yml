@@ -10,8 +10,6 @@ on:
     paths:
       - "zenix-autoworker/engine/**"
       - ".github/workflows/zenix-autoworker.yml"
-  schedule:
-    - cron: "17 */8 * * *"
 permissions:
   contents: write
 concurrency:
