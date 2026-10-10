@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-10-10T19:01:58+00:00",
+  "generated_at": "2026-10-10T19:02:55+00:00",
   "opportunities": [
     {
       "id": 3975221665,
@@ -107,6 +107,23 @@
       "updated_at": "2026-10-10T17:32:42Z"
     },
     {
+      "id": 5793425997,
+      "title": "GOV-P02: unblock native Alibaba OCR and external live-release evidence",
+      "url": "https://github.com/TheHalfMoon/Tegara/issues/35",
+      "description": "## Purpose\n\nQualify genuine **native Alibaba OpenCodeReview** and externally verifiable launch evidence for Tegara, without misrepresenting green CI, paid market-data rights, brokerage executions, phone receipt, or independent review. Preserve the repository `TheHalfMoon/Tegara`, signed DCO, normal merge commits, no rebase/force-push, and no live brokerage orders.\n\n## Live evidence — October 10, 2026, Mac\n\n- Head: Draft PR #34, `e9c52006ecda48be05b369c2727e816a4dc68df8`; no local uncommitted changes at the last Mac inspection. `main` has not received the draft stack.\n- All **16 open PRs are Draft** and form one continuous parent-branch chain in order: **#2 → #4 → #6 → #8 → #10 → #14 → #16 → #18 → #20 → #22 → #24 → #26 → #28 → #30 → #32 → #34**. There is no missing base branch or cycle.\n- Each head had successful Python CI; browser e2e succeeded where introduced; CodeQL Python/JS succeeded where those jobs were introduced. The latest head has exact-head quality **38068120882** (Python and TesterArmy e2e PASS) and CodeQL **38068120887** (Python and JavaScript/TypeScript PASS). Local Mac previously passed 329/329 Python tests. **These checks do not mean independent review or live opti",
+      "skills": [
+        "python",
+        "javascript",
+        "typescript",
+        "script"
+      ],
+      "score": 40,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T19:02:35Z"
+    },
+    {
       "id": 5775609371,
       "title": "[Bounty: $70] Replace per-round correlated subqueries in getGroup with a grouped aggregate",
       "url": "https://github.com/SUSU-LABS/susu-api/issues/62",
@@ -169,21 +186,6 @@
       "updated_at": "2026-10-10T18:39:56Z"
     },
     {
-      "id": 5780441894,
-      "title": "[GrahamCluley] $10 million bounty offered for Chinese Hafnium hacker accused of Microsoft Exchange Server mega-attack",
-      "url": "https://github.com/SecOpsNews/news/issues/74931",
-      "description": "\n\nThe US State Department is offering up to US $10 million for information about the whereabouts of Zhang Yu, a 44-year-old Chinese national who is accused of being a key figure in China's state-sponsored hacking group, Hafnium.\n\nRead more in my article on the Hot for Security blog.\n\n\n\n<https://www.bitdefender.com/en-us/blog/hotforsecurity/10-million-bounty-chinese-hafnium-hacker-microsoft-exchange-server-mega-attack>\n\n",
-      "skills": [],
-      "score": 35,
-      "amount_mentions": [
-        "$10",
-        "$10"
-      ],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T18:34:03Z"
-    },
-    {
       "id": 5772947007,
       "title": "Resolve the $1,190 advertised-bounty claim for 15 merged contributions",
       "url": "https://github.com/Movalabs-crew/mova-store/issues/967",
@@ -216,6 +218,22 @@
       "updated_at": "2026-10-10T17:07:32Z"
     },
     {
+      "id": 5421407279,
+      "title": "v6.3.10 Feedback & Bug Reports",
+      "url": "https://github.com/woopstar/hsem/issues/978",
+      "description": "## v6.3.x Feedback & Bug Reports\n\nThis issue is the central place for feedback, questions, and bug reports related to the **HSEM v6.3.x** release.\n\n> The previous feedback thread ([#732](https://github.com/woopstar/hsem/issues/732)) covered v6.2.x and is now closed. Please post all new feedback here.\n\n### Before posting\n\n1. **Read the [release notes](https://github.com/woopstar/hsem/releases/tag/v6.3.0)** — especially the new opt-in features and upgrade notes.\n2. **Upgrading from v5.x?** Read the [v6.0.1 release notes](https://github.com/woopstar/hsem/releases/tag/v6.0.1) first — v6 was a complete rewrite with breaking changes (entity unique IDs, config migration, EDS step removal).\n3. **Search existing comments** in this issue to avoid duplicates.\n\n### When reporting a bug, please include:\n\n- **Home Assistant version** (e.g., 2026.9.1)\n- **Python version** (e.g., 3.14.x)\n- **HSEM version** (e.g., v6.3.0)\n- **Description** of what happened vs. what you expected\n- **Steps to reproduce**\n- **Relevant log output** (check Home Assistant logs for `custom_components.hsem`)\n- **Diagnostics dump** if available (Settings → Devices & Services → HSEM → Download Diagnostics)\n\n### Known upgrade",
+      "skills": [
+        "python",
+        "bug",
+        "script"
+      ],
+      "score": 30,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T19:02:33Z"
+    },
+    {
       "id": 5662643363,
       "title": "refactor(api): remove db/tx handle passing and shrink transactions in billing and IM integrations",
       "url": "https://github.com/okou-ai/okou/issues/37510",
@@ -245,6 +263,20 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T18:58:01Z"
+    },
+    {
+      "id": 5791812738,
+      "title": "Integracja web B6: escrow bounty on-chain (wpłata, blokada, wypłata, zwrot)",
+      "url": "https://github.com/rikardoricz/DamPac/issues/54",
+      "description": "Krok B6 z `web/docs/ROADMAP.md`: escrow bounty na prawdziwych transakcjach. W fazie A cały cykl (wpłata, blokada przy review, wypłata, zwrot) działa na mocku `ChainService`.\n\n**Zależy od:** #53 (B5, klient Anchor), #46 (pola bounty + potwierdzenia przejść w API), #47 (podpisujący), #50 (deploy + IDL).\n\n**Zrobione gdy:**\n- [ ] `createBounty`: `create_sol_bounty` (kwota w lamportach) i `create_spl_bounty` (mint wskazany przez requestora, kwota w jednostkach bazowych z `decimals` odczytanym z minta); podpis requestora; potem `POST /requests/{id}/bounty/confirm-funding` (endpoint backendu dostarczony w #46; integracja `ApiClient`/`ChainService` po stronie web nadal do zrobienia)\n- [ ] `startReview` (`start_bounty_review`) w panelu moderatora przed decyzją, gdy prośba ma bounty `funded`\n- [ ] Końcowa transakcja review atomowo łączy `review_submission` z `settle_sol_bounty` / `settle_spl_bounty` po akceptacji albo `release_rejected_bounty` po odrzuceniu; `start_bounty_review` pozostaje wcześniejszą, osobną transakcją. Signerem jest moderator (#47, #55).\n- [ ] `refundBounty` (`refund_*`) przy zamknięciu prośby w `funded`; w `under_review` przycisk zablokowany z wyjaśnieniem\n- [ ] Statusy ",
+      "skills": [
+        "api"
+      ],
+      "score": 20,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T19:01:53Z"
     },
     {
       "id": 5789461316,
@@ -350,6 +382,90 @@
       "updated_at": "2026-10-10T17:44:46Z"
     },
     {
+      "id": 5602503136,
+      "title": "Build complete source-to-Legacy feature and route acceptance matrix",
+      "url": "https://github.com/MALIEV-Co-Ltd/Legacy.Maliev.Workflows/issues/98",
+      "description": "The source-commit ledger tracks commit disposition but does not prove every migrated service feature and Web/Intranet route works against production-derived local Aspire data. This is an explicit migration completion gate, not a deployment request.\n\nAcceptance:\n- Inventory each Legacy service feature, API, role, entity, background operation, and every Web/Intranet route against the latest committed original source; retain full source SHA, owning Legacy repo, main SHA, status, and exact evidence links.\n- Mark unverified items pending; distinguish source retirement approvals from migrations. Do not infer feature parity from a code mapping, route alias, smoke test, or green unit suite.\n- Record automated customer/employee authentication, permission, CRUD/lifecycle, validation, rollback/retry, cross-service effects, localization, responsive/browser/accessibility, and persisted-data checks as appropriate. Include safe failure/partial-failure evidence and suppress real notifications/payments/analytics in local review.\n- Verify the matrix against live source and each protected Legacy main, with a check that rejects missing routes/features or unsupported completion claims. Link per-service",
+      "skills": [
+        "api"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T19:02:25Z"
+    },
+    {
+      "id": 5777386844,
+      "title": "website: HTML image sharing produces no download during publication proof",
+      "url": "https://github.com/schlessera/brain-kit/issues/1331",
+      "description": "## Context\n\nThe public website publication run after PR #1178 fails its real HTML image download proof. The package CI for the exact main squash passes; the separate website artifact job fails and deploy is skipped.\n\nEvidence: [workflow 37922937326](https://github.com/schlessera/brain-kit/actions/runs/37922937326), artifact job 113794978583, attempt 1, website source `97021a46dbed7d8818f33d3d6704ee689a85221a`. Publication selects the independently pinned released library `@schlessera/brain@0.40.0`, commit `1d1fcc72a7e06352e8b5ee020b3910864babc5db`; it is not executing the newly merged package implementation. [Diagnostic artifact 11613165839](https://github.com/schlessera/brain-kit/actions/runs/37922937326/artifacts/11613165839) preserves the browser trace, failure output and source/build/share provenance.\n\nVerified source: `download`, `website/scripts/rich-demo-check.ts:76-84`; HTML sequence, `website/scripts/rich-demo-check.ts:128-131`; offline browser harness, `website/scripts/browser-check.ts:25-36`.\n\nThe trace establishes this precise boundary: the HTML source-file download completes, then clicking the actual Share as image menu item for `voyage/ogygia/departure-brief.html` com",
+      "skills": [
+        "script"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T19:02:06Z"
+    },
+    {
+      "id": 5728509886,
+      "title": "CROSS-MODEL-MAILBOX V2: Meridian ChatGPT ↔ Claude review handoff",
+      "url": "https://github.com/Achi1984/meridian/issues/571",
+      "description": "Authoritative cross-model mailbox for MERIDIAN. Successor to archived #539.\n\nPurpose — only these comment kinds belong here:\n- CROSS_MODEL_REQUEST\n- CROSS_MODEL_RESPONSE\n- CROSS_MODEL_STATUS NEEDS_USER_DECISION\n- FINAL_MERGE_STATUS\n\nDo NOT post per-step INTENT/progress comments here.\nLead progress lives in one continuously edited status comment per active PR.\n\nCurrent routing:\n- MERIDIAN_LIVE_CHECKPOINT.mailboxIssue = 571\n- .github/workflows/claude-mailbox-review.yml triggers only on this issue\n- #539 is archived; negative trigger smoke confirmed it no longer activates the workflow\n\nReviewer capability:\n- Claude may use the approved read-only GitHub/Git/local-test surfaces for deeper independent review\n- Edit/Write remain disallowed\n- mutating gh api and mutating git commands remain forbidden by the reviewer contract\n- the only permitted remote mutation is the requested CROSS_MODEL_RESPONSE comment in this mailbox\n\nRollover policy:\n- future rollover threshold: >200 comments\n- on rollover, update workflow trigger + MERIDIAN_LIVE_CHECKPOINT.mailboxIssue and all dynamic bootstrap routing coherently\n\nHard boundaries unchanged:\nV2 remains SOURCE_AUDIT. No canonical execution, strategy P",
+      "skills": [
+        "api"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T19:02:06Z"
+    },
+    {
+      "id": 5779878641,
+      "title": "Tested flow ledger for #7536: which flows are tested, how and by whom",
+      "url": "https://github.com/langwatch/langwatch/issues/8553",
+      "description": "<!-- ledger:summary:start -->\n## Progress summary\n\n**1,016 rows: 812 pass, 164 have problems, 1 being walked, 39 not started.**\n<sub>Counted 2026-10-10 19:02 UTC by `ledger-count.py` from the body and 2401 comments; a later result, claim or release comment overrides the body.</sub>\n\n| | rows | ✅ | 🟡 | ❌ | ⚠️ | ⏳ | ⬜ |\n|---|---:|---:|---:|---:|---:|---:|---:|\n| Upgrade | 48 | 3 | 2 | 3 |  | 1 | 39 |\n| Custom flows | 12 | 8 |  |  | 4 |  |  |\n| Product flows | 30 | 25 | 3 |  | 2 |  |  |\n| Beyond the UI | 9 | 7 |  |  | 2 |  |  |\n| Areas | 917 | 769 | 54 |  | 94 |  |  |\n| **Total** | 1,016 | 812 | 59 | 3 | 102 | 1 | 39 |\n\n<details><summary>Per area</summary>\n\n| | rows | ✅ | 🟡 | ❌ | ⚠️ | ⏳ | ⬜ |\n|---|---:|---:|---:|---:|---:|---:|---:|\n| ANA · Analytics, dashboards and LWQL | 17 | 15 | 2 |  |  |  |  |\n| ANN · Annotations and queues | 10 | 10 |  |  |  |  |  |\n| AUD · Audit log | 8 | 7 |  |  | 1 |  |  |\n| AUTH · Sign-in and identity | 53 | 30 | 3 |  | 20 |  |  |\n| AUTO · Automations, triggers, alerts and reports | 26 | 25 |  |  | 1 |  |  |\n| AZ · Authorization: grants and roles | 22 | 22 |  |  |  |  |  |\n| BIL · Billing, usage metering and limits (Cloud) | 22 | 18 | 3 |  | 1 |  |  |\n| CA ·",
+      "skills": [
+        "automation"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T19:02:05Z"
+    },
+    {
+      "id": 5783214445,
+      "title": "ADS-006 operational closeout: verified paid collectors, spend evidence and staging proof",
+      "url": "https://github.com/yali-code/noctella-web/issues/335",
+      "description": "## Context\nPhase 6 code PRs #330 (paid metrics evidence), #331 (advisory optimization), #332 (read-only Analytics snapshots report), #333 (Admin paid report view) are merged. PR #334 adds **real in-memory SQLite integration tests and provenance hardening**. These are review-only foundations, **not** proof that actual paid advertisements have been connected or that true eBay/Etsy sales have been attributed.\n\n## Operational acceptance checklist — all required before claiming Phase 6 fully closed\n- [ ] Verify actual paid account ownership and ad API scopes **separately** for Meta, Google Ads, Pinterest Ads; owner approves all accounts/permissions. Never reuse organic Instagram/Pinterest analytics credentials without authorization.\n- [ ] Implement vetted paid-provider analytics collectors using only documented provider API endpoints and explicit app permissions; no scraping. Reuse the existing `analytics_runs` and `analytics_metric_snapshots` store. Strict campaign/account IDs, per-provider currency and window provenance; no new competing analytics warehouse.\n- [ ] Collect in staging with dedicated sandbox/test-account access; verify token handling, idempotency, source audit and data q",
+      "skills": [
+        "api"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T19:01:57Z"
+    },
+    {
+      "id": 5764679899,
+      "title": "Work list: run Control Tower and BashArena with glovebox on the Flamingo cluster",
+      "url": "https://github.com/AlexanderMattTurner/agent-glovebox/issues/8055",
+      "description": "This is a **work list** (CLAUDE.md § What gets an issue, type 6). It is the one tracker for this milestone. Add a row by editing this body, and tick a row in the PR that lands it.\n\n## What cannot be done today\n\nThe Control Tower (LinuxArena) eval runs only on a GitHub runner that has `/dev/kvm` and a Docker daemon. The driver boots each cell's microVM from that host, builds the env's images with the host's Docker, and judges an attack by reading the host's egress decision log. A Flamingo pod has none of that. It gets a microVM from the node through `runtimeClassName: glovebox`, but it cannot run Docker, and its outgoing traffic is not filtered yet.\n\n```text\ntoday:  GitHub runner -> glovebox sandbox -> Kata microVM, host egress log judges the attack\nwanted: Inspect runner -> pod with runtimeClassName: glovebox on a Flamingo node,\n        node-side egress log judges the attack\n```\n\nThis matters because a guarded cell on Flamingo today has no egress allowlist. Its attack-success number would measure an open network, not glovebox.\n\nBashArena has no harness or setting pin in this tree.\n\n## Done when\n\n- [ ] A free provisioning run (`ct_e2e_agent_model: ctscript/submit`) over every pinned",
+      "skills": [
+        "script"
+      ],
+      "score": 10,
+      "amount_mentions": [],
+      "payment_verified": false,
+      "source": "GitHub issues",
+      "updated_at": "2026-10-10T19:01:55Z"
+    },
+    {
       "id": 5763134769,
       "title": "Plan: remove repository Python tooling and complete the Zig/native cutover",
       "url": "https://github.com/cataggar/debz/issues/420",
@@ -392,20 +508,6 @@
       "updated_at": "2026-10-10T19:01:43Z"
     },
     {
-      "id": 5779878641,
-      "title": "Tested flow ledger for #7536: which flows are tested, how and by whom",
-      "url": "https://github.com/langwatch/langwatch/issues/8553",
-      "description": "<!-- ledger:summary:start -->\n## Progress summary\n\n**1,016 rows: 812 pass, 164 have problems, 1 being walked, 39 not started.**\n<sub>Counted 2026-10-10 18:59 UTC by `ledger-count.py` from the body and 2400 comments; a later result, claim or release comment overrides the body.</sub>\n\n| | rows | ✅ | 🟡 | ❌ | ⚠️ | ⏳ | ⬜ |\n|---|---:|---:|---:|---:|---:|---:|---:|\n| Upgrade | 48 | 3 | 2 | 3 |  | 1 | 39 |\n| Custom flows | 12 | 8 |  |  | 4 |  |  |\n| Product flows | 30 | 25 | 3 |  | 2 |  |  |\n| Beyond the UI | 9 | 7 |  |  | 2 |  |  |\n| Areas | 917 | 769 | 54 |  | 94 |  |  |\n| **Total** | 1,016 | 812 | 59 | 3 | 102 | 1 | 39 |\n\n<details><summary>Per area</summary>\n\n| | rows | ✅ | 🟡 | ❌ | ⚠️ | ⏳ | ⬜ |\n|---|---:|---:|---:|---:|---:|---:|---:|\n| ANA · Analytics, dashboards and LWQL | 17 | 15 | 2 |  |  |  |  |\n| ANN · Annotations and queues | 10 | 10 |  |  |  |  |  |\n| AUD · Audit log | 8 | 7 |  |  | 1 |  |  |\n| AUTH · Sign-in and identity | 53 | 30 | 3 |  | 20 |  |  |\n| AUTO · Automations, triggers, alerts and reports | 26 | 25 |  |  | 1 |  |  |\n| AZ · Authorization: grants and roles | 22 | 22 |  |  |  |  |  |\n| BIL · Billing, usage metering and limits (Cloud) | 22 | 18 | 3 |  | 1 |  |  |\n| CA ·",
-      "skills": [
-        "automation"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T19:01:39Z"
-    },
-    {
       "id": 5760402393,
       "title": "[P1][TIGERIQ NEWS] Hoàn thiện xuất bản bài/ảnh công khai và tự xác minh tin thật",
       "url": "https://github.com/newsdayads/tigeriq-ai-lab/issues/4574",
@@ -432,48 +534,6 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T19:01:36Z"
-    },
-    {
-      "id": 5794268366,
-      "title": "Track safe installation, release provenance, recovery, and provider drift",
-      "url": "https://github.com/drewt5/cursor-plugins/issues/2",
-      "description": "## Outcome\n\nA user can install, update, diagnose, roll back, and uninstall this portable pstack fork without losing unrelated skills or learning receipt internals. A maintainer can identify the exact installed release and detect provider drift without managing the user's whole coding environment.\n\nThis is the execution plan, not a claim that the features already exist. The 21 child issues below are deliberately bounded implementation or acceptance tasks. Each includes starting files, concrete work, behavioral acceptance criteria, explicit non-goals, and completion evidence. Native sub-issue and blocked-by relationships mirror the links in the issue bodies.\n\n## Baseline and evidence\n\nThe plan was grounded against [main at 6fc8c895](https://github.com/drewt5/cursor-plugins/tree/6fc8c8956bfdbd52194204876155be0d9f9d497d), including merged PR #1.\n\n- [install.mjs](https://github.com/drewt5/cursor-plugins/blob/6fc8c8956bfdbd52194204876155be0d9f9d497d/pstack/scripts/install.mjs) copies one shared package and generates host files. It defaults to all three CLI hosts, tracks hashes, and can adopt identical unowned files.\n- [lifecycle.test.mjs](https://github.com/drewt5/cursor-plugins/blob/6fc",
-      "skills": [
-        "script"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T19:01:14Z"
-    },
-    {
-      "id": 5669022101,
-      "title": "core: evaluate JEV routing and deterministic writes for smart capture",
-      "url": "https://github.com/schlessera/brain-kit/issues/839",
-      "description": "## Context\n\nPart of #838. Follow the epic's shared discovery/evaluation protocol and binding constraints. Source inspected on 2026-10-01 at main 0a6389cf3f30341db7093e195637cf08a0f27e6a.\n\n`brain add --smart` delegates to a coding-agent skill rather than performing a bounded classification (`flags.smart`, [`packages/core/src/cli/commands/add.ts:25-38`](https://github.com/schlessera/brain-kit/blob/0a6389cf3f30341db7093e195637cf08a0f27e6a/packages/core/src/cli/commands/add.ts#L25-L38)). Ordinary ingestion already has deterministic title matching and writes (`classifyContent`, [`packages/core/src/lib/ingestion.ts:79-139`](https://github.com/schlessera/brain-kit/blob/0a6389cf3f30341db7093e195637cf08a0f27e6a/packages/core/src/lib/ingestion.ts#L79-L139)). Runtime taxonomy supports custom strings but has no semantic type description (`typeSpecSchema`, [`packages/core/src/lib/config.ts:50-82`](https://github.com/schlessera/brain-kit/blob/0a6389cf3f30341db7093e195637cf08a0f27e6a/packages/core/src/lib/config.ts#L50-L82)).\n\n## Question\n\nCan deterministic matching plus Jev Choice pick the note type, the append target (or none) and tags as reliably as today's `/add --smart` agent skill?\n\nFollow ",
-      "skills": [
-        "script"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T19:01:02Z"
-    },
-    {
-      "id": 5602503136,
-      "title": "Build complete source-to-Legacy feature and route acceptance matrix",
-      "url": "https://github.com/MALIEV-Co-Ltd/Legacy.Maliev.Workflows/issues/98",
-      "description": "The source-commit ledger tracks commit disposition but does not prove every migrated service feature and Web/Intranet route works against production-derived local Aspire data. This is an explicit migration completion gate, not a deployment request.\n\nAcceptance:\n- Inventory each Legacy service feature, API, role, entity, background operation, and every Web/Intranet route against the latest committed original source; retain full source SHA, owning Legacy repo, main SHA, status, and exact evidence links.\n- Mark unverified items pending; distinguish source retirement approvals from migrations. Do not infer feature parity from a code mapping, route alias, smoke test, or green unit suite.\n- Record automated customer/employee authentication, permission, CRUD/lifecycle, validation, rollback/retry, cross-service effects, localization, responsive/browser/accessibility, and persisted-data checks as appropriate. Include safe failure/partial-failure evidence and suppress real notifications/payments/analytics in local review.\n- Verify the matrix against live source and each protected Legacy main, with a check that rejects missing routes/features or unsupported completion claims. Link per-service",
-      "skills": [
-        "api"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T19:00:55Z"
     },
     {
       "id": 5794068339,
@@ -650,11 +710,11 @@
       "updated_at": "2026-10-10T17:19:32Z"
     }
   ],
-  "count": 44,
+  "count": 48,
   "warnings": [],
   "execution": {
     "status": "demo_completed",
-    "timestamp": "2026-10-10T19:01:58+00:00",
+    "timestamp": "2026-10-10T19:02:55+00:00",
     "kind": "csv_cleaning",
     "result": {
       "processed_rows": 3,
