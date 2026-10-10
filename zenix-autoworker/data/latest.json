@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-10-10T23:22:20+00:00",
+  "generated_at": "2026-10-10T23:22:40+00:00",
   "opportunities": [
     {
       "id": 5752205252,
@@ -65,7 +65,7 @@
       ],
       "payment_verified": false,
       "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:22:19Z"
+      "updated_at": "2026-10-10T23:22:25Z"
     },
     {
       "id": 5793089065,
@@ -113,22 +113,6 @@
       "payment_verified": false,
       "source": "GitHub issues",
       "updated_at": "2026-10-10T20:48:54Z"
-    },
-    {
-      "id": 5764398288,
-      "title": "Public usage figures mix outside users, team activity and scripted tests",
-      "url": "https://github.com/tang-vu/keryx/issues/249",
-      "description": "## Problem\n\nPublic usage figures (`/api/metrics`, `/api/runs`, `/proof`) count every caller origin together. A reader cannot tell outside users from team activity or scripted acceptance runs, and scripted persona batches appear in the public run history next to real questions. A reviewer who opens the run history sees bursts of templated questions and discounts all of it, including the genuine use.\n\n## Proposal\n\nOne public page and one JSON endpoint that answer \"who uses Keryx\" from the production database on every load.\n\n- Three columns for every figure: **outside users**, **team**, **scripted tests**. Never summed silently.\n- One network at a time: Arc mainnet and Arc testnet reported separately.\n- Period switch: all time, last 7 days, last 30 days, and `?since=YYYY-MM-DD`.\n- Rows: people, research runs, paying runs, settled payments, USDC paid, creators paid, deliverables accepted, median time to first answer.\n- Classify at write time, not after the fact: a run created by an evaluation harness or a team wallet carries an origin tag when it is stored.\n- Classify payers by funding: a wallet funded by the treasury or by a team wallet is never an outside payer. Sponsored runs are sh",
-      "skills": [
-        "json",
-        "api",
-        "script"
-      ],
-      "score": 30,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:20:20Z"
     },
     {
       "id": 5796141058,
@@ -419,20 +403,6 @@
       "updated_at": "2026-10-10T23:20:21Z"
     },
     {
-      "id": 5779878641,
-      "title": "Tested flow ledger for #7536: which flows are tested, how and by whom",
-      "url": "https://github.com/langwatch/langwatch/issues/8553",
-      "description": "<!-- ledger:summary:start -->\n## Progress summary\n\n**1,016 rows: 865 pass, 114 have problems, 1 being walked, 36 not started.**\n<sub>Counted 2026-10-10 23:20 UTC by `ledger-count.py` from the body and 2465 comments; a later result, claim or release comment overrides the body.</sub>\n\n| | rows | ✅ | 🟡 | ❌ | ⚠️ | ⏳ | ⬜ |\n|---|---:|---:|---:|---:|---:|---:|---:|\n| Upgrade | 48 | 3 | 4 | 4 |  | 1 | 36 |\n| Custom flows | 12 | 10 |  |  | 2 |  |  |\n| Product flows | 30 | 25 | 3 |  | 2 |  |  |\n| Beyond the UI | 9 | 7 |  |  | 2 |  |  |\n| Areas | 917 | 820 | 36 | 1 | 60 |  |  |\n| **Total** | 1,016 | 865 | 43 | 5 | 66 | 1 | 36 |\n\n<details><summary>Per area</summary>\n\n| | rows | ✅ | 🟡 | ❌ | ⚠️ | ⏳ | ⬜ |\n|---|---:|---:|---:|---:|---:|---:|---:|\n| ANA · Analytics, dashboards and LWQL | 17 | 15 | 2 |  |  |  |  |\n| ANN · Annotations and queues | 10 | 10 |  |  |  |  |  |\n| AUD · Audit log | 8 | 7 |  |  | 1 |  |  |\n| AUTH · Sign-in and identity | 53 | 35 | 8 |  | 10 |  |  |\n| AUTO · Automations, triggers, alerts and reports | 26 | 25 |  |  | 1 |  |  |\n| AZ · Authorization: grants and roles | 22 | 22 |  |  |  |  |  |\n| BIL · Billing, usage metering and limits (Cloud) | 22 | 18 | 4 |  |  |  |  |\n| CA ·",
-      "skills": [
-        "automation"
-      ],
-      "score": 10,
-      "amount_mentions": [],
-      "payment_verified": false,
-      "source": "GitHub issues",
-      "updated_at": "2026-10-10T23:20:17Z"
-    },
-    {
       "id": 5696973063,
       "title": "Roadmap: define and implement cross-node agreement for consumed OTS identities",
       "url": "https://github.com/rickyjreyes/Wavelock/issues/28",
@@ -673,11 +643,11 @@
       "updated_at": "2026-10-10T21:35:22Z"
     }
   ],
-  "count": 47,
+  "count": 45,
   "warnings": [],
   "execution": {
     "status": "demo_completed",
-    "timestamp": "2026-10-10T23:22:20+00:00",
+    "timestamp": "2026-10-10T23:22:40+00:00",
     "kind": "csv_cleaning",
     "result": {
       "processed_rows": 3,
