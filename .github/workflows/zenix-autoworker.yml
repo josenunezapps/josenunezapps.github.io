@@ -40,13 +40,17 @@ jobs:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           AUTO_WORKER_MODEL: ${{ vars.AUTO_WORKER_MODEL }}
           ISSUE_URL: ${{ inputs.issue_url }}
+          QA_SMOKE: ${{ contains(github.event.head_commit.message, '[ai-smoke]') }}
         run: |
           if [ -n "$ISSUE_URL" ]; then
             python zenix-autoworker/engine/agent.py --issue-url "$ISSUE_URL"
+          elif [ "$GITHUB_EVENT_NAME" = "push" ] && [ "$QA_SMOKE" = "true" ]; then
+            python zenix-autoworker/engine/agent.py --issue-url "https://github.com/josenunezapps/josenunezapps.github.io/issues/1"
           else
-            python zenix-autoworker/engine/agent.py --auto
+            echo "Sin issue específico: se completaron las pruebas y la búsqueda, sin invocar IA."
           fi
       - name: Update public metadata only
+        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
