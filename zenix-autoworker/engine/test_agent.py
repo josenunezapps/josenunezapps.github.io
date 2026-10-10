@@ -39,7 +39,24 @@ class AgentTests(unittest.TestCase):
             with patch.object(agent,"api",return_value={"choices":[{"message":{"content":'{"summary":"ok","files":[]}'}}]}) as mocked:
                 result=agent.model({"title":"QA","body":"Test"},"")
                 self.assertEqual(result["summary"],"ok")
-                self.assertEqual(mocked.call_args.args[2]["model"],"openrouter/free")
+                self.assertEqual(mocked.call_args.args[2]["model"],"poolside/laguna-s-2.1:free")
+
+    def test_tool_call_parses_structured_solution(self):
+        tool_response={"choices":[{"message":{"content":"",
+            "tool_calls":[{"function":{"name":"submit_solution",
+                "arguments":'{"summary":"ok","files":[{"path":"sample.py","content":"print(1)"}]}'}}]}}]}
+        with patch.dict(os.environ,{"OPENROUTER_API_KEY":"test-dummy","AUTO_WORKER_MODEL":""}):
+            with patch.object(agent,"api",return_value=tool_response):
+                result=agent.model({"title":"QA","body":"Test"},"")
+                self.assertEqual(result["files"][0]["path"],"sample.py")
+
+    def test_model_empty_reply_is_explicit_error(self):
+        response={"model":"poolside/laguna-s-2.1:free",
+            "choices":[{"finish_reason":"length","message":{"content":""}}]}
+        with patch.dict(os.environ,{"OPENROUTER_API_KEY":"test-dummy","AUTO_WORKER_MODEL":""}):
+            with patch.object(agent,"api",return_value=response):
+                with self.assertRaisesRegex(RuntimeError,"contenido vacio"):
+                    agent.model({"title":"QA","body":"Test"},"")
 
     def test_paid_model_rejected(self):
         with patch.dict(os.environ,{"OPENROUTER_API_KEY":"test-dummy","AUTO_WORKER_MODEL":"openai/gpt-4"}):
