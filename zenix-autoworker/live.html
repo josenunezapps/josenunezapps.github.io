@@ -50,7 +50,8 @@ function draw(){
  selected.append(element("h3","",job.title),element("p","muted","Importes mencionados no verificados: "+(job.amount_mentions||[]).join(", ")));
  selected.append(element("div","detail",job.description||"Sin descripción disponible"));
  const link=element("a","button testLink","Ver issue original ↗");link.href=job.url;link.target="_blank";link.rel="noopener noreferrer";selected.append(link);
- const info=element("p","muted","Para pedir que el agente intente resolver este issue, copiá la URL y usá Run workflow → issue_url en GitHub Actions.");selected.append(info);
+ const handoff=new URL("./chatgpt.html",location.href);handoff.searchParams.set("title",job.title||"");handoff.searchParams.set("url",job.url||"");handoff.searchParams.set("requirements",(job.description||"").slice(0,2500));handoff.searchParams.set("pay",(job.amount_mentions||[]).join(", ")||"No verificado");const go=element("a","button primary","Preparar para ChatGPT →");go.href=handoff.toString();selected.append(go);
+ const info=element("p","muted","Ahora podés pasarme esta oportunidad a ChatGPT para verificarla y trabajarla. Nunca se envían postulaciones ni entregables automáticamente.");selected.append(info);
  const copy=element("button","button","Copiar URL");copy.onclick=()=>navigator.clipboard?.writeText(job.url).then(()=>copy.textContent="✓ Copiada").catch(()=>prompt("Copiá el enlace",job.url));selected.append(copy)
  }
  const run=info.execution||{};const ex=$("execution");ex.replaceChildren();
