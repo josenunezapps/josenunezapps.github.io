@@ -127,9 +127,9 @@ async function loadJobs(){
  try {
   const response=await fetch("./data/latest.json",{cache:"no-store"});
   if(!response.ok)throw Error("No disponible");
-  const data=await response.json();
-  const list=Array.isArray(data.opportunities)?data.opportunities:[];
-  const timestamp=data.generated_at?new Date(data.generated_at):null;
+  const snapshot=await response.json();
+  const list=Array.isArray(snapshot.opportunities)?snapshot.opportunities:[];
+  const timestamp=snapshot.generated_at?new Date(snapshot.generated_at):null;
   $("source-date").textContent="Última captura: "+(timestamp&&!isNaN(timestamp.getTime())?timestamp.toLocaleString("es-AR"):"fecha sin verificar")+". Se trata de una lista histórica, NO de disponibilidad actual.";
   box.replaceChildren();
   if(!list.length){box.textContent="La última captura no registró anuncios.";return}
