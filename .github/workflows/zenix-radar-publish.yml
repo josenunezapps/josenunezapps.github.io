@@ -1,0 +1,57 @@
+name: Publicar Zenix Radar (ruta independiente)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/zenix-radar-publish.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Descargar fuente verificable Zenix Radar v0.4
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 --silent --show-error \
+            'https://d2ol7oe51mr4n9.cloudfront.net/user_3JhuYVTAZZfkugncJaW2oz5H8Sc/66e390e2-d5ee-4364-9a21-5523a4ac8abf.zip' \
+            --output /tmp/zenix-radar-v0.4.zip
+          echo '5694ef8d1673279f3658f96a352f5c203c4282522f5be3e8fc43a45fe2bcb63d  /tmp/zenix-radar-v0.4.zip' | sha256sum --check
+          mkdir -p /tmp/zenix-radar-source
+          unzip -q /tmp/zenix-radar-v0.4.zip -d /tmp/zenix-radar-source
+      - name: Instalar y compilar aplicación original
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd /tmp/zenix-radar-source/zenix-radar
+          npm ci --no-audit --no-fund
+          npm run build
+      - name: Publicar exclusivamente en una ruta no enlazada
+        shell: bash
+        run: |
+          set -euo pipefail
+          route="zr-4f8c2a7d"
+          mkdir -p "$route"
+          find "$route" -mindepth 1 -maxdepth 1 -exec rm -rf {} +
+          cp -a /tmp/zenix-radar-source/zenix-radar/dist/. "$route/"
+          test -s "$route/index.html"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$route"
+          if git diff --cached --quiet; then
+            echo "Sin cambios."
+          else
+            git commit -m "Deploy Zenix Radar v0.4 to isolated unlinked route"
+            git push origin HEAD:main
+          fi
