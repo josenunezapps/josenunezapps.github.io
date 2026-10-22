@@ -1,0 +1,1 @@
+{"id":"./","name":"MiLibroPDF — Biblioteca personal","short_name":"MiLibroPDF","description":"Leé, escuchá y estudiá tus libros PDF y EPUB.","start_url":"./","scope":"./","display":"standalone","background_color":"#faf8f4","theme_color":"#552a3b","icons":[{"src":"./icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]}
