@@ -1,49 +1,25 @@
-# MiLibroPDF Web
+# MiLibroPDF Web v2.0
 
-Primera versión web de MiLibroPDF: biblioteca personal para **PDF y EPUB** en un diseño adaptable a escritorio y celular.
+Aplicación web responsive, local-first y PWA para leer PDF y EPUB.
 
-## Funciones implementadas
+## Diez funciones nuevas
+1. Colecciones personalizadas (crear, editar, eliminar, asignar libros).
+2. Etiquetas libres por libro y filtrado por etiquetas.
+3. Lista «Leer después».
+4. Objetivo de lectura diario configurable.
+5. Racha de lectura calculada a partir de sesiones reales.
+6. Fechas objetivo de lectura por libro.
+7. Marcadores persistentes de posición en el lector.
+8. Búsqueda de notas, fragmentos y resaltados.
+9. Exportación de apuntes a Markdown.
+10. Importación de respaldos JSON sin borrar la biblioteca existente; reenlace manual de PDF/EPUB.
 
-- Importación de archivos PDF y EPUB mediante selector o arrastrar y soltar.
-- Biblioteca con búsqueda, filtros, favoritos, orden y vistas de cuadrícula/lista.
-- Lectura PDF con PDF.js, páginas, zoom, rotación y capa de selección de texto cuando el archivo la permite.
-- Lectura EPUB con epub.js, navegación, diseño adaptable y restauración de la posición.
-- Guardado de progreso y tiempo de lectura; Continuar leyendo; estadísticas simples.
-- Notas privadas, notas vinculadas, fragmentos y resaltados (la selección se almacena; no se vuelve a pintar automáticamente sobre el documento al reabrir).
-- Texto a voz con Web Speech API y temporizador de sueño (dependiente del navegador, idioma y voces instaladas).
-- Temas claro/sepia/oscuro, tipografía y ajustes; Wake Lock si está disponible.
-- PWA instalable y uso sin conexión para el shell y recursos previamente almacenados.
-- Una lectura de bienvenida funcional de muestra.
+Extra: buscador rápido global con Ctrl+K. 
 
-## Ejecución
+## Persistencia y privacidad
+Los libros, metadatos, posiciones, colecciones, preferencias y apuntes residen en IndexedDB del navegador. No hay cuentas ni sincronización automática entre dispositivos. Los respaldos JSON no contienen los archivos PDF/EPUB y requieren reenlazarlos para leer tras restaurar.
 
-No requiere servidor ni claves de API. Serví esta carpeta con un servidor estático (Service Worker e IndexedDB requieren un origen seguro; localhost es válido):
+## Publicación
+https://josenunezapps.github.io/milibropdf-web/
 
-```bash
-python3 -m http.server 8080
-```
-
-Abrí `http://localhost:8080` en el navegador. También se puede publicar como subcarpeta en GitHub Pages, Cloudflare Pages o hosting estático.
-
-Dependencias del lector mediante CDN: `pdfjs-dist@4.10.38`, `epubjs@0.3.93`. La primera vez requieren conexión; la PWA cachea los recursos que se hayan cargado.
-
-## Datos y privacidad
-
-**En esta versión no hay cuentas ni sincronización entre dispositivos.** Los PDF, EPUB, notas, posiciones y estadísticas se guardan en **IndexedDB local**. Borrar los datos del sitio puede borrarlos. La exportación JSON de Configuración contiene *solo metadatos y apuntes* (no los archivos de los libros), y todavía no tiene función de importación de respaldo.
-
-No existe backend Supabase ni servicio de subida. Para habilitar la sincronización es necesario añadir autenticación, reglas RLS, almacenamiento de archivos y migración local/nube con pruebas.
-
-## Limitaciones conocidas
-
-- PDF escaneado: se visualiza, pero no realiza OCR; TTS, búsqueda y selección requieren texto extraíble.
-- El resaltado se guarda como apunte, no como superposición visual persistente sobre cada PDF/EPUB.
-- El seguimiento visual de cada frase de TTS y la continuación automática entre capítulos EPUB aún no están implementados.
-- Las estadísticas son por dispositivo, no globales; tiempo aproximado con el lector abierto.
-- La experiencia TTS/voz y Wake Lock depende del navegador y restricciones móviles.
-- No se incluyen archivos de libros en el repositorio ni se envían al servidor.
-
-## Organización
-
-`index.html` interfaz y recursos SVG · `styles.css` estilos responsive · `app.js` lógica de biblioteca, lectores, estudio, IndexedDB y TTS · `sw.js` service worker · `manifest.webmanifest` PWA · `icon.svg` ícono.
-
-Código de web independiente del proyecto Android. No toca archivos Android.
+Código web en carpeta web/ de este repositorio. Proyecto Android no modificado.

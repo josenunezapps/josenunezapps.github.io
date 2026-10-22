@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#552a3b" />
+  <meta name="theme-color" content="#182038" />
   <meta name="description" content="MiLibroPDF: tu biblioteca personal para leer, escuchar y estudiar documentos PDF y EPUB." />
   <link rel="icon" href="./icon.svg" type="image/svg+xml" />
   <link rel="manifest" href="./manifest.webmanifest" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./styles.css" />
-  <title>MiLibroPDF — Tu biblioteca personal</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css?v=2" /><link rel="stylesheet" href="./modern.css?v=2" />
+  <title>MiLibroPDF — Tu espacio de lectura</title>
   <script defer src="https://cdn.jsdelivr.net/npm/epubjs@0.3.93/dist/epub.min.js"></script>
-  <script type="module" src="./app.js"></script>
+  <script type="module" src="./app.js?v=2"></script>
 </head>
 <body>
   <svg xmlns="http://www.w3.org/2000/svg" class="svg-sprite" aria-hidden="true">
@@ -46,10 +46,11 @@
     <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 2 2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5z"/></symbol>
     <symbol id="i-x" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5 5 19"/></symbol>
     <symbol id="i-full" viewBox="0 0 24 24"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></symbol>
+    <symbol id="i-bookmark" viewBox="0 0 24 24"><path d="M5 3h14v18l-7-5-7 5z"/></symbol>
     <symbol id="i-note" viewBox="0 0 24 24"><path d="M4 3h16v18H4zM8 8h8M8 12h8M8 16h5"/></symbol>
   </svg>
   <div id="app"><div class="boot"><div class="boot-icon">M<span>.</span></div><p>Preparando tu biblioteca…</p></div></div>
-  <input id="file-input" type="file" accept=".pdf,.epub,application/pdf,application/epub+zip" multiple hidden />
+  <input id="backup-input" type="file" accept=".json,application/json" hidden /><input id="relink-input" type="file" accept=".pdf,.epub" hidden /><input id="file-input" type="file" accept=".pdf,.epub,application/pdf,application/epub+zip" multiple hidden />
   <div id="drop-overlay" class="drop-overlay hidden"><div><svg><use href="#i-upload"/></svg><h2>Soltá tus libros aquí</h2><p>Admitimos archivos PDF y EPUB</p></div></div>
   <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
 </body>
