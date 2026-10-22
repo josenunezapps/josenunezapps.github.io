@@ -23,3 +23,7 @@ Los libros, metadatos, posiciones, colecciones, preferencias y apuntes residen e
 https://josenunezapps.github.io/milibropdf-web/
 
 Código web en carpeta web/ de este repositorio. Proyecto Android no modificado.
+
+
+## Edición editorial 3.0
+Rediseño visual cálido y elegante. La biblioteca, sus datos locales y las funciones de la v2 se mantienen.
