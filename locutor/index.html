@@ -145,6 +145,7 @@
     </div>
   </section>
 
+  <div class="actions"><button id="reset">Borrar voces descargadas</button></div>
   <p class="note">La primera vez que usás una voz se descarga su modelo (unos 60 MB) y queda guardado en el navegador. Después funciona sin volver a bajarlo. <b>El texto nunca sale de tu dispositivo.</b></p>
 </div>
 
@@ -156,7 +157,8 @@
   const estado = $("estado"), pct = $("pct"), barra = $("barra");
   const resultado = $("resultado"), player = $("player"), onda = $("onda");
 
-  const PREFERIDAS = ["es_MX-claude-high", "es_ES-davefx-medium", "es_MX-ald-medium", "es_ES-sharvard-medium", "en_US-hfc_female-medium", "en_US-lessac-medium"];
+  const PREFERIDAS = ["es_MX-claude-high", "es_MX-ald-medium", "es_AR-daniela-high"];
+  const esLatina = (k) => k.startsWith("es_") && !k.startsWith("es_ES");
   let wavActual = null, urlActual = null;
 
   const setEstado = (msg, p = null, err = false) => {
@@ -185,24 +187,16 @@
       const v = await tts.voices();
       lista = Object.values(v).map((x) => x.key || x).filter((k) => typeof k === "string");
     } catch { lista = PREFERIDAS; }
+    lista = lista.filter(esLatina);
+    if (!lista.length) lista = PREFERIDAS.filter((k) => k !== "es_AR-daniela-high");
     const descargadas = new Set(await tts.stored().catch(() => []));
-    const es = lista.filter((k) => k.startsWith("es_")).sort();
-    const otras = lista.filter((k) => !k.startsWith("es_")).sort();
-
-    const grupo = (nombre, items) => {
-      const g = document.createElement("optgroup");
-      g.label = nombre;
-      for (const k of items) {
-        const o = document.createElement("option");
-        o.value = k;
-        o.textContent = etiqueta(k) + (descargadas.has(k) ? "  ✓ descargada" : "");
-        g.appendChild(o);
-      }
-      return g;
-    };
     voz.innerHTML = "";
-    if (es.length) voz.appendChild(grupo("Español", es));
-    if (otras.length) voz.appendChild(grupo("Otros idiomas", otras));
+    for (const k of lista.sort()) {
+      const o = document.createElement("option");
+      o.value = k;
+      o.textContent = etiqueta(k) + (descargadas.has(k) ? "  ✓ descargada" : "");
+      voz.appendChild(o);
+    }
 
     let guardada = null;
     try { guardada = localStorage.getItem("locutor:voz"); } catch {}
@@ -211,7 +205,7 @@
 
   function etiqueta(key) {
     const [loc, nombre, calidad] = key.split("-");
-    const paises = { es_ES: "España", es_MX: "México", es_AR: "Argentina", en_US: "EE. UU.", en_GB: "Reino Unido", pt_BR: "Brasil", fr_FR: "Francia", it_IT: "Italia", de_DE: "Alemania" };
+    const paises = { es_MX: "México", es_AR: "Argentina", es_CO: "Colombia", es_CL: "Chile", es_PE: "Perú", es_US: "Latino (EE. UU.)", es_419: "Latinoamérica" };
     const cap = (s) => s ? s.charAt(0).toUpperCase() + s.slice(1).replace(/_/g, " ") : "";
     return `${cap(nombre)} · ${paises[loc] || loc} · ${calidad || ""}`;
   }
@@ -261,31 +255,46 @@
     }
   }
 
+  // ---- descarga de voz, con reparación si el modelo guardado está dañado ----
+  const modeloDanado = (e) => /protobuf|graph|create a session|invalid model|magic number/i.test(String(e?.message || e));
+
+  async function asegurarVoz(voiceId, forzar = false) {
+    if (forzar && typeof tts.remove === "function") await tts.remove(voiceId).catch(() => {});
+    const descargadas = forzar ? [] : await tts.stored().catch(() => []);
+    if (descargadas.includes(voiceId)) return;
+    setEstado("Descargando voz (solo la primera vez)…", 0);
+    await tts.download(voiceId, (p) => {
+      const r = p.total ? (p.loaded / p.total) * 100 : 0;
+      setEstado(`Descargando voz · ${(p.loaded / 1048576).toFixed(1)} MB`, r);
+    });
+    const op = [...voz.options].find((o) => o.value === voiceId);
+    if (op && !op.textContent.includes("✓")) op.textContent += "  ✓ descargada";
+  }
+
   // ---- generar ----
   async function generar() {
     const t = texto.value.trim();
     if (!t) { setEstado("Escribí algún texto para convertir.", null, true); return; }
     const voiceId = voz.value;
-    btnGen.disabled = true; voz.disabled = true;
+    btnGen.disabled = true; voz.disabled = true; resultado.hidden = true; player.pause();
 
     try {
-      const descargadas = await tts.stored().catch(() => []);
-      if (!descargadas.includes(voiceId)) {
-        setEstado("Descargando voz (solo la primera vez)…", 0);
-        await tts.download(voiceId, (p) => {
-          const r = p.total ? (p.loaded / p.total) * 100 : 0;
-          setEstado(`Descargando voz · ${(p.loaded / 1048576).toFixed(1)} MB`, r);
-        });
-        const op = [...voz.options].find((o) => o.value === voiceId);
-        if (op && !op.textContent.includes("✓")) op.textContent += "  ✓ descargada";
-      }
+      await asegurarVoz(voiceId);
 
       const partes = fragmentar(t);
       const ac = new (window.AudioContext || window.webkitAudioContext)();
       const trozos = []; let sr = 22050;
       for (let i = 0; i < partes.length; i++) {
         setEstado(`Generando fragmento ${i + 1} de ${partes.length}…`, (i / partes.length) * 100);
-        const blob = await tts.predict({ text: partes[i], voiceId });
+        let blob;
+        try {
+          blob = await tts.predict({ text: partes[i], voiceId });
+        } catch (e) {
+          if (!modeloDanado(e)) throw e;
+          setEstado("El modelo de voz estaba dañado. Lo descargo de nuevo…", 0);
+          await asegurarVoz(voiceId, true);
+          blob = await tts.predict({ text: partes[i], voiceId });
+        }
         const audio = await ac.decodeAudioData(await blob.arrayBuffer());
         sr = audio.sampleRate;
         trozos.push(audio.getChannelData(0).slice());
@@ -327,6 +336,15 @@
     resultado.hidden = true; player.removeAttribute("src");
     if (urlActual) URL.revokeObjectURL(urlActual);
     urlActual = null; wavActual = null; setEstado("Listo para generar.");
+  });
+
+  $("reset").addEventListener("click", async () => {
+    try {
+      if (typeof tts.flush === "function") await tts.flush();
+      else for (const k of await tts.stored()) await tts.remove(k);
+      await cargarVoces();
+      setEstado("Voces borradas. Se vuelven a descargar al generar.");
+    } catch (e) { setEstado("No se pudieron borrar las voces: " + (e?.message || e), null, true); }
   });
 
   // ---- inicio ----
