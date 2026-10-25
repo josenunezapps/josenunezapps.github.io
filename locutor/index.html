@@ -88,6 +88,13 @@
   .bar { height: 6px; background: var(--line); border-radius: 99px; overflow: hidden; }
   .bar > i { display: block; height: 100%; width: 0; background: var(--signal); transition: width .2s; }
 
+  .seg { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 4px; border: 1px solid var(--line); border-radius: 12px; }
+  .seg button { border: 0; display: grid; gap: 2px; text-align: left; padding: 10px 12px; }
+  .seg button small { font: 400 12px var(--f-mono); color: var(--muted); }
+  .seg button[aria-checked="true"] { background: var(--accent); color: var(--accent-ink); }
+  .seg button[aria-checked="true"] small { color: var(--accent-ink); opacity: .8; }
+  input[type="range"] { width: 100%; accent-color: var(--accent); }
+
   canvas.wave { width: 100%; height: 72px; display: block; }
   audio { width: 100%; }
   .result { display: grid; gap: 12px; }
@@ -117,6 +124,14 @@
       <span id="duracion">≈ 0 s de audio</span>
     </div>
 
+    <div class="field">
+      <label id="lbl-modo">Tipo de voz</label>
+      <div class="seg" role="radiogroup" aria-labelledby="lbl-modo">
+        <button id="modo-tel" role="radio" aria-checked="false">Del teléfono<small>Solo escuchar</small></button>
+        <button id="modo-neu" role="radio" aria-checked="true">Neuronal<small>Descarga WAV</small></button>
+      </div>
+    </div>
+
     <div class="row">
       <div class="field">
         <label for="voz">Voz</label>
@@ -124,7 +139,13 @@
       </div>
       <div class="actions">
         <button id="generar" class="primary" disabled>Generar audio</button>
+        <button id="detener" hidden>Detener</button>
       </div>
+    </div>
+
+    <div class="field" id="campo-vel" hidden>
+      <label for="vel">Velocidad · <span id="vel-val">1.0×</span></label>
+      <input type="range" id="vel" min="0.5" max="2" step="0.1" value="1">
     </div>
   </section>
 
@@ -150,7 +171,9 @@
 </div>
 
 <script type="module">
-  import * as tts from "https://cdn.jsdelivr.net/npm/@diffusionstudio/vits-web@1.0.3/+esm";
+  let tts = null;
+  try { tts = await import("https://cdn.jsdelivr.net/npm/@diffusionstudio/vits-web@1.0.3/+esm"); } catch (e) { console.error(e); }
+  const synth = window.speechSynthesis;
 
   const $ = (id) => document.getElementById(id);
   const texto = $("texto"), voz = $("voz"), btnGen = $("generar");
@@ -181,7 +204,54 @@
   });
 
   // ---- voces ----
+  let modo = "neu";
+  try { if (localStorage.getItem("locutor:modo") === "tel") modo = "tel"; } catch {}
+  const claveVoz = () => "locutor:voz:" + modo;
+
   async function cargarVoces() {
+    if (modo === "tel") return cargarVocesTelefono();
+    if (!tts) throw new Error("motor neuronal no disponible");
+    return cargarVocesNeuronales();
+  }
+
+  // Voces instaladas en el teléfono (Web Speech API)
+  function vocesTelefono() {
+    const todas = (synth?.getVoices() || []).filter((v) => /^es/i.test(v.lang));
+    const latinas = todas.filter((v) => !/^es[-_]ES/i.test(v.lang));
+    return latinas.length ? latinas : todas;
+  }
+  function esperarVoces() {
+    return new Promise((res) => {
+      if (!synth) return res([]);
+      if (synth.getVoices().length) return res(synth.getVoices());
+      const t = setTimeout(() => res(synth.getVoices()), 2500);
+      synth.addEventListener("voiceschanged", () => { clearTimeout(t); res(synth.getVoices()); }, { once: true });
+    });
+  }
+  const paisLang = (lang) => {
+    const c = (lang.split(/[-_]/)[1] || "").toUpperCase();
+    return { MX: "México", AR: "Argentina", US: "Latino (EE. UU.)", CO: "Colombia", CL: "Chile", PE: "Perú", VE: "Venezuela", UY: "Uruguay", "419": "Latinoamérica", ES: "España" }[c] || lang;
+  };
+  async function cargarVocesTelefono() {
+    await esperarVoces();
+    const lista = vocesTelefono();
+    voz.innerHTML = "";
+    if (!lista.length) {
+      voz.innerHTML = "<option>No hay voces en español en este navegador</option>";
+      throw new Error("sin voces del teléfono");
+    }
+    lista.forEach((v) => {
+      const o = document.createElement("option");
+      o.value = v.voiceURI;
+      o.textContent = `${v.name} · ${paisLang(v.lang)}${v.localService ? "" : " · online"}`;
+      voz.appendChild(o);
+    });
+    let guardada = null;
+    try { guardada = localStorage.getItem(claveVoz()); } catch {}
+    if (guardada && lista.some((v) => v.voiceURI === guardada)) voz.value = guardada;
+  }
+
+  async function cargarVocesNeuronales() {
     let lista = [];
     try {
       const v = await tts.voices();
@@ -199,7 +269,7 @@
     }
 
     let guardada = null;
-    try { guardada = localStorage.getItem("locutor:voz"); } catch {}
+    try { guardada = localStorage.getItem(claveVoz()); } catch {}
     voz.value = (guardada && lista.includes(guardada)) ? guardada : (PREFERIDAS.find((p) => lista.includes(p)) || lista[0]);
   }
 
@@ -209,7 +279,7 @@
     const cap = (s) => s ? s.charAt(0).toUpperCase() + s.slice(1).replace(/_/g, " ") : "";
     return `${cap(nombre)} · ${paises[loc] || loc} · ${calidad || ""}`;
   }
-  voz.addEventListener("change", () => { try { localStorage.setItem("locutor:voz", voz.value); } catch {} });
+  voz.addEventListener("change", () => { try { localStorage.setItem(claveVoz(), voz.value); } catch {} });
 
   // ---- partir texto en fragmentos por oraciones ----
   function fragmentar(t, max = 350) {
@@ -272,9 +342,75 @@
   }
 
   // ---- generar ----
+  let leyendo = false;
+  function leerConTelefono(t) {
+    const partes = fragmentar(t, 220);
+    const v = vocesTelefono().find((x) => x.voiceURI === voz.value);
+    const rate = parseFloat($("vel").value);
+    synth.cancel();
+    leyendo = true;
+    $("detener").hidden = false;
+    btnGen.disabled = true;
+    let i = 0;
+    const siguiente = () => {
+      if (!leyendo) return;
+      if (i >= partes.length) { terminarLectura("Lectura terminada."); return; }
+      setEstado(`Leyendo fragmento ${i + 1} de ${partes.length}…`, (i / partes.length) * 100);
+      const u = new SpeechSynthesisUtterance(partes[i]);
+      if (v) { u.voice = v; u.lang = v.lang; } else u.lang = "es-MX";
+      u.rate = rate;
+      u.onend = () => { i++; siguiente(); };
+      u.onerror = (e) => {
+        if (e.error === "interrupted" || e.error === "canceled") return;
+        terminarLectura("No se pudo leer el texto: " + e.error, true);
+      };
+      synth.speak(u);
+    };
+    siguiente();
+  }
+  function terminarLectura(msg, err = false) {
+    leyendo = false;
+    synth?.cancel();
+    $("detener").hidden = true;
+    btnGen.disabled = false;
+    setEstado(msg, err ? null : 100, err);
+  }
+  $("detener").addEventListener("click", () => terminarLectura("Lectura detenida."));
+  $("vel").addEventListener("input", (e) => { $("vel-val").textContent = parseFloat(e.target.value).toFixed(1) + "×"; });
+
+  async function aplicarModo() {
+    $("modo-tel").setAttribute("aria-checked", String(modo === "tel"));
+    $("modo-neu").setAttribute("aria-checked", String(modo === "neu"));
+    $("campo-vel").hidden = modo !== "tel";
+    $("reset").hidden = modo === "tel";
+    btnGen.textContent = modo === "tel" ? "Escuchar" : "Generar audio";
+    if (leyendo) terminarLectura("Lectura detenida.");
+    resultado.hidden = true;
+    btnGen.disabled = true;
+    try {
+      await cargarVoces();
+      btnGen.disabled = false;
+      setEstado(modo === "tel" ? "Las voces del teléfono se pueden escuchar, pero no descargar." : "Listo para generar.");
+    } catch (e) {
+      console.error(e);
+      setEstado(modo === "tel"
+        ? "Este navegador no expone voces en español. Probá con Chrome o instalá voces en Ajustes › Texto a voz."
+        : "No se pudo cargar el motor neuronal. Revisá la conexión y recargá.", null, true);
+    }
+  }
+  for (const [id, m] of [["modo-tel", "tel"], ["modo-neu", "neu"]]) {
+    $(id).addEventListener("click", () => {
+      if (modo === m) return;
+      modo = m;
+      try { localStorage.setItem("locutor:modo", m); } catch {}
+      aplicarModo();
+    });
+  }
+
   async function generar() {
     const t = texto.value.trim();
     if (!t) { setEstado("Escribí algún texto para convertir.", null, true); return; }
+    if (modo === "tel") { leerConTelefono(t); return; }
     const voiceId = voz.value;
     btnGen.disabled = true; voz.disabled = true; resultado.hidden = true; player.pause();
 
@@ -350,14 +486,7 @@
   // ---- inicio ----
   try { const t = localStorage.getItem("locutor:texto"); if (t) texto.value = t; } catch {}
   actualizarMeta();
-  try {
-    await cargarVoces();
-    setEstado("Listo para generar.");
-    btnGen.disabled = false;
-  } catch (e) {
-    console.error(e);
-    setEstado("No se pudo cargar el motor de voz. Abrí la app desde un servidor (no desde file://) y con conexión.", null, true);
-  }
+  aplicarModo();
 </script>
 </body>
 </html>
