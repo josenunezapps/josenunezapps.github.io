@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Locutor</title>
+<meta name="description" content="Convertí texto en audio con voces neuronales que corren en tu navegador y descargalo como WAV.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: una columna de herramienta; editor arriba, consola de render abajo */
+  :root {
+    --bg: #eef1f0;
+    --panel: #ffffff;
+    --ink: #142320;
+    --muted: #5b6b67;
+    --line: #d3dbd8;
+    --accent: #0f7a63;
+    --accent-ink: #ffffff;
+    --signal: #e0a21b;
+    --danger: #b3261e;
+    --f-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --f-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+    --f-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0e1513; --panel: #16201d; --ink: #e3ece9; --muted: #93a39f;
+      --line: #2a3733; --accent: #3fc6a3; --accent-ink: #06231c; --signal: #f0b93a; --danger: #ff8a80;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0e1513; --panel: #16201d; --ink: #e3ece9; --muted: #93a39f;
+    --line: #2a3733; --accent: #3fc6a3; --accent-ink: #06231c; --signal: #f0b93a; --danger: #ff8a80;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font: 15px/1.55 var(--f-body);
+    padding-block: 28px 48px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  .wrap { max-width: 760px; margin: 0 auto; display: grid; gap: 20px; }
+
+  header { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  h1 { font: 800 clamp(2rem, 6vw, 2.8rem)/1 var(--f-display); margin: 0; letter-spacing: -0.02em; }
+  h1 span { color: var(--accent); }
+  .tag { font: 500 12px/1 var(--f-mono); color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 18px; display: grid; gap: 14px; }
+
+  label { font: 600 12px/1 var(--f-mono); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+  textarea {
+    width: 100%; min-height: 220px; resize: vertical;
+    font: 16px/1.6 var(--f-body); color: var(--ink); background: transparent;
+    border: 1px solid var(--line); border-radius: 10px; padding: 14px;
+  }
+  textarea:focus-visible, select:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .meta { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font: 13px var(--f-mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+
+  .row { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: end; }
+  .field { display: grid; gap: 8px; min-width: 0; }
+  select {
+    width: 100%; font: 15px var(--f-body); color: var(--ink); background: var(--panel);
+    border: 1px solid var(--line); border-radius: 10px; padding: 11px 12px;
+  }
+
+  button {
+    font: 600 15px var(--f-body); border-radius: 10px; padding: 12px 18px; cursor: pointer;
+    border: 1px solid var(--line); background: transparent; color: var(--ink);
+  }
+  button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+  button:disabled { opacity: .5; cursor: not-allowed; }
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  /* consola de render */
+  .status { display: grid; gap: 10px; }
+  .status-line { display: flex; justify-content: space-between; gap: 12px; font: 13px var(--f-mono); font-variant-numeric: tabular-nums; }
+  .status-line .state { color: var(--ink); }
+  .status-line .state.err { color: var(--danger); }
+  .bar { height: 6px; background: var(--line); border-radius: 99px; overflow: hidden; }
+  .bar > i { display: block; height: 100%; width: 0; background: var(--signal); transition: width .2s; }
+
+  canvas.wave { width: 100%; height: 72px; display: block; }
+  audio { width: 100%; }
+  .result { display: grid; gap: 12px; }
+
+  .note { font-size: 13px; color: var(--muted); max-width: 65ch; }
+  .note b { color: var(--ink); font-weight: 600; }
+
+  @media (max-width: 520px) {
+    .row { grid-template-columns: 1fr; }
+    .actions button { flex: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) { .bar > i { transition: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Locu<span>tor</span></h1>
+    <div class="tag">Texto → audio · WAV 22 kHz</div>
+  </header>
+
+  <section class="panel">
+    <label for="texto">Texto</label>
+    <textarea id="texto" spellcheck="true">Hola. Esto es una prueba de Locutor, una app que convierte texto en audio usando voces neuronales que corren directamente en tu navegador. Escribí o pegá lo que quieras, elegí una voz y descargá el resultado.</textarea>
+    <div class="meta">
+      <span id="contador">0 caracteres</span>
+      <span id="duracion">≈ 0 s de audio</span>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label for="voz">Voz</label>
+        <select id="voz"><option>Cargando voces…</option></select>
+      </div>
+      <div class="actions">
+        <button id="generar" class="primary" disabled>Generar audio</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel status" aria-live="polite">
+    <div class="status-line">
+      <span class="state" id="estado">Preparando motor de voz…</span>
+      <span id="pct"></span>
+    </div>
+    <div class="bar"><i id="barra"></i></div>
+
+    <div class="result" id="resultado" hidden>
+      <canvas class="wave" id="onda" width="1400" height="144"></canvas>
+      <audio id="player" controls></audio>
+      <div class="actions">
+        <button id="descargar" class="primary">Descargar WAV</button>
+        <button id="limpiar">Borrar</button>
+      </div>
+    </div>
+  </section>
+
+  <p class="note">La primera vez que usás una voz se descarga su modelo (unos 60 MB) y queda guardado en el navegador. Después funciona sin volver a bajarlo. <b>El texto nunca sale de tu dispositivo.</b></p>
+</div>
+
+<script type="module">
+  import * as tts from "https://cdn.jsdelivr.net/npm/@diffusionstudio/vits-web@1.0.3/+esm";
+
+  const $ = (id) => document.getElementById(id);
+  const texto = $("texto"), voz = $("voz"), btnGen = $("generar");
+  const estado = $("estado"), pct = $("pct"), barra = $("barra");
+  const resultado = $("resultado"), player = $("player"), onda = $("onda");
+
+  const PREFERIDAS = ["es_MX-claude-high", "es_ES-davefx-medium", "es_MX-ald-medium", "es_ES-sharvard-medium", "en_US-hfc_female-medium", "en_US-lessac-medium"];
+  let wavActual = null, urlActual = null;
+
+  const setEstado = (msg, p = null, err = false) => {
+    estado.textContent = msg;
+    estado.classList.toggle("err", err);
+    pct.textContent = p == null ? "" : Math.round(p) + "%";
+    barra.style.width = (p ?? 0) + "%";
+  };
+
+  function actualizarMeta() {
+    const n = texto.value.length;
+    const palabras = texto.value.trim().split(/\s+/).filter(Boolean).length;
+    $("contador").textContent = n.toLocaleString("es-AR") + " caracteres";
+    const s = Math.round(palabras / 2.5); // ~150 palabras por minuto
+    $("duracion").textContent = "≈ " + (s >= 60 ? Math.floor(s / 60) + " min " + (s % 60) + " s" : s + " s") + " de audio";
+  }
+  texto.addEventListener("input", () => {
+    actualizarMeta();
+    try { localStorage.setItem("locutor:texto", texto.value); } catch {}
+  });
+
+  // ---- voces ----
+  async function cargarVoces() {
+    let lista = [];
+    try {
+      const v = await tts.voices();
+      lista = Object.values(v).map((x) => x.key || x).filter((k) => typeof k === "string");
+    } catch { lista = PREFERIDAS; }
+    const descargadas = new Set(await tts.stored().catch(() => []));
+    const es = lista.filter((k) => k.startsWith("es_")).sort();
+    const otras = lista.filter((k) => !k.startsWith("es_")).sort();
+
+    const grupo = (nombre, items) => {
+      const g = document.createElement("optgroup");
+      g.label = nombre;
+      for (const k of items) {
+        const o = document.createElement("option");
+        o.value = k;
+        o.textContent = etiqueta(k) + (descargadas.has(k) ? "  ✓ descargada" : "");
+        g.appendChild(o);
+      }
+      return g;
+    };
+    voz.innerHTML = "";
+    if (es.length) voz.appendChild(grupo("Español", es));
+    if (otras.length) voz.appendChild(grupo("Otros idiomas", otras));
+
+    let guardada = null;
+    try { guardada = localStorage.getItem("locutor:voz"); } catch {}
+    voz.value = (guardada && lista.includes(guardada)) ? guardada : (PREFERIDAS.find((p) => lista.includes(p)) || lista[0]);
+  }
+
+  function etiqueta(key) {
+    const [loc, nombre, calidad] = key.split("-");
+    const paises = { es_ES: "España", es_MX: "México", es_AR: "Argentina", en_US: "EE. UU.", en_GB: "Reino Unido", pt_BR: "Brasil", fr_FR: "Francia", it_IT: "Italia", de_DE: "Alemania" };
+    const cap = (s) => s ? s.charAt(0).toUpperCase() + s.slice(1).replace(/_/g, " ") : "";
+    return `${cap(nombre)} · ${paises[loc] || loc} · ${calidad || ""}`;
+  }
+  voz.addEventListener("change", () => { try { localStorage.setItem("locutor:voz", voz.value); } catch {} });
+
+  // ---- partir texto en fragmentos por oraciones ----
+  function fragmentar(t, max = 350) {
+    const oraciones = t.replace(/\s+/g, " ").match(/[^.!?¡¿…]+[.!?…]*["»”)]*\s*/g) || [t];
+    const out = []; let buf = "";
+    for (const o of oraciones) {
+      if ((buf + o).length > max && buf) { out.push(buf.trim()); buf = ""; }
+      buf += o;
+    }
+    if (buf.trim()) out.push(buf.trim());
+    return out;
+  }
+
+  // ---- WAV ----
+  function codificarWav(muestras, sr) {
+    const buf = new ArrayBuffer(44 + muestras.length * 2);
+    const v = new DataView(buf);
+    const w = (o, s) => { for (let i = 0; i < s.length; i++) v.setUint8(o + i, s.charCodeAt(i)); };
+    w(0, "RIFF"); v.setUint32(4, 36 + muestras.length * 2, true); w(8, "WAVE");
+    w(12, "fmt "); v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true);
+    v.setUint32(24, sr, true); v.setUint32(28, sr * 2, true); v.setUint16(32, 2, true); v.setUint16(34, 16, true);
+    w(36, "data"); v.setUint32(40, muestras.length * 2, true);
+    let o = 44;
+    for (let i = 0; i < muestras.length; i++, o += 2) {
+      const s = Math.max(-1, Math.min(1, muestras[i]));
+      v.setInt16(o, s < 0 ? s * 0x8000 : s * 0x7fff, true);
+    }
+    return new Blob([buf], { type: "audio/wav" });
+  }
+
+  function dibujarOnda(muestras) {
+    const ctx = onda.getContext("2d");
+    const { width: W, height: H } = onda;
+    const color = getComputedStyle(document.documentElement).getPropertyValue("--accent").trim();
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = color;
+    const barras = 160, paso = Math.floor(muestras.length / barras) || 1, ancho = W / barras;
+    for (let b = 0; b < barras; b++) {
+      let pico = 0;
+      for (let i = b * paso; i < (b + 1) * paso && i < muestras.length; i += 8) pico = Math.max(pico, Math.abs(muestras[i]));
+      const h = Math.max(4, pico * H * 0.95);
+      ctx.fillRect(b * ancho + 2, (H - h) / 2, ancho - 4, h);
+    }
+  }
+
+  // ---- generar ----
+  async function generar() {
+    const t = texto.value.trim();
+    if (!t) { setEstado("Escribí algún texto para convertir.", null, true); return; }
+    const voiceId = voz.value;
+    btnGen.disabled = true; voz.disabled = true;
+
+    try {
+      const descargadas = await tts.stored().catch(() => []);
+      if (!descargadas.includes(voiceId)) {
+        setEstado("Descargando voz (solo la primera vez)…", 0);
+        await tts.download(voiceId, (p) => {
+          const r = p.total ? (p.loaded / p.total) * 100 : 0;
+          setEstado(`Descargando voz · ${(p.loaded / 1048576).toFixed(1)} MB`, r);
+        });
+        const op = [...voz.options].find((o) => o.value === voiceId);
+        if (op && !op.textContent.includes("✓")) op.textContent += "  ✓ descargada";
+      }
+
+      const partes = fragmentar(t);
+      const ac = new (window.AudioContext || window.webkitAudioContext)();
+      const trozos = []; let sr = 22050;
+      for (let i = 0; i < partes.length; i++) {
+        setEstado(`Generando fragmento ${i + 1} de ${partes.length}…`, (i / partes.length) * 100);
+        const blob = await tts.predict({ text: partes[i], voiceId });
+        const audio = await ac.decodeAudioData(await blob.arrayBuffer());
+        sr = audio.sampleRate;
+        trozos.push(audio.getChannelData(0).slice());
+        trozos.push(new Float32Array(Math.round(sr * 0.25))); // pausa entre fragmentos
+      }
+      ac.close();
+
+      const total = trozos.reduce((a, c) => a + c.length, 0);
+      const todo = new Float32Array(total);
+      let off = 0; for (const c of trozos) { todo.set(c, off); off += c.length; }
+
+      wavActual = codificarWav(todo, sr);
+      if (urlActual) URL.revokeObjectURL(urlActual);
+      urlActual = URL.createObjectURL(wavActual);
+      player.src = urlActual;
+      dibujarOnda(todo);
+      resultado.hidden = false;
+      const seg = total / sr;
+      setEstado(`Listo · ${seg.toFixed(1)} s · ${(wavActual.size / 1048576).toFixed(1)} MB`, 100);
+    } catch (e) {
+      console.error(e);
+      setEstado("No se pudo generar el audio: " + (e?.message || e) + ". Revisá la conexión e intentá de nuevo.", null, true);
+    } finally {
+      btnGen.disabled = false; voz.disabled = false;
+    }
+  }
+
+  function descargar() {
+    if (!urlActual) return;
+    const inicio = texto.value.trim().slice(0, 30).replace(/[^\p{L}\p{N}]+/gu, "-").replace(/^-|-$/g, "").toLowerCase() || "audio";
+    const a = document.createElement("a");
+    a.href = urlActual; a.download = `locutor-${inicio}.wav`;
+    document.body.appendChild(a); a.click(); a.remove();
+  }
+
+  btnGen.addEventListener("click", generar);
+  $("descargar").addEventListener("click", descargar);
+  $("limpiar").addEventListener("click", () => {
+    resultado.hidden = true; player.removeAttribute("src");
+    if (urlActual) URL.revokeObjectURL(urlActual);
+    urlActual = null; wavActual = null; setEstado("Listo para generar.");
+  });
+
+  // ---- inicio ----
+  try { const t = localStorage.getItem("locutor:texto"); if (t) texto.value = t; } catch {}
+  actualizarMeta();
+  try {
+    await cargarVoces();
+    setEstado("Listo para generar.");
+    btnGen.disabled = false;
+  } catch (e) {
+    console.error(e);
+    setEstado("No se pudo cargar el motor de voz. Abrí la app desde un servidor (no desde file://) y con conexión.", null, true);
+  }
+</script>
+</body>
+</html>
