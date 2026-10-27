@@ -39,8 +39,8 @@ footer{border-top:1px solid #2a324c;margin-top:34px;padding-top:16px;font-size:1
 <div class="stats"><div class="stat"><b id="found">—</b><span>Detectados en búsqueda</span></div><div class="stat"><b id="added">—</b><span>Agregados a Radar</span></div><div class="stat"><b id="dupes">—</b><span>Ya registrados / coincidentes</span></div><div class="stat"><b id="total">—</b><span>Negocios reales en Radar</span></div></div>
 <div class="info">La búsqueda se ejecuta automáticamente como máximo una vez cada 24 horas, cuando la fuente lo permite. Los datos abiertos pueden estar incompletos. “Sitio web no registrado” no significa que el comercio no tenga web. No se envían mensajes.</div>
 <div class="status" id="osmstatus" role="status" aria-live="polite"></div>
-<div class="controls"><div class="field"><label for="filter">Filtrar resultados</label><input id="filter" placeholder="Nombre, rubro o calle" /></div><div class="field"><label for="endpoint">Fuente pública</label><select id="endpoint"><option value="https://overpass.private.coffee/api/interpreter">Overpass · Private.coffee</option><option value="https://overpass-api.de/api/interpreter">Overpass · FOSSGIS</option></select></div></div>
-<div class="results" id="osmresults"></div>
+<div class="controls"><div class="field"><label for="filter">Filtrar resultados</label><input id="filter" name="radar-busqueda-comercios" type="search" autocomplete="off" autocapitalize="off" spellcheck="false" data-lpignore="true" placeholder="Nombre, rubro o calle" /></div><div class="field"><label for="endpoint">Fuente pública</label><select id="endpoint"><option value="https://overpass.private.coffee/api/interpreter">Overpass · Private.coffee</option><option value="https://overpass-api.de/api/interpreter">Overpass · FOSSGIS</option><option value="https://lz4.overpass-api.de/api/interpreter">Overpass · FOSSGIS LZ4</option></select></div></div>
+<div class="row" style="margin-top:14px"><a href="./">Ver negocios guardados en Radar</a></div><div class="results" id="osmresults"></div>
 </div></section>
 <section id="google" class="hidden"><div class="panel">
 <h2>Explorá Google Maps oficialmente</h2>
@@ -98,16 +98,78 @@ return{added:added.length,dupes,total:next.businesses.filter(b=>!b.isDemo).lengt
 function renderOSM(){const needle=norm($("filter").value),rows=osmRows.filter(r=>norm(r.name+" "+r.category+" "+r.address).includes(needle)).slice(0,80);
 $("osmresults").innerHTML=rows.map(r=>'<article class="item"><div class="row between"><b>'+escapeHtml(r.name)+'</b><span class="tag">'+escapeHtml(r.category)+'</span></div><p>'+escapeHtml(r.address)+'</p><div class="row"><a href="https://www.openstreetmap.org/'+encodeURI(r.id)+'" target="_blank" rel="noopener">Ver fuente</a>'+(r.website?'<a href="'+escapeHtml(r.website)+'" target="_blank" rel="noopener">Sitio declarado</a>':"")+'</div></article>').join("");
 }
-async function scan(auto){if(busy)return;busy=true;$("scan").disabled=true;status("osmstatus",auto?"Buscando comercios reales…":"Consultando OpenStreetMap…");
-const query='[out:json][timeout:35];(nwr["name"]["shop"](-54.89,-68.47,-54.72,-68.14);nwr["name"]["amenity"~"restaurant|cafe|fast_food|bar|pub|school|pharmacy|doctors|dentist|bank|clinic|car_wash|fuel"](-54.89,-68.47,-54.72,-68.14);nwr["name"]["tourism"~"hotel|hostel|guest_house|motel|attraction|museum|information"](-54.89,-68.47,-54.72,-68.14);nwr["name"]["office"](-54.89,-68.47,-54.72,-68.14);nwr["name"]["craft"](-54.89,-68.47,-54.72,-68.14);nwr["name"]["healthcare"](-54.89,-68.47,-54.72,-68.14);nwr["name"]["leisure"~"fitness_centre|sports_centre|spa"](-54.89,-68.47,-54.72,-68.14););out center tags;';
-try{const url=$("endpoint").value;const ctl=new AbortController(),timer=setTimeout(()=>ctl.abort(),44000);let res;try{res=await fetch(url,{method:"POST",body:new URLSearchParams({data:query}),signal:ctl.signal});}finally{clearTimeout(timer);}
-if(!res.ok)throw Error("La fuente respondió HTTP "+res.status+". Puede estar saturada. Probá más tarde o cambiá de fuente.");
-const obj=await res.json();if(!Array.isArray(obj.elements))throw Error("Respuesta inesperada: no se modificaron tus datos.");
-const ids=new Set();osmRows=obj.elements.map(normalizeElement).filter(r=>r&&!ids.has(r.id)&&(ids.add(r.id),true));
-const counts=saveOSM(osmRows);$("found").textContent=osmRows.length;$("added").textContent=counts.added;$("dupes").textContent=counts.dupes;$("total").textContent=counts.total;
-localStorage.setItem(stamp,String(Date.now()));renderOSM();status("osmstatus","Se encontraron "+osmRows.length+" lugares, se agregaron "+counts.added+" negocios nuevos. Los existentes permanecieron intactos.","good");}
-catch(e){status("osmstatus",e&&e.message||"No se pudo consultar la fuente.", "error");}
-finally{busy=false;$("scan").disabled=false;}}
+const scanFailure="zenix-radar:osm-last-failure";
+const allSources=["https://overpass.private.coffee/api/interpreter","https://overpass-api.de/api/interpreter","https://lz4.overpass-api.de/api/interpreter"];
+const bounds="(-54.89,-68.47,-54.72,-68.14)";
+const groups=[
+{label:"Gastronomía",filters:['nwr["name"]["amenity"~"^(restaurant|cafe|fast_food|bar|pub|food_court)$"]','nwr["name"]["shop"~"^(bakery|pastry|coffee)$"]']},
+{label:"Comercios",filters:['nwr["name"]["shop"]']},
+{label:"Hoteles y turismo",filters:['nwr["name"]["tourism"~"^(hotel|hostel|guest_house|motel|apartment|chalet|information)$"]']},
+{label:"Servicios y otros",filters:['nwr["name"]["office"]','nwr["name"]["craft"]','nwr["name"]["healthcare"]','nwr["name"]["amenity"~"^(school|pharmacy|doctors|dentist|bank|clinic|car_wash|fuel)$"]','nwr["name"]["leisure"~"^(fitness_centre|sports_centre|spa)$"]']}
+];
+function overpassQuery(group){return '[out:json][timeout:17];('+group.filters.map(f=>f+bounds+";").join("")+');out center;';}
+async function querySource(url,query){
+const ctrl=new AbortController(),timer=setTimeout(()=>ctrl.abort(),21000);
+try{
+const res=await fetch(url,{method:"POST",body:"data="+encodeURIComponent(query),headers:{"Content-Type":"application/x-www-form-urlencoded"},signal:ctrl.signal});
+if(!res.ok)throw Error("HTTP "+res.status);
+let result;try{result=await res.json();}catch{throw Error("la respuesta no fue JSON válido");}
+if(!result||!Array.isArray(result.elements))throw Error("respuesta sin elementos válidos");
+return result.elements;
+}catch(err){
+if(ctrl.signal.aborted)throw Error("la fuente excedió 21 segundos");
+throw Error((err&&err.message==="Failed to fetch")?"conexión rechazada (red o CORS)":err&&err.message||"error de conexión");
+}finally{clearTimeout(timer);}
+}
+async function searchGroup(group,preferred){
+const order=[preferred,...allSources.filter(u=>u!==preferred)];const errors=[];
+for(let i=0;i<Math.min(2,order.length);i++){
+const url=order[i];
+if(i)status("osmstatus","La primera fuente no respondió. Probando respaldo para "+group.label+"…");
+try{return {elements:await querySource(url,overpassQuery(group)),source:url};}
+catch(err){errors.push(new URL(url).host+": "+err.message);}
+}
+throw Error(errors.join(" · "));
+}
+async function scan(auto){
+if(busy)return;
+busy=true;$("scan").disabled=true;$("scan").textContent="Buscando…";
+let addedTotal=0,dupesTotal=0,success=0,allFound=new Map(),fails=[],source=$("endpoint").value;
+status("osmstatus",auto?"Comenzando descubrimiento automático…":"Buscando negocios por categorías…");
+try{
+current();
+for(let ix=0;ix<groups.length;ix++){
+const g=groups[ix];
+status("osmstatus","Buscando "+g.label+" ("+(ix+1)+"/"+groups.length+") · "+addedTotal+" nuevos guardados hasta ahora…");
+let found;
+try{found=await searchGroup(g,source);}catch(err){
+fails.push(g.label+": "+err.message);
+status("osmstatus","No se pudo completar "+g.label+". "+(ix+1<groups.length?"Continúo con otros rubros…":"Finalizando…"),"error");
+if(success===0)break;
+continue;
+}
+source=found.source;
+const fresh=found.elements.map(normalizeElement).filter(Boolean);
+for(const entry of fresh)allFound.set(entry.id,entry);
+osmRows=[...allFound.values()];
+const update=saveOSM(fresh);addedTotal+=update.added;dupesTotal+=update.dupes;success++;
+$("found").textContent=allFound.size;
+$("added").textContent=addedTotal;
+$("dupes").textContent=dupesTotal;
+$("total").textContent=update.total;
+renderOSM();
+}
+if(success===groups.length){
+try{localStorage.setItem(stamp,String(Date.now()));localStorage.removeItem(scanFailure);}catch{}
+status("osmstatus","Búsqueda completa: "+allFound.size+" lugares detectados y "+addedTotal+" negocios nuevos guardados. Podés verlos en Radar.","good");
+}else{
+try{localStorage.setItem(scanFailure,String(Date.now()));}catch{}
+const reason=fails.join(" | ");
+status("osmstatus",success?"Búsqueda parcial: se guardaron "+addedTotal+" negocios. Algunas categorías no respondieron. "+reason:"No pude conectar con las fuentes de OpenStreetMap. No modifiqué tu base de datos. "+reason,"error");
+}
+}catch(err){status("osmstatus","No se pudieron guardar los resultados: "+(err?.message||"error inesperado")+". No reinicies tus datos.","error");}
+finally{busy=false;$("scan").disabled=false;$("scan").textContent="Buscar y agregar";}
+}
 function openTab(name){const g=name==="google";$("google").classList.toggle("hidden",!g);$("osm").classList.toggle("hidden",g);$("tabgoogle").classList.toggle("active",g);$("tabosm").classList.toggle("active",!g);}
 $("tabgoogle").onclick=()=>openTab("google");$("tabosm").onclick=()=>openTab("osm");
 $("scan").onclick=()=>scan(false);$("filter").addEventListener("input",renderOSM);
@@ -131,7 +193,7 @@ $("gsearch").onclick=()=>runGoogle([$("kind").value]);
 $("gbulk").onclick=()=>{if(window.confirm("Esto hará hasta 9 consultas facturables a Google Places API. Los resultados solo se mostrarán en esta sesión. ¿Continuar?"))return runGoogle(["restaurant","cafe","hotel","store","supermarket","bakery","clothing_store","beauty_salon","travel_agency"]);};
 $("gresults").addEventListener("click",e=>{const b=e.target.closest("[data-place]");if(!b)return;const p=googlePlaces[Number(b.dataset.place)];if(!p||!p.id)return;try{const k="zenix-radar:google-place-ids",a=JSON.parse(localStorage.getItem(k)||"[]");if(!Array.isArray(a))throw Error("Registro de IDs ilegible");if(!a.includes(p.id))a.push(p.id);localStorage.setItem(k,JSON.stringify(a));b.textContent="ID guardado";b.disabled=true;}catch(err){status("gstatus","No se pudo guardar el ID: "+err.message,"error");}});
 try{const d=current().d;$("total").textContent=d.businesses.filter(b=>!b.isDemo).length;}catch(e){status("osmstatus",e.message,"error");}
-try{const last=Number(localStorage.getItem(stamp)||0);if(Date.now()-last>=24*3600000){setTimeout(()=>scan(true),250);}else{status("osmstatus","Última búsqueda: "+new Date(last).toLocaleString("es-AR")+". Podés actualizar con el botón.","good");}}catch(e){status("osmstatus",e.message,"error");}
+try{$("filter").value="";const last=Number(localStorage.getItem(stamp)||0),fail=Number(localStorage.getItem(scanFailure)||0),now=Date.now();if(now-last>=24*3600000&&now-fail>=20*60000){setTimeout(()=>scan(true),250);}else if(now-last<24*3600000){status("osmstatus","Última búsqueda: "+new Date(last).toLocaleString("es-AR")+". Podés actualizar con el botón.","good");}else{status("osmstatus","Las fuentes no respondieron recientemente. Volvé a intentar con «Buscar y agregar» o elegí otra fuente.");}}catch(e){status("osmstatus",e.message,"error");}
 })();
 </script>
 </body></html>
