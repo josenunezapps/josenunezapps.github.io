@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Investigación comercial · Zenix Radar</title>
+<style>
+:root{color-scheme:dark;font:14px/1.5 Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:#eef1ff;background:#0d101b}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% -5%,#27346f 0,transparent 35%),#0e101b}button,select,input{font:inherit}button{cursor:pointer}button:disabled{opacity:.48;cursor:not-allowed}
+a{color:#bba8ff}.wrap{max-width:1170px;padding:26px 22px 72px;margin:0 auto}.top{display:flex;justify-content:space-between;align-items:center;gap:10px}.brand{font-size:17px;font-weight:800}.sub{font-size:12px;color:#96a7c6}
+h1{font-size:clamp(28px,4.4vw,48px);line-height:1.06;letter-spacing:-1.4px;margin:30px 0 10px}h2{margin:0 0 8px;font-size:20px}
+p{margin:7px 0;color:#b1bdd3}.desc{max-width:800px}.panel{border:1px solid #2c3955;background:#151b2b;border-radius:17px;padding:19px;margin-top:20px}
+.btn{border:1px solid #4c526d;border-radius:10px;padding:10px 14px;background:#1e273c;color:#eef1ff;font-weight:650;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.btn.primary{background:#7755f4;border-color:#926fff;color:white}.btn:hover{filter:brightness(1.14)}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.between{justify-content:space-between}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px}
+.stat{background:#182139;border:1px solid #323e61;border-radius:13px;padding:16px}.stat strong{font-size:29px;display:block;font-variant-numeric:tabular-nums}.stat span{font-size:12px;color:#afbed5}
+.msg{margin-top:14px;border-radius:9px;border-left:3px solid #9e93ff;background:#202846;padding:12px 14px;color:#d0d7ef}.msg.error{border-color:#ff9e99;color:#ffcfce}
+.search{flex:1;min-width:190px}.search input,.toolbar select{width:100%;padding:11px;background:#0c1525;border:1px solid #465373;color:#fff;border-radius:10px}
+.toolbar{display:grid;grid-template-columns:minmax(220px,2fr) minmax(160px,1fr) auto;gap:12px;align-items:end;margin-top:16px}
+label{font-size:12px;font-weight:680;display:block;margin-bottom:5px;color:#bdcce9}
+.list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}
+.business{min-width:0;border:1px solid #333d5b;background:#161f33;border-radius:13px;padding:16px}
+.business h3{font-size:16px;margin:0;overflow-wrap:anywhere}
+.mini{font-size:12px;color:#aab9d5}.status{display:inline-flex;border-radius:100px;background:#302b52;color:#d2c3ff;padding:4px 9px;font-size:11px;white-space:nowrap}.status.pending{background:#303746;color:#b2bdd1}
+.high{font-weight:650;color:#aee7bf}.code{font-family:ui-monospace,monospace;font-size:12px;color:#bcc6e4}
+.business .divider{height:1px;background:#2a344e;margin:12px 0}
+.business .foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:13px;flex-wrap:wrap}
+.details{margin:11px 0 0;padding:10px;background:#11182a;border-radius:10px;font-size:13px}.details p{margin:5px 0}.details a{overflow-wrap:anywhere}
+.hidden{display:none!important}.empty{grid-column:1/-1;text-align:center;padding:30px;color:#aebad5}
+footer{margin-top:30px;padding-top:16px;border-top:1px solid #323b51;color:#8c9ab3;font-size:12px}
+@media(max-width:720px){.wrap{padding:15px 14px 65px}.stats{grid-template-columns:repeat(2,1fr)}.list{grid-template-columns:1fr}.toolbar{grid-template-columns:1fr}.top{align-items:flex-start}}
+</style>
+</head><body><div class="wrap">
+<div class="top"><div><div class="brand">✦ ZENIX <span style="color:#b8a2ff">RADAR</span></div><div class="sub">Investigación de prospectos · Ushuaia</div></div><a href="./" class="btn">← Panel principal</a></div>
+<h1>Información real.<br><span style="color:#b29bff">Oportunidades sin inventar.</span></h1>
+<p class="desc">Radar contrasta los datos disponibles con fuentes públicas, incorpora sitios y contactos comprobados a las fichas vacías, y separa las oportunidades a investigar de las necesidades demostradas. No afirma que un comercio no tenga web solo porque aún no la encontramos.</p>
+<div class="stats">
+<div class="stat"><strong id="total">—</strong><span>Negocios registrados</span></div>
+<div class="stat"><strong id="researched">—</strong><span>Con datos públicos contrastados</span></div>
+<div class="stat"><strong id="websites">—</strong><span>Webs identificadas</span></div>
+<div class="stat"><strong id="pending">—</strong><span>Pendientes de investigación</span></div>
+</div>
+<div class="msg" id="status" role="status" aria-live="polite">Leyendo datos de la aplicación y hallazgos públicos…</div>
+<section class="panel">
+<div class="row between"><div><h2>Prospectos investigados</h2><p>Los datos con fuente se guardan automáticamente solo cuando la ficha no los tiene. Jamás se reemplaza lo que editaste.</p></div><div class="row"><button class="btn" id="refresh">Actualizar datos</button><button class="btn" id="export">Exportar informe CSV</button></div></div>
+<div class="toolbar"><div class="search"><label for="query">Buscar por nombre o dirección</label><input type="search" autocomplete="off" id="query" placeholder="Ej.: Kalma, San Martín..." /></div>
+<div><label for="filter">Mostrar</label><select id="filter"><option value="all">Todos los negocios</option><option value="verified">Con información contrastada</option><option value="website">Con web identificada</option><option value="pending">Pendientes de investigación</option></select></div>
+<div><label>Origen</label><span class="code">Fuentes públicas</span></div></div>
+<div class="list" id="results"></div>
+</section>
+<section class="panel"><h2>Cómo se evalúan las oportunidades</h2>
+<p><strong>Con evidencia:</strong> un sitio propio, una función publicada o un contacto que aparece en una fuente enlazada. <strong>Pendiente:</strong> falta investigar; no equivale a ausencia.</p>
+<p>Las sugerencias de servicio son <strong>hipótesis para conversar</strong>, no diagnósticos automáticos de fallas. Un comercio que ya vende por Internet no se clasifica como si necesitara una tienda nueva.</p>
+<p>La búsqueda periódica desde GitHub podrá ampliar esta base cuando OpenStreetMap responda. Google Maps requiere credenciales y condiciones de uso independientes.</p>
+<div class="row"><a class="btn primary" href="./descubrir.html">Descubrir más negocios</a><a class="btn" href="./">Ver fichas en Radar</a></div>
+</section>
+<footer>La investigación se apoya en datos publicados y fuentes identificadas. No se envían correos, mensajes ni propuestas automáticamente. La información puede cambiar y debe revisarse antes de contactar.</footer>
+</div>
+<script>
+(()=>{"use strict";
+const $=id=>document.getElementById(id);
+const KEY="zenix-radar:data",DATA="./investigaciones-datos.json";
+const BAD=/[<>&"']/g,REPL={"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;","'":"&#39;"};
+const esc=t=>String(t??"").replace(BAD,c=>REPL[c]);
+const norm=t=>String(t||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
+const byName=(a,b)=>norm(a).localeCompare(norm(b),"es");
+let businesses=[],records=[],lookup=new Map(),busy=false,checkedAt=null;
+function label(msg,error=false){$("status").textContent=msg;$("status").className="msg"+(error?" error":"");}
+function openDB(){const raw=localStorage.getItem(KEY);if(!raw)throw Error("Todavía no hay datos de Zenix Radar en este navegador. Abrí el panel principal primero.");let data;
+try{data=JSON.parse(raw);}catch{throw Error("Los datos guardados están dañados. Abrí el panel para recuperarlos, sin sobreescribirlos.");}
+if(!data||data.version!==4||!Array.isArray(data.businesses)||!Array.isArray(data.activity)||!Array.isArray(data.proposals))throw Error("El formato de datos no es compatible. No se modificó nada.");
+return{raw,data};}
+const keyForBusiness=b=>b.id.startsWith("tur-")?"turismo/"+b.id.slice(4).replace(/^turismo-/,""):null;
+function researchFor(b){let e=lookup.get(b.id);if(e)return e;
+const k=keyForBusiness(b);return k?lookup.get(k)||null:null;}
+function recordKey(e){return "tur-"+e.catalogId.replace("/","-");}
+function urlOk(v){if(typeof v!=="string"||v.length>300)return false;try{const u=new URL(v);return u.protocol==="https:"||u.protocol==="http:";}catch{return false;}}
+function saveBlankFacts(){const {raw,data}=openDB();const now=new Date().toISOString();
+let touched=0,fields=0;
+const next=data.businesses.map(b=>{
+if(b.isDemo)return b;
+const rec=researchFor(b);if(!rec)return b;
+const patch={};
+if(!b.website&&urlOk(rec.website)){patch.website=rec.website;fields++;}
+if(!b.email&&typeof rec.email==="string"&&rec.email.length<=160&&/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(rec.email)){patch.email=rec.email;fields++;}
+if(!b.phone&&typeof rec.phone==="string"&&rec.phone.length<=20&&rec.phone.trim()){patch.phone=rec.phone;fields++;}
+if(!Object.keys(patch).length)return b;
+touched++;
+const source=(rec.evidenceUrls||[])[0]||"";
+const note="\n[Enriquecimiento Radar "+now.slice(0,10)+"] Se añadieron datos públicos para campos previamente vacíos. Fuente: "+source+". Verificar vigencia.";
+return {...b,...patch,notes:(b.notes||"").length+note.length<=5000?(b.notes||"")+note:b.notes,updatedAt:now};
+});
+if(!touched)return{touched:0,fields:0};
+const event={id:"research-"+Date.now()+"-"+Math.random().toString(36).slice(2,9),type:"updated",message:"Radar completó "+fields+" campos públicos en "+touched+" fichas existentes.",businessId:null,at:now};
+const nextData={...data,businesses:next,activity:[event,...data.activity].slice(0,200)};
+if(localStorage.getItem(KEY)!==raw)throw Error("Los datos cambiaron en otra pestaña. No guardé nada; recargá para leerlos de nuevo.");
+localStorage.setItem(KEY,JSON.stringify(nextData));
+return{touched,fields};}
+function score(e,b){if(!e)return 0;return Math.min(100,(e.website?50:0)+(e.email?25:0)+(e.phone?15:0)+(e.features?.length?10:0));}
+function idea(e,b){const kind=(b.category||"").toLowerCase(),features=e?.features||[];
+if(features.includes("tienda")||features.includes("pedidos"))return"Posible mejora a evaluar: fidelización, seguimiento de clientes o automatización del negocio existente.";
+if(features.includes("reservas"))return"Posible mejora a evaluar: recordatorios de reserva, fidelización o analítica de consultas.";
+if(kind.includes("gastronom")||kind.includes("cafeter"))return"Posibles servicios a conversar: carta digital, reservas o pedidos, según lo que ya utilice el local.";
+if(kind.includes("alojamiento")||kind.includes("turismo"))return"Posibles servicios a conversar: reservas, catálogo de excursiones y seguimiento de clientes.";
+return"Posible propuesta: catálogo digital, gestión de consultas o presencia web. Requiere diagnóstico previo.";}
+function facts(e){let output=[];
+if(e.website)output.push("Sitio web localizado");
+if(e.features?.includes("menu"))output.push("Menú visible");
+if(e.features?.includes("reservas"))output.push("Reserva publicada");
+if(e.features?.includes("tienda"))output.push("Venta en línea visible");
+if(e.features?.includes("pedidos"))output.push("Pedidos en línea");
+if(e.email)output.push("Correo público");
+if(e.phone)output.push("Teléfono público");
+return output;}
+function card(b){
+const e=researchFor(b),s=score(e,b),any=!!e,web=!!(b.website||e?.website);
+const id="details-"+b.id, sourceLinks=(e?.evidenceUrls||[]).filter(u=>urlOk(u)).slice(0,4);
+const address=esc(b.address||"Ushuaia"), site=b.website||e?.website||"";
+return '<article class="business"><div class="row between"><h3>'+esc(b.name)+'</h3><span class="status '+(any?"":"pending")+'">'+(any?"Con datos públicos":"Pendiente")+'</span></div><p class="mini">'+address+' · '+esc(b.category||"")+'</p>'+
+'<div class="divider"></div><p><strong>'+ (any?"Evidencia encontrada":"Sin investigación suficiente") +'</strong></p>'+
+'<p class="mini">'+(any?esc(facts(e).join(" · ")||e.observation):"Todavía no hay suficientes fuentes asociadas a esta ficha. No se puede concluir que le falten servicios digitales.")+'</p>'+
+'<p class="mini">Información documentada: <strong>'+ (any?s+" / 100":"pendiente") +'</strong> '+(any?"(disponibilidad de datos, no potencial de venta)":"")+'</p>'+
+'<div class="foot"><button type="button" class="btn" data-toggle="'+esc(b.id)+'">'+(any?"Ver evidencias y sugerencia":"Ver próxima evaluación")+'</button>'+(site&&urlOk(site)?'<a class="btn" href="'+esc(site)+'" target="_blank" rel="noopener noreferrer">Abrir web</a>':"")+'</div>'+
+'<div class="details hidden" id="'+esc(id)+'"><p><strong>Hipótesis de servicio:</strong> '+esc(idea(e,b))+'</p>'+(any?'<p><strong>Hallazgo:</strong> '+esc(e.observation||"")+'</p><p><strong>Fuentes:</strong></p>'+sourceLinks.map((url,i)=>'<p><a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">Fuente '+(i+1)+'</a></p>').join("")+'<p class="mini">Revisado: '+esc(e.checkedAt||checkedAt||"sin fecha")+'. Este reporte no prueba necesidades comerciales ni la operatividad actual.</p>':'<p>No hay fuentes específicas; buscar nombre y dirección en el sitio oficial o Google Maps antes de evaluar servicios.</p>')+'</div></article>';
+}
+function render(){
+const search=norm($("query").value),f=$("filter").value;
+const filtered=businesses.filter(b=>{
+const e=researchFor(b),hasWeb=!!(b.website||e?.website),verified=!!e;
+return(!search||norm(b.name+" "+b.address+" "+b.category).includes(search))&&(f==="all"||f==="verified"&&verified||f==="website"&&hasWeb||f==="pending"&&!verified);}).sort((a,b)=>{
+const ea=researchFor(a),eb=researchFor(b);
+return ((eb?1:0)-(ea?1:0))||score(eb,b)-score(ea,a)||byName(a.name,b.name);
+});
+$("results").innerHTML=filtered.length?filtered.map(card).join(""):'<div class="empty">No hay negocios para este filtro.</div>';
+$("total").textContent=businesses.length;
+$("researched").textContent=businesses.filter(b=>!!researchFor(b)).length;
+$("websites").textContent=businesses.filter(b=>!!(b.website||researchFor(b)?.website)).length;
+$("pending").textContent=businesses.filter(b=>!researchFor(b)).length;
+}
+async function load(){
+if(busy)return;busy=true;$("refresh").disabled=true;
+label("Leyendo investigación y comprobando fichas…");
+try{
+const response=await fetch(DATA,{cache:"no-store"});if(!response.ok)throw Error("No se pudo consultar el informe (HTTP "+response.status+").");
+const result=await response.json();if(result.version!==1||!Array.isArray(result.records))throw Error("Formato inesperado del informe.");
+records=result.records.filter(e=>e&&typeof e.catalogId==="string"&&typeof e.name==="string"&&Array.isArray(e.evidenceUrls));
+lookup=new Map(records.map(e=>[recordKey(e),e]));
+checkedAt=result.updatedAt;
+let updates=saveBlankFacts();
+businesses=openDB().data.businesses.filter(b=>!b.isDemo);
+render();
+label("Investigación disponible: "+records.length+" establecimientos con fuentes. "+(updates.fields?"Se completaron "+updates.fields+" datos en "+updates.touched+" fichas sin sobrescribir cambios tuyos. ":"")+"Los demás siguen pendientes; no se han diagnosticado carencias.");
+}catch(err){try{businesses=openDB().data.businesses.filter(b=>!b.isDemo);render();}catch{}label(err?.message||"No fue posible cargar la investigación",true);}
+finally{busy=false;$("refresh").disabled=false;}
+}
+function csv(){
+const heads=["Negocio","Rubro","Dirección","Estado investigación","Web identificada","Email público","Teléfono público","Hipótesis por evaluar","Fuentes"];
+const rows=businesses.map(b=>{const e=researchFor(b);return[b.name,b.category,b.address,e?"Con fuentes":"Pendiente",b.website||e?.website||"",b.email||e?.email||"",b.phone||e?.phone||"",idea(e,b),(e?.evidenceUrls||[]).join(" ; ")];});
+const escCsv=x=>'"'+String(x??"").replace(/"/g,'""')+'"';const text="\ufeff"+[heads,...rows].map(r=>r.map(escCsv).join(",")).join("\r\n");
+const link=document.createElement("a"),url=URL.createObjectURL(new Blob([text],{type:"text/csv;charset=utf-8"}));
+link.href=url;link.download="zenix-radar-investigacion-"+new Date().toISOString().slice(0,10)+".csv";
+document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+$("results").addEventListener("click",ev=>{const btn=ev.target.closest("[data-toggle]");if(!btn)return;const d=document.getElementById("details-"+btn.dataset.toggle);if(d)d.classList.toggle("hidden");});
+$("query").addEventListener("input",render);$("filter").addEventListener("change",render);$("refresh").onclick=load;$("export").onclick=csv;
+load();
+})();
+</script></body></html>
