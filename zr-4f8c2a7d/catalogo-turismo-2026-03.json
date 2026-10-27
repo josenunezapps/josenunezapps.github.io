@@ -1,0 +1,705 @@
+{
+  "source": "Secretaría de Turismo de Ushuaia",
+  "sourceUrl": "https://turismoushuaia.com/wp-content/uploads/2026/03/Restaurantes-26.03.26.pdf",
+  "sourceUpdated": "2026-03-26",
+  "extracted": "2026-10-27",
+  "coverage": "Selección de establecimientos gastronómicos del directorio oficial; verificar vigencia antes de contactar.",
+  "entries": [
+    {
+      "id": "turismo/20260326-1",
+      "name": "Augusto Ushuaia",
+      "address": "San Martín 508, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-2",
+      "name": "Asia Gourmet",
+      "address": "Kuanip 589, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-3",
+      "name": "Brix Bar",
+      "address": "25 de Mayo 112, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-4",
+      "name": "Babiec@s",
+      "address": "12 de Octubre 169 (Carrefour), Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-5",
+      "name": "Bamboo Restaurante Parrilla",
+      "address": "San Martín 98, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-6",
+      "name": "Banana",
+      "address": "San Martín 273, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-7",
+      "name": "Barcleit 1912",
+      "address": "Juana Fadul 148, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-8",
+      "name": "Bar de Pizzas",
+      "address": "San Martín 753, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-9",
+      "name": "Bar Ideal",
+      "address": "San Martín 393, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-10",
+      "name": "Bodegón Fueguino",
+      "address": "San Martín 859, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-11",
+      "name": "Casa Olmo",
+      "address": "San Martín 87, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-12",
+      "name": "Casa Ushuaia Restaurant",
+      "address": "Gob. Paz 1585, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-13",
+      "name": "Chez Manu",
+      "address": "L. Martial 2135, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-14",
+      "name": "Chiko Restoran",
+      "address": "25 de Mayo 62/64, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-15",
+      "name": "Club 1210",
+      "address": "Maipú 1210, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-16",
+      "name": "Delicious Flavour",
+      "address": "Leopoldo Lugones 1889, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-17",
+      "name": "Doña Lupita",
+      "address": "Don Bosco 314, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-18",
+      "name": "Doran Doran",
+      "address": "Gob. Paz 937, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-19",
+      "name": "El Asador - Steak House",
+      "address": "San Martín 152, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-20",
+      "name": "El Faro Resto",
+      "address": "San Martín 326, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-21",
+      "name": "El Mercado",
+      "address": "San Martín 1488, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-22",
+      "name": "El Turco",
+      "address": "San Martín 1410, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-23",
+      "name": "El Viejo Marino",
+      "address": "Maipú 227, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-24",
+      "name": "Isabel Cocina al Disco",
+      "address": "Gob. Godoy 15, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-25",
+      "name": "Jeremy Button Gintonería",
+      "address": "Maipú 828, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-26",
+      "name": "Kalma Restó",
+      "address": "Gob. Valdez 293, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-27",
+      "name": "Kaupé",
+      "address": "Roca 470, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-28",
+      "name": "Küar",
+      "address": "Perito Moreno 2232, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-29",
+      "name": "Küar 1900",
+      "address": "San Martín 471, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-30",
+      "name": "La Cabaña Casa de Té",
+      "address": "L. Martial 3560, Ushuaia",
+      "category": "Cafetería y panadería"
+    },
+    {
+      "id": "turismo/20260326-31",
+      "name": "La Cantina Fueguina de Freddi",
+      "address": "San Martín 318, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-32",
+      "name": "La Casa de los Mariscos",
+      "address": "San Martín 232, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-33",
+      "name": "María Lola",
+      "address": "Gob. Deloqui 1048, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-34",
+      "name": "Moustacchio",
+      "address": "San Martín 298, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-35",
+      "name": "Parrilla Casimiro Biguá",
+      "address": "Maipú 395, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-36",
+      "name": "Parrilla La Estancia",
+      "address": "Gob. Godoy 155, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-37",
+      "name": "Patagonia Brewing",
+      "address": "Maipú 337, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-38",
+      "name": "Paso Garibaldi Resto",
+      "address": "Gob. Deloqui 133, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-39",
+      "name": "Salitre Restaurante",
+      "address": "Onas 181, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-40",
+      "name": "La Confi (Ushuaia Shopping)",
+      "address": "San Martín 788 local 38, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-41",
+      "name": "Taberna del Viejo Lobo",
+      "address": "San Martín 152 piso 3, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-42",
+      "name": "Tante Sara Resto",
+      "address": "San Martín 701, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-43",
+      "name": "Tía Elvira",
+      "address": "Maipú 349, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-44",
+      "name": "Torrontes Wine House",
+      "address": "Antártida Argentina 182, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-45",
+      "name": "Volver",
+      "address": "Maipú 37, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-46",
+      "name": "Amalia del Sur (Htl Lennox)",
+      "address": "San Martín 776, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-47",
+      "name": "Bartolomé (Htl Altos Ushuaia)",
+      "address": "L. Martial 1441, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-48",
+      "name": "Yagan (Hostería América)",
+      "address": "Gob. Paz 1665, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-49",
+      "name": "Bar de Pizzas (Htl Las Lengas)",
+      "address": "Goleta Florencia 1722, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-50",
+      "name": "Costa Ushuaia (Htl Costa Ushuaia)",
+      "address": "Costa de los Pájaros 1821, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-51",
+      "name": "Komenk (Htl Fueguino)",
+      "address": "Gob. Deloqui 1282, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-52",
+      "name": "La Cravia (Htl Arakur)",
+      "address": "Héroes de Malvinas 2671, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-53",
+      "name": "Kemu (Htl Los Yámanas)",
+      "address": "Costa de los Yámanas 2850, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-54",
+      "name": "Le Martial (Htl Las Hayas)",
+      "address": "L. Martial 1650, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-55",
+      "name": "Marcopolo Freelife (Htl Cap Polonio)",
+      "address": "San Martín 746, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-56",
+      "name": "Prana Restaurante (Htl Albatros)",
+      "address": "Maipú 505, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-57",
+      "name": "Reinamora (Htl Los Cauquenes)",
+      "address": "Calle Reinamora 3462, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-58",
+      "name": "Corteza Resto (Htl Los Acebos)",
+      "address": "L. Martial 1911, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-59",
+      "name": "Tío Alberto (Htl Los Ñires)",
+      "address": "Av. Los Ñires 3040, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-60",
+      "name": "Tolkeyén (Htl Tolkeyén)",
+      "address": "Del Tolkeyén 2145, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-61",
+      "name": "Kiosco Kiero",
+      "address": "Perito Moreno 1460 (Shopping), Ushuaia",
+      "category": "Comercio minorista"
+    },
+    {
+      "id": "turismo/20260326-62",
+      "name": "Chickeny",
+      "address": "Perito Moreno 1460 (Shopping), Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-63",
+      "name": "Flor de Milanga",
+      "address": "Perito Moreno 1460 (Shopping), Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-64",
+      "name": "Beto's Lomo",
+      "address": "Perito Moreno 1460 (Shopping), Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-65",
+      "name": "Señor Waffle",
+      "address": "Perito Moreno 1460 (Shopping), Ushuaia",
+      "category": "Cafetería y panadería"
+    },
+    {
+      "id": "turismo/20260326-66",
+      "name": "Pequeña Ona Cafetería",
+      "address": "Perito Moreno 1460 (Shopping), Ushuaia",
+      "category": "Cafetería y panadería"
+    },
+    {
+      "id": "turismo/20260326-67",
+      "name": "Botanas Cocina Patagónica",
+      "address": "Perito Moreno 1460 (Shopping), Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-68",
+      "name": "Tentazione The Coffee Store",
+      "address": "Perito Moreno 1460 (Shopping), Ushuaia",
+      "category": "Cafetería y panadería"
+    },
+    {
+      "id": "turismo/20260326-69",
+      "name": "El Patio Food and Grill",
+      "address": "Perito Moreno 1460 (Shopping), Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-70",
+      "name": "Mostaza",
+      "address": "Perito Moreno 1460 (Shopping), Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-71",
+      "name": "Windburguers",
+      "address": "Perito Moreno 1460 (Shopping), Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-72",
+      "name": "Lucciano's",
+      "address": "Perito Moreno 1460 (Shopping), Ushuaia",
+      "category": "Cafetería y panadería"
+    },
+    {
+      "id": "turismo/20260326-73",
+      "name": "Freddo (Paseo del Fuego)",
+      "address": "Perito Moreno 1460 (Shopping), Ushuaia",
+      "category": "Cafetería y panadería"
+    },
+    {
+      "id": "turismo/20260326-74",
+      "name": "Candy Ush",
+      "address": "Perito Moreno 1460 (Shopping), Ushuaia",
+      "category": "Comercio minorista"
+    },
+    {
+      "id": "turismo/20260326-75",
+      "name": "Autocarro",
+      "address": "Perito Moreno 1460 (Shopping), Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-76",
+      "name": "Sushi Truck",
+      "address": "San Martín 638 (Mercado del Jardín), Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-77",
+      "name": "Cafefito y Chocolatería",
+      "address": "San Martín 638 (Mercado del Jardín), Ushuaia",
+      "category": "Cafetería y panadería"
+    },
+    {
+      "id": "turismo/20260326-78",
+      "name": "Pepo's",
+      "address": "San Martín 638 (Mercado del Jardín), Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-79",
+      "name": "Va Pasta",
+      "address": "San Martín 638 (Mercado del Jardín), Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-80",
+      "name": "Ana y Juana",
+      "address": "San Martín 1485/797, Ushuaia",
+      "category": "Cafetería y panadería"
+    },
+    {
+      "id": "turismo/20260326-81",
+      "name": "Arlequín",
+      "address": "San Martín 131, Ushuaia",
+      "category": "Cafetería y panadería"
+    },
+    {
+      "id": "turismo/20260326-82",
+      "name": "Café Martínez",
+      "address": "San Martín 898/945, Ushuaia",
+      "category": "Cafetería y panadería"
+    },
+    {
+      "id": "turismo/20260326-83",
+      "name": "Chloe Casa de Té",
+      "address": "B° Las Raíces, Ushuaia",
+      "category": "Cafetería y panadería"
+    },
+    {
+      "id": "turismo/20260326-84",
+      "name": "El Almacén Ramos Generales",
+      "address": "Maipú 749, Ushuaia",
+      "category": "Cafetería y panadería"
+    },
+    {
+      "id": "turismo/20260326-85",
+      "name": "Food",
+      "address": "Del Tolkeyén 709, Ushuaia",
+      "category": "Cafetería y panadería"
+    },
+    {
+      "id": "turismo/20260326-86",
+      "name": "Freddo (San Martín)",
+      "address": "San Martín 209, Ushuaia",
+      "category": "Cafetería y panadería"
+    },
+    {
+      "id": "turismo/20260326-87",
+      "name": "Gadget",
+      "address": "San Martín 1256, Ushuaia",
+      "category": "Cafetería y panadería"
+    },
+    {
+      "id": "turismo/20260326-88",
+      "name": "Gelido",
+      "address": "San Martín 1207, Ushuaia",
+      "category": "Cafetería y panadería"
+    },
+    {
+      "id": "turismo/20260326-89",
+      "name": "Grido",
+      "address": "Kuanip 129, Ushuaia",
+      "category": "Cafetería y panadería"
+    },
+    {
+      "id": "turismo/20260326-90",
+      "name": "Laguna Café del Barrio",
+      "address": "Costa de la Laguna 1420, Ushuaia",
+      "category": "Cafetería y panadería"
+    },
+    {
+      "id": "turismo/20260326-91",
+      "name": "Münch Coffee & Bakery",
+      "address": "Kayen 202, Ushuaia",
+      "category": "Cafetería y panadería"
+    },
+    {
+      "id": "turismo/20260326-92",
+      "name": "Münch South Ice Cream",
+      "address": "San Martín 267, Ushuaia",
+      "category": "Cafetería y panadería"
+    },
+    {
+      "id": "turismo/20260326-93",
+      "name": "El Recreo Café y Tetería",
+      "address": "Antártida Argentina 117, Ushuaia",
+      "category": "Cafetería y panadería"
+    },
+    {
+      "id": "turismo/20260326-94",
+      "name": "Refugio de Montaña",
+      "address": "Base del Glaciar Martial, Ushuaia",
+      "category": "Cafetería y panadería"
+    },
+    {
+      "id": "turismo/20260326-95",
+      "name": "Smechén",
+      "address": "San Martín 741, Ushuaia",
+      "category": "Cafetería y panadería"
+    },
+    {
+      "id": "turismo/20260326-96",
+      "name": "Tante Sara Cosas Ricas",
+      "address": "San Martín 175, Ushuaia",
+      "category": "Cafetería y panadería"
+    },
+    {
+      "id": "turismo/20260326-97",
+      "name": "Vitta Bake Shop Ushuaia",
+      "address": "San Martín 1130, Ushuaia",
+      "category": "Cafetería y panadería"
+    },
+    {
+      "id": "turismo/20260326-98",
+      "name": "X-Presso Café",
+      "address": "Lasserre 108, Ushuaia",
+      "category": "Cafetería y panadería"
+    },
+    {
+      "id": "turismo/20260326-99",
+      "name": "Yámana Bar Patín by GDS",
+      "address": "12 de Octubre 90, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-100",
+      "name": "Abuela Goye",
+      "address": "San Martín 267, Ushuaia",
+      "category": "Cafetería y panadería"
+    },
+    {
+      "id": "turismo/20260326-101",
+      "name": "Edelweiss",
+      "address": "Piedrabuena 248, Ushuaia",
+      "category": "Cafetería y panadería"
+    },
+    {
+      "id": "turismo/20260326-102",
+      "name": "Laguna Negra",
+      "address": "San Martín 513, Ushuaia",
+      "category": "Cafetería y panadería"
+    },
+    {
+      "id": "turismo/20260326-103",
+      "name": "Honecker",
+      "address": "San Martín 880, Ushuaia",
+      "category": "Cafetería y panadería"
+    },
+    {
+      "id": "turismo/20260326-104",
+      "name": "Sergio Gonzales Patissier",
+      "address": "25 de Mayo 34, Ushuaia",
+      "category": "Cafetería y panadería"
+    },
+    {
+      "id": "turismo/20260326-105",
+      "name": "La Cabaña Beer Point",
+      "address": "L. Martial 3560, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-106",
+      "name": "Dublin Irish Pub",
+      "address": "9 de Julio 168, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-107",
+      "name": "Grut'84",
+      "address": "25 de Mayo 155, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-108",
+      "name": "Krund Ushuaia",
+      "address": "Gob. Deloqui 289, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-109",
+      "name": "Latino",
+      "address": "Walanika 140, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-110",
+      "name": "Hard Rock Café Ushuaia",
+      "address": "San Martín 594, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-111",
+      "name": "Lobby Bar (Htl Arakur)",
+      "address": "Héroes de Malvinas 2671, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-112",
+      "name": "Quelhué Wineshop",
+      "address": "San Martín 253, Ushuaia",
+      "category": "Comercio minorista"
+    },
+    {
+      "id": "turismo/20260326-113",
+      "name": "Santos Cervecería",
+      "address": "Maipú 773, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-114",
+      "name": "Uva Criolla Delicatessen",
+      "address": "Gob. Deloqui 1536, Ushuaia",
+      "category": "Comercio minorista"
+    },
+    {
+      "id": "turismo/20260326-115",
+      "name": "Viagro",
+      "address": "Roca 55, Ushuaia",
+      "category": "Gastronomía"
+    },
+    {
+      "id": "turismo/20260326-116",
+      "name": "Living Ushuaia",
+      "address": "Perito Moreno 2619, Ushuaia",
+      "category": "Gastronomía"
+    }
+  ]
+}
