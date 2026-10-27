@@ -9,6 +9,7 @@ import time
 import unicodedata
 import urllib.request
 import urllib.error
+import urllib.parse
 from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
