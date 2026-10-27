@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Descubrir negocios · Zenix Radar</title>
+<style>
+:root{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color-scheme:dark;background:#0d101a;color:#eef1ff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 75% -10%,#26326c 0,transparent 38%),#0d101a;color:#eef1ff}
+a{color:#adbdff}button,input,select{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.55}
+.wrap{max-width:1140px;margin:auto;padding:30px 22px 70px}.top{display:flex;justify-content:space-between;align-items:center;gap:20px}
+.wordmark{font-weight:800;letter-spacing:-.6px}.pill{color:#b0bcd6;border:1px solid #354165;border-radius:30px;padding:6px 12px;font-size:12px}
+h1{font-size:clamp(27px,4vw,46px);line-height:1.09;letter-spacing:-1.2px;margin:33px 0 9px}h2{font-size:19px;margin:0 0 8px}
+p{color:#a9b6d0;line-height:1.55}.lead{max-width:740px}.tabs{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0}
+.tab,.button{padding:12px 17px;border:1px solid #3c4667;border-radius:11px;background:#1a2032;color:#eef1ff;font-weight:650}
+.tab.active,.button.primary{background:#7455ff;border-color:#947cff;color:#fff}.tab:hover,.button:hover{filter:brightness(1.12)}
+.panel{background:#141a2a;border:1px solid #2e3754;padding:22px;border-radius:18px;margin-bottom:17px}
+.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.row.between{justify-content:space-between}
+.muted,small{font-size:13px;color:#99a8c4}.info{border-left:3px solid #8e8fff;background:#1b2340;border-radius:6px;padding:12px 15px;color:#ced6ed}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin:15px 0}.stat{padding:14px;background:#1b2235;border:1px solid #2f3856;border-radius:12px}.stat b{display:block;font-size:27px;line-height:1.3}.stat span{font-size:12px;color:#aab8cf}
+.controls{display:flex;gap:12px;align-items:end;flex-wrap:wrap}.field{display:grid;gap:6px;min-width:190px;flex:1}
+label{font-size:13px;font-weight:650;color:#c8d0e3}input,select{color:#eff2fe;background:#101626;border:1px solid #425070;border-radius:10px;padding:12px;min-width:0;width:100%}
+.results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px}.item{border:1px solid #34405d;background:#161f31;border-radius:12px;padding:14px;min-width:0}
+.item b{display:block;overflow-wrap:anywhere}.item p{margin:6px 0;font-size:13px;overflow-wrap:anywhere}.tag{font-size:11px;color:#b9b6ff;background:#302b53;border-radius:100px;padding:3px 8px}
+.item a{font-size:13px}.item .row{margin-top:9px}.hidden{display:none!important}
+#gm{height:290px;border-radius:12px;margin-top:15px;background:#20273e}.status{min-height:25px;color:#b8d6ff;margin-top:12px}
+.status.error{color:#ffbcb9}.status.good{color:#9ce1b9}
+footer{border-top:1px solid #2a324c;margin-top:34px;padding-top:16px;font-size:12px;color:#9aa6bd}
+@media(max-width:720px){.stats{grid-template-columns:repeat(2,1fr)}.results{grid-template-columns:1fr}.wrap{padding:16px 14px 65px}.panel{padding:17px}.top{align-items:start}}
+</style>
+</head><body>
+<div class="wrap">
+<div class="top"><div><div class="wordmark">✦ ZENIX <span style="color:#b09aff">RADAR</span></div><small>Inteligencia comercial · Ushuaia</small></div><a class="pill" href="./">← Volver al panel</a></div>
+<h1>Encontrá clientes.<br><span style="color:#a99cff">Sin cargarlos a mano.</span></h1>
+<p class="lead">La búsqueda con datos abiertos agrega negocios nuevos a tu Radar sin borrar ni modificar las fichas existentes. Google Maps permite descubrir lugares adicionales con una conexión opcional.</p>
+<div class="tabs"><button class="tab active" id="tabosm">Descubrimiento automático</button><button class="tab" id="tabgoogle">Google Maps</button></div>
+<section id="osm">
+<div class="panel">
+<div class="row between"><div><h2>Ushuaia · Todos los rubros comerciales</h2><p style="margin:0">OpenStreetMap / Overpass · Búsqueda amplia de comercios con nombre.</p></div><button class="button primary" id="scan">Buscar y agregar</button></div>
+<div class="stats"><div class="stat"><b id="found">—</b><span>Detectados en búsqueda</span></div><div class="stat"><b id="added">—</b><span>Agregados a Radar</span></div><div class="stat"><b id="dupes">—</b><span>Ya registrados / coincidentes</span></div><div class="stat"><b id="total">—</b><span>Negocios reales en Radar</span></div></div>
+<div class="info">La búsqueda se ejecuta automáticamente como máximo una vez cada 24 horas, cuando la fuente lo permite. Los datos abiertos pueden estar incompletos. “Sitio web no registrado” no significa que el comercio no tenga web. No se envían mensajes.</div>
+<div class="status" id="osmstatus" role="status" aria-live="polite"></div>
+<div class="controls"><div class="field"><label for="filter">Filtrar resultados</label><input id="filter" placeholder="Nombre, rubro o calle" /></div><div class="field"><label for="endpoint">Fuente pública</label><select id="endpoint"><option value="https://overpass.private.coffee/api/interpreter">Overpass · Private.coffee</option><option value="https://overpass-api.de/api/interpreter">Overpass · FOSSGIS</option></select></div></div>
+<div class="results" id="osmresults"></div>
+</div></section>
+<section id="google" class="hidden"><div class="panel">
+<h2>Explorá Google Maps oficialmente</h2>
+<p>Google Places API requiere una clave de tu proyecto de Google Cloud, facturación habilitada y cuotas. <strong>Los resultados de Google se muestran en el mapa durante la sesión</strong>; Radar guarda únicamente sus IDs de lugar, no crea una base permanente copiando nombres o direcciones de Google.</p>
+<div class="controls"><div class="field"><label for="apikey">Clave restringida de Google Maps</label><input id="apikey" type="password" autocomplete="off" placeholder="AIza..." /></div><button class="button" id="connect">Conectar Google Maps</button></div>
+<p class="muted">Activá Maps JavaScript API y Places API (New), restringí la clave por sitio web a <code>https://josenunezapps.github.io/*</code> y fijá cuotas y alertas de gasto. La clave no se envía ni guarda en GitHub ni en los datos de Radar.</p>
+<div class="controls"><div class="field"><label for="kind">Tipo de comercio</label><select id="kind"><option value="restaurant">Restaurantes</option><option value="cafe">Cafeterías</option><option value="lodging">Hoteles y alojamientos</option><option value="store">Comercios</option><option value="supermarket">Supermercados</option><option value="bakery">Panaderías</option><option value="clothing_store">Indumentaria</option><option value="beauty_salon">Belleza</option><option value="travel_agency">Turismo</option></select></div><button class="button primary" id="gsearch" disabled>Buscar en Google Maps</button></div>
+<div class="status" id="gstatus" role="status" aria-live="polite"></div><div id="gm" aria-label="Mapa de Google Maps"></div><p style="font-size:12px">Resultados y mapa de Google Maps. Se respetan sus condiciones, atribuciones y límites. Una búsqueda no garantiza obtener todos los comercios existentes.</p>
+<div class="results" id="gresults"></div>
+</div></section>
+<footer>Datos de OpenStreetMap contributors · <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">ODbL y atribución</a> · <a href="https://developers.google.com/maps/documentation/javascript/policies" target="_blank" rel="noopener">Políticas de Google Maps</a>. Esta función conserva las fichas y propuestas existentes. </footer>
+</div>
+<script>
+(function(){
+"use strict";
+const $=id=>document.getElementById(id), key="zenix-radar:data", stamp="zenix-radar:osm-last-scan", osmCenter={lat:-54.807, lng:-68.31};
+let osmRows=[],googlePlaces=[],gm,markers=[],googleReady=false,busy=false;
+function status(id,msg,kind){const e=$(id);e.textContent=msg;e.className="status "+(kind||"");}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function norm(s){return String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim();}
+function safeUrl(s){try{const u=new URL(/^https?:\/\//i.test(s)?s:"https://"+s);return ["https:","http:"].includes(u.protocol)?u.href:null}catch{return null}}
+function validData(data){return data&&data.version===4&&Array.isArray(data.businesses)&&Array.isArray(data.activity)&&Array.isArray(data.proposals)&&data.company&&typeof data.demoSeeded==="boolean";}
+function current(){const raw=localStorage.getItem(key);if(!raw)throw Error("Abrí primero el panel de Radar para inicializar su base de datos.");let d;try{d=JSON.parse(raw)}catch{throw Error("La base de datos no se puede leer. Usá la recuperación del panel; no voy a sobrescribirla.")}if(!validData(d))throw Error("Encontré un esquema distinto del 4. No modificaré tus datos.");return{raw,d};}
+function cleanTag(t,n){return String(t||"").trim().slice(0,n)}
+function getAddr(t){const main=[t["addr:street"],t["addr:housenumber"]].filter(Boolean).join(" ");return cleanTag(main||t["addr:full"]||t["addr:place"]||"Ushuaia, Tierra del Fuego",200);}
+function cate(t){const a=t.amenity||"",s=t.shop||"",v=t.tourism||"",office=t.office||"",le=t.leisure||"";
+if(["restaurant","fast_food","bar","pub","food_court","biergarten"].includes(a))return "Gastronomía";
+if(a==="cafe"||["bakery","pastry","coffee"].includes(s))return "Cafetería y panadería";
+if(["hotel","hostel","guest_house","motel","apartment","chalet"].includes(v))return "Alojamiento";
+if(v||["travel_agent","travel_agency","tourism"].includes(s))return "Turismo y excursiones";
+if(["clothes","shoes","fashion","boutique"].includes(s))return "Indumentaria y calzado";
+if(["hairdresser","beauty","cosmetics"].includes(s)||["spa","beauty_salon"].includes(le))return "Belleza y estética";
+if(["doctors","dentist","pharmacy","clinic","hospital"].includes(a)||t.healthcare)return "Salud y bienestar";
+if(["school","college","university","kindergarten","language_school"].includes(a))return "Educación";
+if(["car","car_repair","car_parts","tyres","motorcycle"].includes(s)||a==="car_wash")return "Automotor";
+if(["hardware","doityourself","furniture","interior_decoration","paint"].includes(s)||t.craft)return "Construcción y hogar";
+if(office||["bank","post_office","lawyer"].includes(a))return "Servicios profesionales";
+return "Comercio minorista";}
+function normalizeElement(e){const t=e.tags||{},name=cleanTag(t.name,120);if(!name||/^\[(?:DEMO|TEST)\]/i.test(name))return null;
+const id=e.type+"/"+e.id,site=safeUrl(String(t.website||t["contact:website"]||"")),ig=String(t["contact:instagram"]||t.instagram||"").replace(/^https?:\/\/(?:www\.)?instagram.com\//i,"").replace(/^@/,"").split(/[/?#]/)[0];
+return{id,name,category:cate(t),address:getAddr(t),website:cleanTag(site||"",300),instagram:cleanTag(ig,30),phone:cleanTag(t.phone||t["contact:phone"],20),email:cleanTag(t.email||t["contact:email"],160),lat:e.lat||e.center&&e.center.lat,lon:e.lon||e.center&&e.center.lon};}
+function saveOSM(rows){const {raw,d}=current(),existingIds=new Set(d.businesses.map(b=>b.id)),existingNames=new Set(d.businesses.filter(b=>!b.isDemo).map(b=>norm(b.name)+"|"+norm(b.address)));
+let added=[],dupes=0;const now=new Date().toISOString(),date=now.slice(0,10);
+for(const row of rows){const id="osm-"+row.id.replace("/","-"),uniq=norm(row.name)+"|"+norm(row.address);
+if(existingIds.has(id)||existingNames.has(uniq)){dupes++;continue;}
+existingIds.add(id);existingNames.add(uniq);
+const link="https://www.openstreetmap.org/"+row.id;
+added.push({id,name:row.name,category:row.category,address:row.address,website:row.website,instagram:row.instagram,otherSocials:"",phone:row.phone,email:row.email,stage:"identified",notes:"Fuente: OpenStreetMap ("+row.id+"). Consultado: "+date+". "+link+". Los campos faltantes no fueron verificados.",lastReviewedAt:null,createdAt:now,updatedAt:now,isDemo:false,demoEditedAt:null,analysis:null});}
+if(!added.length)return{added:0,dupes,total:d.businesses.filter(b=>!b.isDemo).length};
+const msg="Descubrimiento automático: "+added.length+" comercios nuevos desde OpenStreetMap";
+const next={...d,businesses:[...added,...d.businesses],activity:[{id:"scan-"+Date.now()+"-"+Math.random().toString(36).slice(2,8),type:"imported",message:msg.slice(0,400),businessId:null,at:now},...d.activity].slice(0,200)};
+if(localStorage.getItem(key)!==raw)throw Error("Los datos cambiaron en otra pestaña. No guardé nada; volvé a ejecutar la búsqueda.");
+localStorage.setItem(key,JSON.stringify(next));
+return{added:added.length,dupes,total:next.businesses.filter(b=>!b.isDemo).length};}
+function renderOSM(){const needle=norm($("filter").value),rows=osmRows.filter(r=>norm(r.name+" "+r.category+" "+r.address).includes(needle)).slice(0,80);
+$("osmresults").innerHTML=rows.map(r=>'<article class="item"><div class="row between"><b>'+escapeHtml(r.name)+'</b><span class="tag">'+escapeHtml(r.category)+'</span></div><p>'+escapeHtml(r.address)+'</p><div class="row"><a href="https://www.openstreetmap.org/'+encodeURI(r.id)+'" target="_blank" rel="noopener">Ver fuente</a>'+(r.website?'<a href="'+escapeHtml(r.website)+'" target="_blank" rel="noopener">Sitio declarado</a>':"")+'</div></article>').join("");
+}
+async function scan(auto){if(busy)return;busy=true;$("scan").disabled=true;status("osmstatus",auto?"Buscando comercios reales…":"Consultando OpenStreetMap…");
+const query='[out:json][timeout:35];(nwr["name"]["shop"](-54.89,-68.47,-54.72,-68.14);nwr["name"]["amenity"~"restaurant|cafe|fast_food|bar|pub|school|pharmacy|doctors|dentist|bank|clinic|car_wash|fuel"](-54.89,-68.47,-54.72,-68.14);nwr["name"]["tourism"~"hotel|hostel|guest_house|motel|attraction|museum|information"](-54.89,-68.47,-54.72,-68.14);nwr["name"]["office"](-54.89,-68.47,-54.72,-68.14);nwr["name"]["craft"](-54.89,-68.47,-54.72,-68.14);nwr["name"]["healthcare"](-54.89,-68.47,-54.72,-68.14);nwr["name"]["leisure"~"fitness_centre|sports_centre|spa"](-54.89,-68.47,-54.72,-68.14););out center tags;';
+try{const url=$("endpoint").value;const ctl=new AbortController(),timer=setTimeout(()=>ctl.abort(),44000);let res;try{res=await fetch(url,{method:"POST",body:new URLSearchParams({data:query}),signal:ctl.signal});}finally{clearTimeout(timer);}
+if(!res.ok)throw Error("La fuente respondió HTTP "+res.status+". Puede estar saturada. Probá más tarde o cambiá de fuente.");
+const obj=await res.json();if(!Array.isArray(obj.elements))throw Error("Respuesta inesperada: no se modificaron tus datos.");
+const ids=new Set();osmRows=obj.elements.map(normalizeElement).filter(r=>r&&!ids.has(r.id)&&(ids.add(r.id),true));
+const counts=saveOSM(osmRows);$("found").textContent=osmRows.length;$("added").textContent=counts.added;$("dupes").textContent=counts.dupes;$("total").textContent=counts.total;
+localStorage.setItem(stamp,String(Date.now()));renderOSM();status("osmstatus","Se encontraron "+osmRows.length+" lugares, se agregaron "+counts.added+" negocios nuevos. Los existentes permanecieron intactos.","good");}
+catch(e){status("osmstatus",e&&e.message||"No se pudo consultar la fuente.", "error");}
+finally{busy=false;$("scan").disabled=false;}}
+function openTab(name){const g=name==="google";$("google").classList.toggle("hidden",!g);$("osm").classList.toggle("hidden",g);$("tabgoogle").classList.toggle("active",g);$("tabosm").classList.toggle("active",!g);}
+$("tabgoogle").onclick=()=>openTab("google");$("tabosm").onclick=()=>openTab("osm");
+$("scan").onclick=()=>scan(false);$("filter").addEventListener("input",renderOSM);
+function googleScript(apiKey){return new Promise((resolve,reject)=>{if(window.google&&google.maps){resolve();return;}const cb="zrMapsInit"+Date.now();window[cb]=()=>{delete window[cb];resolve();};const script=document.createElement("script");script.src="https://maps.googleapis.com/maps/api/js?key="+encodeURIComponent(apiKey)+"&v=weekly&libraries=places&loading=async&callback="+cb;script.async=true;script.onerror=()=>{delete window[cb];reject(Error("No se pudo cargar Google Maps; revisá la clave y las restricciones."));};document.head.appendChild(script);});}
+$("connect").onclick=async()=>{const k=$("apikey").value.trim();if(!/^AIza[A-Za-z0-9_-]{20,}$/.test(k)){status("gstatus","Ingresá una clave de Google Maps válida y restringida a este sitio.","error");return;}status("gstatus","Conectando con Google Maps…");$("connect").disabled=true;try{await googleScript(k);await google.maps.importLibrary("places");const {Map}=await google.maps.importLibrary("maps");gm=new Map($("gm"),{center:osmCenter,zoom:12,mapTypeControl:false});googleReady=true;$("gsearch").disabled=false;$("apikey").value="";status("gstatus","Google Maps conectado. Elegí un rubro para hacer una consulta.","good");}catch(e){status("gstatus",e.message,"error");$("connect").disabled=false;}};
+$("gsearch").onclick=async()=>{if(!googleReady)return;$("gsearch").disabled=true;status("gstatus","Buscando lugares en Google Maps…");try{const{Place}=await google.maps.importLibrary("places");const type=$("kind").value;
+const {places}=await Place.searchNearby({fields:["id","displayName","formattedAddress","location","googleMapsURI"],locationRestriction:{center:osmCenter,radius:15500},includedPrimaryTypes:[type],maxResultCount:20});
+googlePlaces=places||[];for(const m of markers)m.setMap(null);markers=[];const bounds=new google.maps.LatLngBounds();for(const p of googlePlaces){if(p.location){const m=new google.maps.Marker({map:gm,position:p.location,title:p.displayName});markers.push(m);bounds.extend(p.location);}}
+if(markers.length)gm.fitBounds(bounds);
+$("gresults").innerHTML=googlePlaces.map((p,i)=>'<article class="item"><b>'+escapeHtml(p.displayName||"Lugar de Google Maps")+'</b><p>'+escapeHtml(p.formattedAddress||"")+'</p><div class="row"><a href="'+escapeHtml(p.googleMapsURI||("https://www.google.com/maps/search/?api=1&query=Ushuaia&query_place_id="+encodeURIComponent(p.id)))+'" target="_blank" rel="noopener">Abrir en Google Maps</a><button class="button" data-place="'+i+'">Guardar ID</button></div></article>').join("");
+status("gstatus",googlePlaces.length+" resultados visibles. Google limita la cantidad por consulta; podés buscar más rubros por separado.","good");}
+catch(e){status("gstatus","La búsqueda falló: "+(e&&e.message||"verificá cuota, habilitación y restricciones de la clave"),"error");}
+finally{$("gsearch").disabled=false;}};
+$("gresults").addEventListener("click",e=>{const b=e.target.closest("[data-place]");if(!b)return;const p=googlePlaces[Number(b.dataset.place)];if(!p||!p.id)return;try{const k="zenix-radar:google-place-ids",a=JSON.parse(localStorage.getItem(k)||"[]");if(!Array.isArray(a))throw Error("Registro de IDs ilegible");if(!a.includes(p.id))a.push(p.id);localStorage.setItem(k,JSON.stringify(a));b.textContent="ID guardado";b.disabled=true;}catch(err){status("gstatus","No se pudo guardar el ID: "+err.message,"error");}});
+try{const d=current().d;$("total").textContent=d.businesses.filter(b=>!b.isDemo).length;}catch(e){status("osmstatus",e.message,"error");}
+try{const last=Number(localStorage.getItem(stamp)||0);if(Date.now()-last>=24*3600000){setTimeout(()=>scan(true),250);}else{status("osmstatus","Última búsqueda: "+new Date(last).toLocaleString("es-AR")+". Podés actualizar con el botón.","good");}}catch(e){status("osmstatus",e.message,"error");}
+})();
+</script>
+</body></html>
