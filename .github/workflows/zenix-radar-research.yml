@@ -1,0 +1,53 @@
+name: Zenix Radar - Investigación pública de comercios
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '19 10 * * 2,5'
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: zenix-radar-research
+  cancel-in-progress: false
+
+jobs:
+  investigate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - name: Leer repositorio
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Investigar negocios con fuentes abiertas
+        run: python3 zr-4f8c2a7d/tools/enrich.py
+
+      - name: Publicar resultados nuevos en el repositorio
+        id: commit
+        shell: bash
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add zr-4f8c2a7d/investigaciones-datos.json
+          if git diff --staged --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "Sin cambios en el informe."
+          else
+            git commit -m "Radar: actualizar investigación pública de Ushuaia"
+            git pull --rebase origin main
+            git push origin HEAD:main
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Solicitar regeneración del sitio (si está habilitada)
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          gh api --method POST "repos/${{ github.repository }}/pages/builds" || echo "La actualización quedó en GitHub; revisar el despliegue Pages."
