@@ -1,42 +1,44 @@
 {
   "version": 1,
   "updatedAt": "2026-10-27",
-  "method": "Verificación dirigida de páginas públicas para un subconjunto; no es un barrido exhaustivo ni confirma necesidad comercial.",
+  "method": "Sitios públicos dirigidos + coincidencias exactas únicas de OpenStreetMap. No se infiere la ausencia de páginas o necesidades comerciales.",
+  "openStreetMap": {
+    "status": "partial",
+    "updatedAt": "2026-10-27",
+    "successfulGroups": 3,
+    "totalGroups": 4,
+    "matchedBusinesses": 3,
+    "warnings": [
+      "group 2: overpass.private.coffee: The read operation timed out; overpass-api.de: HTTP Error 502: Bad Gateway; lz4.overpass-api.de: HTTP Error 502: Bad Gateway"
+    ]
+  },
   "records": [
     {
-      "catalogId": "turismo/20260326-26",
-      "name": "Kalma Restó",
-      "website": "https://kalmaresto.com.ar/",
-      "email": "info@kalmaresto.com.ar",
-      "phone": "",
+      "catalogId": "turismo/20260326-10",
+      "name": "Bodegón Fueguino",
+      "website": "",
+      "email": "bodegonfueguino@tierradehumos.com",
+      "phone": "02901 431972",
       "instagram": "",
-      "features": [
-        "web",
-        "menu"
-      ],
-      "observation": "Sitio del restaurante con presentación de su propuesta y menú.",
+      "features": [],
+      "observation": "Correo y teléfono públicos en el portal de Turismo de Ushuaia.",
       "evidenceUrls": [
-        "https://kalmaresto.com.ar/",
-        "https://airepatagonia.com/flavours/kalma-resto/"
+        "https://turismoushuaia.com/gastronomia/16/?lang=es_AR"
       ],
       "checkedAt": "2026-10-27",
       "basis": "Páginas públicas y sitios identificados; presencia digital constatada solo donde figura website. No se diagnosticó ausencia de otros servicios."
     },
     {
-      "catalogId": "turismo/20260326-33",
-      "name": "María Lola",
-      "website": "https://marialolaresto.com.ar/",
-      "email": "info@marialolaresto.com.ar",
-      "phone": "+54 9 2901 50 1117",
+      "catalogId": "turismo/20260326-106",
+      "name": "Dublin Irish Pub",
+      "website": "",
+      "email": "dublinushuaia@gmail.com",
+      "phone": "",
       "instagram": "",
-      "features": [
-        "web",
-        "menu",
-        "reservas"
-      ],
-      "observation": "Sitio propio con menú y opciones de reserva.",
+      "features": [],
+      "observation": "Correo publicado en una guía gastronómica.",
       "evidenceUrls": [
-        "https://marialolaresto.com.ar/"
+        "https://turismoenushuaia.com/restaurantes/dublin-irish-pub/"
       ],
       "checkedAt": "2026-10-27",
       "basis": "Páginas públicas y sitios identificados; presencia digital constatada solo donde figura website. No se diagnosticó ausencia de otros servicios."
@@ -61,38 +63,18 @@
       "basis": "Páginas públicas y sitios identificados; presencia digital constatada solo donde figura website. No se diagnosticó ausencia de otros servicios."
     },
     {
-      "catalogId": "turismo/20260326-21",
-      "name": "El Mercado",
-      "website": "https://www.elmercadoushuaia.com/",
+      "catalogId": "turismo/20260326-111",
+      "name": "Lobby Bar (Htl Arakur)",
+      "website": "https://arakur.com/c/gastronomia/",
       "email": "",
       "phone": "",
       "instagram": "",
       "features": [
-        "web",
-        "tienda",
-        "pedidos"
+        "web"
       ],
-      "observation": "Sitio comercial con tienda y pedidos en línea.",
+      "observation": "Página de gastronomía del hotel Arakur que identifica el Lobby Bar.",
       "evidenceUrls": [
-        "https://www.elmercadoushuaia.com/"
-      ],
-      "checkedAt": "2026-10-27",
-      "basis": "Páginas públicas y sitios identificados; presencia digital constatada solo donde figura website. No se diagnosticó ausencia de otros servicios."
-    },
-    {
-      "catalogId": "turismo/20260326-30",
-      "name": "La Cabaña Casa de Té",
-      "website": "https://www.lacabania.com.ar/",
-      "email": "",
-      "phone": "",
-      "instagram": "",
-      "features": [
-        "web",
-        "tienda"
-      ],
-      "observation": "Sitio con catálogo y tienda en línea.",
-      "evidenceUrls": [
-        "https://www.lacabania.com.ar/"
+        "https://arakur.com/c/gastronomia/"
       ],
       "checkedAt": "2026-10-27",
       "basis": "Páginas públicas y sitios identificados; presencia digital constatada solo donde figura website. No se diagnosticó ausencia de otros servicios."
@@ -115,6 +97,90 @@
       ],
       "checkedAt": "2026-10-27",
       "basis": "Páginas públicas y sitios identificados; presencia digital constatada solo donde figura website. No se diagnosticó ausencia de otros servicios."
+    },
+    {
+      "catalogId": "turismo/20260326-16",
+      "name": "Delicious Flavour",
+      "website": "",
+      "email": "",
+      "phone": "+5492901618573",
+      "instagram": "Deliciousflavourok",
+      "features": [],
+      "observation": "OpenStreetMap publica estos datos de contacto; se debe confirmar su actualidad.",
+      "evidenceUrls": [
+        "https://www.openstreetmap.org/node/12469723401"
+      ],
+      "checkedAt": "2026-10-27",
+      "basis": "Coincidencia única del nombre exacto normalizado dentro de Ushuaia, en OpenStreetMap."
+    },
+    {
+      "catalogId": "turismo/20260326-17",
+      "name": "Doña Lupita",
+      "website": "",
+      "email": "lupitapizzas@hotmail.com.ar",
+      "phone": "+54 9 2901 437675",
+      "instagram": "",
+      "features": [],
+      "observation": "Correo y teléfono publicados en una guía gastronómica.",
+      "evidenceUrls": [
+        "https://godiamo.com.ar/restaurantes/dona-lupita/"
+      ],
+      "checkedAt": "2026-10-27",
+      "basis": "Páginas públicas y sitios identificados; presencia digital constatada solo donde figura website. No se diagnosticó ausencia de otros servicios."
+    },
+    {
+      "catalogId": "turismo/20260326-21",
+      "name": "El Mercado",
+      "website": "https://www.elmercadoushuaia.com/",
+      "email": "",
+      "phone": "",
+      "instagram": "",
+      "features": [
+        "web",
+        "tienda",
+        "pedidos"
+      ],
+      "observation": "Sitio comercial con tienda y pedidos en línea.",
+      "evidenceUrls": [
+        "https://www.elmercadoushuaia.com/"
+      ],
+      "checkedAt": "2026-10-27",
+      "basis": "Páginas públicas y sitios identificados; presencia digital constatada solo donde figura website. No se diagnosticó ausencia de otros servicios."
+    },
+    {
+      "catalogId": "turismo/20260326-26",
+      "name": "Kalma Restó",
+      "website": "https://kalmaresto.com.ar/",
+      "email": "info@kalmaresto.com.ar",
+      "phone": "+54 2901 42 5786",
+      "instagram": "",
+      "features": [
+        "web",
+        "menu"
+      ],
+      "observation": "Sitio del restaurante con presentación de su propuesta y menú.",
+      "evidenceUrls": [
+        "https://kalmaresto.com.ar/",
+        "https://airepatagonia.com/flavours/kalma-resto/",
+        "https://www.openstreetmap.org/node/2681281397"
+      ],
+      "checkedAt": "2026-10-27",
+      "basis": "Páginas públicas y sitios identificados; presencia digital constatada solo donde figura website. No se diagnosticó ausencia de otros servicios."
+    },
+    {
+      "catalogId": "turismo/20260326-27",
+      "name": "Kaupé",
+      "website": "http://kaupe.com.ar/",
+      "email": "",
+      "phone": "",
+      "instagram": "",
+      "features": [],
+      "observation": "OpenStreetMap publica estos datos de contacto; se debe confirmar su actualidad.",
+      "evidenceUrls": [
+        "https://www.openstreetmap.org/node/3185215463"
+      ],
+      "checkedAt": "2026-10-27",
+      "basis": "Coincidencia única del nombre exacto normalizado dentro de Ushuaia, en OpenStreetMap."
     },
     {
       "catalogId": "turismo/20260326-28",
@@ -152,6 +218,58 @@
       "basis": "Páginas públicas y sitios identificados; presencia digital constatada solo donde figura website. No se diagnosticó ausencia de otros servicios."
     },
     {
+      "catalogId": "turismo/20260326-30",
+      "name": "La Cabaña Casa de Té",
+      "website": "https://www.lacabania.com.ar/",
+      "email": "",
+      "phone": "",
+      "instagram": "",
+      "features": [
+        "web",
+        "tienda"
+      ],
+      "observation": "Sitio con catálogo y tienda en línea.",
+      "evidenceUrls": [
+        "https://www.lacabania.com.ar/"
+      ],
+      "checkedAt": "2026-10-27",
+      "basis": "Páginas públicas y sitios identificados; presencia digital constatada solo donde figura website. No se diagnosticó ausencia de otros servicios."
+    },
+    {
+      "catalogId": "turismo/20260326-33",
+      "name": "María Lola",
+      "website": "https://marialolaresto.com.ar/",
+      "email": "info@marialolaresto.com.ar",
+      "phone": "+54 9 2901 50 1117",
+      "instagram": "",
+      "features": [
+        "web",
+        "menu",
+        "reservas"
+      ],
+      "observation": "Sitio propio con menú y opciones de reserva.",
+      "evidenceUrls": [
+        "https://marialolaresto.com.ar/"
+      ],
+      "checkedAt": "2026-10-27",
+      "basis": "Páginas públicas y sitios identificados; presencia digital constatada solo donde figura website. No se diagnosticó ausencia de otros servicios."
+    },
+    {
+      "catalogId": "turismo/20260326-36",
+      "name": "Parrilla La Estancia",
+      "website": "",
+      "email": "laestanciaushuaia@gmail.com",
+      "phone": "+54 9 2901 431421",
+      "instagram": "",
+      "features": [],
+      "observation": "Contacto publicado en una guía gastronómica.",
+      "evidenceUrls": [
+        "https://godiamo.com.ar/restaurantes/parrilla-la-estancia/"
+      ],
+      "checkedAt": "2026-10-27",
+      "basis": "Páginas públicas y sitios identificados; presencia digital constatada solo donde figura website. No se diagnosticó ausencia de otros servicios."
+    },
+    {
       "catalogId": "turismo/20260326-42",
       "name": "Tante Sara Resto",
       "website": "https://tantesara.com/",
@@ -163,25 +281,6 @@
         "menu"
       ],
       "observation": "Sitio de la marca con sucursal Café & Bar en San Martín 701.",
-      "evidenceUrls": [
-        "https://tantesara.com/nuestros-locales/"
-      ],
-      "checkedAt": "2026-10-27",
-      "basis": "Páginas públicas y sitios identificados; presencia digital constatada solo donde figura website. No se diagnosticó ausencia de otros servicios."
-    },
-    {
-      "catalogId": "turismo/20260326-96",
-      "name": "Tante Sara Cosas Ricas",
-      "website": "https://tantesara.com/",
-      "email": "",
-      "phone": "",
-      "instagram": "",
-      "features": [
-        "web",
-        "menu",
-        "tienda"
-      ],
-      "observation": "Sitio de la marca con sucursal Pastelería & Café en San Martín 175.",
       "evidenceUrls": [
         "https://tantesara.com/nuestros-locales/"
       ],
@@ -207,86 +306,23 @@
       "basis": "Páginas públicas y sitios identificados; presencia digital constatada solo donde figura website. No se diagnosticó ausencia de otros servicios."
     },
     {
-      "catalogId": "turismo/20260326-111",
-      "name": "Lobby Bar (Htl Arakur)",
-      "website": "https://arakur.com/c/gastronomia/",
+      "catalogId": "turismo/20260326-96",
+      "name": "Tante Sara Cosas Ricas",
+      "website": "https://tantesara.com/",
       "email": "",
       "phone": "",
       "instagram": "",
       "features": [
-        "web"
+        "web",
+        "menu",
+        "tienda"
       ],
-      "observation": "Página de gastronomía del hotel Arakur que identifica el Lobby Bar.",
+      "observation": "Sitio de la marca con sucursal Pastelería & Café en San Martín 175.",
       "evidenceUrls": [
-        "https://arakur.com/c/gastronomia/"
-      ],
-      "checkedAt": "2026-10-27",
-      "basis": "Páginas públicas y sitios identificados; presencia digital constatada solo donde figura website. No se diagnosticó ausencia de otros servicios."
-    },
-    {
-      "catalogId": "turismo/20260326-10",
-      "name": "Bodegón Fueguino",
-      "website": "",
-      "email": "bodegonfueguino@tierradehumos.com",
-      "phone": "02901 431972",
-      "instagram": "",
-      "features": [],
-      "observation": "Correo y teléfono públicos en el portal de Turismo de Ushuaia.",
-      "evidenceUrls": [
-        "https://turismoushuaia.com/gastronomia/16/?lang=es_AR"
-      ],
-      "checkedAt": "2026-10-27",
-      "basis": "Páginas públicas y sitios identificados; presencia digital constatada solo donde figura website. No se diagnosticó ausencia de otros servicios."
-    },
-    {
-      "catalogId": "turismo/20260326-17",
-      "name": "Doña Lupita",
-      "website": "",
-      "email": "lupitapizzas@hotmail.com.ar",
-      "phone": "+54 9 2901 437675",
-      "instagram": "",
-      "features": [],
-      "observation": "Correo y teléfono publicados en una guía gastronómica.",
-      "evidenceUrls": [
-        "https://godiamo.com.ar/restaurantes/dona-lupita/"
-      ],
-      "checkedAt": "2026-10-27",
-      "basis": "Páginas públicas y sitios identificados; presencia digital constatada solo donde figura website. No se diagnosticó ausencia de otros servicios."
-    },
-    {
-      "catalogId": "turismo/20260326-36",
-      "name": "Parrilla La Estancia",
-      "website": "",
-      "email": "laestanciaushuaia@gmail.com",
-      "phone": "+54 9 2901 431421",
-      "instagram": "",
-      "features": [],
-      "observation": "Contacto publicado en una guía gastronómica.",
-      "evidenceUrls": [
-        "https://godiamo.com.ar/restaurantes/parrilla-la-estancia/"
-      ],
-      "checkedAt": "2026-10-27",
-      "basis": "Páginas públicas y sitios identificados; presencia digital constatada solo donde figura website. No se diagnosticó ausencia de otros servicios."
-    },
-    {
-      "catalogId": "turismo/20260326-106",
-      "name": "Dublin Irish Pub",
-      "website": "",
-      "email": "dublinushuaia@gmail.com",
-      "phone": "",
-      "instagram": "",
-      "features": [],
-      "observation": "Correo publicado en una guía gastronómica.",
-      "evidenceUrls": [
-        "https://turismoenushuaia.com/restaurantes/dublin-irish-pub/"
+        "https://tantesara.com/nuestros-locales/"
       ],
       "checkedAt": "2026-10-27",
       "basis": "Páginas públicas y sitios identificados; presencia digital constatada solo donde figura website. No se diagnosticó ausencia de otros servicios."
     }
-  ],
-  "openStreetMap": {
-    "status": "pending",
-    "updatedAt": null,
-    "matches": 0
-  }
+  ]
 }
