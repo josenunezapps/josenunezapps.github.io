@@ -37,9 +37,9 @@ footer{border-top:1px solid #2a324c;margin-top:34px;padding-top:16px;font-size:1
 <div class="panel">
 <div class="row between"><div><h2>Ushuaia · Todos los rubros comerciales</h2><p style="margin:0">OpenStreetMap / Overpass · Búsqueda amplia de comercios con nombre.</p></div><button class="button primary" id="scan">Buscar y agregar</button></div>
 <div class="stats"><div class="stat"><b id="found">—</b><span>Detectados en búsqueda</span></div><div class="stat"><b id="added">—</b><span>Agregados a Radar</span></div><div class="stat"><b id="dupes">—</b><span>Ya registrados / coincidentes</span></div><div class="stat"><b id="total">—</b><span>Negocios reales en Radar</span></div></div>
-<div class="info">La búsqueda se ejecuta automáticamente como máximo una vez cada 24 horas, cuando la fuente lo permite. Los datos abiertos pueden estar incompletos. “Sitio web no registrado” no significa que el comercio no tenga web. No se envían mensajes.</div>
+<div class="info">Radar incorpora automáticamente un <strong>directorio de referencia de la Secretaría de Turismo de Ushuaia (26/03/2026)</strong>, y busca ampliar la lista con OpenStreetMap. Estos registros pueden estar desactualizados y deben verificarse antes de contactar. La falta de sitio web registrado no demuestra que no exista. No se envían mensajes.</div><div class="status" id="officialstatus" role="status" aria-live="polite">Cargando directorio oficial…</div>
 <div class="status" id="osmstatus" role="status" aria-live="polite"></div>
-<div class="controls"><div class="field"><label for="filter">Filtrar resultados</label><input id="filter" name="radar-busqueda-comercios" type="search" autocomplete="off" autocapitalize="off" spellcheck="false" data-lpignore="true" placeholder="Nombre, rubro o calle" /></div><div class="field"><label for="endpoint">Fuente pública</label><select id="endpoint"><option value="https://overpass.private.coffee/api/interpreter">Overpass · Private.coffee</option><option value="https://overpass-api.de/api/interpreter">Overpass · FOSSGIS</option><option value="https://lz4.overpass-api.de/api/interpreter">Overpass · FOSSGIS LZ4</option></select></div></div>
+<div class="controls"><div class="field"><label for="filter">Filtrar resultados</label><input id="filter" name="filtro-negocios-noautofill-287" type="search" readonly autocomplete="new-password" autocapitalize="off" spellcheck="false" data-lpignore="true" placeholder="Nombre, rubro o calle" /></div><div class="field"><label for="endpoint">Fuente pública</label><select id="endpoint"><option value="https://overpass.private.coffee/api/interpreter">Overpass · Private.coffee</option><option value="https://overpass-api.de/api/interpreter">Overpass · FOSSGIS</option><option value="https://lz4.overpass-api.de/api/interpreter">Overpass · FOSSGIS LZ4</option></select></div></div>
 <div class="row" style="margin-top:14px"><a href="./">Ver negocios guardados en Radar</a></div><div class="results" id="osmresults"></div>
 </div></section>
 <section id="google" class="hidden"><div class="panel">
@@ -57,7 +57,7 @@ footer{border-top:1px solid #2a324c;margin-top:34px;padding-top:16px;font-size:1
 (function(){
 "use strict";
 const $=id=>document.getElementById(id), key="zenix-radar:data", stamp="zenix-radar:osm-last-scan", osmCenter={lat:-54.807, lng:-68.31};
-let osmRows=[],googlePlaces=[],gm,markers=[],googleReady=false,busy=false;
+let osmRows=[],officialRows=[],googlePlaces=[],gm,markers=[],googleReady=false,busy=false;
 function status(id,msg,kind){const e=$(id);e.textContent=msg;e.className="status "+(kind||"");}
 function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 function norm(s){return String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim();}
@@ -84,11 +84,11 @@ const id=e.type+"/"+e.id,site=safeUrl(String(t.website||t["contact:website"]||""
 return{id,name,category:cate(t),address:getAddr(t),website:cleanTag(site||"",300),instagram:cleanTag(ig,30),phone:cleanTag(t.phone||t["contact:phone"],20),email:cleanTag(t.email||t["contact:email"],160),lat:e.lat||e.center&&e.center.lat,lon:e.lon||e.center&&e.center.lon};}
 function saveOSM(rows){const {raw,d}=current(),existingIds=new Set(d.businesses.map(b=>b.id)),existingNames=new Set(d.businesses.filter(b=>!b.isDemo).map(b=>norm(b.name)+"|"+norm(b.address)));
 let added=[],dupes=0;const now=new Date().toISOString(),date=now.slice(0,10);
-for(const row of rows){const id="osm-"+row.id.replace("/","-"),uniq=norm(row.name)+"|"+norm(row.address);
+for(const row of rows){const official=row.id.startsWith("turismo/"),id=(official?"tur-":"osm-")+row.id.replace("/","-"),uniq=norm(row.name)+"|"+norm(row.address);
 if(existingIds.has(id)||existingNames.has(uniq)){dupes++;continue;}
 existingIds.add(id);existingNames.add(uniq);
-const link="https://www.openstreetmap.org/"+row.id;
-added.push({id,name:row.name,category:row.category,address:row.address,website:row.website,instagram:row.instagram,otherSocials:"",phone:row.phone,email:row.email,stage:"identified",notes:"Fuente: OpenStreetMap ("+row.id+"). Consultado: "+date+". "+link+". Los campos faltantes no fueron verificados.",lastReviewedAt:null,createdAt:now,updatedAt:now,isDemo:false,demoEditedAt:null,analysis:null});}
+const link=official?"https://turismoushuaia.com/wp-content/uploads/2026/03/Restaurantes-26.03.26.pdf":"https://www.openstreetmap.org/"+row.id;const note=official?"Fuente: Directorio de la Secretaría de Turismo de Ushuaia, actualizado el 26/03/2026. Incorporado el "+date+". Verificá vigencia antes de contactar.":"Fuente: OpenStreetMap ("+row.id+"). Consultado: "+date+". Los campos faltantes no fueron verificados.";
+added.push({id,name:row.name,category:row.category,address:row.address,website:row.website||"",instagram:row.instagram||"",otherSocials:"",phone:row.phone||"",email:row.email||"",stage:"identified",notes:note+" "+link,lastReviewedAt:null,createdAt:now,updatedAt:now,isDemo:false,demoEditedAt:null,analysis:null});}
 if(!added.length)return{added:0,dupes,total:d.businesses.filter(b=>!b.isDemo).length};
 const msg="Descubrimiento automático: "+added.length+" comercios nuevos desde OpenStreetMap";
 const next={...d,businesses:[...added,...d.businesses],activity:[{id:"scan-"+Date.now()+"-"+Math.random().toString(36).slice(2,8),type:"imported",message:msg.slice(0,400),businessId:null,at:now},...d.activity].slice(0,200)};
@@ -96,7 +96,24 @@ if(localStorage.getItem(key)!==raw)throw Error("Los datos cambiaron en otra pest
 localStorage.setItem(key,JSON.stringify(next));
 return{added:added.length,dupes,total:next.businesses.filter(b=>!b.isDemo).length};}
 function renderOSM(){const needle=norm($("filter").value),rows=osmRows.filter(r=>norm(r.name+" "+r.category+" "+r.address).includes(needle)).slice(0,80);
-$("osmresults").innerHTML=rows.map(r=>'<article class="item"><div class="row between"><b>'+escapeHtml(r.name)+'</b><span class="tag">'+escapeHtml(r.category)+'</span></div><p>'+escapeHtml(r.address)+'</p><div class="row"><a href="https://www.openstreetmap.org/'+encodeURI(r.id)+'" target="_blank" rel="noopener">Ver fuente</a>'+(r.website?'<a href="'+escapeHtml(r.website)+'" target="_blank" rel="noopener">Sitio declarado</a>':"")+'</div></article>').join("");
+$("osmresults").innerHTML=rows.map(r=>'<article class="item"><div class="row between"><b>'+escapeHtml(r.name)+'</b><span class="tag">'+escapeHtml(r.category)+'</span></div><p>'+escapeHtml(r.address)+'</p><div class="row"><a href="'+escapeHtml(r.id.startsWith("turismo/")?"https://turismoushuaia.com/wp-content/uploads/2026/03/Restaurantes-26.03.26.pdf":"https://www.openstreetmap.org/"+encodeURI(r.id))+'" target="_blank" rel="noopener">'+(r.id.startsWith("turismo/")?"Directorio oficial":"Fuente OSM")+'</a>'+(r.website?'<a href="'+escapeHtml(r.website)+'" target="_blank" rel="noopener">Sitio declarado</a>':"")+'</div></article>').join("");
+}
+async function loadOfficial(){
+try{
+const res=await fetch("./catalogo-turismo-2026-03.json",{cache:"no-store"});
+if(!res.ok)throw Error("HTTP "+res.status);
+const payload=await res.json();
+if(payload.sourceUpdated!=="2026-03-26"||!Array.isArray(payload.entries))throw Error("catálogo incompatible");
+officialRows=payload.entries.filter(e=>e&&typeof e.id==="string"&&/^turismo\/20260326-\d+$/.test(e.id)&&typeof e.name==="string"&&typeof e.address==="string"&&typeof e.category==="string").map(e=>({...e,website:"",instagram:"",phone:"",email:""}));
+if(!officialRows.length)throw Error("directorio vacío");
+const counts=saveOSM(officialRows);
+osmRows=[...officialRows,...osmRows.filter(e=>!e.id.startsWith("turismo/"))];renderOSM();
+$("found").textContent=officialRows.length;
+$("added").textContent=counts.added;
+$("dupes").textContent=counts.dupes;
+$("total").textContent=counts.total;
+status("officialstatus","Directorio oficial: "+officialRows.length+" registros de marzo de 2026; "+counts.added+" incorporados. Revisá la vigencia antes de contactar.","good");
+}catch(err){status("officialstatus","No se pudo cargar el directorio: "+(err?.message||"error inesperado"),"error");}
 }
 const scanFailure="zenix-radar:osm-last-failure";
 const allSources=["https://overpass.private.coffee/api/interpreter","https://overpass-api.de/api/interpreter","https://lz4.overpass-api.de/api/interpreter"];
@@ -151,9 +168,9 @@ continue;
 source=found.source;
 const fresh=found.elements.map(normalizeElement).filter(Boolean);
 for(const entry of fresh)allFound.set(entry.id,entry);
-osmRows=[...allFound.values()];
+osmRows=[...officialRows,...allFound.values()];
 const update=saveOSM(fresh);addedTotal+=update.added;dupesTotal+=update.dupes;success++;
-$("found").textContent=allFound.size;
+$("found").textContent=officialRows.length+allFound.size;
 $("added").textContent=addedTotal;
 $("dupes").textContent=dupesTotal;
 $("total").textContent=update.total;
@@ -193,7 +210,16 @@ $("gsearch").onclick=()=>runGoogle([$("kind").value]);
 $("gbulk").onclick=()=>{if(window.confirm("Esto hará hasta 9 consultas facturables a Google Places API. Los resultados solo se mostrarán en esta sesión. ¿Continuar?"))return runGoogle(["restaurant","cafe","hotel","store","supermarket","bakery","clothing_store","beauty_salon","travel_agency"]);};
 $("gresults").addEventListener("click",e=>{const b=e.target.closest("[data-place]");if(!b)return;const p=googlePlaces[Number(b.dataset.place)];if(!p||!p.id)return;try{const k="zenix-radar:google-place-ids",a=JSON.parse(localStorage.getItem(k)||"[]");if(!Array.isArray(a))throw Error("Registro de IDs ilegible");if(!a.includes(p.id))a.push(p.id);localStorage.setItem(k,JSON.stringify(a));b.textContent="ID guardado";b.disabled=true;}catch(err){status("gstatus","No se pudo guardar el ID: "+err.message,"error");}});
 try{const d=current().d;$("total").textContent=d.businesses.filter(b=>!b.isDemo).length;}catch(e){status("osmstatus",e.message,"error");}
-try{$("filter").value="";const last=Number(localStorage.getItem(stamp)||0),fail=Number(localStorage.getItem(scanFailure)||0),now=Date.now();if(now-last>=24*3600000&&now-fail>=20*60000){setTimeout(()=>scan(true),250);}else if(now-last<24*3600000){status("osmstatus","Última búsqueda: "+new Date(last).toLocaleString("es-AR")+". Podés actualizar con el botón.","good");}else{status("osmstatus","Las fuentes no respondieron recientemente. Volvé a intentar con «Buscar y agregar» o elegí otra fuente.");}}catch(e){status("osmstatus",e.message,"error");}
+$("filter").addEventListener("focus",()=>{$("filter").removeAttribute("readonly");$("filter").value="";renderOSM();});
+loadOfficial().finally(()=>{
+try{
+$("filter").value="";
+const last=Number(localStorage.getItem(stamp)||0),fail=Number(localStorage.getItem(scanFailure)||0),now=Date.now();
+if(now-last>=24*3600000&&now-fail>=20*60000){setTimeout(()=>scan(true),250);}
+else if(now-last<24*3600000){status("osmstatus","Última consulta OSM: "+new Date(last).toLocaleString("es-AR")+". Podés actualizar con el botón.","good");}
+else{status("osmstatus","OpenStreetMap no respondió recientemente. Ya podés trabajar con el directorio oficial y reintentar más tarde.");}
+}catch(err){status("osmstatus",err?.message||"No se pudo programar la actualización","error");}
+});
 })();
 </script>
 </body></html>
