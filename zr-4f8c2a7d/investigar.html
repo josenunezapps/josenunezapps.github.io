@@ -47,7 +47,7 @@ footer{margin-top:30px;padding-top:16px;border-top:1px solid #323b51;color:#8c9a
 </section>
 <section class="panel"><h2>Cómo se evalúan las oportunidades</h2>
 <p><strong>Con evidencia:</strong> un sitio propio, una función publicada o un contacto que aparece en una fuente enlazada. <strong>Pendiente:</strong> falta investigar; no equivale a ausencia.</p>
-<p>Las sugerencias de servicio son <strong>hipótesis para conversar</strong>, no diagnósticos automáticos de fallas. Un comercio que ya vende por Internet no se clasifica como si necesitara una tienda nueva.</p>
+<p>Las sugerencias de servicio son <strong>hipótesis para conversar</strong>, no diagnósticos automáticos de fallas. Radar <strong>descarta sugerencias redundantes</strong> cuando la evidencia confirma que ya existe un menú, reservas o tienda digital. No se atribuyen puntuaciones de potencial comercial sin datos de ventas.</p>
 <p>La búsqueda periódica desde GitHub podrá ampliar esta base cuando OpenStreetMap responda. Google Maps requiere credenciales y condiciones de uso independientes.</p>
 <div class="row"><a class="btn primary" href="./descubrir.html">Descubrir más negocios</a><a class="btn" href="./">Ver fichas en Radar</a></div>
 </section>
@@ -95,11 +95,14 @@ localStorage.setItem(KEY,JSON.stringify(nextData));
 return{touched,fields};}
 function score(e,b){if(!e)return 0;return Math.min(100,(e.website?50:0)+(e.email?25:0)+(e.phone?15:0)+(e.features?.length?10:0));}
 function idea(e,b){const kind=(b.category||"").toLowerCase(),features=e?.features||[];
-if(features.includes("tienda")||features.includes("pedidos"))return"Posible mejora a evaluar: fidelización, seguimiento de clientes o automatización del negocio existente.";
-if(features.includes("reservas"))return"Posible mejora a evaluar: recordatorios de reserva, fidelización o analítica de consultas.";
-if(kind.includes("gastronom")||kind.includes("cafeter"))return"Posibles servicios a conversar: carta digital, reservas o pedidos, según lo que ya utilice el local.";
-if(kind.includes("alojamiento")||kind.includes("turismo"))return"Posibles servicios a conversar: reservas, catálogo de excursiones y seguimiento de clientes.";
-return"Posible propuesta: catálogo digital, gestión de consultas o presencia web. Requiere diagnóstico previo.";}
+if(!e)return"Primero hay que verificar sitio web, redes y servicios digitales antes de sugerir un proyecto.";
+if(features.includes("tienda")||features.includes("pedidos"))return"Ya publica venta o pedidos digitales. No ofrecer esa misma función otra vez; preguntar por fidelización, seguimiento de clientes o automatización de tareas.";
+if(features.includes("reservas"))return"Ya publica opciones de reserva. Evaluar con el negocio si necesita recordatorios, confirmaciones o métricas; no asumir que le falta un sistema de reservas.";
+if(features.includes("menu"))return"Ya muestra un menú en Internet. No ofrecer una carta digital sin verificar una necesidad. Investigar cómo gestiona pedidos, reservas y clientes frecuentes.";
+if(e.website)return"Tiene sitio web identificado. Revisar su experiencia y funciones reales antes de recomendar mejoras; no ofrecer crear una web desde cero.";
+if(kind.includes("gastronom")||kind.includes("cafeter"))return"Confirmar primero qué herramientas usa para carta, pedidos, reservas y redes. No se puede concluir que falten.";
+if(kind.includes("alojamiento")||kind.includes("turismo"))return"Verificar disponibilidad de reservas, catálogo y atención digital antes de proponer un servicio.";
+return"Verificar web, contactos y herramientas digitales antes de formular una propuesta.";}
 function facts(e){let output=[];
 if(e.website)output.push("Sitio web localizado");
 if(e.features?.includes("menu"))output.push("Menú visible");
@@ -113,12 +116,12 @@ function card(b){
 const e=researchFor(b),s=score(e,b),any=!!e,web=!!(b.website||e?.website);
 const id="details-"+b.id, sourceLinks=(e?.evidenceUrls||[]).filter(u=>urlOk(u)).slice(0,4);
 const address=esc(b.address||"Ushuaia"), site=b.website||e?.website||"";
-return '<article class="business"><div class="row between"><h3>'+esc(b.name)+'</h3><span class="status '+(any?"":"pending")+'">'+(any?"Con datos públicos":"Pendiente")+'</span></div><p class="mini">'+address+' · '+esc(b.category||"")+'</p>'+
+return '<article class="business"><div class="row between"><h3>'+esc(b.name)+'</h3><span class="status '+(any?"":"pending")+'">'+(any?"Con fuentes asociadas":"Por investigar")+'</span></div><p class="mini">'+address+' · '+esc(b.category||"")+'</p>'+
 '<div class="divider"></div><p><strong>'+ (any?"Evidencia encontrada":"Sin investigación suficiente") +'</strong></p>'+
 '<p class="mini">'+(any?esc(facts(e).join(" · ")||e.observation):"Todavía no hay suficientes fuentes asociadas a esta ficha. No se puede concluir que le falten servicios digitales.")+'</p>'+
-'<p class="mini">Información documentada: <strong>'+ (any?s+" / 100":"pendiente") +'</strong> '+(any?"(disponibilidad de datos, no potencial de venta)":"")+'</p>'+
+'<p class="mini"><strong>Datos públicos:</strong> '+(any?esc(facts(e).length+" tipos identificados. Esto no mide la calidad del negocio ni su potencial comercial."):"pendiente de contrastación")+'</p>'+
 '<div class="foot"><button type="button" class="btn" data-toggle="'+esc(b.id)+'">'+(any?"Ver evidencias y sugerencia":"Ver próxima evaluación")+'</button>'+(site&&urlOk(site)?'<a class="btn" href="'+esc(site)+'" target="_blank" rel="noopener noreferrer">Abrir web</a>':"")+'</div>'+
-'<div class="details hidden" id="'+esc(id)+'"><p><strong>Hipótesis de servicio:</strong> '+esc(idea(e,b))+'</p>'+(any?'<p><strong>Hallazgo:</strong> '+esc(e.observation||"")+'</p><p><strong>Fuentes:</strong></p>'+sourceLinks.map((url,i)=>'<p><a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">Fuente '+(i+1)+'</a></p>').join("")+'<p class="mini">Revisado: '+esc(e.checkedAt||checkedAt||"sin fecha")+'. Este reporte no prueba necesidades comerciales ni la operatividad actual.</p>':'<p>No hay fuentes específicas; buscar nombre y dirección en el sitio oficial o Google Maps antes de evaluar servicios.</p>')+'</div></article>';
+'<div class="details hidden" id="'+esc(id)+'"><p><strong>Hipótesis de servicio:</strong> '+esc(idea(e,b))+'</p>'+(any?'<p><strong>Hallazgo:</strong> '+esc(e.observation||"")+'</p><p><strong>Fuentes:</strong></p>'+sourceLinks.map((url,i)=>'<p><a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">Consultar '+esc(new URL(url).hostname.replace(/^www\./,""))+'</a></p>').join("")+'<p class="mini">Revisado: '+esc(e.checkedAt||checkedAt||"sin fecha")+'. Este reporte no prueba necesidades comerciales ni la operatividad actual.</p>':'<p>No hay fuentes específicas; buscar nombre y dirección en el sitio oficial o Google Maps antes de evaluar servicios.</p>')+'</div></article>';
 }
 function render(){
 const search=norm($("query").value),f=$("filter").value;
