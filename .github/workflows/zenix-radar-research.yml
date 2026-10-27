@@ -1,6 +1,11 @@
 name: Zenix Radar - Investigación pública de comercios
 
 on:
+  push:
+    paths:
+      - '.github/workflows/zenix-radar-research.yml'
+      - 'zr-4f8c2a7d/tools/enrich.py'
+      - 'zr-4f8c2a7d/investigaciones-seed.json'
   workflow_dispatch:
   schedule:
     - cron: '19 10 * * 2,5'
