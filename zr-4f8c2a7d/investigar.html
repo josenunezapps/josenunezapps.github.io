@@ -21,6 +21,12 @@ label{font-size:12px;font-weight:680;display:block;margin-bottom:5px;color:#bdcc
 .mini{font-size:12px;color:#aab9d5}.status{display:inline-flex;border-radius:100px;background:#302b52;color:#d2c3ff;padding:4px 9px;font-size:11px;white-space:nowrap}.status.pending{background:#303746;color:#b2bdd1}
 .high{font-weight:650;color:#aee7bf}.code{font-family:ui-monospace,monospace;font-size:12px;color:#bcc6e4}
 .business .divider{height:1px;background:#2a344e;margin:12px 0}
+.business.selected{border-color:#8e77f8;box-shadow:inset 0 0 0 1px #8e77f844}
+.btn.saved{background:#2e3d38;color:#b4f5cf;border-color:#547c69}
+.workline{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:#1a2339;border:1px solid #344567;border-radius:12px;padding:13px 15px;margin-top:16px}
+.workline strong{font-size:15px}
+.workline p{font-size:12px;margin:0}
+button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #b49fff;outline-offset:3px}
 .business .foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:13px;flex-wrap:wrap}
 .details{margin:11px 0 0;padding:10px;background:#11182a;border-radius:10px;font-size:13px}.details p{margin:5px 0}.details a{overflow-wrap:anywhere}
 .hidden{display:none!important}.empty{grid-column:1/-1;text-align:center;padding:30px;color:#aebad5}
@@ -38,10 +44,11 @@ footer{margin-top:30px;padding-top:16px;border-top:1px solid #323b51;color:#8c9a
 <div class="stat"><strong id="pending">—</strong><span>Pendientes de investigación</span></div>
 </div>
 <div class="msg" id="status" role="status" aria-live="polite">Leyendo datos de la aplicación y hallazgos públicos…</div>
+<div class="workline"><div><strong>Mi carpeta comercial · <span id="selectedcount">0</span> prospectos</strong><p>Guardá candidatos para evaluar y preparar una propuesta. No se contactará a nadie automáticamente.</p></div><div class="row"><button class="btn" id="viewselected">Ver seleccionados</button><button class="btn" id="exportselected" disabled>Exportar selección CSV</button></div></div>
 <section class="panel">
 <div class="row between"><div><h2>Prospectos investigados</h2><p>Los datos con fuente se guardan automáticamente solo cuando la ficha no los tiene. Jamás se reemplaza lo que editaste.</p></div><div class="row"><button class="btn" id="refresh">Actualizar datos</button><button class="btn" id="export">Exportar informe CSV</button></div></div>
 <div class="toolbar"><div class="search"><label for="query">Buscar por nombre o dirección</label><input type="search" autocomplete="off" id="query" placeholder="Ej.: Kalma, San Martín..." /></div>
-<div><label for="filter">Mostrar</label><select id="filter"><option value="all">Todos los negocios</option><option value="verified">Con información contrastada</option><option value="website">Con web identificada</option><option value="pending">Pendientes de investigación</option></select></div>
+<div><label for="filter">Mostrar</label><select id="filter"><option value="all">Todos los negocios</option><option value="verified">Con información contrastada</option><option value="website">Con web identificada</option><option value="pending">Pendientes de investigación</option><option value="contact">Con correo o teléfono público</option><option value="selected">Mi carpeta comercial</option></select></div>
 <div><label>Origen</label><span class="code">Fuentes públicas</span></div></div>
 <div class="list" id="results"></div>
 </section>
@@ -56,12 +63,28 @@ footer{margin-top:30px;padding-top:16px;border-top:1px solid #323b51;color:#8c9a
 <script>
 (()=>{"use strict";
 const $=id=>document.getElementById(id);
-const KEY="zenix-radar:data",DATA="./investigaciones-datos.json";
+const KEY="zenix-radar:data",DATA="./investigaciones-datos.json",SHORTLIST="zenix-radar:carpeta-comercial-v1";
 const BAD=/[<>&"']/g,REPL={"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;","'":"&#39;"};
 const esc=t=>String(t??"").replace(BAD,c=>REPL[c]);
 const norm=t=>String(t||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
 const byName=(a,b)=>norm(a).localeCompare(norm(b),"es");
-let businesses=[],records=[],lookup=new Map(),busy=false,checkedAt=null;
+let businesses=[],records=[],lookup=new Map(),busy=false,checkedAt=null,shortlist=new Set(),shortlistBlocked=false;
+function readShortlist(){
+ const raw=localStorage.getItem(SHORTLIST);
+ if(raw===null)return new Set();
+ let data;try{data=JSON.parse(raw)}catch{throw Error("La selección comercial guardada no se puede leer. No voy a sobrescribirla.");}
+ if(!data||data.version!==1||!Array.isArray(data.ids)||data.ids.some(id=>typeof id!=="string"||id.length>80)||new Set(data.ids).size!==data.ids.length)throw Error("La selección comercial tiene un formato incorrecto. No se modificó nada.");
+ return new Set(data.ids);
+}
+function setShortlist(id){
+ const b=businesses.find(x=>x.id===id);
+ if(!b)throw Error("El negocio no está disponible.");
+ const latest=readShortlist();
+ if(latest.has(id))latest.delete(id);else latest.add(id);
+ localStorage.setItem(SHORTLIST,JSON.stringify({version:1,ids:[...latest]}));
+ shortlist=latest;render();
+}
+function viewSelected(){ $("filter").value="selected";$("query").value="";render();$("results").scrollIntoView?.({behavior:"smooth",block:"start"});}
 function label(msg,error=false){$("status").textContent=msg;$("status").className="msg"+(error?" error":"");}
 function openDB(){const raw=localStorage.getItem(KEY);if(!raw)throw Error("Todavía no hay datos de Zenix Radar en este navegador. Abrí el panel principal primero.");let data;
 try{data=JSON.parse(raw);}catch{throw Error("Los datos guardados están dañados. Abrí el panel para recuperarlos, sin sobreescribirlos.");}
@@ -116,26 +139,30 @@ function card(b){
 const e=researchFor(b),s=score(e,b),any=!!e,web=!!(b.website||e?.website);
 const id="details-"+b.id, sourceLinks=(e?.evidenceUrls||[]).filter(u=>urlOk(u)).slice(0,4);
 const address=esc(b.address||"Ushuaia"), site=b.website||e?.website||"";
-return '<article class="business"><div class="row between"><h3>'+esc(b.name)+'</h3><span class="status '+(any?"":"pending")+'">'+(any?"Con fuentes asociadas":"Por investigar")+'</span></div><p class="mini">'+address+' · '+esc(b.category||"")+'</p>'+
+return '<article class="business'+(shortlist.has(b.id)?" selected":"")+'"><div class="row between"><h3>'+esc(b.name)+'</h3><span class="status '+(any?"":"pending")+'">'+(any?"Con fuentes asociadas":"Por investigar")+'</span></div><p class="mini">'+address+' · '+esc(b.category||"")+'</p>'+
 '<div class="divider"></div><p><strong>'+ (any?"Evidencia encontrada":"Sin investigación suficiente") +'</strong></p>'+
 '<p class="mini">'+(any?esc(facts(e).join(" · ")||e.observation):"Todavía no hay suficientes fuentes asociadas a esta ficha. No se puede concluir que le falten servicios digitales.")+'</p>'+
 '<p class="mini"><strong>Datos públicos:</strong> '+(any?esc(facts(e).length+" tipos identificados. Esto no mide la calidad del negocio ni su potencial comercial."):"pendiente de contrastación")+'</p>'+
-'<div class="foot"><button type="button" class="btn" data-toggle="'+esc(b.id)+'">'+(any?"Ver evidencias y sugerencia":"Ver próxima evaluación")+'</button>'+(site&&urlOk(site)?'<a class="btn" href="'+esc(site)+'" target="_blank" rel="noopener noreferrer">Abrir web</a>':"")+'</div>'+
+'<div class="foot"><button type="button" class="btn" data-toggle="'+esc(b.id)+'" aria-expanded="false">'+(any?"Ver evidencias y sugerencia":"Ver próxima evaluación")+'</button>'+(site&&urlOk(site)?'<a class="btn" href="'+esc(site)+'" target="_blank" rel="noopener noreferrer">Abrir web</a>':"")+'</div>'+
+'<div class="foot"><button type="button" class="btn'+(shortlist.has(b.id)?" saved":"")+'" data-select="'+esc(b.id)+'" aria-pressed="'+(shortlist.has(b.id)?"true":"false")+'"'+(shortlistBlocked?" disabled":"")+'>'+(shortlist.has(b.id)?"✓ En mi carpeta":"☆ Guardar candidato")+'</button><a class="btn" href="./#/negocios/'+encodeURIComponent(b.id)+'/propuesta">Preparar propuesta</a></div>'+
 '<div class="details hidden" id="'+esc(id)+'"><p><strong>Hipótesis de servicio:</strong> '+esc(idea(e,b))+'</p>'+(any?'<p><strong>Hallazgo:</strong> '+esc(e.observation||"")+'</p><p><strong>Fuentes:</strong></p>'+sourceLinks.map((url,i)=>'<p><a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">Consultar '+esc(new URL(url).hostname.replace(/^www\./,""))+'</a></p>').join("")+'<p class="mini">Revisado: '+esc(e.checkedAt||checkedAt||"sin fecha")+'. Este reporte no prueba necesidades comerciales ni la operatividad actual.</p>':'<p>No hay fuentes específicas; buscar nombre y dirección en el sitio oficial o Google Maps antes de evaluar servicios.</p>')+'</div></article>';
 }
 function render(){
 const search=norm($("query").value),f=$("filter").value;
 const filtered=businesses.filter(b=>{
 const e=researchFor(b),hasWeb=!!(b.website||e?.website),verified=!!e;
-return(!search||norm(b.name+" "+b.address+" "+b.category).includes(search))&&(f==="all"||f==="verified"&&verified||f==="website"&&hasWeb||f==="pending"&&!verified);}).sort((a,b)=>{
+const contact=!!(b.email||b.phone||e?.email||e?.phone);
+return(!search||norm(b.name+" "+b.address+" "+b.category).includes(search))&&(f==="all"||f==="verified"&&verified||f==="website"&&hasWeb||f==="pending"&&!verified||f==="contact"&&contact||f==="selected"&&shortlist.has(b.id));}).sort((a,b)=>{
 const ea=researchFor(a),eb=researchFor(b);
-return ((eb?1:0)-(ea?1:0))||score(eb,b)-score(ea,a)||byName(a.name,b.name);
+return ((shortlist.has(b.id)?1:0)-(shortlist.has(a.id)?1:0))||((eb?1:0)-(ea?1:0))||score(eb,b)-score(ea,a)||byName(a.name,b.name);
 });
 $("results").innerHTML=filtered.length?filtered.map(card).join(""):'<div class="empty">No hay negocios para este filtro.</div>';
 $("total").textContent=businesses.length;
 $("researched").textContent=businesses.filter(b=>!!researchFor(b)).length;
 $("websites").textContent=businesses.filter(b=>!!(b.website||researchFor(b)?.website)).length;
 $("pending").textContent=businesses.filter(b=>!researchFor(b)).length;
+$("selectedcount").textContent=businesses.filter(b=>shortlist.has(b.id)).length;
+$("exportselected").disabled=!businesses.some(b=>shortlist.has(b.id));
 }
 async function load(){
 if(busy)return;busy=true;$("refresh").disabled=true;
@@ -148,8 +175,9 @@ lookup=new Map(records.map(e=>[recordKey(e),e]));
 checkedAt=result.updatedAt;
 let updates=saveBlankFacts();
 businesses=openDB().data.businesses.filter(b=>!b.isDemo);
+try{shortlist=readShortlist();shortlistBlocked=false;}catch(err){shortlistBlocked=true;label(err.message,true);}
 render();
-label("Investigación disponible: "+records.length+" establecimientos con fuentes. "+(updates.fields?"Se completaron "+updates.fields+" datos en "+updates.touched+" fichas sin sobrescribir cambios tuyos. ":"")+"Los demás siguen pendientes; no se han diagnosticado carencias.");
+if(!shortlistBlocked)label("Investigación disponible: "+records.length+" establecimientos con fuentes. "+(updates.fields?"Se completaron "+updates.fields+" datos en "+updates.touched+" fichas sin sobrescribir cambios tuyos. ":"")+"Los demás siguen pendientes; no se han diagnosticado carencias.");
 }catch(err){try{businesses=openDB().data.businesses.filter(b=>!b.isDemo);render();}catch{}label(err?.message||"No fue posible cargar la investigación",true);}
 finally{busy=false;$("refresh").disabled=false;}
 }
@@ -160,8 +188,35 @@ const escCsv=x=>'"'+String(x??"").replace(/"/g,'""')+'"';const text="\ufeff"+[he
 const link=document.createElement("a"),url=URL.createObjectURL(new Blob([text],{type:"text/csv;charset=utf-8"}));
 link.href=url;link.download="zenix-radar-investigacion-"+new Date().toISOString().slice(0,10)+".csv";
 document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
-$("results").addEventListener("click",ev=>{const btn=ev.target.closest("[data-toggle]");if(!btn)return;const d=document.getElementById("details-"+btn.dataset.toggle);if(d)d.classList.toggle("hidden");});
+function exportSelection(){
+ const candidates=businesses.filter(b=>shortlist.has(b.id));
+ if(!candidates.length){label("No hay candidatos seleccionados todavía.",true);return;}
+ const headers=["Negocio","Rubro","Dirección","Contacto público","Web","Hipótesis para evaluar","Fuente","Estado"];
+ const cleanCell=value=>{
+   let s=String(value??"").replace(/^[\s\u0000-\u001f]+/,"");
+   if(/^[=+@\-\t\r]/.test(s))s="'"+s;
+   return '"'+s.replace(/"/g,'""')+'"';
+ };
+ const data=candidates.map(b=>{const e=researchFor(b);return[b.name,b.category,b.address,b.email||b.phone||e?.email||e?.phone||"",b.website||e?.website||"",idea(e,b),(e?.evidenceUrls||[]).join(" ; "),e?"Por evaluar":"Por investigar"];});
+ const csvText="\ufeff"+[headers,...data].map(r=>r.map(cleanCell).join(",")).join("\r\n");
+ const link=document.createElement("a"),url=URL.createObjectURL(new Blob([csvText],{type:"text/csv;charset=utf-8"}));
+ link.href=url;link.download="zenix-radar-carpeta-comercial-"+new Date().toISOString().slice(0,10)+".csv";
+ document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+$("results").addEventListener("click",ev=>{
+ const selected=ev.target.closest("[data-select]");
+ if(selected){
+   try{if(shortlistBlocked)throw Error("La selección está bloqueada para proteger los datos existentes.");setShortlist(selected.dataset.select);}
+   catch(err){label("No se pudo guardar el candidato: "+err.message,true);}
+   return;
+ }
+ const btn=ev.target.closest("[data-toggle]");if(!btn)return;
+ const d=document.getElementById("details-"+btn.dataset.toggle);
+ if(d){d.classList.toggle("hidden");btn.setAttribute("aria-expanded",String(!d.classList.contains("hidden")));}
+});
 $("query").addEventListener("input",render);$("filter").addEventListener("change",render);$("refresh").onclick=load;$("export").onclick=csv;
+$("viewselected").onclick=viewSelected;$("exportselected").onclick=exportSelection;
+window.addEventListener("storage",event=>{if(event.key===SHORTLIST){try{shortlist=readShortlist();shortlistBlocked=false;render();}catch(err){shortlistBlocked=true;label(err.message,true);}}});
 load();
 })();
 </script></body></html>
