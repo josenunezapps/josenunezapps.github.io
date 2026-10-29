@@ -21,6 +21,11 @@ label{font-size:12px;font-weight:680;display:block;margin-bottom:5px;color:#bdcc
 .mini{font-size:12px;color:#aab9d5}.status{display:inline-flex;border-radius:100px;background:#302b52;color:#d2c3ff;padding:4px 9px;font-size:11px;white-space:nowrap}.status.pending{background:#303746;color:#b2bdd1}
 .high{font-weight:650;color:#aee7bf}.code{font-family:ui-monospace,monospace;font-size:12px;color:#bcc6e4}
 .business .divider{height:1px;background:#2a344e;margin:12px 0}
+.signal{display:inline-flex;align-items:center;border:1px solid #526080;border-radius:999px;color:#dce3ff;background:#25314a;padding:3px 9px;font-size:11px}
+.signal.good{color:#a3f1cb;background:#203e36;border-color:#416f5c}
+.signal.wait{color:#e9cb9a;background:#463922;border-color:#755a31}
+.auto-note{border-left:3px solid #a791ff;background:#23294a;border-radius:8px;padding:12px 14px;font-size:13px;margin:12px 0;color:#dbe1fa}
+
 .business.selected{border-color:#8e77f8;box-shadow:inset 0 0 0 1px #8e77f844}
 .btn.saved{background:#2e3d38;color:#b4f5cf;border-color:#547c69}
 .workline{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:#1a2339;border:1px solid #344567;border-radius:12px;padding:13px 15px;margin-top:16px}
@@ -44,11 +49,13 @@ footer{margin-top:30px;padding-top:16px;border-top:1px solid #323b51;color:#8c9a
 <div class="stat"><strong id="pending">—</strong><span>Pendientes de investigación</span></div>
 </div>
 <div class="msg" id="status" role="status" aria-live="polite">Leyendo datos de la aplicación y hallazgos públicos…</div>
+<div class="workline"><div><strong>Priorización comercial automática</strong><p><span id="readycount">—</span> prospectos con fuente y contacto público · <span id="draftcount">—</span> borradores de propuesta. No se afirma que tengan necesidades comprobadas.</p></div><div class="row"><button type="button" class="btn primary" id="topcontacts">Ver contactables primero</button><a class="btn" href="./#/propuestas">Abrir propuestas</a></div></div>
+<div class="auto-note">Radar prepara hasta ocho borradores exploratorios para los prospectos mejor documentados, sin precios, sin cambiar la etapa comercial y sin enviar nada. Los borradores que ya editaste se conservan.</div>
 <div class="workline"><div><strong>Mi carpeta comercial · <span id="selectedcount">0</span> prospectos</strong><p>Guardá candidatos para evaluar y preparar una propuesta. No se contactará a nadie automáticamente.</p></div><div class="row"><button class="btn" id="viewselected">Ver seleccionados</button><button class="btn" id="exportselected" disabled>Exportar selección CSV</button></div></div>
 <section class="panel">
 <div class="row between"><div><h2>Prospectos investigados</h2><p>Los datos con fuente se guardan automáticamente solo cuando la ficha no los tiene. Jamás se reemplaza lo que editaste.</p></div><div class="row"><button class="btn" id="refresh">Actualizar datos</button><button class="btn" id="export">Exportar informe CSV</button></div></div>
 <div class="toolbar"><div class="search"><label for="query">Buscar por nombre o dirección</label><input type="search" autocomplete="off" id="query" placeholder="Ej.: Kalma, San Martín..." /></div>
-<div><label for="filter">Mostrar</label><select id="filter"><option value="all">Todos los negocios</option><option value="verified">Con información contrastada</option><option value="website">Con web identificada</option><option value="pending">Pendientes de investigación</option><option value="contact">Con correo o teléfono público</option><option value="selected">Mi carpeta comercial</option></select></div>
+<div><label for="filter">Mostrar</label><select id="filter"><option value="all">Todos los negocios</option><option value="verified">Con información contrastada</option><option value="website">Con web identificada</option><option value="pending">Pendientes de investigación</option><option value="contact">Con correo o teléfono público</option><option value="priority">Con fuente y contacto (primero)</option><option value="drafted">Con borrador de propuesta</option><option value="selected">Mi carpeta comercial</option></select></div>
 <div><label>Origen</label><span class="code">Fuentes públicas</span></div></div>
 <div class="list" id="results"></div>
 </section>
@@ -68,7 +75,7 @@ const BAD=/[<>&"']/g,REPL={"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;","'":"&
 const esc=t=>String(t??"").replace(BAD,c=>REPL[c]);
 const norm=t=>String(t||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
 const byName=(a,b)=>norm(a).localeCompare(norm(b),"es");
-let businesses=[],records=[],lookup=new Map(),busy=false,checkedAt=null,shortlist=new Set(),shortlistBlocked=false;
+let businesses=[],records=[],lookup=new Map(),busy=false,checkedAt=null,shortlist=new Set(),shortlistBlocked=false,proposalsByBusiness=new Set();
 function readShortlist(){
  const raw=localStorage.getItem(SHORTLIST);
  if(raw===null)return new Set();
@@ -118,6 +125,46 @@ if(localStorage.getItem(KEY)!==raw)throw Error("Los datos cambiaron en otra pest
 localStorage.setItem(KEY,JSON.stringify(nextData));
 return{touched,fields};}
 function score(e,b){if(!e)return 0;return Math.min(100,(e.website?50:0)+(e.email?25:0)+(e.phone?15:0)+(e.features?.length?10:0));}
+function readiness(e,b){
+ if(!e||!Array.isArray(e.evidenceUrls)||!e.evidenceUrls.some(urlOk))return{level:0,text:"Pendiente de investigación",reason:"Sin fuente específica suficiente."};
+ const phone=String(b.phone||e.phone||"").trim(),email=String(b.email||e.email||"").trim(),web=!!(b.website||e.website);
+ if(email&&web)return{level:3,text:"Contacto documentado",reason:"Tiene web y correo público identificados. Esto no demuestra una necesidad de compra."};
+ if((phone||email)&&web)return{level:3,text:"Contacto documentado",reason:"Tiene web y un canal de contacto público. Validar antes de escribir."};
+ if(phone||email)return{level:2,text:"Contacto a verificar",reason:"Existe un canal público, pero falta confirmar presencia y herramientas digitales."};
+ if(web)return{level:1,text:"Revisar canales",reason:"Existe web identificada, pero falta documentar un contacto directo."};
+ return{level:0,text:"Investigación insuficiente",reason:"Hay referencias, sin contacto directo ni sitio propio verificado."};
+}
+function makeId(){return typeof crypto!=="undefined"&&crypto.randomUUID?crypto.randomUUID():"radar-"+Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,11)}
+function draftFor(b,e,now){
+ const links=(e.evidenceUrls||[]).filter(urlOk).slice(0,3);
+ const features=(e.features||[]).map(f=>({web:"sitio web",menu:"menú",reservas:"opción de reservas",tienda:"tienda",pedidos:"pedidos"}[f]||f));
+ const observations=features.length?"Funciones publicadas en las fuentes: "+features.join(", ")+".":"No se pudo confirmar el funcionamiento de herramientas digitales adicionales.";
+ const diagnosis=("Fuentes consultadas: "+links.join(" ; ")+". "+observations+" Se requiere una conversación para verificar procesos, necesidades y vigencia.").slice(0,3000);
+ const suggested=idea(e,b);
+ const template=(e.features||[]).some(f=>["reservas","pedidos","tienda"].includes(f))?"management":"selfmanaged";
+ return{id:makeId(),businessId:b.id,template,status:"draft",
+ title:("Exploración de mejoras digitales · "+b.name).slice(0,160),
+ intro:("BORRADOR INTERNO NO ENVIADO. Zenix AR propone explorar posibles mejoras digitales con "+b.name+". Este texto no atribuye deficiencias ni presupone una contratación.").slice(0,3000),
+ diagnosis,
+ solution:("Tema para conversar: "+suggested+" Antes de proponer un desarrollo se evaluarán las herramientas existentes, objetivos y prioridades del comercio.").slice(0,4000),
+ deliverables:"A definir después de una reunión de diagnóstico y de validar las necesidades, alcance y sistemas que ya utiliza el comercio.",
+ timeline:"Sin estimación. Se definirá únicamente si el negocio confirma un proyecto y se acuerda el alcance.",
+ conditions:"Documento exploratorio automático de uso interno. No es presupuesto ni oferta comercial aprobada. Precio pendiente de cotización; no enviar sin revisión humana.",
+ items:[],validDays:15,createdAt:now,updatedAt:now};
+}
+function autoDrafts(){
+ const {raw,data}=openDB();const existing=new Set(data.proposals.map(x=>x.businessId));
+ const candidates=data.businesses.filter(b=>!b.isDemo&&!["won","discarded"].includes(b.stage)&&!existing.has(b.id))
+ .map(b=>({b,e:researchFor(b)})).filter(x=>readiness(x.e,x.b).level>=2)
+ .sort((a,b)=>readiness(b.e,b.b).level-readiness(a.e,a.b).level||score(b.e,b.b)-score(a.e,a.b)||byName(a.b.name,b.b.name)).slice(0,8);
+ if(!candidates.length)return{created:0};
+ const now=new Date().toISOString(),drafts=candidates.map(({b,e})=>draftFor(b,e,now));
+ const entry={id:makeId(),type:"proposal",message:"Radar preparó "+drafts.length+" borradores exploratorios internos, sin precios ni envíos.",businessId:null,at:now};
+ const next={...data,proposals:[...drafts,...data.proposals],activity:[entry,...data.activity].slice(0,200)};
+ if(localStorage.getItem(KEY)!==raw)throw Error("Otra pestaña cambió los datos. No se generaron borradores; actualizá la pantalla.");
+ localStorage.setItem(KEY,JSON.stringify(next));
+ return{created:drafts.length};
+}
 function idea(e,b){const kind=(b.category||"").toLowerCase(),features=e?.features||[];
 if(!e)return"Primero hay que verificar sitio web, redes y servicios digitales antes de sugerir un proyecto.";
 if(features.includes("tienda")||features.includes("pedidos"))return"Ya publica venta o pedidos digitales. No ofrecer esa misma función otra vez; preguntar por fidelización, seguimiento de clientes o automatización de tareas.";
@@ -137,25 +184,25 @@ if(e.email)output.push("Correo público");
 if(e.phone)output.push("Teléfono público");
 return output;}
 function card(b){
-const e=researchFor(b),s=score(e,b),any=!!e,web=!!(b.website||e?.website);
+const e=researchFor(b),s=score(e,b),any=!!e,web=!!(b.website||e?.website),r=readiness(e,b);
 const id="details-"+b.id, sourceLinks=(e?.evidenceUrls||[]).filter(u=>urlOk(u)).slice(0,4);
 const address=esc(b.address||"Ushuaia"), site=b.website||e?.website||"";
 return '<article class="business'+(shortlist.has(b.id)?" selected":"")+'"><div class="row between"><h3>'+esc(b.name)+'</h3><span class="status '+(any?"":"pending")+'">'+(any?"Con fuentes asociadas":"Por investigar")+'</span></div><p class="mini">'+address+' · '+esc(b.category||"")+'</p>'+
-'<div class="divider"></div><p><strong>'+ (any?"Evidencia encontrada":"Sin investigación suficiente") +'</strong></p>'+
+'<div class="divider"></div><div class="row"><span class="signal '+(r.level>=3?"good":r.level>=2?"wait":"")+'">'+esc(r.text)+'</span>'+(proposalsByBusiness.has(b.id)?'<span class="signal good">Borrador preparado</span>':"")+'</div><p class="mini">'+esc(r.reason)+'</p><p><strong>'+ (any?"Evidencia encontrada":"Sin investigación suficiente") +'</strong></p>'+
 '<p class="mini">'+(any?esc(facts(e).join(" · ")||e.observation):"Todavía no hay suficientes fuentes asociadas a esta ficha. No se puede concluir que le falten servicios digitales.")+'</p>'+
 '<p class="mini"><strong>Datos públicos:</strong> '+(any?esc(facts(e).length+" tipos identificados. Esto no mide la calidad del negocio ni su potencial comercial."):"pendiente de contrastación")+'</p>'+
 '<div class="foot"><button type="button" class="btn" data-toggle="'+esc(b.id)+'" aria-expanded="false">'+(any?"Ver evidencias y sugerencia":"Ver próxima evaluación")+'</button>'+(site&&urlOk(site)?'<a class="btn" href="'+esc(site)+'" target="_blank" rel="noopener noreferrer">Abrir web</a>':"")+'</div>'+
-'<div class="foot"><button type="button" class="btn'+(shortlist.has(b.id)?" saved":"")+'" data-select="'+esc(b.id)+'" aria-pressed="'+(shortlist.has(b.id)?"true":"false")+'"'+(shortlistBlocked?" disabled":"")+'>'+(shortlist.has(b.id)?"✓ En mi carpeta":"☆ Guardar candidato")+'</button><a class="btn" href="./#/negocios/'+encodeURIComponent(b.id)+'/propuesta">Preparar propuesta</a></div>'+
+'<div class="foot"><button type="button" class="btn'+(shortlist.has(b.id)?" saved":"")+'" data-select="'+esc(b.id)+'" aria-pressed="'+(shortlist.has(b.id)?"true":"false")+'"'+(shortlistBlocked?" disabled":"")+'>'+(shortlist.has(b.id)?"✓ En mi carpeta":"☆ Guardar candidato")+'</button><a class="btn" href="./#/negocios/'+encodeURIComponent(b.id)+'/propuesta">'+(proposalsByBusiness.has(b.id)?"Revisar borrador":"Preparar propuesta")+'</a></div>'+
 '<div class="details hidden" id="'+esc(id)+'"><p><strong>Hipótesis de servicio:</strong> '+esc(idea(e,b))+'</p>'+(any?'<p><strong>Hallazgo:</strong> '+esc(e.observation||"")+'</p><p><strong>Fuentes:</strong></p>'+sourceLinks.map((url,i)=>'<p><a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">Consultar '+esc(new URL(url).hostname.replace(/^www\./,""))+'</a></p>').join("")+'<p class="mini">Revisado: '+esc(e.checkedAt||checkedAt||"sin fecha")+'. Este reporte no prueba necesidades comerciales ni la operatividad actual.</p>':'<p>No hay fuentes específicas; buscar nombre y dirección en el sitio oficial o Google Maps antes de evaluar servicios.</p>')+'</div></article>';
 }
 function render(){
 const search=norm($("query").value),f=$("filter").value;
 const filtered=businesses.filter(b=>{
 const e=researchFor(b),hasWeb=!!(b.website||e?.website),verified=!!e;
-const contact=!!(b.email||b.phone||e?.email||e?.phone);
-return(!search||norm(b.name+" "+b.address+" "+b.category).includes(search))&&(f==="all"||f==="verified"&&verified||f==="website"&&hasWeb||f==="pending"&&!verified||f==="contact"&&contact||f==="selected"&&shortlist.has(b.id));}).sort((a,b)=>{
+const contact=!!(b.email||b.phone||e?.email||e?.phone),readinessLevel=readiness(e,b).level;
+return(!search||norm(b.name+" "+b.address+" "+b.category).includes(search))&&(f==="all"||f==="verified"&&verified||f==="website"&&hasWeb||f==="pending"&&!verified||f==="contact"&&contact||f==="priority"&&readinessLevel>=2||f==="drafted"&&proposalsByBusiness.has(b.id)||f==="selected"&&shortlist.has(b.id));}).sort((a,b)=>{
 const ea=researchFor(a),eb=researchFor(b);
-return ((eb?1:0)-(ea?1:0))||score(eb,b)-score(ea,a)||byName(a.name,b.name);
+return readiness(eb,b).level-readiness(ea,a).level||((eb?1:0)-(ea?1:0))||score(eb,b)-score(ea,a)||byName(a.name,b.name);
 });
 $("results").innerHTML=filtered.length?filtered.map(card).join(""):'<div class="empty">No hay negocios para este filtro.</div>';
 $("total").textContent=businesses.length;
@@ -164,6 +211,8 @@ $("websites").textContent=businesses.filter(b=>!!(b.website||researchFor(b)?.web
 $("pending").textContent=businesses.filter(b=>!researchFor(b)).length;
 $("selectedcount").textContent=businesses.filter(b=>shortlist.has(b.id)).length;
 $("exportselected").disabled=!businesses.some(b=>shortlist.has(b.id));
+$("readycount").textContent=businesses.filter(b=>readiness(researchFor(b),b).level>=2).length;
+$("draftcount").textContent=proposalsByBusiness.size;
 }
 async function load(){
 if(busy)return;busy=true;$("refresh").disabled=true;
@@ -174,11 +223,13 @@ const result=await response.json();if(result.version!==1||!Array.isArray(result.
 records=result.records.filter(e=>e&&typeof e.catalogId==="string"&&typeof e.name==="string"&&Array.isArray(e.evidenceUrls));
 lookup=new Map(records.map(e=>[recordKey(e),e]));
 checkedAt=result.updatedAt;
-let updates=saveBlankFacts();
-businesses=openDB().data.businesses.filter(b=>!b.isDemo);
+let updates=saveBlankFacts(),drafted=autoDrafts();
+const persisted=openDB().data;
+businesses=persisted.businesses.filter(b=>!b.isDemo);
+proposalsByBusiness=new Set(persisted.proposals.map(p=>p.businessId));
 try{shortlist=readShortlist();shortlistBlocked=false;}catch(err){shortlistBlocked=true;label(err.message,true);}
 render();
-if(!shortlistBlocked)label("Investigación disponible: "+records.length+" establecimientos con fuentes. "+(updates.fields?"Se completaron "+updates.fields+" datos en "+updates.touched+" fichas sin sobrescribir cambios tuyos. ":"")+"Los demás siguen pendientes; no se han diagnosticado carencias.");
+if(!shortlistBlocked)label("Investigación disponible: "+records.length+" establecimientos con fuentes. "+(updates.fields?"Se completaron "+updates.fields+" datos en "+updates.touched+" fichas sin sobrescribir cambios tuyos. ":"")+(drafted.created?"Se generaron "+drafted.created+" borradores internos que podés revisar en Propuestas. ":"")+"Los demás siguen pendientes de verificar.");
 }catch(err){try{businesses=openDB().data.businesses.filter(b=>!b.isDemo);render();}catch{}label(err?.message||"No fue posible cargar la investigación",true);}
 finally{busy=false;$("refresh").disabled=false;}
 }
@@ -217,6 +268,7 @@ $("results").addEventListener("click",ev=>{
 });
 $("query").addEventListener("input",render);$("filter").addEventListener("change",render);$("refresh").onclick=load;$("export").onclick=csv;
 $("viewselected").onclick=viewSelected;$("exportselected").onclick=exportSelection;
+$("topcontacts").onclick=()=>{$("filter").value="priority";$("query").value="";render();};
 window.addEventListener("storage",event=>{if(event.key===SHORTLIST){try{shortlist=readShortlist();shortlistBlocked=false;render();}catch(err){shortlistBlocked=true;label(err.message,true);}}});
 load();
 })();
