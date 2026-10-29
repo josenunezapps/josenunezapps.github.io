@@ -83,7 +83,7 @@ function normalizeElement(e){const t=e.tags||{},name=cleanTag(t.name,120);if(!na
 const id=e.type+"/"+e.id,site=safeUrl(String(t.website||t["contact:website"]||"")),ig=String(t["contact:instagram"]||t.instagram||"").replace(/^https?:\/\/(?:www\.)?instagram.com\//i,"").replace(/^@/,"").split(/[/?#]/)[0];
 return{id,name,category:cate(t),address:getAddr(t),website:cleanTag(site||"",300),instagram:cleanTag(ig,30),phone:cleanTag(t.phone||t["contact:phone"],20),email:cleanTag(t.email||t["contact:email"],160),lat:e.lat||e.center&&e.center.lat,lon:e.lon||e.center&&e.center.lon};}
 function placeKey(row){
-const name=norm(row.name),address=norm(row.address).replace(/\\b(?:ushuaia|tierra del fuego|argentina)\\b/g," ").replace(/\\s+/g," ").trim();
+const name=norm(row.name),address=norm(row.address).replace(/\b(?:ushuaia|tierra del fuego|argentina)\b/g," ").replace(/\s+/g," ").trim();
 return name+"|"+address;
 }
 function saveOSM(rows){const {raw,d}=current(),existingIds=new Set(d.businesses.map(b=>b.id)),existingNames=new Set(d.businesses.filter(b=>!b.isDemo).map(placeKey));
