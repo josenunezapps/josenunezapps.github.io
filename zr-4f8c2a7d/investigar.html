@@ -83,6 +83,7 @@ function setShortlist(id){
  if(latest.has(id))latest.delete(id);else latest.add(id);
  localStorage.setItem(SHORTLIST,JSON.stringify({version:1,ids:[...latest]}));
  shortlist=latest;render();
+ label((latest.has(id)?"Guardado en tu carpeta comercial: ":"Quitado de tu carpeta comercial: ")+b.name+". Las tarjetas mantienen su posición.");
 }
 function viewSelected(){ $("filter").value="selected";$("query").value="";render();$("results").scrollIntoView?.({behavior:"smooth",block:"start"});}
 function label(msg,error=false){$("status").textContent=msg;$("status").className="msg"+(error?" error":"");}
@@ -154,7 +155,7 @@ const e=researchFor(b),hasWeb=!!(b.website||e?.website),verified=!!e;
 const contact=!!(b.email||b.phone||e?.email||e?.phone);
 return(!search||norm(b.name+" "+b.address+" "+b.category).includes(search))&&(f==="all"||f==="verified"&&verified||f==="website"&&hasWeb||f==="pending"&&!verified||f==="contact"&&contact||f==="selected"&&shortlist.has(b.id));}).sort((a,b)=>{
 const ea=researchFor(a),eb=researchFor(b);
-return ((shortlist.has(b.id)?1:0)-(shortlist.has(a.id)?1:0))||((eb?1:0)-(ea?1:0))||score(eb,b)-score(ea,a)||byName(a.name,b.name);
+return ((eb?1:0)-(ea?1:0))||score(eb,b)-score(ea,a)||byName(a.name,b.name);
 });
 $("results").innerHTML=filtered.length?filtered.map(card).join(""):'<div class="empty">No hay negocios para este filtro.</div>';
 $("total").textContent=businesses.length;
