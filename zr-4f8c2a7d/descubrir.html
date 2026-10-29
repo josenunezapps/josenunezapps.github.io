@@ -121,7 +121,7 @@ status("officialstatus","Directorio oficial: "+officialRows.length+" registros d
 }
 async function loadCache(){
 try{
-const res=await fetch("./comercios-osm.json",{cache:"no-store"});
+const res=await fetch("./comercios-osm.json?v="+Date.now(),{cache:"no-store"});
 if(!res.ok)throw Error("HTTP "+res.status);
 const p=await res.json();
 if(!p||p.version!==1||!Array.isArray(p.records)||p.records.length>4000)throw Error("formato del catálogo incompatible");
