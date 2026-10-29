@@ -228,7 +228,7 @@ records=result.records.filter(e=>e&&typeof e.catalogId==="string"&&typeof e.name
 lookup=new Map(records.map(e=>[recordKey(e),e]));
 let openRecords=0;
 try{
-const cache=await fetch("./comercios-osm.json",{cache:"no-store"});
+const cache=await fetch("./comercios-osm.json?v="+Date.now(),{cache:"no-store"});
 if(cache.ok){
 const snapshot=await cache.json();
 if(snapshot.version===1&&Array.isArray(snapshot.records)&&snapshot.records.length<=4000){
