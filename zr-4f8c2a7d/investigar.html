@@ -154,9 +154,13 @@ function draftFor(b,e,now){
 }
 function autoDrafts(){
  const {raw,data}=openDB();const existing=new Set(data.proposals.map(x=>x.businessId));
- const candidates=data.businesses.filter(b=>!b.isDemo&&!["won","discarded"].includes(b.stage)&&!existing.has(b.id))
+ const removed=new Set(data.activity.filter(x=>x.type==="proposal"&&x.businessId&&x.message.startsWith("Se eliminó la propuesta")).map(x=>x.businessId));
+ const autoCount=data.proposals.filter(p=>p.intro.startsWith("BORRADOR INTERNO NO ENVIADO.")).length;
+ const limit=Math.max(0,8-autoCount-removed.size);
+ if(!limit)return{created:0};
+ const candidates=data.businesses.filter(b=>!b.isDemo&&!["won","discarded"].includes(b.stage)&&!existing.has(b.id)&&!removed.has(b.id))
  .map(b=>({b,e:researchFor(b)})).filter(x=>readiness(x.e,x.b).level>=2)
- .sort((a,b)=>readiness(b.e,b.b).level-readiness(a.e,a.b).level||score(b.e,b.b)-score(a.e,a.b)||byName(a.b.name,b.b.name)).slice(0,8);
+ .sort((a,b)=>readiness(b.e,b.b).level-readiness(a.e,a.b)||score(b.e,b.b)-score(a.e,a.b)||byName(a.b.name,b.b.name)).slice(0,limit);
  if(!candidates.length)return{created:0};
  const now=new Date().toISOString(),drafts=candidates.map(({b,e})=>draftFor(b,e,now));
  const entry={id:makeId(),type:"proposal",message:"Radar preparó "+drafts.length+" borradores exploratorios internos, sin precios ni envíos.",businessId:null,at:now};
