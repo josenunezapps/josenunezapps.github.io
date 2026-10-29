@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/zenix-radar-research.yml'
       - 'zr-4f8c2a7d/tools/enrich.py'
+      - 'zr-4f8c2a7d/tools/test_discovery.py'
       - 'zr-4f8c2a7d/investigaciones-seed.json'
   workflow_dispatch:
   schedule:
@@ -28,6 +29,10 @@ jobs:
         with:
           persist-credentials: true
 
+      - name: Verificar deduplicación y preservación de datos
+        working-directory: zr-4f8c2a7d/tools
+        run: python3 -m unittest test_discovery -v
+
       - name: Investigar negocios con fuentes abiertas
         run: python3 zr-4f8c2a7d/tools/enrich.py
 
@@ -38,7 +43,7 @@ jobs:
           set -e
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add zr-4f8c2a7d/investigaciones-datos.json
+          git add zr-4f8c2a7d/investigaciones-datos.json zr-4f8c2a7d/comercios-osm.json
           if git diff --staged --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "Sin cambios en el informe."
