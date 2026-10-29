@@ -19,6 +19,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CATALOG = ROOT / "catalogo-turismo-2026-03.json"
 SEED = ROOT / "investigaciones-seed.json"
 OUT = ROOT / "investigaciones-datos.json"
+DISCOVERY = ROOT / "comercios-osm.json"
 ENDPOINTS = [
     "https://overpass.private.coffee/api/interpreter",
     "https://overpass-api.de/api/interpreter",
@@ -137,6 +138,141 @@ def match_osm(elements, directory):
     return matches
 
 
+
+# Snapshot de comercios para el navegador: no depende de consultar Overpass en vivo.
+# No confirma apertura, necesidad comercial ni ausencia de servicios digitales.
+COMMERCIAL_AMENITIES = {
+    "restaurant", "cafe", "fast_food", "bar", "pub", "food_court",
+    "pharmacy", "doctors", "dentist", "clinic", "car_wash", "fuel", "bank",
+}
+TOURISM_TYPES = {"hotel", "hostel", "guest_house", "motel", "apartment", "chalet"}
+COMMERCIAL_LEISURE = {"fitness_centre", "sports_centre", "spa"}
+VALID_TYPES = {"node", "way", "relation"}
+
+
+def is_commercial(tags):
+    return bool(
+        tags.get("shop") not in (None, "", "no", "vacant")
+        or tags.get("amenity") in COMMERCIAL_AMENITIES
+        or tags.get("tourism") in TOURISM_TYPES
+        or tags.get("office") not in (None, "", "no")
+        or tags.get("craft") not in (None, "", "no")
+        or tags.get("healthcare") not in (None, "", "no")
+        or tags.get("leisure") in COMMERCIAL_LEISURE
+    )
+
+
+def category(tags):
+    amenity = tags.get("amenity", "")
+    shop = tags.get("shop", "")
+    tourism = tags.get("tourism", "")
+    if amenity in {"restaurant", "fast_food", "bar", "pub", "food_court"}:
+        return "Gastronomía"
+    if amenity == "cafe" or shop in {"bakery", "pastry", "coffee"}:
+        return "Cafetería y panadería"
+    if tourism in TOURISM_TYPES:
+        return "Alojamiento"
+    if shop in {"clothes", "shoes", "fashion", "boutique"}:
+        return "Indumentaria y calzado"
+    if shop in {"beauty", "hairdresser", "cosmetics"} or tags.get("leisure") == "spa":
+        return "Belleza y estética"
+    if amenity in {"doctors", "dentist", "pharmacy", "clinic"} or tags.get("healthcare"):
+        return "Salud y bienestar"
+    if shop in {"car", "car_repair", "car_parts", "tyres", "motorcycle"} or amenity == "car_wash":
+        return "Automotor"
+    if shop in {"hardware", "doityourself", "furniture", "interior_decoration", "paint"} or tags.get("craft"):
+        return "Construcción y hogar"
+    if tags.get("office") or amenity == "bank":
+        return "Servicios profesionales"
+    if tags.get("tourism"):
+        return "Turismo y excursiones"
+    return "Comercio minorista"
+
+
+def short_text(value, max_length):
+    return str(value or "").strip()[:max_length]
+
+
+def commercial_record(element, observed):
+    if not isinstance(element, dict):
+        return None
+    tags = element.get("tags") or {}
+    if not isinstance(tags, dict) or not is_commercial(tags):
+        return None
+    name = short_text(tags.get("name"), 120)
+    osm_type, osm_id = element.get("type"), element.get("id")
+    if not name or osm_type not in VALID_TYPES or not isinstance(osm_id, int) or osm_id <= 0:
+        return None
+    if name.startswith("[DEMO") or name.startswith("[TEST"):
+        return None
+    coord = element.get("center") or element
+    lat, lon = coord.get("lat"), coord.get("lon")
+    if not isinstance(lat, (float, int)) or not isinstance(lon, (float, int)):
+        return None
+    # Include only the Ushuaia bounding box, not an entire surrounding region.
+    if not (-54.89 <= lat <= -54.72 and -68.47 <= lon <= -68.14):
+        return None
+    street = short_text(tags.get("addr:street"), 140)
+    number = short_text(tags.get("addr:housenumber"), 20)
+    address = " ".join(part for part in (street, number) if part)
+    if not address:
+        address = short_text(tags.get("addr:full") or tags.get("addr:place"), 180)
+    if not address:
+        address = "Ushuaia, Tierra del Fuego"
+    instagram = str(tags.get("contact:instagram") or tags.get("instagram") or "").strip()
+    instagram = re.sub(r"^https?://(?:www\.)?instagram\.com/", "", instagram, flags=re.I)
+    instagram = instagram.lstrip("@").split("?")[0].split("/")[0]
+    if not re.fullmatch(r"[A-Za-z0-9_.]{1,30}", instagram):
+        instagram = ""
+    return {
+        "id": f"{osm_type}/{osm_id}",
+        "name": name,
+        "category": category(tags),
+        "address": short_text(address, 200),
+        "website": safe_url(tags.get("website") or tags.get("contact:website") or ""),
+        "instagram": instagram,
+        "phone": safe_phone(tags.get("phone") or tags.get("contact:phone") or ""),
+        "email": safe_email(tags.get("email") or tags.get("contact:email") or ""),
+        "lastObserved": observed,
+    }
+
+
+def prepare_snapshot(elements, previous, successful_groups, total_groups, observed):
+    old_records = previous.get("records", []) if isinstance(previous, dict) else []
+    existing = {
+        rec["id"]: rec for rec in old_records
+        if isinstance(rec, dict) and re.fullmatch(r"(node|way|relation)/\d+", str(rec.get("id", "")))
+    }
+    if successful_groups:
+        for e in elements:
+            item = commercial_record(e, observed)
+            if item:
+                existing[item["id"]] = item
+    # Retain older rows when some groups were not reachable.
+    # Mark their last observation date instead of silently claiming current verification.
+    ordered = sorted(existing.values(), key=lambda x: (normalize(x.get("name")), x["id"]))
+    if len(ordered) > 4000:
+        raise RuntimeError("OSM snapshot unexpectedly large; refusing to publish")
+    return {
+        "version": 1,
+        "source": "OpenStreetMap contributors",
+        "licenseUrl": "https://www.openstreetmap.org/copyright",
+        "generatedAt": observed if successful_groups else previous.get("generatedAt"),
+        "status": "complete" if successful_groups == total_groups else ("partial" if successful_groups else "unavailable"),
+        "successfulGroups": successful_groups,
+        "totalGroups": total_groups,
+        "records": ordered,
+    }
+
+
+def write_if_changed(path, obj):
+    payload = json.dumps(obj, ensure_ascii=False, indent=2) + "\n"
+    if not path.exists() or path.read_text(encoding="utf-8") != payload:
+        path.write_text(payload, encoding="utf-8")
+        return True
+    return False
+
+
 def main():
     seed = read_json(SEED)
     previous = read_json(OUT, {})
@@ -188,6 +324,10 @@ def main():
             indexed[key] = found
 
     date = datetime.now(timezone.utc).date().isoformat()
+    old_snapshot = read_json(DISCOVERY, {"version": 1, "records": [], "generatedAt": None})
+    snapshot = prepare_snapshot(all_osm, old_snapshot, succeeded, len(FILTER_GROUPS), date)
+    changed_snapshot = write_if_changed(DISCOVERY, snapshot)
+    print(f"OSM snapshot: {len(snapshot['records'])} places, {succeeded}/{len(FILTER_GROUPS)} groups, file changed: {changed_snapshot}", flush=True)
     result = {
         "version": 1,
         "updatedAt": date,
