@@ -35,10 +35,10 @@ footer{border-top:1px solid #2a324c;margin-top:34px;padding-top:16px;font-size:1
 <div class="tabs"><button class="tab active" id="tabosm">Descubrimiento automático</button><button class="tab" id="tabgoogle">Google Maps</button></div>
 <section id="osm">
 <div class="panel">
-<div class="row between"><div><h2>Ushuaia · Todos los rubros comerciales</h2><p style="margin:0">OpenStreetMap / Overpass · Búsqueda amplia de comercios con nombre.</p></div><button class="button primary" id="scan">Buscar y agregar</button></div>
+<div class="row between"><div><h2>Ushuaia · Todos los rubros comerciales</h2><p style="margin:0">OpenStreetMap / Overpass · Búsqueda amplia de comercios con nombre.</p></div><button class="button primary" id="scan">Buscar en vivo (opcional)</button></div>
 <div class="stats"><div class="stat"><b id="found">—</b><span>Detectados en búsqueda</span></div><div class="stat"><b id="added">—</b><span>Agregados a Radar</span></div><div class="stat"><b id="dupes">—</b><span>Ya registrados / coincidentes</span></div><div class="stat"><b id="total">—</b><span>Negocios reales en Radar</span></div></div>
-<div class="info">Radar incorpora automáticamente un <strong>directorio de referencia de la Secretaría de Turismo de Ushuaia (26/03/2026)</strong>, y busca ampliar la lista con OpenStreetMap. Estos registros pueden estar desactualizados y deben verificarse antes de contactar. La falta de sitio web registrado no demuestra que no exista. No se envían mensajes.</div><div class="status" id="officialstatus" role="status" aria-live="polite">Cargando directorio oficial…</div>
-<div class="status" id="osmstatus" role="status" aria-live="polite"></div>
+<div class="info">Radar incorpora el <strong>directorio de referencia de Turismo (26/03/2026)</strong> y <strong>un catálogo actualizado periódicamente desde OpenStreetMap por GitHub</strong>, sin esperar respuestas de Overpass en tu navegador. Estos registros pueden estar desactualizados y deben verificarse antes de contactar. La falta de sitio web registrado no demuestra que no exista. No se envían mensajes.</div><div class="status" id="officialstatus" role="status" aria-live="polite">Cargando directorio oficial…</div>
+<div class="status" id="cacheStatus" role="status" aria-live="polite">Cargando comercios publicados por GitHub…</div><div class="status" id="osmstatus" role="status" aria-live="polite"></div>
 <div class="controls"><div class="field"><label for="filter">Filtrar resultados</label><input id="filter" name="filtro-negocios-noautofill-287" type="search" readonly autocomplete="new-password" autocapitalize="off" spellcheck="false" data-lpignore="true" placeholder="Nombre, rubro o calle" /></div><div class="field"><label for="endpoint">Fuente pública</label><select id="endpoint"><option value="https://overpass.private.coffee/api/interpreter">Overpass · Private.coffee</option><option value="https://overpass-api.de/api/interpreter">Overpass · FOSSGIS</option><option value="https://lz4.overpass-api.de/api/interpreter">Overpass · FOSSGIS LZ4</option></select></div></div>
 <div class="row" style="margin-top:14px"><a href="./">Ver negocios guardados en Radar</a></div><div class="results" id="osmresults"></div>
 </div></section>
@@ -57,7 +57,7 @@ footer{border-top:1px solid #2a324c;margin-top:34px;padding-top:16px;font-size:1
 (function(){
 "use strict";
 const $=id=>document.getElementById(id), key="zenix-radar:data", stamp="zenix-radar:osm-last-scan", osmCenter={lat:-54.807, lng:-68.31};
-let osmRows=[],officialRows=[],googlePlaces=[],gm,markers=[],googleReady=false,busy=false;
+let osmRows=[],officialRows=[],cachedRows=[],googlePlaces=[],gm,markers=[],googleReady=false,busy=false;
 function status(id,msg,kind){const e=$(id);e.textContent=msg;e.className="status "+(kind||"");}
 function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 function norm(s){return String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim();}
@@ -115,6 +115,28 @@ $("total").textContent=counts.total;
 status("officialstatus","Directorio oficial: "+officialRows.length+" registros de marzo de 2026; "+counts.added+" incorporados. Revisá la vigencia antes de contactar.","good");
 }catch(err){status("officialstatus","No se pudo cargar el directorio: "+(err?.message||"error inesperado"),"error");}
 }
+async function loadCache(){
+try{
+const res=await fetch("./comercios-osm.json",{cache:"no-store"});
+if(!res.ok)throw Error("HTTP "+res.status);
+const p=await res.json();
+if(!p||p.version!==1||!Array.isArray(p.records)||p.records.length>4000)throw Error("formato del catálogo incompatible");
+const allowed=["Gastronomía","Cafetería y panadería","Alojamiento","Turismo y excursiones","Indumentaria y calzado","Comercio minorista","Salud y bienestar","Belleza y estética","Servicios profesionales","Automotor","Construcción y hogar","Educación","Otro"];
+const seen=new Set();
+cachedRows=p.records.filter(r=>r&&typeof r.id==="string"&&/^(node|way|relation)\/\d+$/.test(r.id)&&typeof r.name==="string"&&r.name.trim()&&r.name.length<=120&&typeof r.address==="string"&&r.address.length<=200&&allowed.includes(r.category)&&!seen.has(r.id)&&(seen.add(r.id),true))
+ .map(r=>({id:r.id,name:r.name,category:r.category,address:r.address,website:typeof r.website==="string"&&/^https?:\/\//i.test(r.website)&&r.website.length<=300?r.website:"",instagram:typeof r.instagram==="string"&&/^[A-Za-z0-9_.]{0,30}$/.test(r.instagram)?r.instagram:"",phone:typeof r.phone==="string"?r.phone.slice(0,20):"",email:typeof r.email==="string"?r.email.slice(0,160):"",lastObserved:r.lastObserved}));
+const counts=saveOSM(cachedRows);
+osmRows=[...officialRows,...cachedRows];renderOSM();
+$("found").textContent=osmRows.length;
+$("added").textContent=counts.added;
+$("dupes").textContent=counts.dupes;
+$("total").textContent=counts.total;
+status("cacheStatus",cachedRows.length?
+"Catálogo OpenStreetMap de GitHub: "+cachedRows.length+" lugares; "+counts.added+" negocios nuevos incorporados. Última recopilación: "+(p.generatedAt||"sin fecha")+" ("+(p.status==="complete"?"completa":"parcial")+"). Los negocios no están verificados como abiertos.":
+"GitHub todavía no publicó comercios adicionales. El directorio turístico ya está cargado; la recolección automática se ejecuta por separado.",cachedRows.length?"good":"");
+return cachedRows.length;
+}catch(err){status("cacheStatus","No se pudo cargar el catálogo programado ("+(err?.message||"desconocido")+"). Se conservaron los negocios existentes.","error");return 0;}
+}
 const scanFailure="zenix-radar:osm-last-failure";
 const allSources=["https://overpass.private.coffee/api/interpreter","https://overpass-api.de/api/interpreter","https://lz4.overpass-api.de/api/interpreter"];
 const bounds="(-54.89,-68.47,-54.72,-68.14)";
@@ -168,9 +190,9 @@ continue;
 source=found.source;
 const fresh=found.elements.map(normalizeElement).filter(Boolean);
 for(const entry of fresh)allFound.set(entry.id,entry);
-osmRows=[...officialRows,...allFound.values()];
+osmRows=[...officialRows,...new Map([...cachedRows,...allFound.values()].map(r=>[r.id,r])).values()];
 const update=saveOSM(fresh);addedTotal+=update.added;dupesTotal+=update.dupes;success++;
-$("found").textContent=officialRows.length+allFound.size;
+$("found").textContent=osmRows.length;
 $("added").textContent=addedTotal;
 $("dupes").textContent=dupesTotal;
 $("total").textContent=update.total;
@@ -185,7 +207,7 @@ const reason=fails.join(" | ");
 status("osmstatus",success?"Búsqueda parcial: se guardaron "+addedTotal+" negocios. Algunas categorías no respondieron. "+reason:"No pude conectar con las fuentes de OpenStreetMap. No modifiqué tu base de datos. "+reason,"error");
 }
 }catch(err){status("osmstatus","No se pudieron guardar los resultados: "+(err?.message||"error inesperado")+". No reinicies tus datos.","error");}
-finally{busy=false;$("scan").disabled=false;$("scan").textContent="Buscar y agregar";}
+finally{busy=false;$("scan").disabled=false;$("scan").textContent="Buscar en vivo (opcional)";}
 }
 function openTab(name){const g=name==="google";$("google").classList.toggle("hidden",!g);$("osm").classList.toggle("hidden",g);$("tabgoogle").classList.toggle("active",g);$("tabosm").classList.toggle("active",!g);}
 $("tabgoogle").onclick=()=>openTab("google");$("tabosm").onclick=()=>openTab("osm");
@@ -211,14 +233,11 @@ $("gbulk").onclick=()=>{if(window.confirm("Esto hará hasta 9 consultas facturab
 $("gresults").addEventListener("click",e=>{const b=e.target.closest("[data-place]");if(!b)return;const p=googlePlaces[Number(b.dataset.place)];if(!p||!p.id)return;try{const k="zenix-radar:google-place-ids",a=JSON.parse(localStorage.getItem(k)||"[]");if(!Array.isArray(a))throw Error("Registro de IDs ilegible");if(!a.includes(p.id))a.push(p.id);localStorage.setItem(k,JSON.stringify(a));b.textContent="ID guardado";b.disabled=true;}catch(err){status("gstatus","No se pudo guardar el ID: "+err.message,"error");}});
 try{const d=current().d;$("total").textContent=d.businesses.filter(b=>!b.isDemo).length;}catch(e){status("osmstatus",e.message,"error");}
 $("filter").addEventListener("focus",()=>{$("filter").removeAttribute("readonly");$("filter").value="";renderOSM();});
-loadOfficial().finally(()=>{
-try{
-$("filter").value="";
-const last=Number(localStorage.getItem(stamp)||0),fail=Number(localStorage.getItem(scanFailure)||0),now=Date.now();
-if(now-last>=24*3600000&&now-fail>=20*60000){setTimeout(()=>scan(true),250);}
-else if(now-last<24*3600000){status("osmstatus","Última consulta OSM: "+new Date(last).toLocaleString("es-AR")+". Podés actualizar con el botón.","good");}
-else{status("osmstatus","OpenStreetMap no respondió recientemente. Ya podés trabajar con el directorio oficial y reintentar más tarde.");}
-}catch(err){status("osmstatus",err?.message||"No se pudo programar la actualización","error");}
+loadOfficial().then(loadCache).then(()=>{
+ $("filter").value="";
+ status("osmstatus","La recolección automática corre en GitHub. «Buscar en vivo» es opcional y puede demorar o fallar por saturación de OpenStreetMap.");
+}).catch(err=>{
+ status("osmstatus","No se pudo completar la sincronización automática: "+(err?.message||"error desconocido")+". Se conservaron los registros existentes.","error");
 });
 })();
 </script>
