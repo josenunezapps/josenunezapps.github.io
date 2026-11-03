@@ -1,14 +1,17 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-30",
+  "updatedAt": "2026-11-03",
   "method": "Sitios públicos dirigidos + coincidencias exactas únicas de OpenStreetMap. No se infiere la ausencia de páginas o necesidades comerciales.",
   "openStreetMap": {
-    "status": "complete",
-    "updatedAt": "2026-10-30",
-    "successfulGroups": 4,
+    "status": "partial",
+    "updatedAt": "2026-11-03",
+    "successfulGroups": 2,
     "totalGroups": 4,
-    "matchedBusinesses": 3,
-    "warnings": []
+    "matchedBusinesses": 2,
+    "warnings": [
+      "group 1: overpass.private.coffee: The read operation timed out; overpass-api.de: HTTP Error 502: Bad Gateway; lz4.overpass-api.de: HTTP Error 502: Bad Gateway",
+      "group 4: overpass.private.coffee: The read operation timed out; overpass-api.de: HTTP Error 502: Bad Gateway; lz4.overpass-api.de: HTTP Error 502: Bad Gateway"
+    ]
   },
   "records": [
     {
@@ -150,7 +153,7 @@
       "name": "Kalma Restó",
       "website": "https://kalmaresto.com.ar/",
       "email": "info@kalmaresto.com.ar",
-      "phone": "+54 2901 42 5786",
+      "phone": "",
       "instagram": "",
       "features": [
         "web",
@@ -159,8 +162,7 @@
       "observation": "Sitio del restaurante con presentación de su propuesta y menú.",
       "evidenceUrls": [
         "https://kalmaresto.com.ar/",
-        "https://airepatagonia.com/flavours/kalma-resto/",
-        "https://www.openstreetmap.org/node/2681281397"
+        "https://airepatagonia.com/flavours/kalma-resto/"
       ],
       "checkedAt": "2026-10-27",
       "basis": "Páginas públicas y sitios identificados; presencia digital constatada solo donde figura website. No se diagnosticó ausencia de otros servicios."
