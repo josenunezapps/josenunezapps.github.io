@@ -1,15 +1,17 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-10",
+  "updatedAt": "2026-11-13",
   "method": "Sitios públicos dirigidos + coincidencias exactas únicas de OpenStreetMap. No se infiere la ausencia de páginas o necesidades comerciales.",
   "openStreetMap": {
     "status": "partial",
-    "updatedAt": "2026-11-10",
-    "successfulGroups": 3,
+    "updatedAt": "2026-11-13",
+    "successfulGroups": 1,
     "totalGroups": 4,
     "matchedBusinesses": 2,
     "warnings": [
-      "group 1: overpass.private.coffee: The read operation timed out; overpass-api.de: HTTP Error 502: Bad Gateway; lz4.overpass-api.de: HTTP Error 502: Bad Gateway"
+      "group 1: overpass.private.coffee: The read operation timed out; overpass-api.de: HTTP Error 502: Bad Gateway; lz4.overpass-api.de: HTTP Error 502: Bad Gateway",
+      "group 2: overpass.private.coffee: The read operation timed out; overpass-api.de: The read operation timed out; lz4.overpass-api.de: HTTP Error 502: Bad Gateway",
+      "group 3: overpass.private.coffee: The read operation timed out; overpass-api.de: HTTP Error 502: Bad Gateway; lz4.overpass-api.de: HTTP Error 502: Bad Gateway"
     ]
   },
   "records": [
